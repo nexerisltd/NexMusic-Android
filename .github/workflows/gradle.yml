@@ -41,17 +41,15 @@ jobs:
         run: echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
 
       - name: Create google-services.json
-        if: env.HAS_GOOGLE_SERVICES == 'true'
+        if: ${{ secrets.GOOGLE_SERVICES_JSON != '' }}
         env:
-          HAS_GOOGLE_SERVICES: ${{ secrets.GOOGLE_SERVICES_JSON != '' }}
           GOOGLE_SERVICES_CONTENT: ${{ secrets.GOOGLE_SERVICES_JSON }}
         run: |
           printf "%s" "$GOOGLE_SERVICES_CONTENT" > app/google-services.json
 
       - name: Set up Signing Keystore
-        if: env.HAS_KEYSTORE == 'true'
+        if: ${{ secrets.RELEASE_KEYSTORE_BASE64 != '' }}
         env:
-          HAS_KEYSTORE: ${{ secrets.RELEASE_KEYSTORE_BASE64 != '' }}
           RELEASE_KEYSTORE_BASE64: ${{ secrets.RELEASE_KEYSTORE_BASE64 }}
         run: |
           mkdir -p app/keystore
