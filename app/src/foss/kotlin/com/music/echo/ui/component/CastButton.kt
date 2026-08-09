@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.ui.component
+package com.nexapp.nexmusic.ui.component
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable

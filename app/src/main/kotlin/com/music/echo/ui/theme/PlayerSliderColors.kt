@@ -1,13 +1,13 @@
 
 
-package com.nexapp.nexpass.ui.theme
+package com.nexapp.nexmusic.ui.theme
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SliderColors
 import androidx.compose.material3.SliderDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import com.nexapp.nexpass.constants.PlayerBackgroundStyle
+import com.nexapp.nexmusic.constants.PlayerBackgroundStyle
 
 
 object PlayerSliderColors {

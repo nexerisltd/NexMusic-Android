@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.echomusic.updater
+package com.nexapp.nexmusic.echomusic.updater
 
 import android.content.Context
 import android.os.Environment

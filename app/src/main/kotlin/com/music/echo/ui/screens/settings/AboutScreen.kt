@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3ExpressiveApi::class)
 
-package com.nexapp.nexpass.ui.screens.settings
+package com.nexapp.nexmusic.ui.screens.settings
 
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloatAsState
@@ -39,11 +39,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.text.withStyle
 import androidx.navigation.NavController
-import com.nexapp.nexpass.BuildConfig
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.ui.component.IconButton
-import com.nexapp.nexpass.ui.utils.backToMain
+import com.nexapp.nexmusic.BuildConfig
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.ui.component.IconButton
+import com.nexapp.nexmusic.ui.utils.backToMain
 
 import androidx.compose.ui.platform.LocalContext
 import android.content.ActivityNotFoundException

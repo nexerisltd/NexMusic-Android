@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.component
+package com.nexapp.nexmusic.ui.component
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
@@ -13,14 +13,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
 import com.music.innertube.models.PlaylistItem
 import com.music.innertube.models.WatchEndpoint
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.db.entities.Album
-import com.nexapp.nexpass.db.entities.Artist
-import com.nexapp.nexpass.db.entities.Playlist
-import com.nexapp.nexpass.ui.menu.AlbumMenu
-import com.nexapp.nexpass.ui.menu.ArtistMenu
-import com.nexapp.nexpass.ui.menu.PlaylistMenu
-import com.nexapp.nexpass.ui.menu.YouTubePlaylistMenu
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.db.entities.Album
+import com.nexapp.nexmusic.db.entities.Artist
+import com.nexapp.nexmusic.db.entities.Playlist
+import com.nexapp.nexmusic.ui.menu.AlbumMenu
+import com.nexapp.nexmusic.ui.menu.ArtistMenu
+import com.nexapp.nexmusic.ui.menu.PlaylistMenu
+import com.nexapp.nexmusic.ui.menu.YouTubePlaylistMenu
 import kotlinx.coroutines.CoroutineScope
 
 @Composable

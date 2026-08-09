@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.utils
+package com.nexapp.nexmusic.utils
 
 import java.math.BigInteger
 import java.security.MessageDigest

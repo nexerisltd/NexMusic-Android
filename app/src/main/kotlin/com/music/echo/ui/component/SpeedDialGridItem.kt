@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.ui.component
+package com.nexapp.nexmusic.ui.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -26,8 +26,8 @@ import androidx.compose.ui.unit.dp
 import com.music.innertube.models.ArtistItem
 import com.music.innertube.models.SongItem
 import com.music.innertube.models.YTItem
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.ThumbnailCornerRadius
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.ThumbnailCornerRadius
 
 @Composable
 fun SpeedDialGridItem(

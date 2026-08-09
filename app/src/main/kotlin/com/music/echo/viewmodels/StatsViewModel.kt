@@ -1,17 +1,17 @@
 
 
-package com.nexapp.nexpass.viewmodels
+package com.nexapp.nexmusic.viewmodels
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.music.innertube.YouTube
-import com.nexapp.nexpass.constants.HideVideoSongsKey
-import com.nexapp.nexpass.constants.statToPeriod
-import com.nexapp.nexpass.db.MusicDatabase
-import com.nexapp.nexpass.ui.screens.OptionStats
-import com.nexapp.nexpass.utils.dataStore
-import com.nexapp.nexpass.utils.reportException
+import com.nexapp.nexmusic.constants.HideVideoSongsKey
+import com.nexapp.nexmusic.constants.statToPeriod
+import com.nexapp.nexmusic.db.MusicDatabase
+import com.nexapp.nexmusic.ui.screens.OptionStats
+import com.nexapp.nexmusic.utils.dataStore
+import com.nexapp.nexmusic.utils.reportException
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.ExperimentalCoroutinesApi

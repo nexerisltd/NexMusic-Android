@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.ui.component
+package com.nexapp.nexmusic.ui.component
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -12,8 +12,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.ai.AiPlaylistGenerator
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.ai.AiPlaylistGenerator
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

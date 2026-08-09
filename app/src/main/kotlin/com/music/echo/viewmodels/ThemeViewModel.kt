@@ -1,10 +1,10 @@
 
 
-package com.nexapp.nexpass.viewmodels
+package com.nexapp.nexmusic.viewmodels
 
 import androidx.lifecycle.ViewModel
-import com.nexapp.nexpass.ui.screens.settings.DarkMode
-import com.nexapp.nexpass.ui.theme.DefaultThemeColor
+import com.nexapp.nexmusic.ui.screens.settings.DarkMode
+import com.nexapp.nexmusic.ui.theme.DefaultThemeColor
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

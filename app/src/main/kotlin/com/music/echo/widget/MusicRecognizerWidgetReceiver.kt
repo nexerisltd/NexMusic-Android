@@ -3,7 +3,7 @@
  * Licensed under GPL-3.0 | See git history for contributors
  */
 
-package com.nexapp.nexpass.widget
+package com.nexapp.nexmusic.widget
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
@@ -16,23 +16,23 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.RemoteViews
-import com.nexapp.nexpass.MainActivity
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.recognition.MusicRecognitionService
-import com.nexapp.nexpass.widget.MusicRecognizerWidgetService.Companion.ALBUM_ART_CACHE_FILE
-import com.nexapp.nexpass.widget.MusicRecognizerWidgetService.Companion.PREF_ARTIST_NAME
-import com.nexapp.nexpass.widget.MusicRecognizerWidgetService.Companion.PREF_COVER_ART_PATH
-import com.nexapp.nexpass.widget.MusicRecognizerWidgetService.Companion.PREF_ERROR_MESSAGE
-import com.nexapp.nexpass.widget.MusicRecognizerWidgetService.Companion.PREF_PULSE_FRAME
-import com.nexapp.nexpass.widget.MusicRecognizerWidgetService.Companion.PREF_SONG_TITLE
-import com.nexapp.nexpass.widget.MusicRecognizerWidgetService.Companion.PREF_STATE
-import com.nexapp.nexpass.widget.MusicRecognizerWidgetService.Companion.PREFS_NAME
-import com.nexapp.nexpass.widget.MusicRecognizerWidgetService.Companion.STATE_ERROR
-import com.nexapp.nexpass.widget.MusicRecognizerWidgetService.Companion.STATE_IDLE
-import com.nexapp.nexpass.widget.MusicRecognizerWidgetService.Companion.STATE_LISTENING
-import com.nexapp.nexpass.widget.MusicRecognizerWidgetService.Companion.STATE_NO_MATCH
-import com.nexapp.nexpass.widget.MusicRecognizerWidgetService.Companion.STATE_PROCESSING
-import com.nexapp.nexpass.widget.MusicRecognizerWidgetService.Companion.STATE_SUCCESS
+import com.nexapp.nexmusic.MainActivity
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.recognition.MusicRecognitionService
+import com.nexapp.nexmusic.widget.MusicRecognizerWidgetService.Companion.ALBUM_ART_CACHE_FILE
+import com.nexapp.nexmusic.widget.MusicRecognizerWidgetService.Companion.PREF_ARTIST_NAME
+import com.nexapp.nexmusic.widget.MusicRecognizerWidgetService.Companion.PREF_COVER_ART_PATH
+import com.nexapp.nexmusic.widget.MusicRecognizerWidgetService.Companion.PREF_ERROR_MESSAGE
+import com.nexapp.nexmusic.widget.MusicRecognizerWidgetService.Companion.PREF_PULSE_FRAME
+import com.nexapp.nexmusic.widget.MusicRecognizerWidgetService.Companion.PREF_SONG_TITLE
+import com.nexapp.nexmusic.widget.MusicRecognizerWidgetService.Companion.PREF_STATE
+import com.nexapp.nexmusic.widget.MusicRecognizerWidgetService.Companion.PREFS_NAME
+import com.nexapp.nexmusic.widget.MusicRecognizerWidgetService.Companion.STATE_ERROR
+import com.nexapp.nexmusic.widget.MusicRecognizerWidgetService.Companion.STATE_IDLE
+import com.nexapp.nexmusic.widget.MusicRecognizerWidgetService.Companion.STATE_LISTENING
+import com.nexapp.nexmusic.widget.MusicRecognizerWidgetService.Companion.STATE_NO_MATCH
+import com.nexapp.nexmusic.widget.MusicRecognizerWidgetService.Companion.STATE_PROCESSING
+import com.nexapp.nexmusic.widget.MusicRecognizerWidgetService.Companion.STATE_SUCCESS
 import java.io.File
 
 /**
@@ -114,7 +114,7 @@ class MusicRecognizerWidgetReceiver : AppWidgetProvider() {
         if (!MusicRecognitionService.hasRecordPermission(context)) {
             context.startActivity(
                 Intent(context, MainActivity::class.java).apply {
-                    action = "com.nexapp.nexpass.action.RECOGNITION"
+                    action = "com.nexapp.nexmusic.action.RECOGNITION"
                     flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_SINGLE_TOP
                 }
             )
@@ -334,15 +334,15 @@ class MusicRecognizerWidgetReceiver : AppWidgetProvider() {
         PendingIntent.getActivity(
             context, 21,
             Intent(context, MainActivity::class.java).apply {
-                action = "com.nexapp.nexpass.action.RECOGNITION"
+                action = "com.nexapp.nexmusic.action.RECOGNITION"
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_SINGLE_TOP
             },
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
     companion object {
-        const val ACTION_START_RECOGNITION = "com.nexapp.nexpass.widget.recognizer.TAP_MIC"
-        const val ACTION_UPDATE_WIDGET = "com.nexapp.nexpass.widget.recognizer.UPDATE"
-        const val ACTION_RESET_STATE = "com.nexapp.nexpass.widget.recognizer.RESET"
+        const val ACTION_START_RECOGNITION = "com.nexapp.nexmusic.widget.recognizer.TAP_MIC"
+        const val ACTION_UPDATE_WIDGET = "com.nexapp.nexmusic.widget.recognizer.UPDATE"
+        const val ACTION_RESET_STATE = "com.nexapp.nexmusic.widget.recognizer.RESET"
     }
 }

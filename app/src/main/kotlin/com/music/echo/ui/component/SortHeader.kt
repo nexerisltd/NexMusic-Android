@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.component
+package com.nexapp.nexmusic.ui.component
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.layout.padding
@@ -39,8 +39,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.PlaylistSongSortType
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.PlaylistSongSortType
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 @Composable

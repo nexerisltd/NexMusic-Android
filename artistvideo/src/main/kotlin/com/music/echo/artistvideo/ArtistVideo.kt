@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.artistvideo
+package com.nexapp.nexmusic.artistvideo
 
 import android.view.TextureView
 import android.view.ViewGroup

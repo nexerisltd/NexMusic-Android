@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.ui.screens.settings
+package com.nexapp.nexmusic.ui.screens.settings
 
 import androidx.compose.foundation.layout.Column
 
@@ -32,28 +32,28 @@ import androidx.compose.ui.unit.dp
 import android.content.Intent
 import android.net.Uri
 import androidx.navigation.NavController
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.ui.component.IconButton
-import com.nexapp.nexpass.ui.component.Material3SettingsGroup
-import com.nexapp.nexpass.ui.component.Material3SettingsItem
-import com.nexapp.nexpass.echomusic.component.UpdateInfoDialog
-import com.nexapp.nexpass.ui.utils.backToMain
-import com.nexapp.nexpass.echomusic.updater.getAutoUpdateCheckSetting
-import com.nexapp.nexpass.echomusic.updater.saveAutoUpdateCheckSetting
-import com.nexapp.nexpass.echomusic.updater.getUpdateAvailableState
-import com.nexapp.nexpass.echomusic.updater.saveUpdateAvailableState
-import com.nexapp.nexpass.echomusic.updater.getUpdateNotificationsSetting
-import com.nexapp.nexpass.echomusic.updater.saveUpdateNotificationsSetting
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.ui.component.IconButton
+import com.nexapp.nexmusic.ui.component.Material3SettingsGroup
+import com.nexapp.nexmusic.ui.component.Material3SettingsItem
+import com.nexapp.nexmusic.echomusic.component.UpdateInfoDialog
+import com.nexapp.nexmusic.ui.utils.backToMain
+import com.nexapp.nexmusic.echomusic.updater.getAutoUpdateCheckSetting
+import com.nexapp.nexmusic.echomusic.updater.saveAutoUpdateCheckSetting
+import com.nexapp.nexmusic.echomusic.updater.getUpdateAvailableState
+import com.nexapp.nexmusic.echomusic.updater.saveUpdateAvailableState
+import com.nexapp.nexmusic.echomusic.updater.getUpdateNotificationsSetting
+import com.nexapp.nexmusic.echomusic.updater.saveUpdateNotificationsSetting
 import android.widget.Toast
 import androidx.compose.ui.res.pluralStringResource
-import com.nexapp.nexpass.echomusic.updater.getDownloadedApkCount
-import com.nexapp.nexpass.echomusic.updater.clearDownloadedApks
-import com.nexapp.nexpass.echomusic.updater.getBetaUpdatesSetting
-import com.nexapp.nexpass.echomusic.updater.saveBetaUpdatesSetting
-import com.nexapp.nexpass.echomusic.updater.autoClearOldApks
+import com.nexapp.nexmusic.echomusic.updater.getDownloadedApkCount
+import com.nexapp.nexmusic.echomusic.updater.clearDownloadedApks
+import com.nexapp.nexmusic.echomusic.updater.getBetaUpdatesSetting
+import com.nexapp.nexmusic.echomusic.updater.saveBetaUpdatesSetting
+import com.nexapp.nexmusic.echomusic.updater.autoClearOldApks
 import androidx.compose.material3.MaterialTheme
-import com.nexapp.nexpass.BuildConfig
+import com.nexapp.nexmusic.BuildConfig
 
 
 

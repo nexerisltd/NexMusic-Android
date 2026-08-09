@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.screens.settings
+package com.nexapp.nexmusic.ui.screens.settings
 
 import androidx.compose.foundation.layout.Column
 
@@ -29,28 +29,28 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.LyricsRomanizeAsMainKey
-import com.nexapp.nexpass.constants.LyricsRomanizeBelarusianKey
-import com.nexapp.nexpass.constants.LyricsRomanizeBulgarianKey
-import com.nexapp.nexpass.constants.LyricsRomanizeChineseKey
-import com.nexapp.nexpass.constants.LyricsRomanizeHindiKey
-import com.nexapp.nexpass.constants.LyricsRomanizePunjabiKey
-import com.nexapp.nexpass.constants.LyricsRomanizeCyrillicByLineKey
-import com.nexapp.nexpass.constants.LyricsRomanizeJapaneseKey
-import com.nexapp.nexpass.constants.LyricsRomanizeKoreanKey
-import com.nexapp.nexpass.constants.LyricsRomanizeKyrgyzKey
-import com.nexapp.nexpass.constants.LyricsRomanizeMacedonianKey
-import com.nexapp.nexpass.constants.LyricsRomanizeRussianKey
-import com.nexapp.nexpass.constants.LyricsRomanizeSerbianKey
-import com.nexapp.nexpass.constants.LyricsRomanizeUkrainianKey
-import com.nexapp.nexpass.ui.component.ActionPromptDialog
-import com.nexapp.nexpass.ui.component.IconButton
-import com.nexapp.nexpass.ui.component.Material3SettingsGroup
-import com.nexapp.nexpass.ui.component.Material3SettingsItem
-import com.nexapp.nexpass.ui.utils.backToMain
-import com.nexapp.nexpass.utils.rememberPreference
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.LyricsRomanizeAsMainKey
+import com.nexapp.nexmusic.constants.LyricsRomanizeBelarusianKey
+import com.nexapp.nexmusic.constants.LyricsRomanizeBulgarianKey
+import com.nexapp.nexmusic.constants.LyricsRomanizeChineseKey
+import com.nexapp.nexmusic.constants.LyricsRomanizeHindiKey
+import com.nexapp.nexmusic.constants.LyricsRomanizePunjabiKey
+import com.nexapp.nexmusic.constants.LyricsRomanizeCyrillicByLineKey
+import com.nexapp.nexmusic.constants.LyricsRomanizeJapaneseKey
+import com.nexapp.nexmusic.constants.LyricsRomanizeKoreanKey
+import com.nexapp.nexmusic.constants.LyricsRomanizeKyrgyzKey
+import com.nexapp.nexmusic.constants.LyricsRomanizeMacedonianKey
+import com.nexapp.nexmusic.constants.LyricsRomanizeRussianKey
+import com.nexapp.nexmusic.constants.LyricsRomanizeSerbianKey
+import com.nexapp.nexmusic.constants.LyricsRomanizeUkrainianKey
+import com.nexapp.nexmusic.ui.component.ActionPromptDialog
+import com.nexapp.nexmusic.ui.component.IconButton
+import com.nexapp.nexmusic.ui.component.Material3SettingsGroup
+import com.nexapp.nexmusic.ui.component.Material3SettingsItem
+import com.nexapp.nexmusic.ui.utils.backToMain
+import com.nexapp.nexmusic.utils.rememberPreference
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

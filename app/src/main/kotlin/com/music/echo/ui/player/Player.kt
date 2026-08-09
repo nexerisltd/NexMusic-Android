@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.player
+package com.nexapp.nexmusic.ui.player
 
 import android.content.ClipData
 import android.content.ClipboardManager
@@ -151,65 +151,65 @@ import coil3.imageLoader
 import coil3.request.ImageRequest
 import coil3.request.allowHardware
 import coil3.toBitmap
-import com.nexapp.nexpass.LocalDatabase
-import com.nexapp.nexpass.LocalDownloadUtil
-import com.nexapp.nexpass.LocalListenTogetherManager
-import com.nexapp.nexpass.LocalPlayerConnection
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.AudioQuality
-import com.nexapp.nexpass.constants.AudioQualityKey
-import com.nexapp.nexpass.constants.CropAlbumArtKey
-import com.nexapp.nexpass.constants.DarkModeKey
-import com.nexapp.nexpass.constants.HidePlayerThumbnailKey
-import com.nexapp.nexpass.constants.HideStatusBarOnFullscreenKey
-import com.nexapp.nexpass.constants.EnableLyricsThumbnailPlayPauseKey
-import com.nexapp.nexpass.constants.KeepScreenOn
-import com.nexapp.nexpass.constants.PlayerBackgroundStyle
-import com.nexapp.nexpass.constants.PlayerBackgroundStyleKey
-import com.nexapp.nexpass.constants.PlayerButtonsStyle
-import com.nexapp.nexpass.constants.PlayerButtonsStyleKey
-import com.nexapp.nexpass.constants.PlayerHorizontalPadding
-import com.nexapp.nexpass.constants.QueuePeekHeight
-import com.nexapp.nexpass.constants.SliderStyle
-import com.nexapp.nexpass.constants.SliderStyleKey
-import com.nexapp.nexpass.constants.SquigglySliderKey
-import com.nexapp.nexpass.constants.SwipeLyricsKey
-import com.nexapp.nexpass.constants.ThumbnailCornerRadius
-import com.nexapp.nexpass.constants.UseNewPlayerDesignKey
-import com.nexapp.nexpass.db.entities.LyricsEntity
-import com.nexapp.nexpass.extensions.SwipeGesture
-import com.nexapp.nexpass.extensions.togglePlayPause
-import com.nexapp.nexpass.extensions.toggleRepeatMode
-import com.nexapp.nexpass.listentogether.RoomRole
-import com.nexapp.nexpass.models.MediaMetadata
-import com.nexapp.nexpass.playback.ExoDownloadService
-import com.nexapp.nexpass.echomusic.getConnectedBluetoothDeviceName
-import com.nexapp.nexpass.echomusic.isBuds
-import com.nexapp.nexpass.echomusic.isSpeaker
-import com.nexapp.nexpass.echomusic.AudioDeviceBottomSheet
-import com.nexapp.nexpass.ui.component.BottomSheet
-import com.nexapp.nexpass.ui.component.BottomSheetState
-import com.nexapp.nexpass.ui.component.CastButton
-import com.nexapp.nexpass.ui.component.LocalBottomSheetPageState
-import com.nexapp.nexpass.ui.component.LocalMenuState
-import com.nexapp.nexpass.ui.component.Lyrics
-import com.nexapp.nexpass.ui.component.PlayerSliderTrack
-import com.nexapp.nexpass.ui.component.ResizableIconButton
-import com.nexapp.nexpass.ui.component.SquigglySlider
-import com.nexapp.nexpass.ui.component.WavySlider
-import com.nexapp.nexpass.ui.component.rememberBottomSheetState
-import com.nexapp.nexpass.ui.menu.OldPlayerMenu
-import com.nexapp.nexpass.ui.menu.PlayerMenu
-import com.nexapp.nexpass.ui.component.VolumeSlider
-import com.nexapp.nexpass.ui.screens.settings.DarkMode
-import com.nexapp.nexpass.ui.theme.PlayerColorExtractor
-import com.nexapp.nexpass.ui.theme.PlayerSliderColors
-import com.nexapp.nexpass.ui.utils.ShowMediaInfo
-import com.nexapp.nexpass.ui.utils.ShowOffsetDialog
-import com.nexapp.nexpass.utils.makeTimeString
-import com.nexapp.nexpass.utils.isLocalMediaId
-import com.nexapp.nexpass.utils.rememberEnumPreference
-import com.nexapp.nexpass.utils.rememberPreference
+import com.nexapp.nexmusic.LocalDatabase
+import com.nexapp.nexmusic.LocalDownloadUtil
+import com.nexapp.nexmusic.LocalListenTogetherManager
+import com.nexapp.nexmusic.LocalPlayerConnection
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.AudioQuality
+import com.nexapp.nexmusic.constants.AudioQualityKey
+import com.nexapp.nexmusic.constants.CropAlbumArtKey
+import com.nexapp.nexmusic.constants.DarkModeKey
+import com.nexapp.nexmusic.constants.HidePlayerThumbnailKey
+import com.nexapp.nexmusic.constants.HideStatusBarOnFullscreenKey
+import com.nexapp.nexmusic.constants.EnableLyricsThumbnailPlayPauseKey
+import com.nexapp.nexmusic.constants.KeepScreenOn
+import com.nexapp.nexmusic.constants.PlayerBackgroundStyle
+import com.nexapp.nexmusic.constants.PlayerBackgroundStyleKey
+import com.nexapp.nexmusic.constants.PlayerButtonsStyle
+import com.nexapp.nexmusic.constants.PlayerButtonsStyleKey
+import com.nexapp.nexmusic.constants.PlayerHorizontalPadding
+import com.nexapp.nexmusic.constants.QueuePeekHeight
+import com.nexapp.nexmusic.constants.SliderStyle
+import com.nexapp.nexmusic.constants.SliderStyleKey
+import com.nexapp.nexmusic.constants.SquigglySliderKey
+import com.nexapp.nexmusic.constants.SwipeLyricsKey
+import com.nexapp.nexmusic.constants.ThumbnailCornerRadius
+import com.nexapp.nexmusic.constants.UseNewPlayerDesignKey
+import com.nexapp.nexmusic.db.entities.LyricsEntity
+import com.nexapp.nexmusic.extensions.SwipeGesture
+import com.nexapp.nexmusic.extensions.togglePlayPause
+import com.nexapp.nexmusic.extensions.toggleRepeatMode
+import com.nexapp.nexmusic.listentogether.RoomRole
+import com.nexapp.nexmusic.models.MediaMetadata
+import com.nexapp.nexmusic.playback.ExoDownloadService
+import com.nexapp.nexmusic.echomusic.getConnectedBluetoothDeviceName
+import com.nexapp.nexmusic.echomusic.isBuds
+import com.nexapp.nexmusic.echomusic.isSpeaker
+import com.nexapp.nexmusic.echomusic.AudioDeviceBottomSheet
+import com.nexapp.nexmusic.ui.component.BottomSheet
+import com.nexapp.nexmusic.ui.component.BottomSheetState
+import com.nexapp.nexmusic.ui.component.CastButton
+import com.nexapp.nexmusic.ui.component.LocalBottomSheetPageState
+import com.nexapp.nexmusic.ui.component.LocalMenuState
+import com.nexapp.nexmusic.ui.component.Lyrics
+import com.nexapp.nexmusic.ui.component.PlayerSliderTrack
+import com.nexapp.nexmusic.ui.component.ResizableIconButton
+import com.nexapp.nexmusic.ui.component.SquigglySlider
+import com.nexapp.nexmusic.ui.component.WavySlider
+import com.nexapp.nexmusic.ui.component.rememberBottomSheetState
+import com.nexapp.nexmusic.ui.menu.OldPlayerMenu
+import com.nexapp.nexmusic.ui.menu.PlayerMenu
+import com.nexapp.nexmusic.ui.component.VolumeSlider
+import com.nexapp.nexmusic.ui.screens.settings.DarkMode
+import com.nexapp.nexmusic.ui.theme.PlayerColorExtractor
+import com.nexapp.nexmusic.ui.theme.PlayerSliderColors
+import com.nexapp.nexmusic.ui.utils.ShowMediaInfo
+import com.nexapp.nexmusic.ui.utils.ShowOffsetDialog
+import com.nexapp.nexmusic.utils.makeTimeString
+import com.nexapp.nexmusic.utils.isLocalMediaId
+import com.nexapp.nexmusic.utils.rememberEnumPreference
+import com.nexapp.nexmusic.utils.rememberPreference
 import dagger.hilt.android.EntryPointAccessors
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.firstOrNull
@@ -219,7 +219,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlin.math.max
 import kotlin.math.roundToInt
-import com.nexapp.nexpass.ui.component.Icon as MIcon
+import com.nexapp.nexmusic.ui.component.Icon as MIcon
 import androidx.media3.exoplayer.trackselection.DefaultTrackSelector
 import androidx.media3.exoplayer.DefaultLoadControl
 import android.view.TextureView
@@ -234,15 +234,15 @@ import androidx.media3.ui.AspectRatioFrameLayout
 import androidx.media3.ui.PlayerView
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import com.nexapp.nexpass.applecanvas.AppleMusicCanvasProvider
-import com.nexapp.nexpass.canvas.CanvasArtwork
-import com.nexapp.nexpass.canvas.TidalCanvasProvider
-import com.nexapp.nexpass.constants.CanvasThumbnailAnimationKey
-import com.nexapp.nexpass.extensions.metadata
-import com.nexapp.nexpass.ui.player.CanvasArtworkPlaybackCache
-import com.nexapp.nexpass.ui.player.normalizeCanvasArtistName
-import com.nexapp.nexpass.ui.player.normalizeCanvasSongTitle
-import com.nexapp.nexpass.echomusiccanvas.echomusicCanvasProvider
+import com.nexapp.nexmusic.applecanvas.AppleMusicCanvasProvider
+import com.nexapp.nexmusic.canvas.CanvasArtwork
+import com.nexapp.nexmusic.canvas.TidalCanvasProvider
+import com.nexapp.nexmusic.constants.CanvasThumbnailAnimationKey
+import com.nexapp.nexmusic.extensions.metadata
+import com.nexapp.nexmusic.ui.player.CanvasArtworkPlaybackCache
+import com.nexapp.nexmusic.ui.player.normalizeCanvasArtistName
+import com.nexapp.nexmusic.ui.player.normalizeCanvasSongTitle
+import com.nexapp.nexmusic.echomusiccanvas.echomusicCanvasProvider
 import java.util.Locale
 import kotlin.math.cos
 import kotlin.math.sin
@@ -305,8 +305,8 @@ fun BottomSheetPlayer(
         UseNewPlayerDesignKey,
         defaultValue = true
     )
-    val showCodecOnPlayer by rememberPreference(com.nexapp.nexpass.constants.ShowCodecOnPlayerKey, false)
-    val hidePlayerSlider by rememberPreference(com.nexapp.nexpass.constants.HidePlayerSliderKey, false)
+    val showCodecOnPlayer by rememberPreference(com.nexapp.nexmusic.constants.ShowCodecOnPlayerKey, false)
+    val hidePlayerSlider by rememberPreference(com.nexapp.nexmusic.constants.HidePlayerSliderKey, false)
     val (hidePlayerThumbnail, onHidePlayerThumbnailChange) = rememberPreference(HidePlayerThumbnailKey, false)
     val cropAlbumArt by rememberPreference(CropAlbumArtKey, false)
     val mediaMetadata by playerConnection.mediaMetadata.collectAsState()
@@ -328,7 +328,7 @@ fun BottomSheetPlayer(
         if (darkTheme == DarkMode.AUTO) isSystemInDarkTheme else darkTheme == DarkMode.ON
     }
 
-    val dataSaverEnabled by rememberPreference(key = com.nexapp.nexpass.constants.DataSaverEnabledKey, defaultValue = false)
+    val dataSaverEnabled by rememberPreference(key = com.nexapp.nexmusic.constants.DataSaverEnabledKey, defaultValue = false)
     val enableCanvasPref by rememberPreference(CanvasThumbnailAnimationKey, true)
     val enableCanvas = if (dataSaverEnabled) false else enableCanvasPref
 
@@ -342,7 +342,7 @@ fun BottomSheetPlayer(
     val isCrossfading by playerConnection.isCrossfading.collectAsState()
     val isAutomixing by playerConnection.isAutomixing.collectAsState()
     val automixDebug by playerConnection.automixDebugInfo.collectAsState()
-    val automixDebugOverlayEnabled by rememberPreference(com.nexapp.nexpass.constants.AutomixDebugOverlayKey, false)
+    val automixDebugOverlayEnabled by rememberPreference(com.nexapp.nexmusic.constants.AutomixDebugOverlayKey, false)
 
     var currentAudioFormat by remember { mutableStateOf<androidx.media3.common.Format?>(null) }
     DisposableEffect(playerConnection, isCrossfading) {
@@ -1767,7 +1767,7 @@ fun BottomSheetPlayer(
                                 FilledIconButton(
                                     onClick = {
                                         menuState.show {
-                                            com.nexapp.nexpass.ui.menu.LyricsMenu(
+                                            com.nexapp.nexmusic.ui.menu.LyricsMenu(
                                                 lyricsProvider = { currentLyrics },
                                                 songProvider = { currentSong?.song },
                                                 mediaMetadataProvider = { mediaMetadata },
@@ -1885,7 +1885,7 @@ fun BottomSheetPlayer(
                                     .background(textButtonColor.copy(alpha = 0.2f))
                                     .clickable {
                                         menuState.show {
-                                            com.nexapp.nexpass.ui.menu.LyricsMenu(
+                                            com.nexapp.nexmusic.ui.menu.LyricsMenu(
                                                 lyricsProvider = { currentLyrics },
                                                 songProvider = { currentSong?.song },
                                                 mediaMetadataProvider = { mediaMetadata },
@@ -2918,7 +2918,7 @@ fun InlineLyricsView(
                     if (existing != null) return@launch
                     val entryPoint = EntryPointAccessors.fromApplication(
                         context.applicationContext,
-                        com.nexapp.nexpass.di.LyricsHelperEntryPoint::class.java
+                        com.nexapp.nexmusic.di.LyricsHelperEntryPoint::class.java
                     )
                     val lyricsHelper = entryPoint.lyricsHelper()
                     val fetchedLyricsWithProvider = lyricsHelper.getLyrics(mediaMetadata)

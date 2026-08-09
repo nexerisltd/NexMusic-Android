@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.playback.audio
+package com.nexapp.nexmusic.playback.audio
 
 import android.content.Context
 import android.media.MediaCodec

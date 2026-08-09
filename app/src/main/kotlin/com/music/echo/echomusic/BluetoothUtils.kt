@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.echomusic
+package com.nexapp.nexmusic.echomusic
 
 import android.content.Context
 import android.media.AudioDeviceInfo

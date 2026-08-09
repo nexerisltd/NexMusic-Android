@@ -1,6 +1,6 @@
-package com.nexapp.nexpass.ui.screens.equalizer
+package com.nexapp.nexmusic.ui.screens.equalizer
 
-import com.nexapp.nexpass.eq.data.SavedEQProfile
+import com.nexapp.nexmusic.eq.data.SavedEQProfile
 
 
 data class EQState(

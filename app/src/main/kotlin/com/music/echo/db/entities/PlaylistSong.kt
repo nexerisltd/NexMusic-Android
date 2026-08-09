@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.db.entities
+package com.nexapp.nexmusic.db.entities
 
 import androidx.room.Embedded
 import androidx.room.Relation

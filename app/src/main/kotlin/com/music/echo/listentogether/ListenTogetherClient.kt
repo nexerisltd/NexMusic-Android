@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.listentogether
+package com.nexapp.nexmusic.listentogether
 
 import android.util.Base64
 import android.Manifest
@@ -18,17 +18,17 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.getSystemService
 import androidx.datastore.preferences.core.edit
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.ListenTogetherAutoApprovalKey
-import com.nexapp.nexpass.constants.ListenTogetherIsHostKey
-import com.nexapp.nexpass.constants.ListenTogetherRoomCodeKey
-import com.nexapp.nexpass.constants.ListenTogetherServerUrlKey
-import com.nexapp.nexpass.constants.ListenTogetherSessionTimestampKey
-import com.nexapp.nexpass.constants.ListenTogetherSessionTokenKey
-import com.nexapp.nexpass.constants.ListenTogetherUserIdKey
-import com.nexapp.nexpass.utils.NetworkConnectivityObserver
-import com.nexapp.nexpass.utils.dataStore
-import com.nexapp.nexpass.utils.get
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.ListenTogetherAutoApprovalKey
+import com.nexapp.nexmusic.constants.ListenTogetherIsHostKey
+import com.nexapp.nexmusic.constants.ListenTogetherRoomCodeKey
+import com.nexapp.nexmusic.constants.ListenTogetherServerUrlKey
+import com.nexapp.nexmusic.constants.ListenTogetherSessionTimestampKey
+import com.nexapp.nexmusic.constants.ListenTogetherSessionTokenKey
+import com.nexapp.nexmusic.constants.ListenTogetherUserIdKey
+import com.nexapp.nexmusic.utils.NetworkConnectivityObserver
+import com.nexapp.nexmusic.utils.dataStore
+import com.nexapp.nexmusic.utils.get
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -148,10 +148,10 @@ class ListenTogetherClient @Inject constructor(
 
         
         private const val NOTIFICATION_CHANNEL_ID = "listen_together_channel"
-        const val ACTION_APPROVE_JOIN = "com.nexapp.nexpass.LISTEN_TOGETHER_APPROVE_JOIN"
-        const val ACTION_REJECT_JOIN = "com.nexapp.nexpass.LISTEN_TOGETHER_REJECT_JOIN"
-        const val ACTION_APPROVE_SUGGESTION = "com.nexapp.nexpass.LISTEN_TOGETHER_APPROVE_SUGGESTION"
-        const val ACTION_REJECT_SUGGESTION = "com.nexapp.nexpass.LISTEN_TOGETHER_REJECT_SUGGESTION"
+        const val ACTION_APPROVE_JOIN = "com.nexapp.nexmusic.LISTEN_TOGETHER_APPROVE_JOIN"
+        const val ACTION_REJECT_JOIN = "com.nexapp.nexmusic.LISTEN_TOGETHER_REJECT_JOIN"
+        const val ACTION_APPROVE_SUGGESTION = "com.nexapp.nexmusic.LISTEN_TOGETHER_APPROVE_SUGGESTION"
+        const val ACTION_REJECT_SUGGESTION = "com.nexapp.nexmusic.LISTEN_TOGETHER_REJECT_SUGGESTION"
         const val EXTRA_USER_ID = "extra_user_id"
         const val EXTRA_SUGGESTION_ID = "extra_suggestion_id"
         const val EXTRA_NOTIFICATION_ID = "extra_notification_id"
@@ -283,7 +283,7 @@ class ListenTogetherClient @Inject constructor(
     
     private fun loadBlockedUsernames() {
         try {
-            val blockedJson = context.dataStore.get(com.nexapp.nexpass.constants.ListenTogetherBlockedUsersKey, "")
+            val blockedJson = context.dataStore.get(com.nexapp.nexmusic.constants.ListenTogetherBlockedUsersKey, "")
             val blockedList = if (blockedJson.isNotEmpty()) {
                 json.decodeFromString<List<String>>(blockedJson)
             } else {
@@ -301,7 +301,7 @@ class ListenTogetherClient @Inject constructor(
         try {
             val blockedJson = json.encodeToString(_blockedUsernames.value.toList())
             context.dataStore.edit { preferences ->
-                preferences[com.nexapp.nexpass.constants.ListenTogetherBlockedUsersKey] = blockedJson
+                preferences[com.nexapp.nexmusic.constants.ListenTogetherBlockedUsersKey] = blockedJson
             }
         } catch (e: Exception) {
             log(LogLevel.ERROR, "Failed to save blocked usernames", e.message)

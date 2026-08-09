@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.echomusic.shapes
+package com.nexapp.nexmusic.echomusic.shapes
 
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Outline

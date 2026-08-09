@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.screens.settings
+package com.nexapp.nexmusic.ui.screens.settings
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -33,24 +33,24 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.AiProviderKey
-import com.nexapp.nexpass.constants.DeeplApiKey
-import com.nexapp.nexpass.constants.DeeplFormalityKey
-import com.nexapp.nexpass.constants.LanguageCodeToName
-import com.nexapp.nexpass.constants.OpenRouterApiKey
-import com.nexapp.nexpass.constants.OpenRouterBaseUrlKey
-import com.nexapp.nexpass.constants.OpenRouterModelKey
-import com.nexapp.nexpass.constants.TranslateLanguageKey
-import com.nexapp.nexpass.constants.TranslateModeKey
-import com.nexapp.nexpass.constants.AutoTranslateKey
-import com.nexapp.nexpass.constants.AiRecommendationsKey
-import com.nexapp.nexpass.ui.component.EnumDialog
-import com.nexapp.nexpass.ui.component.Material3SettingsGroup
-import com.nexapp.nexpass.ui.component.Material3SettingsItem
-import com.nexapp.nexpass.ui.component.TextFieldDialog
-import com.nexapp.nexpass.utils.rememberPreference
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.AiProviderKey
+import com.nexapp.nexmusic.constants.DeeplApiKey
+import com.nexapp.nexmusic.constants.DeeplFormalityKey
+import com.nexapp.nexmusic.constants.LanguageCodeToName
+import com.nexapp.nexmusic.constants.OpenRouterApiKey
+import com.nexapp.nexmusic.constants.OpenRouterBaseUrlKey
+import com.nexapp.nexmusic.constants.OpenRouterModelKey
+import com.nexapp.nexmusic.constants.TranslateLanguageKey
+import com.nexapp.nexmusic.constants.TranslateModeKey
+import com.nexapp.nexmusic.constants.AutoTranslateKey
+import com.nexapp.nexmusic.constants.AiRecommendationsKey
+import com.nexapp.nexmusic.ui.component.EnumDialog
+import com.nexapp.nexmusic.ui.component.Material3SettingsGroup
+import com.nexapp.nexmusic.ui.component.Material3SettingsItem
+import com.nexapp.nexmusic.ui.component.TextFieldDialog
+import com.nexapp.nexmusic.utils.rememberPreference
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -625,7 +625,7 @@ highlightKey: String? = null) {
         )
 
         if (showRefreshDialog) {
-            com.nexapp.nexpass.ui.component.RefreshAiRecommendationDialog(
+            com.nexapp.nexmusic.ui.component.RefreshAiRecommendationDialog(
                 onDismiss = { showRefreshDialog = false }
             )
         }

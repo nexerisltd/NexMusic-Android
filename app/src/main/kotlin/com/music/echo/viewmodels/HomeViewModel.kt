@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.viewmodels
+package com.nexapp.nexmusic.viewmodels
 
 import android.content.Context
 import androidx.datastore.preferences.core.edit
@@ -23,24 +23,24 @@ import com.music.innertube.models.filterYoutubeShorts
 import com.music.innertube.pages.ExplorePage
 import com.music.innertube.pages.HomePage
 import com.music.innertube.utils.completed
-import com.nexapp.nexpass.constants.HideExplicitKey
-import com.nexapp.nexpass.constants.HideVideoSongsKey
-import com.nexapp.nexpass.constants.HideYoutubeShortsKey
-import com.nexapp.nexpass.constants.InnerTubeCookieKey
-import com.nexapp.nexpass.constants.QuickPicks
-import com.nexapp.nexpass.constants.QuickPicksKey
-import com.nexapp.nexpass.db.MusicDatabase
-import com.nexapp.nexpass.db.entities.Album
-import com.nexapp.nexpass.db.entities.LocalItem
-import com.nexapp.nexpass.db.entities.Song
-import com.nexapp.nexpass.db.entities.SpeedDialItem
-import com.nexapp.nexpass.extensions.filterVideoSongs
-import com.nexapp.nexpass.extensions.toEnum
-import com.nexapp.nexpass.models.SimilarRecommendation
-import com.nexapp.nexpass.utils.SyncUtils
-import com.nexapp.nexpass.utils.dataStore
-import com.nexapp.nexpass.utils.get
-import com.nexapp.nexpass.utils.reportException
+import com.nexapp.nexmusic.constants.HideExplicitKey
+import com.nexapp.nexmusic.constants.HideVideoSongsKey
+import com.nexapp.nexmusic.constants.HideYoutubeShortsKey
+import com.nexapp.nexmusic.constants.InnerTubeCookieKey
+import com.nexapp.nexmusic.constants.QuickPicks
+import com.nexapp.nexmusic.constants.QuickPicksKey
+import com.nexapp.nexmusic.db.MusicDatabase
+import com.nexapp.nexmusic.db.entities.Album
+import com.nexapp.nexmusic.db.entities.LocalItem
+import com.nexapp.nexmusic.db.entities.Song
+import com.nexapp.nexmusic.db.entities.SpeedDialItem
+import com.nexapp.nexmusic.extensions.filterVideoSongs
+import com.nexapp.nexmusic.extensions.toEnum
+import com.nexapp.nexmusic.models.SimilarRecommendation
+import com.nexapp.nexmusic.utils.SyncUtils
+import com.nexapp.nexmusic.utils.dataStore
+import com.nexapp.nexmusic.utils.get
+import com.nexapp.nexmusic.utils.reportException
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers

@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.screens.settings
+package com.nexapp.nexmusic.ui.screens.settings
 
 import android.app.Activity
 import android.content.Context
@@ -56,78 +56,78 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.CanvasThumbnailAnimationKey
-import com.nexapp.nexpass.constants.ChipSortTypeKey
-import com.nexapp.nexpass.constants.CropAlbumArtKey
-import com.nexapp.nexpass.constants.DefaultOpenTabKey
-import com.nexapp.nexpass.constants.DensityScale
-import com.nexapp.nexpass.constants.DensityScaleKey
-import com.nexapp.nexpass.constants.DynamicThemeKey
-import com.nexapp.nexpass.constants.EnableDynamicIconKey
-import com.nexapp.nexpass.constants.EnableHighRefreshRateKey
-import com.nexapp.nexpass.constants.EnableHapticsKey
-import com.nexapp.nexpass.constants.EnableLyricsThumbnailPlayPauseKey
-import com.nexapp.nexpass.constants.GridItemSize
-import com.nexapp.nexpass.constants.GridItemsSizeKey
-import com.nexapp.nexpass.constants.HidePlayerThumbnailKey
-import com.nexapp.nexpass.constants.LibraryFilter
-import com.nexapp.nexpass.constants.ListenTogetherInTopBarKey
-import com.nexapp.nexpass.constants.LyricsAnimationStyle
-import com.nexapp.nexpass.constants.LyricsAnimationStyleKey
-import com.nexapp.nexpass.constants.LyricsStandardBlurKey
-import com.nexapp.nexpass.constants.LyricsTextPositionKey
-import com.nexapp.nexpass.constants.LyricsTextSizeKey
-import com.nexapp.nexpass.constants.PlayerBackgroundStyle
-import com.nexapp.nexpass.constants.PlayerBackgroundStyleKey
-import com.nexapp.nexpass.constants.PlayerButtonsStyle
-import com.nexapp.nexpass.constants.PlayerButtonsStyleKey
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.CanvasThumbnailAnimationKey
+import com.nexapp.nexmusic.constants.ChipSortTypeKey
+import com.nexapp.nexmusic.constants.CropAlbumArtKey
+import com.nexapp.nexmusic.constants.DefaultOpenTabKey
+import com.nexapp.nexmusic.constants.DensityScale
+import com.nexapp.nexmusic.constants.DensityScaleKey
+import com.nexapp.nexmusic.constants.DynamicThemeKey
+import com.nexapp.nexmusic.constants.EnableDynamicIconKey
+import com.nexapp.nexmusic.constants.EnableHighRefreshRateKey
+import com.nexapp.nexmusic.constants.EnableHapticsKey
+import com.nexapp.nexmusic.constants.EnableLyricsThumbnailPlayPauseKey
+import com.nexapp.nexmusic.constants.GridItemSize
+import com.nexapp.nexmusic.constants.GridItemsSizeKey
+import com.nexapp.nexmusic.constants.HidePlayerThumbnailKey
+import com.nexapp.nexmusic.constants.LibraryFilter
+import com.nexapp.nexmusic.constants.ListenTogetherInTopBarKey
+import com.nexapp.nexmusic.constants.LyricsAnimationStyle
+import com.nexapp.nexmusic.constants.LyricsAnimationStyleKey
+import com.nexapp.nexmusic.constants.LyricsStandardBlurKey
+import com.nexapp.nexmusic.constants.LyricsTextPositionKey
+import com.nexapp.nexmusic.constants.LyricsTextSizeKey
+import com.nexapp.nexmusic.constants.PlayerBackgroundStyle
+import com.nexapp.nexmusic.constants.PlayerBackgroundStyleKey
+import com.nexapp.nexmusic.constants.PlayerButtonsStyle
+import com.nexapp.nexmusic.constants.PlayerButtonsStyleKey
 
-import com.nexapp.nexpass.constants.RotatingThumbnailKey
-import com.nexapp.nexpass.constants.SelectedThemeColorKey
-import com.nexapp.nexpass.constants.ShowCachedPlaylistKey
-import com.nexapp.nexpass.constants.ShowExportedPlaylistKey
-import com.nexapp.nexpass.constants.ShowDownloadedPlaylistKey
-import com.nexapp.nexpass.constants.ShowLikedPlaylistKey
-import com.nexapp.nexpass.constants.ShowTopPlaylistKey
-import com.nexapp.nexpass.constants.ShowUploadedPlaylistKey
-import com.nexapp.nexpass.constants.SliderStyle
-import com.nexapp.nexpass.constants.SliderStyleKey
-import com.nexapp.nexpass.constants.SquigglySliderKey
-import com.nexapp.nexpass.constants.SwipeSensitivityKey
-import com.nexapp.nexpass.constants.SwipeThumbnailKey
-import com.nexapp.nexpass.constants.SwipeLyricsKey
-import com.nexapp.nexpass.constants.SwipeToRemoveSongKey
-import com.nexapp.nexpass.constants.SwipeToSongKey
-import com.nexapp.nexpass.constants.ThumbnailCornerRadiusKey
+import com.nexapp.nexmusic.constants.RotatingThumbnailKey
+import com.nexapp.nexmusic.constants.SelectedThemeColorKey
+import com.nexapp.nexmusic.constants.ShowCachedPlaylistKey
+import com.nexapp.nexmusic.constants.ShowExportedPlaylistKey
+import com.nexapp.nexmusic.constants.ShowDownloadedPlaylistKey
+import com.nexapp.nexmusic.constants.ShowLikedPlaylistKey
+import com.nexapp.nexmusic.constants.ShowTopPlaylistKey
+import com.nexapp.nexmusic.constants.ShowUploadedPlaylistKey
+import com.nexapp.nexmusic.constants.SliderStyle
+import com.nexapp.nexmusic.constants.SliderStyleKey
+import com.nexapp.nexmusic.constants.SquigglySliderKey
+import com.nexapp.nexmusic.constants.SwipeSensitivityKey
+import com.nexapp.nexmusic.constants.SwipeThumbnailKey
+import com.nexapp.nexmusic.constants.SwipeLyricsKey
+import com.nexapp.nexmusic.constants.SwipeToRemoveSongKey
+import com.nexapp.nexmusic.constants.SwipeToSongKey
+import com.nexapp.nexmusic.constants.ThumbnailCornerRadiusKey
 
-import com.nexapp.nexpass.constants.UseNewPlayerDesignKey
-import com.nexapp.nexpass.ui.component.ThumbnailCornerRadiusModal
-import com.nexapp.nexpass.ui.component.DefaultDialog
-import com.nexapp.nexpass.ui.component.EnumDialog
-import com.nexapp.nexpass.ui.component.IconButton
-import com.nexapp.nexpass.ui.component.Material3SettingsGroup
-import com.nexapp.nexpass.ui.component.Material3SettingsItem
-import com.nexapp.nexpass.ui.component.PlayerSliderTrack
-import com.nexapp.nexpass.ui.component.SquigglySlider
-import com.nexapp.nexpass.ui.component.WavySlider
-import com.nexapp.nexpass.ui.theme.DefaultThemeColor
-import com.nexapp.nexpass.ui.theme.PlayerSliderColors
-import com.nexapp.nexpass.ui.utils.backToMain
-import com.nexapp.nexpass.utils.IconUtils
-import com.nexapp.nexpass.utils.rememberEnumPreference
-import com.nexapp.nexpass.utils.rememberPreference
+import com.nexapp.nexmusic.constants.UseNewPlayerDesignKey
+import com.nexapp.nexmusic.ui.component.ThumbnailCornerRadiusModal
+import com.nexapp.nexmusic.ui.component.DefaultDialog
+import com.nexapp.nexmusic.ui.component.EnumDialog
+import com.nexapp.nexmusic.ui.component.IconButton
+import com.nexapp.nexmusic.ui.component.Material3SettingsGroup
+import com.nexapp.nexmusic.ui.component.Material3SettingsItem
+import com.nexapp.nexmusic.ui.component.PlayerSliderTrack
+import com.nexapp.nexmusic.ui.component.SquigglySlider
+import com.nexapp.nexmusic.ui.component.WavySlider
+import com.nexapp.nexmusic.ui.theme.DefaultThemeColor
+import com.nexapp.nexmusic.ui.theme.PlayerSliderColors
+import com.nexapp.nexmusic.ui.utils.backToMain
+import com.nexapp.nexmusic.utils.IconUtils
+import com.nexapp.nexmusic.utils.rememberEnumPreference
+import com.nexapp.nexmusic.utils.rememberPreference
 import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
-import com.nexapp.nexpass.constants.LyricsClickKey
-import com.nexapp.nexpass.constants.AppleMusicLyricsBlurKey
-import com.nexapp.nexpass.constants.LyricsGlowEffectKey
-import com.nexapp.nexpass.constants.LyricsLineSpacingKey
-import com.nexapp.nexpass.constants.LyricsScrollKey
-import com.nexapp.nexpass.constants.HideStatusBarOnFullscreenKey
-import com.nexapp.nexpass.constants.MiniPlayerBackgroundStyleKey
-import com.nexapp.nexpass.constants.ShowCommentButtonKey
+import com.nexapp.nexmusic.constants.LyricsClickKey
+import com.nexapp.nexmusic.constants.AppleMusicLyricsBlurKey
+import com.nexapp.nexmusic.constants.LyricsGlowEffectKey
+import com.nexapp.nexmusic.constants.LyricsLineSpacingKey
+import com.nexapp.nexmusic.constants.LyricsScrollKey
+import com.nexapp.nexmusic.constants.HideStatusBarOnFullscreenKey
+import com.nexapp.nexmusic.constants.MiniPlayerBackgroundStyleKey
+import com.nexapp.nexmusic.constants.ShowCommentButtonKey
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -144,15 +144,15 @@ highlightKey: String? = null) {
         defaultValue = true
     )
     val (enableLegacyIcon, onEnableLegacyIconChange) = rememberPreference(
-        com.nexapp.nexpass.constants.EnableLegacyIconKey,
+        com.nexapp.nexmusic.constants.EnableLegacyIconKey,
         defaultValue = false
     )
     val (enableHighRefreshRate, onEnableHighRefreshRateChange) = rememberPreference(
-        com.nexapp.nexpass.constants.EnableHighRefreshRateKey,
+        com.nexapp.nexmusic.constants.EnableHighRefreshRateKey,
         defaultValue = true
     )
     val (enableHaptics, onEnableHapticsChange) = rememberPreference(
-        com.nexapp.nexpass.constants.EnableHapticsKey,
+        com.nexapp.nexmusic.constants.EnableHapticsKey,
         defaultValue = false
     )
     val (selectedThemeColorInt) = rememberPreference(
@@ -188,11 +188,11 @@ highlightKey: String? = null) {
         defaultValue = true
     )
     val (showCodecOnPlayer, onShowCodecOnPlayerChange) = rememberPreference(
-        com.nexapp.nexpass.constants.ShowCodecOnPlayerKey,
+        com.nexapp.nexmusic.constants.ShowCodecOnPlayerKey,
         defaultValue = false
     )
     val (hidePlayerSlider, onHidePlayerSliderChange) = rememberPreference(
-        com.nexapp.nexpass.constants.HidePlayerSliderKey,
+        com.nexapp.nexmusic.constants.HidePlayerSliderKey,
         defaultValue = false
     )
     val (hidePlayerThumbnail, onHidePlayerThumbnailChange) = rememberPreference(

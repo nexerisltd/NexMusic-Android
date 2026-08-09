@@ -1,9 +1,9 @@
 
 
-package com.nexapp.nexpass.viewmodels
+package com.nexapp.nexmusic.viewmodels
 
 import androidx.lifecycle.ViewModel
-import com.nexapp.nexpass.listentogether.ListenTogetherManager
+import com.nexapp.nexmusic.listentogether.ListenTogetherManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

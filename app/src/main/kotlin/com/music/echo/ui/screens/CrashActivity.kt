@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.screens
+package com.nexapp.nexmusic.ui.screens
 
 import android.content.Intent
 import android.os.Bundle
@@ -39,9 +39,9 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.FileProvider
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.ui.theme.echomusicTheme
-import com.nexapp.nexpass.utils.CrashHandler
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.ui.theme.echomusicTheme
+import com.nexapp.nexmusic.utils.CrashHandler
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Date

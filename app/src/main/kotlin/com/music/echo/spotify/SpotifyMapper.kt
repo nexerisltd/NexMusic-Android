@@ -5,10 +5,10 @@
  * Do not remove or alter this notice. - Per GPL-3.0 Section 4 & Section 5
  */
 
-package com.nexapp.nexpass.spotify
+package com.nexapp.nexmusic.spotify
 
-import com.nexapp.nexpass.spotify.models.SpotifyPlaylist
-import com.nexapp.nexpass.spotify.models.SpotifyTrack
+import com.nexapp.nexmusic.spotify.models.SpotifyPlaylist
+import com.nexapp.nexmusic.spotify.models.SpotifyTrack
 
 /**
  * Utility object for creating search queries from Spotify track data.

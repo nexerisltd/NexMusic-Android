@@ -1,18 +1,18 @@
 
 
-package com.nexapp.nexpass.lyrics
+package com.nexapp.nexmusic.lyrics
 
 import android.content.Context
 import android.util.LruCache
-import com.nexapp.nexpass.constants.LyricsProviderOrderKey
-import com.nexapp.nexpass.constants.PreferredLyricsProvider
-import com.nexapp.nexpass.constants.PreferredLyricsProviderKey
-import com.nexapp.nexpass.db.entities.LyricsEntity.Companion.LYRICS_NOT_FOUND
-import com.nexapp.nexpass.extensions.toEnum
-import com.nexapp.nexpass.models.MediaMetadata
-import com.nexapp.nexpass.utils.NetworkConnectivityObserver
-import com.nexapp.nexpass.utils.dataStore
-import com.nexapp.nexpass.utils.reportException
+import com.nexapp.nexmusic.constants.LyricsProviderOrderKey
+import com.nexapp.nexmusic.constants.PreferredLyricsProvider
+import com.nexapp.nexmusic.constants.PreferredLyricsProviderKey
+import com.nexapp.nexmusic.db.entities.LyricsEntity.Companion.LYRICS_NOT_FOUND
+import com.nexapp.nexmusic.extensions.toEnum
+import com.nexapp.nexmusic.models.MediaMetadata
+import com.nexapp.nexmusic.utils.NetworkConnectivityObserver
+import com.nexapp.nexmusic.utils.dataStore
+import com.nexapp.nexmusic.utils.reportException
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job

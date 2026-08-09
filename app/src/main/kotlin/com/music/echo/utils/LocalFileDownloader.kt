@@ -1,5 +1,5 @@
-package com.nexapp.nexpass.utils
-import com.nexapp.nexpass.R
+package com.nexapp.nexmusic.utils
+import com.nexapp.nexmusic.R
 
 import android.app.NotificationChannel
 import android.app.NotificationManager

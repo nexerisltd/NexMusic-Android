@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.utils.potoken
+package com.nexapp.nexmusic.utils.potoken
 
 import android.content.Context
 import android.webkit.ConsoleMessage
@@ -17,7 +17,7 @@ import java.util.concurrent.atomic.AtomicBoolean
 import androidx.annotation.MainThread
 import androidx.collection.ArrayMap
 import com.music.innertube.YouTube
-import com.nexapp.nexpass.BuildConfig
+import com.nexapp.nexmusic.BuildConfig
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope

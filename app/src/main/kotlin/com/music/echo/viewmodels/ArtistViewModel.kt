@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.viewmodels
+package com.nexapp.nexmusic.viewmodels
 
 import android.content.Context
 import androidx.compose.runtime.getValue
@@ -14,15 +14,15 @@ import com.music.innertube.models.filterExplicit
 import com.music.innertube.models.filterVideoSongs
 import com.music.innertube.models.filterYoutubeShorts
 import com.music.innertube.pages.ArtistPage
-import com.nexapp.nexpass.constants.HideExplicitKey
-import com.nexapp.nexpass.constants.HideVideoSongsKey
-import com.nexapp.nexpass.constants.HideYoutubeShortsKey
-import com.nexapp.nexpass.db.MusicDatabase
-import com.nexapp.nexpass.extensions.filterExplicit
-import com.nexapp.nexpass.extensions.filterExplicitAlbums
-import com.nexapp.nexpass.utils.dataStore
-import com.nexapp.nexpass.utils.get
-import com.nexapp.nexpass.utils.reportException
+import com.nexapp.nexmusic.constants.HideExplicitKey
+import com.nexapp.nexmusic.constants.HideVideoSongsKey
+import com.nexapp.nexmusic.constants.HideYoutubeShortsKey
+import com.nexapp.nexmusic.db.MusicDatabase
+import com.nexapp.nexmusic.extensions.filterExplicit
+import com.nexapp.nexmusic.extensions.filterExplicitAlbums
+import com.nexapp.nexmusic.utils.dataStore
+import com.nexapp.nexmusic.utils.get
+import com.nexapp.nexmusic.utils.reportException
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -33,8 +33,8 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import com.nexapp.nexpass.extensions.filterVideoSongs as filterVideoSongsLocal
-import com.nexapp.nexpass.artistvideo.ArtistVideoCanvasProvider
+import com.nexapp.nexmusic.extensions.filterVideoSongs as filterVideoSongsLocal
+import com.nexapp.nexmusic.artistvideo.ArtistVideoCanvasProvider
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 

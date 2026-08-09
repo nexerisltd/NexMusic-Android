@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.extensions
+package com.nexapp.nexmusic.extensions
 
 import androidx.media3.common.C
 import androidx.media3.common.MediaItem
@@ -10,7 +10,7 @@ import androidx.media3.common.Player.REPEAT_MODE_OFF
 import androidx.media3.common.Player.REPEAT_MODE_ONE
 import androidx.media3.common.Timeline
 import androidx.media3.common.TrackSelectionParameters
-import com.nexapp.nexpass.models.MediaMetadata
+import com.nexapp.nexmusic.models.MediaMetadata
 import java.util.ArrayDeque
 
 fun Player.togglePlayPause() {

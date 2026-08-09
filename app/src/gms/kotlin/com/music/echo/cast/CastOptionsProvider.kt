@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.cast
+package com.nexapp.nexmusic.cast
 
 import android.content.Context
 import com.google.android.gms.cast.CastMediaControlIntent

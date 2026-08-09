@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.ui.screens.ambient
+package com.nexapp.nexmusic.ui.screens.ambient
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.LinearEasing
@@ -30,7 +30,7 @@ import coil3.imageLoader
 import coil3.request.ImageRequest
 import coil3.request.allowHardware
 import coil3.toBitmap
-import com.nexapp.nexpass.models.MediaMetadata
+import com.nexapp.nexmusic.models.MediaMetadata
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

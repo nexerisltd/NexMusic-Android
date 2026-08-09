@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.menu
+package com.nexapp.nexmusic.ui.menu
 
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -13,10 +13,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.TextFieldValue
-import com.nexapp.nexpass.LocalDatabase
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.db.entities.PlaylistEntity
-import com.nexapp.nexpass.ui.component.TextFieldDialog
+import com.nexapp.nexmusic.LocalDatabase
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.db.entities.PlaylistEntity
+import com.nexapp.nexmusic.ui.component.TextFieldDialog
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch

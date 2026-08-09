@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.lyrics
+package com.nexapp.nexmusic.lyrics
 
 import android.text.format.DateUtils
 import com.atilika.kuromoji.ipadic.Tokenizer

@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.component
+package com.nexapp.nexmusic.ui.component
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.LinearEasing

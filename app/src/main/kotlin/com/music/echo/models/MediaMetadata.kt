@@ -1,13 +1,13 @@
 
 
-package com.nexapp.nexpass.models
+package com.nexapp.nexmusic.models
 
 import androidx.compose.runtime.Immutable
 import com.music.innertube.models.SongItem
 import com.music.innertube.models.WatchEndpoint.WatchEndpointMusicSupportedConfigs.WatchEndpointMusicConfig.Companion.MUSIC_VIDEO_TYPE_ATV
-import com.nexapp.nexpass.db.entities.Song
-import com.nexapp.nexpass.db.entities.SongEntity
-import com.nexapp.nexpass.ui.utils.resize
+import com.nexapp.nexmusic.db.entities.Song
+import com.nexapp.nexmusic.db.entities.SongEntity
+import com.nexapp.nexmusic.ui.utils.resize
 import java.io.Serializable
 import java.time.LocalDateTime
 

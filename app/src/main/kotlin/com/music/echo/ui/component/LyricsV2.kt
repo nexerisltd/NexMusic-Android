@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.component
+package com.nexapp.nexmusic.ui.component
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -32,8 +32,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.nexapp.nexpass.lyrics.LyricsEntry
-import com.nexapp.nexpass.lyrics.WordTimestamp
+import com.nexapp.nexmusic.lyrics.LyricsEntry
+import com.nexapp.nexmusic.lyrics.WordTimestamp
 import kotlin.math.PI
 import kotlin.math.sin
 

@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.ui.component
+package com.nexapp.nexmusic.ui.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
@@ -45,7 +45,7 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.core.content.ContextCompat
-import com.nexapp.nexpass.echomusic.updater.extractUrls
+import com.nexapp.nexmusic.echomusic.updater.extractUrls
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontFamily
 @Composable

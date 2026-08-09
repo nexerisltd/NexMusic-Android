@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.viewmodels
+package com.nexapp.nexmusic.viewmodels
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
@@ -11,11 +11,11 @@ import com.music.innertube.models.ArtistItem
 import com.music.innertube.models.PlaylistItem
 import com.music.innertube.models.filterYoutubeShorts
 import com.music.innertube.utils.completed
-import com.nexapp.nexpass.constants.HideYoutubeShortsKey
-import com.nexapp.nexpass.ui.utils.resize
-import com.nexapp.nexpass.utils.dataStore
-import com.nexapp.nexpass.utils.get
-import com.nexapp.nexpass.utils.reportException
+import com.nexapp.nexmusic.constants.HideYoutubeShortsKey
+import com.nexapp.nexmusic.ui.utils.resize
+import com.nexapp.nexmusic.utils.dataStore
+import com.nexapp.nexmusic.utils.get
+import com.nexapp.nexmusic.utils.reportException
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers

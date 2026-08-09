@@ -1,9 +1,9 @@
-package com.nexapp.nexpass.ui.screens.settings
+package com.nexapp.nexmusic.ui.screens.settings
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
-import com.nexapp.nexpass.BuildConfig
-import com.nexapp.nexpass.R
+import com.nexapp.nexmusic.BuildConfig
+import com.nexapp.nexmusic.R
 
 data class SearchableSetting(
     val title: String,

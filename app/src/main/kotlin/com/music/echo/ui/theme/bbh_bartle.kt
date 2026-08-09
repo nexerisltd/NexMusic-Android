@@ -1,9 +1,9 @@
-package com.nexapp.nexpass.ui.theme
+package com.nexapp.nexmusic.ui.theme
 
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import com.nexapp.nexpass.R
+import com.nexapp.nexmusic.R
 
 val bbh_bartle = FontFamily(
     Font(R.font.bbh_bartle_regular, FontWeight.Normal)

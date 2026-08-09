@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.listentogether
+package com.nexapp.nexmusic.listentogether
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json

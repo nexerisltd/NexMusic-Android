@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.models
+package com.nexapp.nexmusic.models
 
 import kotlinx.serialization.Serializable
 

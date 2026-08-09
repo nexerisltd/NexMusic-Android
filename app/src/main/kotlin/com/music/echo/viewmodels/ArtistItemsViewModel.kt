@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.viewmodels
+package com.nexapp.nexmusic.viewmodels
 
 import android.content.Context
 import androidx.lifecycle.SavedStateHandle
@@ -10,12 +10,12 @@ import com.music.innertube.YouTube
 import com.music.innertube.models.BrowseEndpoint
 import com.music.innertube.models.filterExplicit
 import com.music.innertube.models.filterVideoSongs
-import com.nexapp.nexpass.constants.HideExplicitKey
-import com.nexapp.nexpass.constants.HideVideoSongsKey
-import com.nexapp.nexpass.models.ItemsPage
-import com.nexapp.nexpass.utils.dataStore
-import com.nexapp.nexpass.utils.get
-import com.nexapp.nexpass.utils.reportException
+import com.nexapp.nexmusic.constants.HideExplicitKey
+import com.nexapp.nexmusic.constants.HideVideoSongsKey
+import com.nexapp.nexmusic.models.ItemsPage
+import com.nexapp.nexmusic.utils.dataStore
+import com.nexapp.nexmusic.utils.get
+import com.nexapp.nexmusic.utils.reportException
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow

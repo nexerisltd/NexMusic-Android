@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.constants
+package com.nexapp.nexmusic.constants
 
 import android.os.Bundle
 import androidx.media3.session.SessionCommand

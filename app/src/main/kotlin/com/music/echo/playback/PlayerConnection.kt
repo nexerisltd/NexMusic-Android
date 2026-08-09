@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.playback
+package com.nexapp.nexmusic.playback
 
 import android.content.Context
 import androidx.media3.common.MediaItem
@@ -13,15 +13,15 @@ import androidx.media3.common.Player.REPEAT_MODE_OFF
 import androidx.media3.common.Player.STATE_ENDED
 import androidx.media3.common.Timeline
 import androidx.media3.exoplayer.ExoPlayer
-import com.nexapp.nexpass.db.MusicDatabase
-import com.nexapp.nexpass.extensions.currentMetadata
-import com.nexapp.nexpass.extensions.getCurrentQueueIndex
-import com.nexapp.nexpass.extensions.getQueueWindows
-import com.nexapp.nexpass.extensions.metadata
-import com.nexapp.nexpass.extensions.togglePlayPause
-import com.nexapp.nexpass.playback.MusicService.MusicBinder
-import com.nexapp.nexpass.playback.queues.Queue
-import com.nexapp.nexpass.utils.reportException
+import com.nexapp.nexmusic.db.MusicDatabase
+import com.nexapp.nexmusic.extensions.currentMetadata
+import com.nexapp.nexmusic.extensions.getCurrentQueueIndex
+import com.nexapp.nexmusic.extensions.getQueueWindows
+import com.nexapp.nexmusic.extensions.metadata
+import com.nexapp.nexmusic.extensions.togglePlayPause
+import com.nexapp.nexmusic.playback.MusicService.MusicBinder
+import com.nexapp.nexmusic.playback.queues.Queue
+import com.nexapp.nexmusic.utils.reportException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -31,10 +31,10 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import timber.log.Timber
-import com.nexapp.nexpass.constants.SponsorBlockEnabledKey
-import com.nexapp.nexpass.utils.dataStore
-import com.nexapp.nexpass.data.SponsorBlockRepository
-import com.nexapp.nexpass.models.SponsorBlockSegment
+import com.nexapp.nexmusic.constants.SponsorBlockEnabledKey
+import com.nexapp.nexmusic.utils.dataStore
+import com.nexapp.nexmusic.data.SponsorBlockRepository
+import com.nexapp.nexmusic.models.SponsorBlockSegment
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.Job

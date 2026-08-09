@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.screens.library
+package com.nexapp.nexmusic.ui.screens.library
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -11,11 +11,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.ChipSortTypeKey
-import com.nexapp.nexpass.constants.LibraryFilter
-import com.nexapp.nexpass.ui.component.ChipsRow
-import com.nexapp.nexpass.utils.rememberEnumPreference
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.ChipSortTypeKey
+import com.nexapp.nexmusic.constants.LibraryFilter
+import com.nexapp.nexmusic.ui.component.ChipsRow
+import com.nexapp.nexmusic.utils.rememberEnumPreference
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -43,12 +43,12 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
-import com.nexapp.nexpass.constants.FloatingToolbarBottomPadding
-import com.nexapp.nexpass.constants.MiniPlayerBottomSpacing
-import com.nexapp.nexpass.constants.MiniPlayerHeight
-import com.nexapp.nexpass.constants.NavigationBarHeight
-import com.nexapp.nexpass.ui.component.TextFieldDialog
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.constants.FloatingToolbarBottomPadding
+import com.nexapp.nexmusic.constants.MiniPlayerBottomSpacing
+import com.nexapp.nexmusic.constants.MiniPlayerHeight
+import com.nexapp.nexmusic.constants.NavigationBarHeight
+import com.nexapp.nexmusic.ui.component.TextFieldDialog
 
 @Composable
 fun LibraryScreen(navController: NavController) {
@@ -190,7 +190,7 @@ fun LibraryScreen(navController: NavController) {
 
     if (showYoutubeImportDialog) {
         var url by remember { mutableStateOf(TextFieldValue("")) }
-        com.nexapp.nexpass.ui.component.TextFieldDialog(
+        com.nexapp.nexmusic.ui.component.TextFieldDialog(
             icon = { Icon(painter = painterResource(R.drawable.link), contentDescription = null) },
             title = {
                 Column {
@@ -219,7 +219,7 @@ fun LibraryScreen(navController: NavController) {
     }
 
     if (showCreatePlaylistDialog) {
-        com.nexapp.nexpass.ui.component.CreatePlaylistDialog(
+        com.nexapp.nexmusic.ui.component.CreatePlaylistDialog(
             onDismiss = { showCreatePlaylistDialog = false },
             initialTextFieldValue = null,
             allowSyncing = true,
@@ -255,7 +255,7 @@ fun LibraryScreen(navController: NavController) {
     }
 
     if (showAiPlaylistDialog) {
-        com.nexapp.nexpass.ui.component.CreateAiPlaylistDialog(
+        com.nexapp.nexmusic.ui.component.CreateAiPlaylistDialog(
             onDismiss = { showAiPlaylistDialog = false },
             onPlaylistCreated = { playlistId ->
                 showAiPlaylistDialog = false

@@ -3,7 +3,7 @@
  * Licensed under GPL-3.0 | See git history for contributors
  */
 
-package com.nexapp.nexpass.widget
+package com.nexapp.nexmusic.widget
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -25,11 +25,11 @@ import coil3.request.ImageRequest
 import coil3.request.allowHardware
 import coil3.request.crossfade
 import coil3.toBitmap
-import com.nexapp.nexpass.MainActivity
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.db.DatabaseDao
-import com.nexapp.nexpass.db.entities.RecognitionHistory
-import com.nexapp.nexpass.recognition.MusicRecognitionService
+import com.nexapp.nexmusic.MainActivity
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.db.DatabaseDao
+import com.nexapp.nexmusic.db.entities.RecognitionHistory
+import com.nexapp.nexmusic.recognition.MusicRecognitionService
 import com.music.shazamkit.models.RecognitionStatus
 import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
@@ -330,8 +330,8 @@ class MusicRecognizerWidgetService : Service() {
     // ─── Constants ────────────────────────────────────────────────────────────
 
     companion object {
-        const val ACTION_START_RECOGNITION = "com.nexapp.nexpass.widget.recognizer.START"
-        const val ACTION_STOP_RECOGNITION = "com.nexapp.nexpass.widget.recognizer.STOP"
+        const val ACTION_START_RECOGNITION = "com.nexapp.nexmusic.widget.recognizer.START"
+        const val ACTION_STOP_RECOGNITION = "com.nexapp.nexmusic.widget.recognizer.STOP"
 
         const val PREFS_NAME = "recognizer_widget_prefs"
         const val PREF_STATE = "state"

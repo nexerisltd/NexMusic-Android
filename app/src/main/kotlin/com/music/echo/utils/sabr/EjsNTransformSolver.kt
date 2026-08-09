@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.utils.sabr
+package com.nexapp.nexmusic.utils.sabr
 
 import android.content.Context
 import android.net.Uri
@@ -6,8 +6,8 @@ import android.webkit.ConsoleMessage
 import android.webkit.JavascriptInterface
 import android.webkit.WebChromeClient
 import android.webkit.WebView
-import com.nexapp.nexpass.utils.cipher.CipherDeobfuscator
-import com.nexapp.nexpass.utils.cipher.PlayerJsFetcher
+import com.nexapp.nexmusic.utils.cipher.CipherDeobfuscator
+import com.nexapp.nexmusic.utils.cipher.PlayerJsFetcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.suspendCancellableCoroutine

@@ -6,9 +6,9 @@
         android:shortcutId="search"
         android:shortcutShortLabel="@string/search">
         <intent
-            android:action="com.nexapp.nexpass.action.SEARCH"
-            android:targetClass="com.nexapp.nexpass.MainActivity"
-            android:targetPackage="com.nexapp.nexpass" />
+            android:action="com.nexapp.nexmusic.action.SEARCH"
+            android:targetClass="com.nexapp.nexmusic.MainActivity"
+            android:targetPackage="com.nexapp.nexmusic" />
     </shortcut>
     <shortcut
         android:enabled="true"
@@ -16,8 +16,8 @@
         android:shortcutId="library"
         android:shortcutShortLabel="@string/filter_library">
         <intent
-            android:action="com.nexapp.nexpass.action.LIBRARY"
-            android:targetClass="com.nexapp.nexpass.MainActivity"
-            android:targetPackage="com.nexapp.nexpass" />
+            android:action="com.nexapp.nexmusic.action.LIBRARY"
+            android:targetClass="com.nexapp.nexmusic.MainActivity"
+            android:targetPackage="com.nexapp.nexmusic" />
     </shortcut>
 </shortcuts>

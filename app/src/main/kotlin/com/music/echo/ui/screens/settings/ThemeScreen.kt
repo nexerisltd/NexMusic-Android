@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3ExpressiveApi::class, ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class)
 
-package com.nexapp.nexpass.ui.screens.settings
+package com.nexapp.nexmusic.ui.screens.settings
 
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateDpAsState
@@ -68,16 +68,16 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.materialkolor.PaletteStyle
 import com.materialkolor.rememberDynamicColorScheme
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.DarkModeKey
-import com.nexapp.nexpass.constants.DynamicThemeKey
-import com.nexapp.nexpass.constants.PureBlackKey
-import com.nexapp.nexpass.constants.PureBlackMiniPlayerKey
-import com.nexapp.nexpass.constants.SelectedThemeColorKey
-import com.nexapp.nexpass.ui.theme.DefaultThemeColor
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
-import com.nexapp.nexpass.utils.rememberEnumPreference
-import com.nexapp.nexpass.utils.rememberPreference
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.DarkModeKey
+import com.nexapp.nexmusic.constants.DynamicThemeKey
+import com.nexapp.nexmusic.constants.PureBlackKey
+import com.nexapp.nexmusic.constants.PureBlackMiniPlayerKey
+import com.nexapp.nexmusic.constants.SelectedThemeColorKey
+import com.nexapp.nexmusic.ui.theme.DefaultThemeColor
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.utils.rememberEnumPreference
+import com.nexapp.nexmusic.utils.rememberPreference
 
 data class ThemePalette(
     val nameRes: Int,

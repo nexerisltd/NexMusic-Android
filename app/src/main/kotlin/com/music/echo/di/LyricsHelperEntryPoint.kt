@@ -1,8 +1,8 @@
 
 
-package com.nexapp.nexpass.di
+package com.nexapp.nexmusic.di
 
-import com.nexapp.nexpass.lyrics.LyricsHelper
+import com.nexapp.nexmusic.lyrics.LyricsHelper
 import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent

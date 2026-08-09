@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.utils
+package com.nexapp.nexmusic.utils
 
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
@@ -57,7 +57,7 @@ object AppleMusicAboutAlbum {
             }
 
             val searchUrl = "$AMP_BASE_URL/v1/catalog/$storefront/search"
-            val token = com.nexapp.nexpass.utils.AppleMusicTokenProvider.getToken()
+            val token = com.nexapp.nexmusic.utils.AppleMusicTokenProvider.getToken()
             val searchResponse = client.get(searchUrl) {
                 header("Authorization", "Bearer $token")
                 header("Origin", "https://music.apple.com")

@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.constants
+package com.nexapp.nexmusic.constants
 
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.floatPreferencesKey

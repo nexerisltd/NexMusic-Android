@@ -1,18 +1,18 @@
 
 
-package com.nexapp.nexpass.viewmodels
+package com.nexapp.nexmusic.viewmodels
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.nexapp.nexpass.db.MusicDatabase
-import com.nexapp.nexpass.db.entities.LyricsEntity
-import com.nexapp.nexpass.db.entities.Song
-import com.nexapp.nexpass.lyrics.LyricsHelper
-import com.nexapp.nexpass.lyrics.LyricsResult
-import com.nexapp.nexpass.models.MediaMetadata
-import com.nexapp.nexpass.utils.NetworkConnectivityObserver
+import com.nexapp.nexmusic.db.MusicDatabase
+import com.nexapp.nexmusic.db.entities.LyricsEntity
+import com.nexapp.nexmusic.db.entities.Song
+import com.nexapp.nexmusic.lyrics.LyricsHelper
+import com.nexapp.nexmusic.lyrics.LyricsResult
+import com.nexapp.nexmusic.models.MediaMetadata
+import com.nexapp.nexmusic.utils.NetworkConnectivityObserver
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

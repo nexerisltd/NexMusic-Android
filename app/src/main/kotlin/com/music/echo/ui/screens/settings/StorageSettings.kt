@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.screens.settings
+package com.nexapp.nexmusic.ui.screens.settings
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.layout.Column
@@ -42,20 +42,20 @@ import coil3.SingletonImageLoader
 import coil3.annotation.DelicateCoilApi
 import coil3.annotation.ExperimentalCoilApi
 import coil3.imageLoader
-import com.nexapp.nexpass.LocalDatabase
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
-import com.nexapp.nexpass.LocalPlayerConnection
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.MaxImageCacheSizeKey
-import com.nexapp.nexpass.constants.MaxSongCacheSizeKey
-import com.nexapp.nexpass.extensions.tryOrNull
-import com.nexapp.nexpass.ui.component.ActionPromptDialog
-import com.nexapp.nexpass.ui.component.IconButton
-import com.nexapp.nexpass.ui.component.Material3SettingsGroup
-import com.nexapp.nexpass.ui.component.Material3SettingsItem
-import com.nexapp.nexpass.ui.utils.backToMain
-import com.nexapp.nexpass.ui.utils.formatFileSize
-import com.nexapp.nexpass.utils.rememberPreference
+import com.nexapp.nexmusic.LocalDatabase
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.LocalPlayerConnection
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.MaxImageCacheSizeKey
+import com.nexapp.nexmusic.constants.MaxSongCacheSizeKey
+import com.nexapp.nexmusic.extensions.tryOrNull
+import com.nexapp.nexmusic.ui.component.ActionPromptDialog
+import com.nexapp.nexmusic.ui.component.IconButton
+import com.nexapp.nexmusic.ui.component.Material3SettingsGroup
+import com.nexapp.nexmusic.ui.component.Material3SettingsItem
+import com.nexapp.nexmusic.ui.utils.backToMain
+import com.nexapp.nexmusic.ui.utils.formatFileSize
+import com.nexapp.nexmusic.utils.rememberPreference
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.first
@@ -69,7 +69,7 @@ import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.net.toUri
-import com.nexapp.nexpass.constants.ExportDirectoryUriKey
+import com.nexapp.nexmusic.constants.ExportDirectoryUriKey
 import timber.log.Timber
 
 @OptIn(ExperimentalCoilApi::class, ExperimentalMaterial3Api::class, DelicateCoilApi::class)
@@ -254,7 +254,7 @@ fun StorageSettings(
             onConfirm = {
                 androidx.media3.exoplayer.offline.DownloadService.sendRemoveAllDownloads(
                     context,
-                    com.nexapp.nexpass.playback.ExoDownloadService::class.java,
+                    com.nexapp.nexmusic.playback.ExoDownloadService::class.java,
                     false
                 )
                 clearDownloads = false

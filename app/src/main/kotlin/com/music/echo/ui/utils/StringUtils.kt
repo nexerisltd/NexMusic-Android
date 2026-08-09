@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.utils
+package com.nexapp.nexmusic.ui.utils
 
 import java.text.DecimalFormat
 import kotlin.math.absoluteValue

@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.screens
+package com.nexapp.nexmusic.ui.screens
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -57,32 +57,32 @@ import androidx.compose.ui.util.fastForEachReversed
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.music.innertube.utils.parseCookieString
-import com.nexapp.nexpass.LocalDatabase
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
-import com.nexapp.nexpass.LocalPlayerConnection
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.HistorySource
-import com.nexapp.nexpass.constants.InnerTubeCookieKey
-import com.nexapp.nexpass.extensions.metadata
-import com.nexapp.nexpass.extensions.toMediaItem
-import com.nexapp.nexpass.models.toMediaMetadata
-import com.nexapp.nexpass.playback.queues.ListQueue
-import com.nexapp.nexpass.playback.queues.YouTubeQueue
-import com.nexapp.nexpass.ui.component.ChipsRow
-import com.nexapp.nexpass.ui.component.HideOnScrollFAB
-import com.nexapp.nexpass.ui.component.IconButton
-import com.nexapp.nexpass.ui.component.LocalMenuState
-import com.nexapp.nexpass.ui.component.NavigationTitle
-import com.nexapp.nexpass.ui.component.SongListItem
-import com.nexapp.nexpass.ui.component.YouTubeListItem
-import com.nexapp.nexpass.ui.menu.SelectionMediaMetadataMenu
-import com.nexapp.nexpass.ui.menu.SongMenu
-import com.nexapp.nexpass.ui.menu.YouTubeSongMenu
-import com.nexapp.nexpass.ui.utils.backToMain
-import com.nexapp.nexpass.utils.listItemShape
-import com.nexapp.nexpass.utils.rememberPreference
-import com.nexapp.nexpass.viewmodels.DateAgo
-import com.nexapp.nexpass.viewmodels.HistoryViewModel
+import com.nexapp.nexmusic.LocalDatabase
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.LocalPlayerConnection
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.HistorySource
+import com.nexapp.nexmusic.constants.InnerTubeCookieKey
+import com.nexapp.nexmusic.extensions.metadata
+import com.nexapp.nexmusic.extensions.toMediaItem
+import com.nexapp.nexmusic.models.toMediaMetadata
+import com.nexapp.nexmusic.playback.queues.ListQueue
+import com.nexapp.nexmusic.playback.queues.YouTubeQueue
+import com.nexapp.nexmusic.ui.component.ChipsRow
+import com.nexapp.nexmusic.ui.component.HideOnScrollFAB
+import com.nexapp.nexmusic.ui.component.IconButton
+import com.nexapp.nexmusic.ui.component.LocalMenuState
+import com.nexapp.nexmusic.ui.component.NavigationTitle
+import com.nexapp.nexmusic.ui.component.SongListItem
+import com.nexapp.nexmusic.ui.component.YouTubeListItem
+import com.nexapp.nexmusic.ui.menu.SelectionMediaMetadataMenu
+import com.nexapp.nexmusic.ui.menu.SongMenu
+import com.nexapp.nexmusic.ui.menu.YouTubeSongMenu
+import com.nexapp.nexmusic.ui.utils.backToMain
+import com.nexapp.nexmusic.utils.listItemShape
+import com.nexapp.nexmusic.utils.rememberPreference
+import com.nexapp.nexmusic.viewmodels.DateAgo
+import com.nexapp.nexmusic.viewmodels.HistoryViewModel
 import java.time.format.DateTimeFormatter
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)

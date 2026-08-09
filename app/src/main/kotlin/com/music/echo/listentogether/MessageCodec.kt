@@ -1,9 +1,9 @@
 
 
-package com.nexapp.nexpass.listentogether
+package com.nexapp.nexmusic.listentogether
 
 import com.google.protobuf.MessageLite
-import com.nexapp.nexpass.listentogether.proto.Listentogether
+import com.nexapp.nexmusic.listentogether.proto.Listentogether
 import kotlinx.serialization.json.Json
 import timber.log.Timber
 import java.io.ByteArrayInputStream

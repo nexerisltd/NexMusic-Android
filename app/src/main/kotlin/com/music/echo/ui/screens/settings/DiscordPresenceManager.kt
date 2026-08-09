@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.screens.settings
+package com.nexapp.nexmusic.ui.screens.settings
 
 import android.content.Context
 import androidx.lifecycle.Lifecycle
@@ -19,10 +19,10 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeout
-import com.nexapp.nexpass.db.entities.Song
+import com.nexapp.nexmusic.db.entities.Song
 import com.music.echo.discord.DiscordOAuthRepository
-import com.nexapp.nexpass.utils.DiscordImageResolver
-import com.nexapp.nexpass.utils.DiscordRPC
+import com.nexapp.nexmusic.utils.DiscordImageResolver
+import com.nexapp.nexmusic.utils.DiscordRPC
 import timber.log.Timber
 import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.AtomicLong

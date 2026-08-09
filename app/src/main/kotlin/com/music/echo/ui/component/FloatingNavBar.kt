@@ -5,7 +5,7 @@
 
 @file:OptIn(ExperimentalSharedTransitionApi::class)
 
-package com.nexapp.nexpass.ui.component
+package com.nexapp.nexmusic.ui.component
 
 import androidx.compose.animation.AnimatedVisibilityScope
 import androidx.compose.animation.ExperimentalSharedTransitionApi
@@ -24,11 +24,11 @@ import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
-import com.nexapp.nexpass.ui.player.FloatingMiniPlayer
-import com.nexapp.nexpass.ui.screens.Screens
-import com.nexapp.nexpass.ui.component.floatingtabbar.FloatingTabBar
-import com.nexapp.nexpass.ui.component.floatingtabbar.FloatingTabBarDefaults
-import com.nexapp.nexpass.ui.component.floatingtabbar.FloatingTabBarScrollConnection
+import com.nexapp.nexmusic.ui.player.FloatingMiniPlayer
+import com.nexapp.nexmusic.ui.screens.Screens
+import com.nexapp.nexmusic.ui.component.floatingtabbar.FloatingTabBar
+import com.nexapp.nexmusic.ui.component.floatingtabbar.FloatingTabBarDefaults
+import com.nexapp.nexmusic.ui.component.floatingtabbar.FloatingTabBarScrollConnection
 
 /**
  * The iOS 26 style floating navigation bar, an alternative to [AppNavigationBar].

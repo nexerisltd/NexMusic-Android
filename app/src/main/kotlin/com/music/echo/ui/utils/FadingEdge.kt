@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.utils
+package com.nexapp.nexmusic.ui.utils
 
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithContent

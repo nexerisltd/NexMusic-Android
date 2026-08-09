@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.screens
+package com.nexapp.nexmusic.ui.screens
 
 import android.app.Activity
 import androidx.compose.animation.core.tween
@@ -20,50 +20,50 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.dialog
 import androidx.navigation.navArgument
-import com.nexapp.nexpass.constants.DarkModeKey
-import com.nexapp.nexpass.constants.PureBlackKey
-import com.nexapp.nexpass.ui.screens.artist.ArtistAlbumsScreen
-import com.nexapp.nexpass.ui.screens.artist.ArtistItemsScreen
-import com.nexapp.nexpass.ui.screens.artist.ArtistScreen
-import com.nexapp.nexpass.ui.screens.artist.ArtistSongsScreen
-import com.nexapp.nexpass.ui.screens.equalizer.EqScreen
-import com.nexapp.nexpass.ui.screens.library.LibraryScreen
-import com.nexapp.nexpass.ui.screens.library.LocalSongScreen
-import com.nexapp.nexpass.ui.screens.playlist.AutoPlaylistScreen
-import com.nexapp.nexpass.ui.screens.playlist.CachePlaylistScreen
-import com.nexapp.nexpass.ui.screens.playlist.LocalPlaylistScreen
-import com.nexapp.nexpass.ui.screens.playlist.OnlinePlaylistScreen
-import com.nexapp.nexpass.ui.screens.playlist.TopPlaylistScreen
-import com.nexapp.nexpass.ui.screens.search.OnlineSearchResult
-import com.nexapp.nexpass.ui.screens.search.SearchScreen
-import com.nexapp.nexpass.ui.screens.settings.AboutScreen
-import com.nexapp.nexpass.ui.screens.settings.AppearanceSettings
-import com.nexapp.nexpass.ui.screens.settings.GlassEffectSettings
-import com.nexapp.nexpass.ui.screens.settings.BackupAndRestore
-import com.nexapp.nexpass.ui.screens.settings.ContentSettings
-import com.nexapp.nexpass.ui.screens.settings.UptimeScreen
-import com.nexapp.nexpass.ui.screens.settings.DarkMode
-import com.nexapp.nexpass.ui.screens.settings.PlayerSettings
-import com.nexapp.nexpass.ui.screens.settings.PrivacySettings
-import com.nexapp.nexpass.ui.screens.settings.RomanizationSettings
-import com.nexapp.nexpass.ui.screens.settings.SettingsScreen
-import com.nexapp.nexpass.ui.screens.settings.EchoExtractorSettings
-import com.nexapp.nexpass.ui.screens.settings.AccountSettingsScreen
-import com.nexapp.nexpass.ui.screens.settings.StorageSettings
-import com.nexapp.nexpass.ui.screens.settings.ThemeScreen
-import com.nexapp.nexpass.ui.screens.settings.AiSettings
+import com.nexapp.nexmusic.constants.DarkModeKey
+import com.nexapp.nexmusic.constants.PureBlackKey
+import com.nexapp.nexmusic.ui.screens.artist.ArtistAlbumsScreen
+import com.nexapp.nexmusic.ui.screens.artist.ArtistItemsScreen
+import com.nexapp.nexmusic.ui.screens.artist.ArtistScreen
+import com.nexapp.nexmusic.ui.screens.artist.ArtistSongsScreen
+import com.nexapp.nexmusic.ui.screens.equalizer.EqScreen
+import com.nexapp.nexmusic.ui.screens.library.LibraryScreen
+import com.nexapp.nexmusic.ui.screens.library.LocalSongScreen
+import com.nexapp.nexmusic.ui.screens.playlist.AutoPlaylistScreen
+import com.nexapp.nexmusic.ui.screens.playlist.CachePlaylistScreen
+import com.nexapp.nexmusic.ui.screens.playlist.LocalPlaylistScreen
+import com.nexapp.nexmusic.ui.screens.playlist.OnlinePlaylistScreen
+import com.nexapp.nexmusic.ui.screens.playlist.TopPlaylistScreen
+import com.nexapp.nexmusic.ui.screens.search.OnlineSearchResult
+import com.nexapp.nexmusic.ui.screens.search.SearchScreen
+import com.nexapp.nexmusic.ui.screens.settings.AboutScreen
+import com.nexapp.nexmusic.ui.screens.settings.AppearanceSettings
+import com.nexapp.nexmusic.ui.screens.settings.GlassEffectSettings
+import com.nexapp.nexmusic.ui.screens.settings.BackupAndRestore
+import com.nexapp.nexmusic.ui.screens.settings.ContentSettings
+import com.nexapp.nexmusic.ui.screens.settings.UptimeScreen
+import com.nexapp.nexmusic.ui.screens.settings.DarkMode
+import com.nexapp.nexmusic.ui.screens.settings.PlayerSettings
+import com.nexapp.nexmusic.ui.screens.settings.PrivacySettings
+import com.nexapp.nexmusic.ui.screens.settings.RomanizationSettings
+import com.nexapp.nexmusic.ui.screens.settings.SettingsScreen
+import com.nexapp.nexmusic.ui.screens.settings.EchoExtractorSettings
+import com.nexapp.nexmusic.ui.screens.settings.AccountSettingsScreen
+import com.nexapp.nexmusic.ui.screens.settings.StorageSettings
+import com.nexapp.nexmusic.ui.screens.settings.ThemeScreen
+import com.nexapp.nexmusic.ui.screens.settings.AiSettings
 
-import com.nexapp.nexpass.ui.screens.settings.integrations.ListenTogetherSettings
-import com.nexapp.nexpass.ui.screens.recognition.RecognitionScreen
-import com.nexapp.nexpass.ui.screens.recognition.RecognitionHistoryScreen
-import com.nexapp.nexpass.ui.screens.settings.UpdateSettings
-import com.nexapp.nexpass.echomusic.updater.UpdateScreen
-import com.nexapp.nexpass.utils.rememberEnumPreference
-import com.nexapp.nexpass.utils.rememberPreference
-import com.nexapp.nexpass.echomusic.changelog.ChangelogScreen
-import com.nexapp.nexpass.echomusic.commitscreen.CommitScreen
-import com.nexapp.nexpass.ui.screens.equalizer.axion.AxionEqScreen
-import com.nexapp.nexpass.ui.screens.ambient.AmbientModeScreen
+import com.nexapp.nexmusic.ui.screens.settings.integrations.ListenTogetherSettings
+import com.nexapp.nexmusic.ui.screens.recognition.RecognitionScreen
+import com.nexapp.nexmusic.ui.screens.recognition.RecognitionHistoryScreen
+import com.nexapp.nexmusic.ui.screens.settings.UpdateSettings
+import com.nexapp.nexmusic.echomusic.updater.UpdateScreen
+import com.nexapp.nexmusic.utils.rememberEnumPreference
+import com.nexapp.nexmusic.utils.rememberPreference
+import com.nexapp.nexmusic.echomusic.changelog.ChangelogScreen
+import com.nexapp.nexmusic.echomusic.commitscreen.CommitScreen
+import com.nexapp.nexmusic.ui.screens.equalizer.axion.AxionEqScreen
+import com.nexapp.nexmusic.ui.screens.ambient.AmbientModeScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 fun NavGraphBuilder.navigationBuilder(
@@ -437,7 +437,7 @@ fun NavGraphBuilder.navigationBuilder(
     }
 
     composable("settings/discord") {
-        com.nexapp.nexpass.ui.screens.settings.DiscordSettings(navController, scrollBehavior)
+        com.nexapp.nexmusic.ui.screens.settings.DiscordSettings(navController, scrollBehavior)
     }
 
     composable("settings/lastfm") {

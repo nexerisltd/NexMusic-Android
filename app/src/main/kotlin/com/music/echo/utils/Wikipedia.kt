@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.utils
+package com.nexapp.nexmusic.utils
 
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body

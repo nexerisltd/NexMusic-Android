@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.screens.artist
+package com.nexapp.nexmusic.ui.screens.artist
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.combinedClickable
@@ -34,27 +34,27 @@ import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
-import com.nexapp.nexpass.LocalPlayerConnection
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.ArtistSongSortDescendingKey
-import com.nexapp.nexpass.constants.ArtistSongSortType
-import com.nexapp.nexpass.constants.ArtistSongSortTypeKey
-import com.nexapp.nexpass.constants.CONTENT_TYPE_HEADER
-import com.nexapp.nexpass.constants.HideExplicitKey
-import com.nexapp.nexpass.extensions.toMediaItem
-import com.nexapp.nexpass.playback.queues.ListQueue
-import com.nexapp.nexpass.ui.component.HideOnScrollFAB
-import com.nexapp.nexpass.ui.component.IconButton
-import com.nexapp.nexpass.ui.component.LocalMenuState
-import com.nexapp.nexpass.ui.component.SongListItem
-import com.nexapp.nexpass.ui.component.SortHeader
-import com.nexapp.nexpass.ui.menu.SongMenu
-import com.nexapp.nexpass.ui.utils.backToMain
-import com.nexapp.nexpass.utils.listItemShape
-import com.nexapp.nexpass.utils.rememberEnumPreference
-import com.nexapp.nexpass.utils.rememberPreference
-import com.nexapp.nexpass.viewmodels.ArtistSongsViewModel
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.LocalPlayerConnection
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.ArtistSongSortDescendingKey
+import com.nexapp.nexmusic.constants.ArtistSongSortType
+import com.nexapp.nexmusic.constants.ArtistSongSortTypeKey
+import com.nexapp.nexmusic.constants.CONTENT_TYPE_HEADER
+import com.nexapp.nexmusic.constants.HideExplicitKey
+import com.nexapp.nexmusic.extensions.toMediaItem
+import com.nexapp.nexmusic.playback.queues.ListQueue
+import com.nexapp.nexmusic.ui.component.HideOnScrollFAB
+import com.nexapp.nexmusic.ui.component.IconButton
+import com.nexapp.nexmusic.ui.component.LocalMenuState
+import com.nexapp.nexmusic.ui.component.SongListItem
+import com.nexapp.nexmusic.ui.component.SortHeader
+import com.nexapp.nexmusic.ui.menu.SongMenu
+import com.nexapp.nexmusic.ui.utils.backToMain
+import com.nexapp.nexmusic.utils.listItemShape
+import com.nexapp.nexmusic.utils.rememberEnumPreference
+import com.nexapp.nexmusic.utils.rememberPreference
+import com.nexapp.nexmusic.viewmodels.ArtistSongsViewModel
 
 @OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
 @Composable

@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.screens.settings
+package com.nexapp.nexmusic.ui.screens.settings
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -30,18 +30,18 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.nexapp.nexpass.LocalDatabase
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.DisableScreenshotKey
-import com.nexapp.nexpass.constants.PauseListenHistoryKey
-import com.nexapp.nexpass.constants.PauseSearchHistoryKey
-import com.nexapp.nexpass.ui.component.DefaultDialog
-import com.nexapp.nexpass.ui.component.IconButton
-import com.nexapp.nexpass.ui.component.Material3SettingsGroup
-import com.nexapp.nexpass.ui.component.Material3SettingsItem
-import com.nexapp.nexpass.ui.utils.backToMain
-import com.nexapp.nexpass.utils.rememberPreference
+import com.nexapp.nexmusic.LocalDatabase
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.DisableScreenshotKey
+import com.nexapp.nexmusic.constants.PauseListenHistoryKey
+import com.nexapp.nexmusic.constants.PauseSearchHistoryKey
+import com.nexapp.nexmusic.ui.component.DefaultDialog
+import com.nexapp.nexmusic.ui.component.IconButton
+import com.nexapp.nexmusic.ui.component.Material3SettingsGroup
+import com.nexapp.nexmusic.ui.component.Material3SettingsItem
+import com.nexapp.nexmusic.ui.utils.backToMain
+import com.nexapp.nexmusic.utils.rememberPreference
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.di
+package com.nexapp.nexmusic.di
 
 import javax.inject.Qualifier
 

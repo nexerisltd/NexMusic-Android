@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.menu
+package com.nexapp.nexmusic.ui.menu
 
 import android.content.Intent
 import android.content.res.Configuration
@@ -42,8 +42,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.ui.Alignment
-import com.nexapp.nexpass.constants.InnerTubeCookieKey
-import com.nexapp.nexpass.utils.rememberPreference
+import com.nexapp.nexmusic.constants.InnerTubeCookieKey
+import com.nexapp.nexmusic.utils.rememberPreference
 import com.music.innertube.utils.parseCookieString
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
@@ -51,26 +51,26 @@ import androidx.media3.exoplayer.offline.Download
 import androidx.media3.exoplayer.offline.DownloadRequest
 import androidx.media3.exoplayer.offline.DownloadService
 import com.music.innertube.YouTube
-import com.nexapp.nexpass.LocalDatabase
-import com.nexapp.nexpass.LocalDownloadUtil
-import com.nexapp.nexpass.LocalListenTogetherManager
-import com.nexapp.nexpass.LocalPlayerConnection
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.db.entities.Playlist
-import com.nexapp.nexpass.db.entities.SpeedDialItem
-import com.nexapp.nexpass.db.entities.PlaylistSong
-import com.nexapp.nexpass.db.entities.Song
-import com.nexapp.nexpass.extensions.toMediaItem
-import com.nexapp.nexpass.playback.ExoDownloadService
-import com.nexapp.nexpass.playback.queues.ListQueue
-import com.nexapp.nexpass.playback.queues.YouTubeQueue
-import com.nexapp.nexpass.ui.component.DefaultDialog
-import com.nexapp.nexpass.ui.component.Material3MenuGroup
-import com.nexapp.nexpass.ui.component.Material3MenuItemData
-import com.nexapp.nexpass.ui.component.NewAction
-import com.nexapp.nexpass.ui.component.NewActionGrid
-import com.nexapp.nexpass.ui.component.PlaylistListItem
-import com.nexapp.nexpass.ui.component.TextFieldDialog
+import com.nexapp.nexmusic.LocalDatabase
+import com.nexapp.nexmusic.LocalDownloadUtil
+import com.nexapp.nexmusic.LocalListenTogetherManager
+import com.nexapp.nexmusic.LocalPlayerConnection
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.db.entities.Playlist
+import com.nexapp.nexmusic.db.entities.SpeedDialItem
+import com.nexapp.nexmusic.db.entities.PlaylistSong
+import com.nexapp.nexmusic.db.entities.Song
+import com.nexapp.nexmusic.extensions.toMediaItem
+import com.nexapp.nexmusic.playback.ExoDownloadService
+import com.nexapp.nexmusic.playback.queues.ListQueue
+import com.nexapp.nexmusic.playback.queues.YouTubeQueue
+import com.nexapp.nexmusic.ui.component.DefaultDialog
+import com.nexapp.nexmusic.ui.component.Material3MenuGroup
+import com.nexapp.nexmusic.ui.component.Material3MenuItemData
+import com.nexapp.nexmusic.ui.component.NewAction
+import com.nexapp.nexmusic.ui.component.NewActionGrid
+import com.nexapp.nexmusic.ui.component.PlaylistListItem
+import com.nexapp.nexmusic.ui.component.TextFieldDialog
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

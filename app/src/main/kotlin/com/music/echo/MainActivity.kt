@@ -1,14 +1,14 @@
 
 
-package com.nexapp.nexpass
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.BuildConfig
-import com.nexapp.nexpass.ui.screens.settings.RingtoneViewModel
-import com.nexapp.nexpass.ui.component.RingtoneTrimmerDialog
-import com.nexapp.nexpass.ui.component.RingtoneProgressDialog
-import com.nexapp.nexpass.ui.component.AppFloatingNavBar
-import com.nexapp.nexpass.ui.component.floatingtabbar.rememberFloatingTabBarScrollConnection
-import com.nexapp.nexpass.constants.UseFloatingNavBarKey
+package com.nexapp.nexmusic
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.BuildConfig
+import com.nexapp.nexmusic.ui.screens.settings.RingtoneViewModel
+import com.nexapp.nexmusic.ui.component.RingtoneTrimmerDialog
+import com.nexapp.nexmusic.ui.component.RingtoneProgressDialog
+import com.nexapp.nexmusic.ui.component.AppFloatingNavBar
+import com.nexapp.nexmusic.ui.component.floatingtabbar.rememberFloatingTabBarScrollConnection
+import com.nexapp.nexmusic.constants.UseFloatingNavBarKey
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.CompositionLocalProvider
@@ -151,73 +151,73 @@ import coil3.toBitmap
 import com.music.innertube.YouTube
 import com.music.innertube.models.SongItem
 import com.music.innertube.models.WatchEndpoint
-import com.nexapp.nexpass.constants.AppBarHeight
-import com.nexapp.nexpass.constants.AiRecommendationsKey
-import com.nexapp.nexpass.constants.AppLanguageKey
-import com.nexapp.nexpass.constants.DarkModeKey
-import com.nexapp.nexpass.constants.DefaultOpenTabKey
-import com.nexapp.nexpass.constants.DisableScreenshotKey
-import com.nexapp.nexpass.constants.DynamicThemeKey
-import com.nexapp.nexpass.constants.EnableHighRefreshRateKey
-import com.nexapp.nexpass.constants.FloatingToolbarBottomPadding
-import com.nexapp.nexpass.constants.FloatingToolbarHorizontalPadding
-import com.nexapp.nexpass.constants.ListenTogetherInTopBarKey
-import com.nexapp.nexpass.constants.ListenTogetherUsernameKey
-import com.nexapp.nexpass.constants.MiniPlayerBottomSpacing
-import com.nexapp.nexpass.constants.MiniPlayerHeight
-import com.nexapp.nexpass.constants.NavigationBarAnimationSpec
-import com.nexapp.nexpass.constants.NavigationBarHeight
-import com.nexapp.nexpass.echomusic.updater.checkForUpdate
-import com.nexapp.nexpass.echomusic.updater.getAutoUpdateCheckSetting
-import com.nexapp.nexpass.echomusic.updater.isNewerVersion
-import com.nexapp.nexpass.echomusic.updater.saveUpdateAvailableState
-import com.nexapp.nexpass.echomusic.updater.getUpdateNotificationsSetting
-import com.nexapp.nexpass.echomusic.UpdateNotificationHelper
+import com.nexapp.nexmusic.constants.AppBarHeight
+import com.nexapp.nexmusic.constants.AiRecommendationsKey
+import com.nexapp.nexmusic.constants.AppLanguageKey
+import com.nexapp.nexmusic.constants.DarkModeKey
+import com.nexapp.nexmusic.constants.DefaultOpenTabKey
+import com.nexapp.nexmusic.constants.DisableScreenshotKey
+import com.nexapp.nexmusic.constants.DynamicThemeKey
+import com.nexapp.nexmusic.constants.EnableHighRefreshRateKey
+import com.nexapp.nexmusic.constants.FloatingToolbarBottomPadding
+import com.nexapp.nexmusic.constants.FloatingToolbarHorizontalPadding
+import com.nexapp.nexmusic.constants.ListenTogetherInTopBarKey
+import com.nexapp.nexmusic.constants.ListenTogetherUsernameKey
+import com.nexapp.nexmusic.constants.MiniPlayerBottomSpacing
+import com.nexapp.nexmusic.constants.MiniPlayerHeight
+import com.nexapp.nexmusic.constants.NavigationBarAnimationSpec
+import com.nexapp.nexmusic.constants.NavigationBarHeight
+import com.nexapp.nexmusic.echomusic.updater.checkForUpdate
+import com.nexapp.nexmusic.echomusic.updater.getAutoUpdateCheckSetting
+import com.nexapp.nexmusic.echomusic.updater.isNewerVersion
+import com.nexapp.nexmusic.echomusic.updater.saveUpdateAvailableState
+import com.nexapp.nexmusic.echomusic.updater.getUpdateNotificationsSetting
+import com.nexapp.nexmusic.echomusic.UpdateNotificationHelper
 import android.util.Log
 import androidx.compose.ui.platform.LocalContext
-import com.nexapp.nexpass.constants.PauseListenHistoryKey
-import com.nexapp.nexpass.constants.PauseSearchHistoryKey
-import com.nexapp.nexpass.constants.PureBlackKey
-import com.nexapp.nexpass.constants.SYSTEM_DEFAULT
-import com.nexapp.nexpass.constants.SelectedThemeColorKey
-import com.nexapp.nexpass.constants.StopMusicOnTaskClearKey
-import com.nexapp.nexpass.constants.UseNewMiniPlayerDesignKey
-import com.nexapp.nexpass.constants.*
-import com.nexapp.nexpass.ui.component.shimmer.getShimmerTheme
-import com.nexapp.nexpass.db.MusicDatabase
-import com.nexapp.nexpass.db.entities.SearchHistory
-import com.nexapp.nexpass.extensions.toEnum
-import com.nexapp.nexpass.models.toMediaMetadata
-import com.nexapp.nexpass.playback.DownloadUtil
-import com.nexapp.nexpass.playback.MusicService
-import com.nexapp.nexpass.playback.MusicService.MusicBinder
-import com.nexapp.nexpass.playback.PlayerConnection
-import com.nexapp.nexpass.playback.queues.YouTubeQueue
-import com.nexapp.nexpass.ui.component.*
-import com.nexapp.nexpass.ui.component.backdrop.backdrops.rememberLayerBackdrop
-import com.nexapp.nexpass.ui.component.backdrop.backdrops.layerBackdrop
-import com.nexapp.nexpass.ui.menu.YouTubeSongMenu
-import com.nexapp.nexpass.ui.player.BottomSheetPlayer
-import com.nexapp.nexpass.ui.screens.Screens
-import com.nexapp.nexpass.ui.screens.SettingDialoge
-import com.nexapp.nexpass.ui.screens.WelcomeDialog
-import com.nexapp.nexpass.ui.screens.navigationBuilder
-import com.nexapp.nexpass.ui.screens.settings.DarkMode
-import com.nexapp.nexpass.ui.screens.settings.NavigationTab
-import com.nexapp.nexpass.ui.theme.ColorSaver
-import com.nexapp.nexpass.ui.theme.DefaultThemeColor
-import com.nexapp.nexpass.ui.theme.echomusicTheme
-import com.nexapp.nexpass.ui.theme.extractThemeColor
-import com.nexapp.nexpass.ui.utils.appBarScrollBehavior
-import com.nexapp.nexpass.ui.utils.resetHeightOffset
-import com.nexapp.nexpass.utils.SyncUtils
-import com.nexapp.nexpass.utils.dataStore
-import com.nexapp.nexpass.utils.get
-import com.nexapp.nexpass.utils.rememberEnumPreference
-import com.nexapp.nexpass.utils.rememberPreference
-import com.nexapp.nexpass.utils.reportException
-import com.nexapp.nexpass.utils.setAppLocale
-import com.nexapp.nexpass.viewmodels.HomeViewModel
+import com.nexapp.nexmusic.constants.PauseListenHistoryKey
+import com.nexapp.nexmusic.constants.PauseSearchHistoryKey
+import com.nexapp.nexmusic.constants.PureBlackKey
+import com.nexapp.nexmusic.constants.SYSTEM_DEFAULT
+import com.nexapp.nexmusic.constants.SelectedThemeColorKey
+import com.nexapp.nexmusic.constants.StopMusicOnTaskClearKey
+import com.nexapp.nexmusic.constants.UseNewMiniPlayerDesignKey
+import com.nexapp.nexmusic.constants.*
+import com.nexapp.nexmusic.ui.component.shimmer.getShimmerTheme
+import com.nexapp.nexmusic.db.MusicDatabase
+import com.nexapp.nexmusic.db.entities.SearchHistory
+import com.nexapp.nexmusic.extensions.toEnum
+import com.nexapp.nexmusic.models.toMediaMetadata
+import com.nexapp.nexmusic.playback.DownloadUtil
+import com.nexapp.nexmusic.playback.MusicService
+import com.nexapp.nexmusic.playback.MusicService.MusicBinder
+import com.nexapp.nexmusic.playback.PlayerConnection
+import com.nexapp.nexmusic.playback.queues.YouTubeQueue
+import com.nexapp.nexmusic.ui.component.*
+import com.nexapp.nexmusic.ui.component.backdrop.backdrops.rememberLayerBackdrop
+import com.nexapp.nexmusic.ui.component.backdrop.backdrops.layerBackdrop
+import com.nexapp.nexmusic.ui.menu.YouTubeSongMenu
+import com.nexapp.nexmusic.ui.player.BottomSheetPlayer
+import com.nexapp.nexmusic.ui.screens.Screens
+import com.nexapp.nexmusic.ui.screens.SettingDialoge
+import com.nexapp.nexmusic.ui.screens.WelcomeDialog
+import com.nexapp.nexmusic.ui.screens.navigationBuilder
+import com.nexapp.nexmusic.ui.screens.settings.DarkMode
+import com.nexapp.nexmusic.ui.screens.settings.NavigationTab
+import com.nexapp.nexmusic.ui.theme.ColorSaver
+import com.nexapp.nexmusic.ui.theme.DefaultThemeColor
+import com.nexapp.nexmusic.ui.theme.echomusicTheme
+import com.nexapp.nexmusic.ui.theme.extractThemeColor
+import com.nexapp.nexmusic.ui.utils.appBarScrollBehavior
+import com.nexapp.nexmusic.ui.utils.resetHeightOffset
+import com.nexapp.nexmusic.utils.SyncUtils
+import com.nexapp.nexmusic.utils.dataStore
+import com.nexapp.nexmusic.utils.get
+import com.nexapp.nexmusic.utils.rememberEnumPreference
+import com.nexapp.nexmusic.utils.rememberPreference
+import com.nexapp.nexmusic.utils.reportException
+import com.nexapp.nexmusic.utils.setAppLocale
+import com.nexapp.nexmusic.viewmodels.HomeViewModel
 import com.valentinilk.shimmer.LocalShimmerTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
@@ -237,9 +237,9 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     companion object {
-        const val ACTION_SEARCH = "com.nexapp.nexpass.action.SEARCH"
-        const val ACTION_LIBRARY = "com.nexapp.nexpass.action.LIBRARY"
-        const val ACTION_RECOGNITION = "com.nexapp.nexpass.action.RECOGNITION"
+        const val ACTION_SEARCH = "com.nexapp.nexmusic.action.SEARCH"
+        const val ACTION_LIBRARY = "com.nexapp.nexmusic.action.LIBRARY"
+        const val ACTION_RECOGNITION = "com.nexapp.nexmusic.action.RECOGNITION"
         const val EXTRA_AUTO_START_RECOGNITION = "auto_start_recognition"
     }
 
@@ -253,7 +253,7 @@ class MainActivity : ComponentActivity() {
     lateinit var syncUtils: SyncUtils
 
     @Inject
-    lateinit var listenTogetherManager: com.nexapp.nexpass.listentogether.ListenTogetherManager
+    lateinit var listenTogetherManager: com.nexapp.nexmusic.listentogether.ListenTogetherManager
     private lateinit var navController: NavHostController
     private var pendingIntent: Intent? = null
 
@@ -395,7 +395,7 @@ class MainActivity : ComponentActivity() {
                 .collectLatest { enabled ->
                     val workManager = androidx.work.WorkManager.getInstance(this@MainActivity)
                     if (enabled) {
-                        val request = androidx.work.PeriodicWorkRequestBuilder<com.nexapp.nexpass.ai.AiRecommendationWorker>(1, java.util.concurrent.TimeUnit.DAYS)
+                        val request = androidx.work.PeriodicWorkRequestBuilder<com.nexapp.nexmusic.ai.AiRecommendationWorker>(1, java.util.concurrent.TimeUnit.DAYS)
                             .setConstraints(androidx.work.Constraints.Builder().setRequiredNetworkType(androidx.work.NetworkType.CONNECTED).build())
                             .build()
                         workManager.enqueueUniquePeriodicWork(
@@ -546,7 +546,7 @@ class MainActivity : ComponentActivity() {
             }
         }
 
-        val (enableHaptics) = rememberPreference(com.nexapp.nexpass.constants.EnableHapticsKey, defaultValue = false)
+        val (enableHaptics) = rememberPreference(com.nexapp.nexmusic.constants.EnableHapticsKey, defaultValue = false)
         val view = LocalView.current
         var lastScrollHapticTime by remember { mutableStateOf(0L) }
 
@@ -840,7 +840,7 @@ class MainActivity : ComponentActivity() {
                 val snackbarHostState = remember { SnackbarHostState() }
                 var showSettingDialoge by remember { mutableStateOf(false) }
 
-                val (lastOpenedVersionCode, setLastOpenedVersionCode) = rememberPreference(com.nexapp.nexpass.constants.LastOpenedVersionCodeKey, -1)
+                val (lastOpenedVersionCode, setLastOpenedVersionCode) = rememberPreference(com.nexapp.nexmusic.constants.LastOpenedVersionCodeKey, -1)
                 var showWelcomeDialog by remember { mutableStateOf(false) }
 
                 LaunchedEffect(lastOpenedVersionCode) {
@@ -1560,5 +1560,5 @@ val LocalPlayerConnection = staticCompositionLocalOf<PlayerConnection?> { error(
 val LocalPlayerAwareWindowInsets = compositionLocalOf<WindowInsets> { error("No WindowInsets provided") }
 val LocalDownloadUtil = staticCompositionLocalOf<DownloadUtil> { error("No DownloadUtil provided") }
 val LocalSyncUtils = staticCompositionLocalOf<SyncUtils> { error("No SyncUtils provided") }
-val LocalListenTogetherManager = staticCompositionLocalOf<com.nexapp.nexpass.listentogether.ListenTogetherManager?> { null }
+val LocalListenTogetherManager = staticCompositionLocalOf<com.nexapp.nexmusic.listentogether.ListenTogetherManager?> { null }
 val LocalIsPlayerExpanded = compositionLocalOf { false }

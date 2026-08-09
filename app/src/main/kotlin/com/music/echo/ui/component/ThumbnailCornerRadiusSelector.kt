@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.component
+package com.nexapp.nexmusic.ui.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -22,9 +22,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import kotlin.math.roundToInt
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.ThumbnailCornerRadiusKey
-import com.nexapp.nexpass.utils.rememberPreference
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.ThumbnailCornerRadiusKey
+import com.nexapp.nexmusic.utils.rememberPreference
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

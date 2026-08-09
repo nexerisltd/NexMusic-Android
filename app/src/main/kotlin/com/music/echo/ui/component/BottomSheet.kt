@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.component
+package com.nexapp.nexmusic.ui.component
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.core.Animatable
@@ -42,7 +42,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.Velocity
 import androidx.compose.ui.unit.dp
-import com.nexapp.nexpass.constants.NavigationBarAnimationSpec
+import com.nexapp.nexmusic.constants.NavigationBarAnimationSpec
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import kotlin.math.pow

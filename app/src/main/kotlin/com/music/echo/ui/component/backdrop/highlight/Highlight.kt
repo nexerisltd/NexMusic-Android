@@ -7,7 +7,7 @@
  * scale for cheaper effect rendering. KMP expect/actual declarations were
  * merged into this single Android source set. Package renamed accordingly.
  */
-package com.nexapp.nexpass.ui.component.backdrop.highlight
+package com.nexapp.nexmusic.ui.component.backdrop.highlight
 
 import androidx.annotation.FloatRange
 import androidx.compose.runtime.Immutable

@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.di
+package com.nexapp.nexmusic.di
 
 import android.content.Context
 import androidx.media3.database.DatabaseProvider
@@ -9,13 +9,13 @@ import androidx.media3.datasource.cache.LeastRecentlyUsedCacheEvictor
 import androidx.media3.datasource.cache.NoOpCacheEvictor
 import androidx.media3.datasource.cache.SimpleCache
 import androidx.room.Room
-import com.nexapp.nexpass.constants.MaxSongCacheSizeKey
-import com.nexapp.nexpass.db.InternalDatabase
-import com.nexapp.nexpass.db.MusicDatabase
-import com.nexapp.nexpass.listentogether.ListenTogetherClient
-import com.nexapp.nexpass.listentogether.ListenTogetherManager
-import com.nexapp.nexpass.utils.dataStore
-import com.nexapp.nexpass.utils.get
+import com.nexapp.nexmusic.constants.MaxSongCacheSizeKey
+import com.nexapp.nexmusic.db.InternalDatabase
+import com.nexapp.nexmusic.db.MusicDatabase
+import com.nexapp.nexmusic.listentogether.ListenTogetherClient
+import com.nexapp.nexmusic.listentogether.ListenTogetherManager
+import com.nexapp.nexmusic.utils.dataStore
+import com.nexapp.nexmusic.utils.get
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -57,22 +57,22 @@ object AppModule {
     ): InternalDatabase = Room
         .databaseBuilder(context, InternalDatabase::class.java, InternalDatabase.DB_NAME)
         .addMigrations(
-            com.nexapp.nexpass.db.MIGRATION_1_2,
-            com.nexapp.nexpass.db.MIGRATION_21_24,
-            com.nexapp.nexpass.db.MIGRATION_22_24,
-            com.nexapp.nexpass.db.MIGRATION_24_25,
-            com.nexapp.nexpass.db.MIGRATION_27_28,
-            com.nexapp.nexpass.db.MIGRATION_28_29,
-            com.nexapp.nexpass.db.MIGRATION_29_30,
-            com.nexapp.nexpass.db.MIGRATION_31_32,
-            com.nexapp.nexpass.db.MIGRATION_36_37,
-            com.nexapp.nexpass.db.MIGRATION_37_38,
-            com.nexapp.nexpass.db.MIGRATION_38_39,
-            com.nexapp.nexpass.db.MIGRATION_39_40,
-            com.nexapp.nexpass.db.MIGRATION_40_41,
-            com.nexapp.nexpass.db.MIGRATION_41_42,
-            com.nexapp.nexpass.db.MIGRATION_42_43,
-            com.nexapp.nexpass.db.MIGRATION_43_44,
+            com.nexapp.nexmusic.db.MIGRATION_1_2,
+            com.nexapp.nexmusic.db.MIGRATION_21_24,
+            com.nexapp.nexmusic.db.MIGRATION_22_24,
+            com.nexapp.nexmusic.db.MIGRATION_24_25,
+            com.nexapp.nexmusic.db.MIGRATION_27_28,
+            com.nexapp.nexmusic.db.MIGRATION_28_29,
+            com.nexapp.nexmusic.db.MIGRATION_29_30,
+            com.nexapp.nexmusic.db.MIGRATION_31_32,
+            com.nexapp.nexmusic.db.MIGRATION_36_37,
+            com.nexapp.nexmusic.db.MIGRATION_37_38,
+            com.nexapp.nexmusic.db.MIGRATION_38_39,
+            com.nexapp.nexmusic.db.MIGRATION_39_40,
+            com.nexapp.nexmusic.db.MIGRATION_40_41,
+            com.nexapp.nexmusic.db.MIGRATION_41_42,
+            com.nexapp.nexmusic.db.MIGRATION_42_43,
+            com.nexapp.nexmusic.db.MIGRATION_43_44,
         )
         .setJournalMode(androidx.room.RoomDatabase.JournalMode.WRITE_AHEAD_LOGGING)
         .setTransactionExecutor(java.util.concurrent.Executors.newFixedThreadPool(4))

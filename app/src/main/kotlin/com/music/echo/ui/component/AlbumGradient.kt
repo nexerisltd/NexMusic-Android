@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.component
+package com.nexapp.nexmusic.ui.component
 
 import android.graphics.Bitmap
 import androidx.compose.animation.animateColorAsState
@@ -17,7 +17,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.toArgb
-import com.nexapp.nexpass.ui.theme.PlayerColorExtractor
+import com.nexapp.nexmusic.ui.theme.PlayerColorExtractor
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.palette.graphics.Palette

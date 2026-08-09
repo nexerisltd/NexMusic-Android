@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.component
+package com.nexapp.nexmusic.ui.component
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
@@ -48,8 +48,8 @@ import androidx.compose.ui.unit.sp
 import coil3.compose.rememberAsyncImagePainter
 import coil3.request.ImageRequest
 import coil3.request.crossfade
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.models.MediaMetadata
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.models.MediaMetadata
 
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.graphics.Brush

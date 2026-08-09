@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.screens.search.suggestions
+package com.nexapp.nexmusic.ui.screens.search.suggestions
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
@@ -19,8 +19,8 @@ import com.music.innertube.YouTube
 import com.music.innertube.models.SongItem
 import com.music.innertube.models.ArtistItem
 import com.music.innertube.models.WatchEndpoint
-import com.nexapp.nexpass.playback.PlayerConnection
-import com.nexapp.nexpass.playback.queues.YouTubeQueue
+import com.nexapp.nexmusic.playback.PlayerConnection
+import com.nexapp.nexmusic.playback.queues.YouTubeQueue
 import androidx.navigation.NavController
 
 @HiltViewModel

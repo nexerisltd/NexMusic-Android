@@ -1,10 +1,10 @@
-package com.nexapp.nexpass.lyrics
+package com.nexapp.nexmusic.lyrics
 
 import android.content.Context
 import com.music.echo.unison.Unison
-import com.nexapp.nexpass.constants.UnisonLyricsEnabledKey
-import com.nexapp.nexpass.utils.dataStore
-import com.nexapp.nexpass.utils.get
+import com.nexapp.nexmusic.constants.UnisonLyricsEnabledKey
+import com.nexapp.nexmusic.utils.dataStore
+import com.nexapp.nexmusic.utils.get
 
 object UnisonLyricsProvider : LyricsProvider {
     override val name: String = "Unison"
@@ -46,8 +46,8 @@ object UnisonLyricsProvider : LyricsProvider {
 
     private fun convertIfTTML(content: String): String {
         return if (content.trimStart().startsWith("<tt", ignoreCase = true)) {
-            val parsedLines = com.nexapp.nexpass.betterlyrics.TTMLParser.parseTTML(content)
-            com.nexapp.nexpass.betterlyrics.TTMLParser.toLRC(parsedLines)
+            val parsedLines = com.nexapp.nexmusic.betterlyrics.TTMLParser.parseTTML(content)
+            com.nexapp.nexmusic.betterlyrics.TTMLParser.toLRC(parsedLines)
         } else {
             content
         }

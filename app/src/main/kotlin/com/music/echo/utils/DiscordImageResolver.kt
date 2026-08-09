@@ -1,9 +1,9 @@
 
 
-package com.nexapp.nexpass.utils
+package com.nexapp.nexmusic.utils
 
 import android.content.Context
-import com.nexapp.nexpass.db.entities.Song
+import com.nexapp.nexmusic.db.entities.Song
 import timber.log.Timber
 
 data class ResolvedDiscordImages(

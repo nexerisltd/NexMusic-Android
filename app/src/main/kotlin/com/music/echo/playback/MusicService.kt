@@ -2,7 +2,7 @@
 
 @file:Suppress("DEPRECATION")
 
-package com.nexapp.nexpass.playback
+package com.nexapp.nexmusic.playback
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -72,115 +72,115 @@ import com.google.common.util.concurrent.MoreExecutors
 import com.music.innertube.YouTube
 import com.music.innertube.models.SongItem
 import com.music.innertube.models.WatchEndpoint
-import com.nexapp.nexpass.MainActivity
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.AudioNormalizationKey
-import com.nexapp.nexpass.constants.AudioOffload
-import com.nexapp.nexpass.constants.AudioQualityKey
-import com.nexapp.nexpass.constants.AutoDownloadOnLikeKey
-import com.nexapp.nexpass.constants.AutoLoadMoreKey
-import com.nexapp.nexpass.constants.AutoSkipNextOnErrorKey
-import com.nexapp.nexpass.constants.AutomixCrossfadeKey
-import com.nexapp.nexpass.constants.CrossfadeDurationKey
-import com.nexapp.nexpass.constants.CrossfadeEnabledKey
-import com.nexapp.nexpass.constants.CrossfadeGaplessKey
-import com.nexapp.nexpass.constants.DisableLoadMoreWhenRepeatAllKey
+import com.nexapp.nexmusic.MainActivity
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.AudioNormalizationKey
+import com.nexapp.nexmusic.constants.AudioOffload
+import com.nexapp.nexmusic.constants.AudioQualityKey
+import com.nexapp.nexmusic.constants.AutoDownloadOnLikeKey
+import com.nexapp.nexmusic.constants.AutoLoadMoreKey
+import com.nexapp.nexmusic.constants.AutoSkipNextOnErrorKey
+import com.nexapp.nexmusic.constants.AutomixCrossfadeKey
+import com.nexapp.nexmusic.constants.CrossfadeDurationKey
+import com.nexapp.nexmusic.constants.CrossfadeEnabledKey
+import com.nexapp.nexmusic.constants.CrossfadeGaplessKey
+import com.nexapp.nexmusic.constants.DisableLoadMoreWhenRepeatAllKey
 import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
-import com.nexapp.nexpass.constants.DiscordActivityNameKey
-import com.nexapp.nexpass.constants.DiscordActivityTypeKey
-import com.nexapp.nexpass.constants.DiscordTokenKey
-import com.nexapp.nexpass.constants.EnableDiscordRPCKey
-import com.nexapp.nexpass.constants.EnableLastFMScrobblingKey
-import com.nexapp.nexpass.constants.HideExplicitKey
-import com.nexapp.nexpass.constants.HideVideoSongsKey
-import com.nexapp.nexpass.constants.HistoryDuration
-import com.nexapp.nexpass.constants.LastFMSessionKey
-import com.nexapp.nexpass.constants.LastFMUseNowPlaying
-import com.nexapp.nexpass.constants.LastFMUseSendLikes
-import com.nexapp.nexpass.constants.MediaSessionConstants.CommandToggleLike
-import com.nexapp.nexpass.constants.MediaSessionConstants.CommandToggleRepeatMode
-import com.nexapp.nexpass.constants.MediaSessionConstants.CommandToggleShuffle
-import com.nexapp.nexpass.constants.MediaSessionConstants.CommandToggleStartRadio
-import com.nexapp.nexpass.constants.PauseListenHistoryKey
-import com.nexapp.nexpass.constants.PauseOnMute
-import com.nexapp.nexpass.constants.PersistentQueueKey
-import com.nexapp.nexpass.constants.PersistentShuffleAcrossQueuesKey
-import com.nexapp.nexpass.constants.PlayerVolumeKey
+import com.nexapp.nexmusic.constants.DiscordActivityNameKey
+import com.nexapp.nexmusic.constants.DiscordActivityTypeKey
+import com.nexapp.nexmusic.constants.DiscordTokenKey
+import com.nexapp.nexmusic.constants.EnableDiscordRPCKey
+import com.nexapp.nexmusic.constants.EnableLastFMScrobblingKey
+import com.nexapp.nexmusic.constants.HideExplicitKey
+import com.nexapp.nexmusic.constants.HideVideoSongsKey
+import com.nexapp.nexmusic.constants.HistoryDuration
+import com.nexapp.nexmusic.constants.LastFMSessionKey
+import com.nexapp.nexmusic.constants.LastFMUseNowPlaying
+import com.nexapp.nexmusic.constants.LastFMUseSendLikes
+import com.nexapp.nexmusic.constants.MediaSessionConstants.CommandToggleLike
+import com.nexapp.nexmusic.constants.MediaSessionConstants.CommandToggleRepeatMode
+import com.nexapp.nexmusic.constants.MediaSessionConstants.CommandToggleShuffle
+import com.nexapp.nexmusic.constants.MediaSessionConstants.CommandToggleStartRadio
+import com.nexapp.nexmusic.constants.PauseListenHistoryKey
+import com.nexapp.nexmusic.constants.PauseOnMute
+import com.nexapp.nexmusic.constants.PersistentQueueKey
+import com.nexapp.nexmusic.constants.PersistentShuffleAcrossQueuesKey
+import com.nexapp.nexmusic.constants.PlayerVolumeKey
 
-import com.nexapp.nexpass.constants.RememberShuffleAndRepeatKey
-import com.nexapp.nexpass.constants.RepeatModeKey
-import com.nexapp.nexpass.constants.ResumeOnBluetoothConnectKey
-import com.nexapp.nexpass.constants.ScrobbleDelayPercentKey
-import com.nexapp.nexpass.constants.ScrobbleDelaySecondsKey
-import com.nexapp.nexpass.constants.ScrobbleMinSongDurationKey
-import com.nexapp.nexpass.constants.ShowLyricsKey
-import com.nexapp.nexpass.constants.ShuffleModeKey
-import com.nexapp.nexpass.constants.ShufflePlaylistFirstKey
-import com.nexapp.nexpass.constants.PreloadLyricsEnabledKey
-import com.nexapp.nexpass.constants.PreloadNextSongEnabledKey
-import com.nexapp.nexpass.constants.PreloadNextSongLimitKey
-import com.nexapp.nexpass.constants.PreventDuplicateTracksInQueueKey
-import com.nexapp.nexpass.constants.SimilarContent
-import com.nexapp.nexpass.constants.SkipSilenceInstantKey
-import com.nexapp.nexpass.constants.SkipSilenceKey
-import com.nexapp.nexpass.constants.IpVersionKey
+import com.nexapp.nexmusic.constants.RememberShuffleAndRepeatKey
+import com.nexapp.nexmusic.constants.RepeatModeKey
+import com.nexapp.nexmusic.constants.ResumeOnBluetoothConnectKey
+import com.nexapp.nexmusic.constants.ScrobbleDelayPercentKey
+import com.nexapp.nexmusic.constants.ScrobbleDelaySecondsKey
+import com.nexapp.nexmusic.constants.ScrobbleMinSongDurationKey
+import com.nexapp.nexmusic.constants.ShowLyricsKey
+import com.nexapp.nexmusic.constants.ShuffleModeKey
+import com.nexapp.nexmusic.constants.ShufflePlaylistFirstKey
+import com.nexapp.nexmusic.constants.PreloadLyricsEnabledKey
+import com.nexapp.nexmusic.constants.PreloadNextSongEnabledKey
+import com.nexapp.nexmusic.constants.PreloadNextSongLimitKey
+import com.nexapp.nexmusic.constants.PreventDuplicateTracksInQueueKey
+import com.nexapp.nexmusic.constants.SimilarContent
+import com.nexapp.nexmusic.constants.SkipSilenceInstantKey
+import com.nexapp.nexmusic.constants.SkipSilenceKey
+import com.nexapp.nexmusic.constants.IpVersionKey
 import com.music.innertube.models.IpVersion
 import okhttp3.Dns
 import java.net.InetAddress
 import java.net.Inet4Address
 import java.net.Inet6Address
-import com.nexapp.nexpass.db.MusicDatabase
-import com.nexapp.nexpass.db.entities.Event
-import com.nexapp.nexpass.db.entities.FormatEntity
-import com.nexapp.nexpass.db.entities.LyricsEntity
-import com.nexapp.nexpass.db.entities.RelatedSongMap
-import com.nexapp.nexpass.db.entities.Song
-import com.nexapp.nexpass.di.DownloadCache
-import com.nexapp.nexpass.di.PlayerCache
-import com.nexapp.nexpass.eq.EqualizerService
-import com.nexapp.nexpass.eq.audio.AutomixDuckAudioProcessor
-import com.nexapp.nexpass.eq.audio.CustomEqualizerAudioProcessor
-import com.nexapp.nexpass.eq.data.EQProfileRepository
-import com.nexapp.nexpass.extensions.SilentHandler
-import com.nexapp.nexpass.extensions.collect
-import com.nexapp.nexpass.extensions.collectLatest
-import com.nexapp.nexpass.extensions.currentMetadata
-import com.nexapp.nexpass.extensions.findNextMediaItemById
-import com.nexapp.nexpass.extensions.mediaItems
-import com.nexapp.nexpass.extensions.metadata
-import com.nexapp.nexpass.extensions.setOffloadEnabled
-import com.nexapp.nexpass.extensions.toEnum
-import com.nexapp.nexpass.extensions.toMediaItem
-import com.nexapp.nexpass.extensions.toPersistQueue
-import com.nexapp.nexpass.extensions.toQueue
-import com.nexapp.nexpass.echomusic.updater.downloadmanager.EchoNotificationProvider
-import com.nexapp.nexpass.lyrics.LyricsHelper
-import com.nexapp.nexpass.models.PersistPlayerState
-import com.nexapp.nexpass.models.PersistQueue
-import com.nexapp.nexpass.models.toMediaMetadata
-import com.nexapp.nexpass.db.entities.BeatInfoEntity
-import com.nexapp.nexpass.playback.audio.BeatAnalyzer
-import com.nexapp.nexpass.playback.audio.SilenceDetectorAudioProcessor
-import com.nexapp.nexpass.playback.queues.EmptyQueue
-import com.nexapp.nexpass.playback.queues.Queue
-import com.nexapp.nexpass.playback.queues.YouTubeQueue
-import com.nexapp.nexpass.playback.queues.filterExplicit
-import com.nexapp.nexpass.playback.queues.filterVideoSongs
-import com.nexapp.nexpass.utils.CoilBitmapLoader
-import com.nexapp.nexpass.ui.screens.settings.DiscordPresenceManager
-import com.nexapp.nexpass.utils.NetworkConnectivityObserver
-import com.nexapp.nexpass.utils.ScrobbleManager
-import com.nexapp.nexpass.utils.SyncUtils
-import com.nexapp.nexpass.utils.YTPlayerUtils
-import com.nexapp.nexpass.utils.dataStore
-import com.nexapp.nexpass.utils.get
-import com.nexapp.nexpass.utils.reportException
-import com.nexapp.nexpass.widget.EchoMusicWidgetManager
-import com.nexapp.nexpass.widget.MusicWidgetReceiver
+import com.nexapp.nexmusic.db.MusicDatabase
+import com.nexapp.nexmusic.db.entities.Event
+import com.nexapp.nexmusic.db.entities.FormatEntity
+import com.nexapp.nexmusic.db.entities.LyricsEntity
+import com.nexapp.nexmusic.db.entities.RelatedSongMap
+import com.nexapp.nexmusic.db.entities.Song
+import com.nexapp.nexmusic.di.DownloadCache
+import com.nexapp.nexmusic.di.PlayerCache
+import com.nexapp.nexmusic.eq.EqualizerService
+import com.nexapp.nexmusic.eq.audio.AutomixDuckAudioProcessor
+import com.nexapp.nexmusic.eq.audio.CustomEqualizerAudioProcessor
+import com.nexapp.nexmusic.eq.data.EQProfileRepository
+import com.nexapp.nexmusic.extensions.SilentHandler
+import com.nexapp.nexmusic.extensions.collect
+import com.nexapp.nexmusic.extensions.collectLatest
+import com.nexapp.nexmusic.extensions.currentMetadata
+import com.nexapp.nexmusic.extensions.findNextMediaItemById
+import com.nexapp.nexmusic.extensions.mediaItems
+import com.nexapp.nexmusic.extensions.metadata
+import com.nexapp.nexmusic.extensions.setOffloadEnabled
+import com.nexapp.nexmusic.extensions.toEnum
+import com.nexapp.nexmusic.extensions.toMediaItem
+import com.nexapp.nexmusic.extensions.toPersistQueue
+import com.nexapp.nexmusic.extensions.toQueue
+import com.nexapp.nexmusic.echomusic.updater.downloadmanager.EchoNotificationProvider
+import com.nexapp.nexmusic.lyrics.LyricsHelper
+import com.nexapp.nexmusic.models.PersistPlayerState
+import com.nexapp.nexmusic.models.PersistQueue
+import com.nexapp.nexmusic.models.toMediaMetadata
+import com.nexapp.nexmusic.db.entities.BeatInfoEntity
+import com.nexapp.nexmusic.playback.audio.BeatAnalyzer
+import com.nexapp.nexmusic.playback.audio.SilenceDetectorAudioProcessor
+import com.nexapp.nexmusic.playback.queues.EmptyQueue
+import com.nexapp.nexmusic.playback.queues.Queue
+import com.nexapp.nexmusic.playback.queues.YouTubeQueue
+import com.nexapp.nexmusic.playback.queues.filterExplicit
+import com.nexapp.nexmusic.playback.queues.filterVideoSongs
+import com.nexapp.nexmusic.utils.CoilBitmapLoader
+import com.nexapp.nexmusic.ui.screens.settings.DiscordPresenceManager
+import com.nexapp.nexmusic.utils.NetworkConnectivityObserver
+import com.nexapp.nexmusic.utils.ScrobbleManager
+import com.nexapp.nexmusic.utils.SyncUtils
+import com.nexapp.nexmusic.utils.YTPlayerUtils
+import com.nexapp.nexmusic.utils.dataStore
+import com.nexapp.nexmusic.utils.get
+import com.nexapp.nexmusic.utils.reportException
+import com.nexapp.nexmusic.widget.EchoMusicWidgetManager
+import com.nexapp.nexmusic.widget.MusicWidgetReceiver
 import dagger.hilt.android.AndroidEntryPoint
-import com.nexapp.nexpass.utils.isLocalMediaId
+import com.nexapp.nexmusic.utils.isLocalMediaId
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -246,7 +246,7 @@ class MusicService :
     lateinit var widgetManager: EchoMusicWidgetManager
 
     @Inject
-    lateinit var listenTogetherManager: com.nexapp.nexpass.listentogether.ListenTogetherManager
+    lateinit var listenTogetherManager: com.nexapp.nexmusic.listentogether.ListenTogetherManager
     
 
     private lateinit var audioManager: AudioManager
@@ -362,13 +362,13 @@ class MusicService :
     val waitingForNetworkConnection = MutableStateFlow(false)
     private val isNetworkConnected = MutableStateFlow(false)
 
-    private lateinit var audioQuality: com.nexapp.nexpass.constants.AudioQuality
+    private lateinit var audioQuality: com.nexapp.nexmusic.constants.AudioQuality
     private lateinit var ipVersion: IpVersion
 
     private var currentQueue: Queue = EmptyQueue
     var queueTitle: String? = null
 
-    val currentMediaMetadata = MutableStateFlow<com.nexapp.nexpass.models.MediaMetadata?>(null)
+    val currentMediaMetadata = MutableStateFlow<com.nexapp.nexmusic.models.MediaMetadata?>(null)
     private val currentSong =
         currentMediaMetadata
             .flatMapLatest { mediaMetadata ->
@@ -680,7 +680,7 @@ class MusicService :
 
         audioManager.registerAudioDeviceCallback(audioDeviceCallback, null)
 
-        audioQuality = dataStore.get(AudioQualityKey).toEnum(com.nexapp.nexpass.constants.AudioQuality.OPUS)
+        audioQuality = dataStore.get(AudioQualityKey).toEnum(com.nexapp.nexmusic.constants.AudioQuality.OPUS)
         ipVersion = dataStore.get(IpVersionKey).toEnum(IpVersion.AUTO)
         playerVolume = MutableStateFlow(restorePlayerVolume(dataStore.get(PlayerVolumeKey, 1f)))
 
@@ -729,8 +729,8 @@ class MusicService :
         scope.launch {
             dataStore.data
                 .map { 
-                    val listenBrainz = it[com.nexapp.nexpass.constants.ListenBrainzEnabledKey] ?: false
-                    val dataSaver = it[com.nexapp.nexpass.constants.DataSaverEnabledKey] ?: false
+                    val listenBrainz = it[com.nexapp.nexmusic.constants.ListenBrainzEnabledKey] ?: false
+                    val dataSaver = it[com.nexapp.nexmusic.constants.DataSaverEnabledKey] ?: false
                     if (dataSaver) false else listenBrainz
                 }
                 .distinctUntilChanged()
@@ -739,7 +739,7 @@ class MusicService :
 
         scope.launch {
             dataStore.data
-                .map { it[com.nexapp.nexpass.constants.ListenBrainzTokenKey] ?: "" }
+                .map { it[com.nexapp.nexmusic.constants.ListenBrainzTokenKey] ?: "" }
                 .distinctUntilChanged()
                 .collect { listenBrainzToken = it }
         }
@@ -750,10 +750,10 @@ class MusicService :
                 .map { 
                     val qualityStr = it[AudioQualityKey]
                     val quality = qualityStr?.let { value ->
-                        com.nexapp.nexpass.constants.AudioQuality.entries.find { enumVal -> enumVal.name == value }
-                    } ?: com.nexapp.nexpass.constants.AudioQuality.OPUS
-                    val dataSaver = it[com.nexapp.nexpass.constants.DataSaverEnabledKey] ?: false
-                    if (dataSaver) com.nexapp.nexpass.constants.AudioQuality.OPUS else quality
+                        com.nexapp.nexmusic.constants.AudioQuality.entries.find { enumVal -> enumVal.name == value }
+                    } ?: com.nexapp.nexmusic.constants.AudioQuality.OPUS
+                    val dataSaver = it[com.nexapp.nexmusic.constants.DataSaverEnabledKey] ?: false
+                    if (dataSaver) com.nexapp.nexmusic.constants.AudioQuality.OPUS else quality
                 }
                 .distinctUntilChanged()
                 .collect { newQuality ->
@@ -835,7 +835,7 @@ class MusicService :
             currentMediaMetadata.distinctUntilChangedBy { it?.id },
             dataStore.data.map { 
                 val showLyrics = it[ShowLyricsKey] ?: false
-                val dataSaver = it[com.nexapp.nexpass.constants.DataSaverEnabledKey] ?: false
+                val dataSaver = it[com.nexapp.nexmusic.constants.DataSaverEnabledKey] ?: false
                 if (dataSaver) false else showLyrics
             }.distinctUntilChanged(),
         ) { mediaMetadata, showLyrics ->
@@ -962,7 +962,7 @@ class MusicService :
         dataStore.data
             .map { 
                 val preload = it[PreloadNextSongEnabledKey] ?: true
-                val dataSaver = it[com.nexapp.nexpass.constants.DataSaverEnabledKey] ?: false
+                val dataSaver = it[com.nexapp.nexmusic.constants.DataSaverEnabledKey] ?: false
                 if (dataSaver) false else preload
             }
             .distinctUntilChanged()
@@ -1490,7 +1490,7 @@ class MusicService :
                 withContext(Dispatchers.IO) {
                     queue.getInitialStatus()
                         .filterExplicit(dataStore.get(HideExplicitKey, false))
-                        .filterVideoSongs(dataStore.get(HideVideoSongsKey, false) || dataStore.get(com.nexapp.nexpass.constants.DataSaverEnabledKey, false))
+                        .filterVideoSongs(dataStore.get(HideVideoSongsKey, false) || dataStore.get(com.nexapp.nexmusic.constants.DataSaverEnabledKey, false))
                 }
             if (queue.preloadItem != null && player.playbackState == STATE_IDLE) return@launch
             if (initialStatus.title != null) {
@@ -1565,7 +1565,7 @@ class MusicService :
                 val initialStatus = withContext(Dispatchers.IO) {
                     radioQueue.getInitialStatus()
                         .filterExplicit(dataStore.get(HideExplicitKey, false))
-                        .filterVideoSongs(dataStore.get(HideVideoSongsKey, false) || dataStore.get(com.nexapp.nexpass.constants.DataSaverEnabledKey, false))
+                        .filterVideoSongs(dataStore.get(HideVideoSongsKey, false) || dataStore.get(com.nexapp.nexmusic.constants.DataSaverEnabledKey, false))
                 }
 
                 if (initialStatus.title != null) {
@@ -1607,7 +1607,7 @@ class MusicService :
                                 .filter { it.id != currentMediaId }
                                 .map { it.toMediaItem() }
                                 .filterExplicit(dataStore.get(HideExplicitKey, false))
-                                .filterVideoSongs(dataStore.get(HideVideoSongsKey, false) || dataStore.get(com.nexapp.nexpass.constants.DataSaverEnabledKey, false))
+                                .filterVideoSongs(dataStore.get(HideVideoSongsKey, false) || dataStore.get(com.nexapp.nexmusic.constants.DataSaverEnabledKey, false))
 
                             if (radioItems.isNotEmpty()) {
                                 val itemCount = player.mediaItemCount
@@ -2080,7 +2080,7 @@ class MusicService :
                 val mediaItems = withContext(Dispatchers.IO) {
                     currentQueue.nextPage()
                         .filterExplicit(dataStore.get(HideExplicitKey, false))
-                        .filterVideoSongs(dataStore.get(HideVideoSongsKey, false) || dataStore.get(com.nexapp.nexpass.constants.DataSaverEnabledKey, false))
+                        .filterVideoSongs(dataStore.get(HideVideoSongsKey, false) || dataStore.get(com.nexapp.nexmusic.constants.DataSaverEnabledKey, false))
                 }
                 if (player.playbackState != STATE_IDLE && mediaItems.isNotEmpty()) {
                     player.addMediaItems(mediaItems)
@@ -2935,7 +2935,7 @@ class MusicService :
             val isFullyDownloaded = cachedLength > 0 && downloadCache.isCached(mediaId, 0, cachedLength)
 
             val activeQualityInCache = songUrlCache.keys.find { it.startsWith("${mediaId}_") }?.substringAfter("_")?.let {
-                runCatching { com.nexapp.nexpass.constants.AudioQuality.valueOf(it) }.getOrNull()
+                runCatching { com.nexapp.nexmusic.constants.AudioQuality.valueOf(it) }.getOrNull()
             }
             val lockedQuality = activeQualityInCache ?: audioQuality
 
@@ -3311,7 +3311,7 @@ class MusicService :
             MusicWidgetReceiver.ACTION_UPDATE_WIDGET -> {
                 updateWidgetUI(player.isPlaying)
             }
-            "com.nexapp.nexpass.ACTION_CLEAR_SONG_CACHE" -> {
+            "com.nexapp.nexmusic.ACTION_CLEAR_SONG_CACHE" -> {
                 val songId = intent.getStringExtra("songId")
                 if (songId != null) {
                     songUrlCache.keys.filter { it.startsWith("${songId}_") }.forEach {
@@ -3401,7 +3401,7 @@ class MusicService :
 
     
     private fun initializeCast() {
-        if (dataStore.get(com.nexapp.nexpass.constants.EnableGoogleCastKey, true)) {
+        if (dataStore.get(com.nexapp.nexmusic.constants.EnableGoogleCastKey, true)) {
             try {
                 castConnectionHandler = CastConnectionHandler(this, scope, this)
                 if (castConnectionHandler?.initialize() != true) {
@@ -4149,7 +4149,7 @@ class MusicService :
                         val dbSong = database.song(mediaId).firstOrNull()
                         val knownArtist = dbSong?.artists?.joinToString(separator = ", ") { artist -> artist.name }?.replace(" - Topic", "")
                         
-                        val playbackData = com.nexapp.nexpass.utils.YTPlayerUtils.playerResponseForPlayback(
+                        val playbackData = com.nexapp.nexmusic.utils.YTPlayerUtils.playerResponseForPlayback(
                             videoId = mediaId,
                             audioQuality = audioQuality,
                             connectivityManager = connectivityManager,
@@ -4173,16 +4173,16 @@ class MusicService :
                         val dbSong = database.song(mediaId).firstOrNull()
                         if (dbSong != null) {
                             kotlin.runCatching {
-                                val metadata = com.nexapp.nexpass.models.MediaMetadata(
+                                val metadata = com.nexapp.nexmusic.models.MediaMetadata(
                                     id = dbSong.song.id,
                                     title = dbSong.song.title,
-                                    artists = dbSong.artists.map { artist -> com.nexapp.nexpass.models.MediaMetadata.Artist(artist.id, artist.name) },
+                                    artists = dbSong.artists.map { artist -> com.nexapp.nexmusic.models.MediaMetadata.Artist(artist.id, artist.name) },
                                     duration = dbSong.song.duration,
                                     thumbnailUrl = dbSong.thumbnailUrl
                                 )
                                 val lyricsResult = lyricsHelper.getLyrics(metadata)
                                 database.query {
-                                    upsert(com.nexapp.nexpass.db.entities.LyricsEntity(id = mediaId, lyrics = lyricsResult.lyrics))
+                                    upsert(com.nexapp.nexmusic.db.entities.LyricsEntity(id = mediaId, lyrics = lyricsResult.lyrics))
                                 }
                                 Timber.tag(TAG).d("Preloaded lyrics for $mediaId")
                             }

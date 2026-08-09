@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.utils
+package com.nexapp.nexmusic.utils
 
 import android.os.Build
 import android.util.Base64

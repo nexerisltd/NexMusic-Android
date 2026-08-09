@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.playback
+package com.nexapp.nexmusic.playback
 
 import coil3.SingletonImageLoader
 import coil3.request.CachePolicy
@@ -19,22 +19,22 @@ import androidx.media3.exoplayer.offline.Download
 import androidx.media3.exoplayer.offline.DownloadManager
 import androidx.media3.exoplayer.offline.DownloadNotificationHelper
 import com.music.innertube.YouTube
-import com.nexapp.nexpass.constants.AudioQuality
-import com.nexapp.nexpass.constants.AudioQualityKey
-import com.nexapp.nexpass.constants.IpVersionKey
+import com.nexapp.nexmusic.constants.AudioQuality
+import com.nexapp.nexmusic.constants.AudioQualityKey
+import com.nexapp.nexmusic.constants.IpVersionKey
 import com.music.innertube.models.IpVersion
 import okhttp3.Dns
 import java.net.InetAddress
 import java.net.Inet4Address
 import java.net.Inet6Address
-import com.nexapp.nexpass.db.MusicDatabase
-import com.nexapp.nexpass.db.entities.FormatEntity
-import com.nexapp.nexpass.db.entities.SongEntity
-import com.nexapp.nexpass.di.DownloadCache
-import com.nexapp.nexpass.di.PlayerCache
-import com.nexapp.nexpass.ui.utils.resize
-import com.nexapp.nexpass.utils.YTPlayerUtils
-import com.nexapp.nexpass.utils.enumPreference
+import com.nexapp.nexmusic.db.MusicDatabase
+import com.nexapp.nexmusic.db.entities.FormatEntity
+import com.nexapp.nexmusic.db.entities.SongEntity
+import com.nexapp.nexmusic.di.DownloadCache
+import com.nexapp.nexmusic.di.PlayerCache
+import com.nexapp.nexmusic.ui.utils.resize
+import com.nexapp.nexmusic.utils.YTPlayerUtils
+import com.nexapp.nexmusic.utils.enumPreference
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -65,7 +65,7 @@ constructor(
     @PlayerCache val playerCache: SimpleCache,
 ) {
     private val connectivityManager = context.getSystemService<ConnectivityManager>()!!
-    private val downloadQuality by enumPreference(context, com.nexapp.nexpass.constants.DownloadQualityKey, com.nexapp.nexpass.constants.DownloadQuality.YOUTUBE)
+    private val downloadQuality by enumPreference(context, com.nexapp.nexmusic.constants.DownloadQualityKey, com.nexapp.nexmusic.constants.DownloadQuality.YOUTUBE)
     private val ipVersion by enumPreference(context, IpVersionKey, IpVersion.AUTO)
     private val songUrlCache = HashMap<String, Pair<String, Long>>()
 

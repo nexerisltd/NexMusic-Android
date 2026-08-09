@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.component.shimmer
+package com.nexapp.nexmusic.ui.component.shimmer
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -18,12 +18,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.dp
-import com.nexapp.nexpass.constants.GridItemSize
-import com.nexapp.nexpass.constants.GridItemsSizeKey
-import com.nexapp.nexpass.constants.GridThumbnailHeight
-import com.nexapp.nexpass.constants.SmallGridThumbnailHeight
-import com.nexapp.nexpass.constants.ThumbnailCornerRadius
-import com.nexapp.nexpass.utils.rememberEnumPreference
+import com.nexapp.nexmusic.constants.GridItemSize
+import com.nexapp.nexmusic.constants.GridItemsSizeKey
+import com.nexapp.nexmusic.constants.GridThumbnailHeight
+import com.nexapp.nexmusic.constants.SmallGridThumbnailHeight
+import com.nexapp.nexmusic.constants.ThumbnailCornerRadius
+import com.nexapp.nexmusic.utils.rememberEnumPreference
 
 @Composable
 fun GridItemPlaceHolder(

@@ -1,6 +1,6 @@
-package com.nexapp.nexpass.data
+package com.nexapp.nexmusic.data
 
-import com.nexapp.nexpass.models.SponsorBlockSegment
+import com.nexapp.nexmusic.models.SponsorBlockSegment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient

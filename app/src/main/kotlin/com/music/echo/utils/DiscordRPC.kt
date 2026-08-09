@@ -1,32 +1,32 @@
 
 
-package com.nexapp.nexpass.utils
+package com.nexapp.nexmusic.utils
 
 import android.content.Context
-import com.nexapp.nexpass.BuildConfig
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.DiscordActivityButton1CustomUrlKey
-import com.nexapp.nexpass.constants.DiscordActivityButton1EnabledKey
-import com.nexapp.nexpass.constants.DiscordActivityButton1LabelKey
-import com.nexapp.nexpass.constants.DiscordActivityButton1UrlSourceKey
-import com.nexapp.nexpass.constants.DiscordActivityButton2CustomUrlKey
-import com.nexapp.nexpass.constants.DiscordActivityButton2EnabledKey
-import com.nexapp.nexpass.constants.DiscordActivityButton2LabelKey
-import com.nexapp.nexpass.constants.DiscordActivityButton2UrlSourceKey
-import com.nexapp.nexpass.constants.DiscordActivityDetailsKey
-import com.nexapp.nexpass.constants.DiscordActivityNameKey
-import com.nexapp.nexpass.constants.DiscordActivityPlatformKey
-import com.nexapp.nexpass.constants.DiscordActivityStateKey
-import com.nexapp.nexpass.constants.DiscordActivityTypeKey
-import com.nexapp.nexpass.constants.DiscordLargeImageCustomUrlKey
-import com.nexapp.nexpass.constants.DiscordLargeImageTypeKey
+import com.nexapp.nexmusic.BuildConfig
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.DiscordActivityButton1CustomUrlKey
+import com.nexapp.nexmusic.constants.DiscordActivityButton1EnabledKey
+import com.nexapp.nexmusic.constants.DiscordActivityButton1LabelKey
+import com.nexapp.nexmusic.constants.DiscordActivityButton1UrlSourceKey
+import com.nexapp.nexmusic.constants.DiscordActivityButton2CustomUrlKey
+import com.nexapp.nexmusic.constants.DiscordActivityButton2EnabledKey
+import com.nexapp.nexmusic.constants.DiscordActivityButton2LabelKey
+import com.nexapp.nexmusic.constants.DiscordActivityButton2UrlSourceKey
+import com.nexapp.nexmusic.constants.DiscordActivityDetailsKey
+import com.nexapp.nexmusic.constants.DiscordActivityNameKey
+import com.nexapp.nexmusic.constants.DiscordActivityPlatformKey
+import com.nexapp.nexmusic.constants.DiscordActivityStateKey
+import com.nexapp.nexmusic.constants.DiscordActivityTypeKey
+import com.nexapp.nexmusic.constants.DiscordLargeImageCustomUrlKey
+import com.nexapp.nexmusic.constants.DiscordLargeImageTypeKey
 
-import com.nexapp.nexpass.constants.DiscordPresenceStatusKey
-import com.nexapp.nexpass.constants.DiscordShowWhenPausedKey
-import com.nexapp.nexpass.constants.DiscordSmallImageCustomUrlKey
-import com.nexapp.nexpass.constants.DiscordSmallImageTypeKey
-import com.nexapp.nexpass.constants.DiscordSmallImageTypeKey
-import com.nexapp.nexpass.db.entities.Song
+import com.nexapp.nexmusic.constants.DiscordPresenceStatusKey
+import com.nexapp.nexmusic.constants.DiscordShowWhenPausedKey
+import com.nexapp.nexmusic.constants.DiscordSmallImageCustomUrlKey
+import com.nexapp.nexmusic.constants.DiscordSmallImageTypeKey
+import com.nexapp.nexmusic.constants.DiscordSmallImageTypeKey
+import com.nexapp.nexmusic.db.entities.Song
 import com.music.echo.discord.DiscordActivityPlatform
 import com.music.echo.discord.DiscordActivityType
 import com.music.echo.discord.DiscordOnlineStatus

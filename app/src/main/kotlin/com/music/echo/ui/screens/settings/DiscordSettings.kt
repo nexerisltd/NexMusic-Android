@@ -2,7 +2,7 @@
 
 @file:OptIn(ExperimentalMaterial3ExpressiveApi::class)
 
-package com.nexapp.nexpass.ui.screens.settings
+package com.nexapp.nexmusic.ui.screens.settings
 
 import android.content.Intent
 import android.net.Uri
@@ -40,26 +40,26 @@ import coil3.request.allowHardware
 import coil3.toBitmap
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collectLatest
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
-import com.nexapp.nexpass.LocalPlayerConnection
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.*
-import com.nexapp.nexpass.db.entities.Song
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.LocalPlayerConnection
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.*
+import com.nexapp.nexmusic.db.entities.Song
 import com.music.echo.discord.DiscordAuthCoordinator
 import com.music.echo.discord.DiscordOAuthRepository
-import com.nexapp.nexpass.ui.component.EditTextPreference
-import com.nexapp.nexpass.ui.component.EnumListPreference
-import com.nexapp.nexpass.ui.component.IconButton
-import com.nexapp.nexpass.ui.component.ListPreference
-import com.nexapp.nexpass.ui.component.PreferenceEntry
+import com.nexapp.nexmusic.ui.component.EditTextPreference
+import com.nexapp.nexmusic.ui.component.EnumListPreference
+import com.nexapp.nexmusic.ui.component.IconButton
+import com.nexapp.nexmusic.ui.component.ListPreference
+import com.nexapp.nexmusic.ui.component.PreferenceEntry
 
-import com.nexapp.nexpass.ui.component.SwitchPreference
-import com.nexapp.nexpass.ui.theme.PlayerColorExtractor
-import com.nexapp.nexpass.ui.theme.extractThemeColor
-import com.nexapp.nexpass.ui.utils.backToMain
-import com.nexapp.nexpass.utils.makeTimeString
-import com.nexapp.nexpass.utils.rememberEnumPreference
-import com.nexapp.nexpass.utils.rememberPreference
+import com.nexapp.nexmusic.ui.component.SwitchPreference
+import com.nexapp.nexmusic.ui.theme.PlayerColorExtractor
+import com.nexapp.nexmusic.ui.theme.extractThemeColor
+import com.nexapp.nexmusic.ui.utils.backToMain
+import com.nexapp.nexmusic.utils.makeTimeString
+import com.nexapp.nexmusic.utils.rememberEnumPreference
+import com.nexapp.nexmusic.utils.rememberPreference
 import timber.log.Timber
 
 enum class ActivitySource { ARTIST, ALBUM, SONG, APP }

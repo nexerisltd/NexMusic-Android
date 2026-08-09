@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.echomusic.changelog
+package com.nexapp.nexmusic.echomusic.changelog
 
 
 
@@ -80,11 +80,11 @@ import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import coil3.compose.AsyncImage
-import com.nexapp.nexpass.BuildConfig
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.echomusic.updater.extractUrls
-import com.nexapp.nexpass.ui.component.parseMarkdown
+import com.nexapp.nexmusic.BuildConfig
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.echomusic.updater.extractUrls
+import com.nexapp.nexmusic.ui.component.parseMarkdown
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

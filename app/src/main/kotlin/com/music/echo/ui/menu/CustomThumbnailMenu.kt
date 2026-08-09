@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.menu
+package com.nexapp.nexmusic.ui.menu
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.PaddingValues
@@ -17,7 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.nexapp.nexpass.R
+import com.nexapp.nexmusic.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

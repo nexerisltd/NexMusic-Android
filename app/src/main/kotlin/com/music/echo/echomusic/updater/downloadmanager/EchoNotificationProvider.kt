@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.echomusic.updater.downloadmanager
+package com.nexapp.nexmusic.echomusic.updater.downloadmanager
 
 import android.app.Notification
 import android.content.Context

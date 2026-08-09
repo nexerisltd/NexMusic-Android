@@ -5,9 +5,9 @@
  * Do not remove or alter this notice. - Per GPL-3.0 Section 4 & Section 5
  */
 
-package com.nexapp.nexpass.spotify
+package com.nexapp.nexmusic.spotify
 
-import com.nexapp.nexpass.spotify.models.SpotifyInternalToken
+import com.nexapp.nexmusic.spotify.models.SpotifyInternalToken
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.Serializable

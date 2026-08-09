@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.recognition
+package com.nexapp.nexmusic.recognition
 
 import android.Manifest
 import android.app.Activity
@@ -7,7 +7,7 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import androidx.core.content.ContextCompat
-import com.nexapp.nexpass.MainActivity
+import com.nexapp.nexmusic.MainActivity
 
 class RecognitionLaunchActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {

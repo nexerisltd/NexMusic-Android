@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.menu
+package com.nexapp.nexmusic.ui.menu
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -10,7 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
-import com.nexapp.nexpass.utils.listItemShape
+import com.nexapp.nexmusic.utils.listItemShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -41,23 +41,23 @@ import kotlinx.coroutines.withContext
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.music.innertube.YouTube
 import com.music.innertube.utils.parseCookieString
-import com.nexapp.nexpass.LocalDatabase
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.AddToPlaylistSortDescendingKey
-import com.nexapp.nexpass.constants.AddToPlaylistSortTypeKey
-import com.nexapp.nexpass.constants.InnerTubeCookieKey
-import com.nexapp.nexpass.constants.ListThumbnailSize
-import com.nexapp.nexpass.constants.PlaylistSortType
-import com.nexapp.nexpass.db.entities.Playlist
-import com.nexapp.nexpass.ui.component.CreatePlaylistDialog
-import com.nexapp.nexpass.ui.component.DefaultDialog
-import com.nexapp.nexpass.ui.component.ListDialog
-import com.nexapp.nexpass.ui.component.ListItem
-import com.nexapp.nexpass.ui.component.PlaylistListItem
-import com.nexapp.nexpass.ui.component.SortHeader
-import com.nexapp.nexpass.utils.rememberEnumPreference
-import com.nexapp.nexpass.utils.rememberPreference
-import com.nexapp.nexpass.viewmodels.PlaylistsViewModel
+import com.nexapp.nexmusic.LocalDatabase
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.AddToPlaylistSortDescendingKey
+import com.nexapp.nexmusic.constants.AddToPlaylistSortTypeKey
+import com.nexapp.nexmusic.constants.InnerTubeCookieKey
+import com.nexapp.nexmusic.constants.ListThumbnailSize
+import com.nexapp.nexmusic.constants.PlaylistSortType
+import com.nexapp.nexmusic.db.entities.Playlist
+import com.nexapp.nexmusic.ui.component.CreatePlaylistDialog
+import com.nexapp.nexmusic.ui.component.DefaultDialog
+import com.nexapp.nexmusic.ui.component.ListDialog
+import com.nexapp.nexmusic.ui.component.ListItem
+import com.nexapp.nexmusic.ui.component.PlaylistListItem
+import com.nexapp.nexmusic.ui.component.SortHeader
+import com.nexapp.nexmusic.utils.rememberEnumPreference
+import com.nexapp.nexmusic.utils.rememberPreference
+import com.nexapp.nexmusic.viewmodels.PlaylistsViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

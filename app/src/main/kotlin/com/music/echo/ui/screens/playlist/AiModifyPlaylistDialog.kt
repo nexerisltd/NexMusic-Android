@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.ui.screens.playlist
+package com.nexapp.nexmusic.ui.screens.playlist
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -14,9 +14,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.ai.AiPlaylistModifier
-import com.nexapp.nexpass.db.entities.PlaylistSong
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.ai.AiPlaylistModifier
+import com.nexapp.nexmusic.db.entities.PlaylistSong
 import kotlinx.coroutines.launch
 
 @Composable

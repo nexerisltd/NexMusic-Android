@@ -7,7 +7,7 @@
  * scale for cheaper effect rendering. KMP expect/actual declarations were
  * merged into this single Android source set. Package renamed accordingly.
  */
-package com.nexapp.nexpass.ui.component.backdrop.shadow
+package com.nexapp.nexmusic.ui.component.backdrop.shadow
 
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.BlendMode
@@ -26,8 +26,8 @@ import androidx.compose.ui.node.requireGraphicsContext
 import androidx.compose.ui.platform.InspectorInfo
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.IntSize
-import com.nexapp.nexpass.ui.component.backdrop.internal.ShapeProvider
-import com.nexapp.nexpass.ui.component.backdrop.internal.blur
+import com.nexapp.nexmusic.ui.component.backdrop.internal.ShapeProvider
+import com.nexapp.nexmusic.ui.component.backdrop.internal.blur
 import kotlin.math.ceil
 
 internal class ShadowElement(

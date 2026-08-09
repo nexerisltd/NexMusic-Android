@@ -1,6 +1,6 @@
-package com.nexapp.nexpass.eq.audio
+package com.nexapp.nexmusic.eq.audio
 
-import com.nexapp.nexpass.eq.data.FilterType
+import com.nexapp.nexmusic.eq.data.FilterType
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.pow

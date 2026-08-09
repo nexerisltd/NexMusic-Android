@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.utils.cipher
+package com.nexapp.nexmusic.utils.cipher
 
 import android.content.Context
 import android.net.Uri

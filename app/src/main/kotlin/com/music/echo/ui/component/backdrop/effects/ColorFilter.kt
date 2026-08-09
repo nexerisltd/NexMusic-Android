@@ -7,15 +7,15 @@
  * scale for cheaper effect rendering. KMP expect/actual declarations were
  * merged into this single Android source set. Package renamed accordingly.
  */
-package com.nexapp.nexpass.ui.component.backdrop.effects
+package com.nexapp.nexmusic.ui.component.backdrop.effects
 
 import androidx.annotation.FloatRange
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.graphics.ColorMatrixColorFilter
-import com.nexapp.nexpass.ui.component.backdrop.BackdropEffectScope
-import com.nexapp.nexpass.ui.component.backdrop.internal.ColorFilterEffect
-import com.nexapp.nexpass.ui.component.backdrop.isRenderEffectSupported
+import com.nexapp.nexmusic.ui.component.backdrop.BackdropEffectScope
+import com.nexapp.nexmusic.ui.component.backdrop.internal.ColorFilterEffect
+import com.nexapp.nexmusic.ui.component.backdrop.isRenderEffectSupported
 
 fun BackdropEffectScope.colorFilter(colorFilter: ColorFilter) {
     if (!isRenderEffectSupported()) return

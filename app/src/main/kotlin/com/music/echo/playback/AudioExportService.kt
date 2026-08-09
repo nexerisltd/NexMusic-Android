@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.playback
+package com.nexapp.nexmusic.playback
 
 import android.app.Service
 import android.content.Context
@@ -11,11 +11,11 @@ import androidx.documentfile.provider.DocumentFile
 import com.arthenica.ffmpegkit.FFmpegKit
 import com.arthenica.ffmpegkit.ReturnCode
 import com.music.innertube.YouTube
-import com.nexapp.nexpass.constants.AudioQuality
-import com.nexapp.nexpass.constants.ExportingSongIdsKey
-import com.nexapp.nexpass.constants.ExportedSongIdsKey
-import com.nexapp.nexpass.utils.YTPlayerUtils
-import com.nexapp.nexpass.utils.dataStore
+import com.nexapp.nexmusic.constants.AudioQuality
+import com.nexapp.nexmusic.constants.ExportingSongIdsKey
+import com.nexapp.nexmusic.constants.ExportedSongIdsKey
+import com.nexapp.nexmusic.utils.YTPlayerUtils
+import com.nexapp.nexmusic.utils.dataStore
 import androidx.datastore.preferences.core.edit
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -108,7 +108,7 @@ class AudioExportService : Service() {
             ?.let { Regex("(19|20)\\d{2}").find(it)?.value?.toIntOrNull() }
 
     private fun downloadStream(
-        playbackData: com.nexapp.nexpass.utils.YTPlayerUtils.PlaybackData,
+        playbackData: com.nexapp.nexmusic.utils.YTPlayerUtils.PlaybackData,
         destFile: File,
     ) {
         val totalLength = playbackData.format.contentLength ?: 10_000_000L

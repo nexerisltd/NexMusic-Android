@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3Api::class)
 
-package com.nexapp.nexpass.ui.screens
+package com.nexapp.nexmusic.ui.screens
 
 import android.webkit.CookieManager
 import android.webkit.WebResourceRequest
@@ -33,20 +33,20 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.spotifyimport.SpotifyImportViewModel
-import com.nexapp.nexpass.spotifyimport.SpotifyImportUiState
-import com.nexapp.nexpass.spotifyimport.SpotifyImportProgressUi
-import com.nexapp.nexpass.spotifyimport.SpotifyImportSummaryUi
-import com.nexapp.nexpass.spotifyimport.SpotifyImportSourceUi
-import com.nexapp.nexpass.spotifyimport.SpotifyImportSourceType
-import com.nexapp.nexpass.ui.component.DefaultDialog
-import com.nexapp.nexpass.ui.component.IconButton
-import com.nexapp.nexpass.ui.component.Material3SettingsGroup
-import com.nexapp.nexpass.ui.component.Material3SettingsItem
-import com.nexapp.nexpass.ui.utils.backToMain
-import com.nexapp.nexpass.spotify.SpotifyAuth
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.spotifyimport.SpotifyImportViewModel
+import com.nexapp.nexmusic.spotifyimport.SpotifyImportUiState
+import com.nexapp.nexmusic.spotifyimport.SpotifyImportProgressUi
+import com.nexapp.nexmusic.spotifyimport.SpotifyImportSummaryUi
+import com.nexapp.nexmusic.spotifyimport.SpotifyImportSourceUi
+import com.nexapp.nexmusic.spotifyimport.SpotifyImportSourceType
+import com.nexapp.nexmusic.ui.component.DefaultDialog
+import com.nexapp.nexmusic.ui.component.IconButton
+import com.nexapp.nexmusic.ui.component.Material3SettingsGroup
+import com.nexapp.nexmusic.ui.component.Material3SettingsItem
+import com.nexapp.nexmusic.ui.utils.backToMain
+import com.nexapp.nexmusic.spotify.SpotifyAuth
 import android.net.Uri
 
 @Composable

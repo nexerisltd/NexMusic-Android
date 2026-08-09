@@ -5,23 +5,23 @@
  * Do not remove or alter this notice. - Per GPL-3.0 Section 4 & Section 5
  */
 
-package com.nexapp.nexpass.spotify
+package com.nexapp.nexmusic.spotify
 
-import com.nexapp.nexpass.spotify.models.SpotifyAlbum
-import com.nexapp.nexpass.spotify.models.SpotifyArtist
-import com.nexapp.nexpass.spotify.models.SpotifyImage
-import com.nexapp.nexpass.spotify.models.SpotifyPaging
-import com.nexapp.nexpass.spotify.models.SpotifyPlaylist
-import com.nexapp.nexpass.spotify.models.SpotifyPlaylistOwner
-import com.nexapp.nexpass.spotify.models.SpotifyPlaylistTrack
-import com.nexapp.nexpass.spotify.models.SpotifyPlaylistTracksRef
-import com.nexapp.nexpass.spotify.models.SpotifyRecommendations
-import com.nexapp.nexpass.spotify.models.SpotifySavedTrack
-import com.nexapp.nexpass.spotify.models.SpotifySearchResult
-import com.nexapp.nexpass.spotify.models.SpotifySimpleAlbum
-import com.nexapp.nexpass.spotify.models.SpotifySimpleArtist
-import com.nexapp.nexpass.spotify.models.SpotifyTrack
-import com.nexapp.nexpass.spotify.models.SpotifyUser
+import com.nexapp.nexmusic.spotify.models.SpotifyAlbum
+import com.nexapp.nexmusic.spotify.models.SpotifyArtist
+import com.nexapp.nexmusic.spotify.models.SpotifyImage
+import com.nexapp.nexmusic.spotify.models.SpotifyPaging
+import com.nexapp.nexmusic.spotify.models.SpotifyPlaylist
+import com.nexapp.nexmusic.spotify.models.SpotifyPlaylistOwner
+import com.nexapp.nexmusic.spotify.models.SpotifyPlaylistTrack
+import com.nexapp.nexmusic.spotify.models.SpotifyPlaylistTracksRef
+import com.nexapp.nexmusic.spotify.models.SpotifyRecommendations
+import com.nexapp.nexmusic.spotify.models.SpotifySavedTrack
+import com.nexapp.nexmusic.spotify.models.SpotifySearchResult
+import com.nexapp.nexmusic.spotify.models.SpotifySimpleAlbum
+import com.nexapp.nexmusic.spotify.models.SpotifySimpleArtist
+import com.nexapp.nexmusic.spotify.models.SpotifyTrack
+import com.nexapp.nexmusic.spotify.models.SpotifyUser
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.engine.okhttp.OkHttp
@@ -549,7 +549,7 @@ object Spotify {
         folderUri: String? = null,
         limit: Int = 50,
         offset: Int = 0,
-    ): Result<SpotifyPaging<com.nexapp.nexpass.spotify.models.SpotifyLibraryItem>> =
+    ): Result<SpotifyPaging<com.nexapp.nexmusic.spotify.models.SpotifyLibraryItem>> =
         runCatching {
             val vars =
                 buildJsonObject {
@@ -605,10 +605,10 @@ object Spotify {
                     when {
                         typeName == "PlaylistResponseWrapper" || typeName.contains("Playlist", ignoreCase = true) ->
                             parsePlaylistWrapper(wrapper)
-                                ?.let { com.nexapp.nexpass.spotify.models.SpotifyLibraryItem.Playlist(it) }
+                                ?.let { com.nexapp.nexmusic.spotify.models.SpotifyLibraryItem.Playlist(it) }
                         typeName == "FolderResponseWrapper" || typeName.contains("Folder", ignoreCase = true) ->
                             parseFolderWrapper(wrapper)
-                                ?.let { com.nexapp.nexpass.spotify.models.SpotifyLibraryItem.Folder(it) }
+                                ?.let { com.nexapp.nexmusic.spotify.models.SpotifyLibraryItem.Folder(it) }
                                 ?: run {
                                     // Folder typename matched but parsing returned null —
                                     // likely a shape we don't know. Dump the keys so we
@@ -662,7 +662,7 @@ object Spotify {
             ?: data.int("trackCount")
             ?: data.int("numTracks")
 
-    private fun parseFolderWrapper(wrapper: JsonObject): com.nexapp.nexpass.spotify.models.SpotifyLibraryFolder? {
+    private fun parseFolderWrapper(wrapper: JsonObject): com.nexapp.nexmusic.spotify.models.SpotifyLibraryFolder? {
         val uri = wrapper.str("_uri") ?: return null
         // Spotify has shipped this object under several shapes over time; the name
         // and child count have lived in `data` and at the root of the wrapper.
@@ -674,7 +674,7 @@ object Spotify {
             ?: wrapper.obj("data")?.int("numberOfItems")
             ?: wrapper.int("totalLength")
             ?: 0
-        return com.nexapp.nexpass.spotify.models.SpotifyLibraryFolder(
+        return com.nexapp.nexmusic.spotify.models.SpotifyLibraryFolder(
             uri = uri,
             name = name,
             totalChildren = total,
@@ -1303,7 +1303,7 @@ object Spotify {
     suspend fun home(
         sectionItemsLimit: Int = 10,
         timeZone: String = java.util.TimeZone.getDefault().id,
-    ): Result<com.nexapp.nexpass.spotify.models.SpotifyHomeFeed> =
+    ): Result<com.nexapp.nexmusic.spotify.models.SpotifyHomeFeed> =
         runCatching {
             log("D", "spotifyHome: GQL home() request — timeZone=$timeZone limit=$sectionItemsLimit")
             val vars =
@@ -1338,7 +1338,7 @@ object Spotify {
                     ?.arr("items")
                     ?: run {
                         log("W", "spotifyHome: no sectionContainer.sections.items in response")
-                        return@runCatching com.nexapp.nexpass.spotify.models.SpotifyHomeFeed(
+                        return@runCatching com.nexapp.nexmusic.spotify.models.SpotifyHomeFeed(
                             greeting = greeting,
                             sections = emptyList(),
                         )
@@ -1351,13 +1351,13 @@ object Spotify {
                 }
             log("D", "spotifyHome: parsed ${sections.size}/${sectionElements.size} sections successfully")
 
-            com.nexapp.nexpass.spotify.models.SpotifyHomeFeed(
+            com.nexapp.nexmusic.spotify.models.SpotifyHomeFeed(
                 greeting = greeting,
                 sections = sections,
             )
         }
 
-    private fun parseHomeSection(sectionObj: JsonObject): com.nexapp.nexpass.spotify.models.SpotifyHomeFeedSection? {
+    private fun parseHomeSection(sectionObj: JsonObject): com.nexapp.nexmusic.spotify.models.SpotifyHomeFeedSection? {
         val sectionData = sectionObj.obj("data") ?: return null
         val typename = sectionData.str("__typename") ?: return null
         val titleObj = sectionData.obj("title")
@@ -1376,7 +1376,7 @@ object Spotify {
 
         if (items.isEmpty()) return null
 
-        return com.nexapp.nexpass.spotify.models.SpotifyHomeFeedSection(
+        return com.nexapp.nexmusic.spotify.models.SpotifyHomeFeedSection(
             sectionUri = sectionObj.str("uri") ?: "",
             title = title,
             typename = typename,
@@ -1385,7 +1385,7 @@ object Spotify {
         )
     }
 
-    private fun parseHomeItem(itemObj: JsonObject): com.nexapp.nexpass.spotify.models.SpotifyHomeFeedItem? {
+    private fun parseHomeItem(itemObj: JsonObject): com.nexapp.nexmusic.spotify.models.SpotifyHomeFeedItem? {
         val content = itemObj.obj("content") ?: return null
         val wrapper = content.str("__typename") ?: return null
         val data = content.obj("data") ?: return null
@@ -1398,7 +1398,7 @@ object Spotify {
         }
     }
 
-    private fun parseHomePlaylist(data: JsonObject): com.nexapp.nexpass.spotify.models.SpotifyHomeFeedItem.Playlist? {
+    private fun parseHomePlaylist(data: JsonObject): com.nexapp.nexmusic.spotify.models.SpotifyHomeFeedItem.Playlist? {
         val uri = data.str("uri") ?: return null
         val imageItem = data.obj("images")?.arr("items")?.firstOrNull()?.jsonObject
         val imageUrl = imageItem?.arr("sources")?.firstOrNull()?.jsonObject?.str("url")
@@ -1408,7 +1408,7 @@ object Spotify {
                 ?.firstOrNull { it.jsonObject.str("key") == "madeFor.username" }
                 ?.jsonObject?.str("value")
 
-        return com.nexapp.nexpass.spotify.models.SpotifyHomeFeedItem.Playlist(
+        return com.nexapp.nexmusic.spotify.models.SpotifyHomeFeedItem.Playlist(
             uri = uri,
             id = uri.substringAfterLast(":"),
             name = data.str("name") ?: "",
@@ -1422,7 +1422,7 @@ object Spotify {
         )
     }
 
-    private fun parseHomeAlbum(data: JsonObject): com.nexapp.nexpass.spotify.models.SpotifyHomeFeedItem.Album? {
+    private fun parseHomeAlbum(data: JsonObject): com.nexapp.nexmusic.spotify.models.SpotifyHomeFeedItem.Album? {
         val uri = data.str("uri") ?: return null
         val artists =
             data.obj("artists")?.arr("items")?.mapNotNull {
@@ -1431,7 +1431,7 @@ object Spotify {
         val imageUrl =
             data.obj("coverArt")?.arr("sources")?.firstOrNull()?.jsonObject?.str("url")
 
-        return com.nexapp.nexpass.spotify.models.SpotifyHomeFeedItem.Album(
+        return com.nexapp.nexmusic.spotify.models.SpotifyHomeFeedItem.Album(
             uri = uri,
             id = uri.substringAfterLast(":"),
             name = data.str("name") ?: "",
@@ -1441,13 +1441,13 @@ object Spotify {
         )
     }
 
-    private fun parseHomeArtist(data: JsonObject): com.nexapp.nexpass.spotify.models.SpotifyHomeFeedItem.Artist? {
+    private fun parseHomeArtist(data: JsonObject): com.nexapp.nexmusic.spotify.models.SpotifyHomeFeedItem.Artist? {
         val uri = data.str("uri") ?: return null
         val profile = data.obj("profile")
         val imageUrl =
             data.obj("visuals")?.obj("avatarImage")
                 ?.arr("sources")?.firstOrNull()?.jsonObject?.str("url")
-        return com.nexapp.nexpass.spotify.models.SpotifyHomeFeedItem.Artist(
+        return com.nexapp.nexmusic.spotify.models.SpotifyHomeFeedItem.Artist(
             uri = uri,
             id = uri.substringAfterLast(":"),
             name = profile?.str("name") ?: "",

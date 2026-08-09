@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.ui.screens.ambient
+package com.nexapp.nexmusic.ui.screens.ambient
 
 import android.app.Activity
 import android.content.pm.ActivityInfo
@@ -40,9 +40,9 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.navigation.NavController
 import coil3.compose.AsyncImage
-import com.nexapp.nexpass.LocalPlayerConnection
-import com.nexapp.nexpass.extensions.togglePlayPause
-import com.nexapp.nexpass.ui.player.InlineLyricsView
+import com.nexapp.nexmusic.LocalPlayerConnection
+import com.nexapp.nexmusic.extensions.togglePlayPause
+import com.nexapp.nexmusic.ui.player.InlineLyricsView
 import kotlin.math.abs
 
 @Composable

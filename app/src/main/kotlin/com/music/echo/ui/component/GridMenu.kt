@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.component
+package com.nexapp.nexmusic.ui.component
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
@@ -34,8 +34,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.media3.exoplayer.offline.Download
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.utils.makeTimeString
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.utils.makeTimeString
 
 val GridMenuItemHeight = 108.dp
 

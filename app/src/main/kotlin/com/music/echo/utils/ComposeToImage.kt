@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.utils
+package com.nexapp.nexmusic.utils
 
 import android.content.ContentValues
 import android.content.Context
@@ -29,8 +29,8 @@ import coil3.ImageLoader
 import coil3.request.ImageRequest
 import coil3.request.allowHardware
 import coil3.toBitmap
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.ui.component.LyricsBackgroundStyle
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.ui.component.LyricsBackgroundStyle
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File

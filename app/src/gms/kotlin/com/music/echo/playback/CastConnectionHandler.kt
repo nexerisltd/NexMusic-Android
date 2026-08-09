@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.playback
+package com.nexapp.nexmusic.playback
 
 import android.content.Context
 import android.net.Uri
@@ -18,9 +18,9 @@ import com.google.android.gms.cast.framework.SessionManager
 import com.google.android.gms.cast.framework.SessionManagerListener
 import com.google.android.gms.cast.framework.media.RemoteMediaClient
 import com.google.android.gms.common.images.WebImage
-import com.nexapp.nexpass.extensions.metadata
-import com.nexapp.nexpass.models.MediaMetadata as AppMediaMetadata
-import com.nexapp.nexpass.ui.utils.resize
+import com.nexapp.nexmusic.extensions.metadata
+import com.nexapp.nexmusic.models.MediaMetadata as AppMediaMetadata
+import com.nexapp.nexmusic.ui.utils.resize
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

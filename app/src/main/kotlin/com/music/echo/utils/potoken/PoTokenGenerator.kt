@@ -1,7 +1,7 @@
-package com.nexapp.nexpass.utils.potoken
+package com.nexapp.nexmusic.utils.potoken
 
 import android.webkit.CookieManager
-import com.nexapp.nexpass.utils.cipher.CipherDeobfuscator
+import com.nexapp.nexmusic.utils.cipher.CipherDeobfuscator
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.sync.Mutex

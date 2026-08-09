@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.ui.utils
+package com.nexapp.nexmusic.ui.utils
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -35,9 +35,9 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.nexapp.nexpass.LocalDatabase
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.db.entities.SongEntity
+import com.nexapp.nexmusic.LocalDatabase
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.db.entities.SongEntity
 import kotlinx.coroutines.FlowPreview
 
 @OptIn(FlowPreview::class)

@@ -20,7 +20,7 @@
  *   animation morphs around the center instead of the start edge.
  */
 
-package com.nexapp.nexpass.ui.component.floatingtabbar
+package com.nexapp.nexmusic.ui.component.floatingtabbar
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibilityScope

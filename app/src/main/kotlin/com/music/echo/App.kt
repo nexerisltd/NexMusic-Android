@@ -1,8 +1,8 @@
 
 
-package com.nexapp.nexpass
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.BuildConfig
+package com.nexapp.nexmusic
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.BuildConfig
 
 import android.app.Application
 import android.app.NotificationChannel
@@ -24,14 +24,14 @@ import com.music.innertube.YouTube
 import com.music.innertube.models.IpVersion
 import com.music.innertube.models.YouTubeLocale
 import com.music.kugou.KuGou
-import com.nexapp.nexpass.constants.*
-import com.nexapp.nexpass.di.ApplicationScope
-import com.nexapp.nexpass.extensions.toEnum
-import com.nexapp.nexpass.extensions.toInetSocketAddress
-import com.nexapp.nexpass.utils.CrashHandler
-import com.nexapp.nexpass.utils.cipher.CipherDeobfuscator
-import com.nexapp.nexpass.utils.dataStore
-import com.nexapp.nexpass.utils.reportException
+import com.nexapp.nexmusic.constants.*
+import com.nexapp.nexmusic.di.ApplicationScope
+import com.nexapp.nexmusic.extensions.toEnum
+import com.nexapp.nexmusic.extensions.toInetSocketAddress
+import com.nexapp.nexmusic.utils.CrashHandler
+import com.nexapp.nexmusic.utils.cipher.CipherDeobfuscator
+import com.nexapp.nexmusic.utils.dataStore
+import com.nexapp.nexmusic.utils.reportException
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

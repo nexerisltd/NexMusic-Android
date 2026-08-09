@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.extensions
+package com.nexapp.nexmusic.extensions
 
 import android.net.Uri
 import android.os.Bundle
@@ -8,10 +8,10 @@ import androidx.core.net.toUri
 import androidx.media3.common.MediaItem
 import androidx.media3.common.MediaMetadata.MEDIA_TYPE_MUSIC
 import com.music.innertube.models.SongItem
-import com.nexapp.nexpass.db.entities.Song
-import com.nexapp.nexpass.models.MediaMetadata
-import com.nexapp.nexpass.models.toMediaMetadata
-import com.nexapp.nexpass.ui.utils.resize
+import com.nexapp.nexmusic.db.entities.Song
+import com.nexapp.nexmusic.models.MediaMetadata
+import com.nexapp.nexmusic.models.toMediaMetadata
+import com.nexapp.nexmusic.ui.utils.resize
 import java.util.Locale
 
 val MediaItem.metadata: MediaMetadata?

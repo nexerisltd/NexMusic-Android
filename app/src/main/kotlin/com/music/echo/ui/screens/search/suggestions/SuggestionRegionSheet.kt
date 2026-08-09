@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.ui.screens.search.suggestions
+package com.nexapp.nexmusic.ui.screens.search.suggestions
 
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.clickable
@@ -21,7 +21,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.nexapp.nexpass.constants.SuggestionRegionSlugToName
+import com.nexapp.nexmusic.constants.SuggestionRegionSlugToName
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)

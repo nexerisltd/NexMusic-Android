@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.ui.component
+package com.nexapp.nexmusic.ui.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -27,11 +27,11 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.nexapp.nexpass.LocalPlayerConnection
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.EnableGoogleCastKey
-import com.nexapp.nexpass.playback.CastConnectionHandler
-import com.nexapp.nexpass.utils.rememberPreference
+import com.nexapp.nexmusic.LocalPlayerConnection
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.EnableGoogleCastKey
+import com.nexapp.nexmusic.playback.CastConnectionHandler
+import com.nexapp.nexmusic.utils.rememberPreference
 
 /**
  * Cast button that shows a custom [CastDevicePickerSheet] bottom sheet.

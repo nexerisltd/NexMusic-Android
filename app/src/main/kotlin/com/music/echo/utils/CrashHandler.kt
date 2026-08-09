@@ -1,12 +1,12 @@
 
 
-package com.nexapp.nexpass.utils
+package com.nexapp.nexmusic.utils
 
 import android.content.Context
 import android.content.Intent
 import android.os.Build
-import com.nexapp.nexpass.BuildConfig
-import com.nexapp.nexpass.ui.screens.CrashActivity
+import com.nexapp.nexmusic.BuildConfig
+import com.nexapp.nexmusic.ui.screens.CrashActivity
 import timber.log.Timber
 import java.io.PrintWriter
 import java.io.StringWriter

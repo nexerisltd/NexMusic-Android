@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.screens.recognition
+package com.nexapp.nexmusic.ui.screens.recognition
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
@@ -56,16 +56,16 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil3.compose.AsyncImage
-import com.nexapp.nexpass.LocalDatabase
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.ThumbnailCornerRadius
-import com.nexapp.nexpass.db.entities.RecognitionHistory
-import com.nexapp.nexpass.ui.component.DefaultDialog
-import com.nexapp.nexpass.ui.component.IconButton
-import com.nexapp.nexpass.ui.component.LocalMenuState
-import com.nexapp.nexpass.ui.component.NavigationTitle
-import com.nexapp.nexpass.ui.utils.backToMain
+import com.nexapp.nexmusic.LocalDatabase
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.ThumbnailCornerRadius
+import com.nexapp.nexmusic.db.entities.RecognitionHistory
+import com.nexapp.nexmusic.ui.component.DefaultDialog
+import com.nexapp.nexmusic.ui.component.IconButton
+import com.nexapp.nexmusic.ui.component.LocalMenuState
+import com.nexapp.nexmusic.ui.component.NavigationTitle
+import com.nexapp.nexmusic.ui.utils.backToMain
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.time.LocalDate

@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.cast
+package com.nexapp.nexmusic.cast
 
 /**
  * Stub CastOptionsProvider for F-Droid builds.

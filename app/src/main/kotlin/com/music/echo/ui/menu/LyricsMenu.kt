@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.menu
+package com.nexapp.nexmusic.ui.menu
 
 import android.app.SearchManager
 import android.content.Intent
@@ -56,30 +56,30 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
-import com.nexapp.nexpass.LocalDatabase
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.db.entities.LyricsEntity
-import com.nexapp.nexpass.db.entities.SongEntity
-import com.nexapp.nexpass.models.MediaMetadata
-import com.nexapp.nexpass.ui.component.DefaultDialog
-import com.nexapp.nexpass.ui.component.ListDialog
-import com.nexapp.nexpass.ui.component.Material3MenuGroup
-import com.nexapp.nexpass.ui.component.Material3MenuItemData
-import com.nexapp.nexpass.ui.component.NewAction
-import com.nexapp.nexpass.ui.component.NewActionGrid
-import com.nexapp.nexpass.ui.component.TextFieldDialog
-import com.nexapp.nexpass.viewmodels.LyricsMenuViewModel
-import com.nexapp.nexpass.constants.OpenRouterApiKey
-import com.nexapp.nexpass.constants.DeeplApiKey
-import com.nexapp.nexpass.constants.AiProviderKey
-import com.nexapp.nexpass.constants.TranslateLanguageKey
-import com.nexapp.nexpass.constants.TranslateModeKey
-import com.nexapp.nexpass.constants.AutoTranslateKey
-import com.nexapp.nexpass.constants.OpenRouterBaseUrlKey
-import com.nexapp.nexpass.constants.OpenRouterModelKey
-import com.nexapp.nexpass.constants.DeeplFormalityKey
-import com.nexapp.nexpass.lyrics.LyricsTranslationHelper
-import com.nexapp.nexpass.utils.rememberPreference
+import com.nexapp.nexmusic.LocalDatabase
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.db.entities.LyricsEntity
+import com.nexapp.nexmusic.db.entities.SongEntity
+import com.nexapp.nexmusic.models.MediaMetadata
+import com.nexapp.nexmusic.ui.component.DefaultDialog
+import com.nexapp.nexmusic.ui.component.ListDialog
+import com.nexapp.nexmusic.ui.component.Material3MenuGroup
+import com.nexapp.nexmusic.ui.component.Material3MenuItemData
+import com.nexapp.nexmusic.ui.component.NewAction
+import com.nexapp.nexmusic.ui.component.NewActionGrid
+import com.nexapp.nexmusic.ui.component.TextFieldDialog
+import com.nexapp.nexmusic.viewmodels.LyricsMenuViewModel
+import com.nexapp.nexmusic.constants.OpenRouterApiKey
+import com.nexapp.nexmusic.constants.DeeplApiKey
+import com.nexapp.nexmusic.constants.AiProviderKey
+import com.nexapp.nexmusic.constants.TranslateLanguageKey
+import com.nexapp.nexmusic.constants.TranslateModeKey
+import com.nexapp.nexmusic.constants.AutoTranslateKey
+import com.nexapp.nexmusic.constants.OpenRouterBaseUrlKey
+import com.nexapp.nexmusic.constants.OpenRouterModelKey
+import com.nexapp.nexmusic.constants.DeeplFormalityKey
+import com.nexapp.nexmusic.lyrics.LyricsTranslationHelper
+import com.nexapp.nexmusic.utils.rememberPreference
 import androidx.compose.runtime.collectAsState
 
 @OptIn(ExperimentalMaterial3Api::class)

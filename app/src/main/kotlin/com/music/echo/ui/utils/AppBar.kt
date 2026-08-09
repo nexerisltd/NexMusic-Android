@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.utils
+package com.nexapp.nexmusic.ui.utils
 
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.animation.core.DecayAnimationSpec

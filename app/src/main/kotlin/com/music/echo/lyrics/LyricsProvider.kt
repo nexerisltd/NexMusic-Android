@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.lyrics
+package com.nexapp.nexmusic.lyrics
 
 import android.content.Context
 

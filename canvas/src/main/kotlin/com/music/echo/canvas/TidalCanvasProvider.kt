@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.canvas
+package com.nexapp.nexmusic.canvas
 
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body

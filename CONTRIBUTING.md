@@ -95,8 +95,8 @@ If you want to test Firebase features:
 
 1. Create a Firebase project
 2. Add Android apps with package names:
-   - `com.nexapp.nexpass` (release)
-   - `com.nexapp.nexpass.debug` (debug)
+   - `com.nexapp.nexmusic` (release)
+   - `com.nexapp.nexmusic.debug` (debug)
 3. Copy the template and configure it with your Firebase credentials:
    ```bash
    cp app/google-services.json.template app/google-services.json
@@ -341,7 +341,7 @@ app/src/main/java/com/maxrave/echo/
 ./gradlew test
 
 # Run specific test class
-./gradlew test --tests "com.nexapp.nexpass.MusicPlayerTest"
+./gradlew test --tests "com.nexapp.nexmusic.MusicPlayerTest"
 
 # Run tests with coverage
 ./gradlew testDebugUnitTestCoverage

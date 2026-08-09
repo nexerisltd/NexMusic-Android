@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.player
+package com.nexapp.nexmusic.ui.player
 
 import android.content.res.Configuration
 import android.os.Build
@@ -101,40 +101,40 @@ import coil3.imageLoader
 import coil3.request.ImageRequest
 import coil3.request.allowHardware
 import coil3.toBitmap
-import com.nexapp.nexpass.LocalDatabase
-import com.nexapp.nexpass.LocalListenTogetherManager
-import com.nexapp.nexpass.LocalPlayerConnection
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.CropAlbumArtKey
-import com.nexapp.nexpass.constants.DarkModeKey
-import com.nexapp.nexpass.constants.MiniPlayerBackgroundStyleKey
-import com.nexapp.nexpass.constants.MiniPlayerHeight
-import com.nexapp.nexpass.constants.PlayerBackgroundStyle
-import com.nexapp.nexpass.constants.UseFloatingNavBarKey
-import com.nexapp.nexpass.constants.PureBlackMiniPlayerKey
-import com.nexapp.nexpass.constants.SwipeSensitivityKey
-import com.nexapp.nexpass.constants.SwipeThumbnailKey
-import com.nexapp.nexpass.constants.ThumbnailCornerRadius
-import com.nexapp.nexpass.constants.UseNewMiniPlayerDesignKey
-import com.nexapp.nexpass.db.entities.ArtistEntity
-import com.nexapp.nexpass.listentogether.ListenTogetherManager
-import com.nexapp.nexpass.models.MediaMetadata
-import com.nexapp.nexpass.playback.CastConnectionHandler
-import com.nexapp.nexpass.playback.PlayerConnection
-import com.nexapp.nexpass.ui.screens.settings.DarkMode
-import com.nexapp.nexpass.ui.component.GlassComponent
-import com.nexapp.nexpass.ui.component.LocalGlassEffectConfig
-import com.nexapp.nexpass.ui.component.isGlassSupported
-import com.nexapp.nexpass.ui.component.liquidGlass
-import com.nexapp.nexpass.ui.theme.PlayerColorExtractor
-import com.nexapp.nexpass.utils.rememberEnumPreference
-import com.nexapp.nexpass.utils.rememberPreference
-import com.nexapp.nexpass.echomusic.AudioDeviceBottomSheet
+import com.nexapp.nexmusic.LocalDatabase
+import com.nexapp.nexmusic.LocalListenTogetherManager
+import com.nexapp.nexmusic.LocalPlayerConnection
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.CropAlbumArtKey
+import com.nexapp.nexmusic.constants.DarkModeKey
+import com.nexapp.nexmusic.constants.MiniPlayerBackgroundStyleKey
+import com.nexapp.nexmusic.constants.MiniPlayerHeight
+import com.nexapp.nexmusic.constants.PlayerBackgroundStyle
+import com.nexapp.nexmusic.constants.UseFloatingNavBarKey
+import com.nexapp.nexmusic.constants.PureBlackMiniPlayerKey
+import com.nexapp.nexmusic.constants.SwipeSensitivityKey
+import com.nexapp.nexmusic.constants.SwipeThumbnailKey
+import com.nexapp.nexmusic.constants.ThumbnailCornerRadius
+import com.nexapp.nexmusic.constants.UseNewMiniPlayerDesignKey
+import com.nexapp.nexmusic.db.entities.ArtistEntity
+import com.nexapp.nexmusic.listentogether.ListenTogetherManager
+import com.nexapp.nexmusic.models.MediaMetadata
+import com.nexapp.nexmusic.playback.CastConnectionHandler
+import com.nexapp.nexmusic.playback.PlayerConnection
+import com.nexapp.nexmusic.ui.screens.settings.DarkMode
+import com.nexapp.nexmusic.ui.component.GlassComponent
+import com.nexapp.nexmusic.ui.component.LocalGlassEffectConfig
+import com.nexapp.nexmusic.ui.component.isGlassSupported
+import com.nexapp.nexmusic.ui.component.liquidGlass
+import com.nexapp.nexmusic.ui.theme.PlayerColorExtractor
+import com.nexapp.nexmusic.utils.rememberEnumPreference
+import com.nexapp.nexmusic.utils.rememberPreference
+import com.nexapp.nexmusic.echomusic.AudioDeviceBottomSheet
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlin.math.roundToInt
-import com.nexapp.nexpass.echomusic.isBluetoothHeadphoneConnected
+import com.nexapp.nexmusic.echomusic.isBluetoothHeadphoneConnected
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Headphones
 import androidx.compose.material.icons.filled.Speaker
@@ -147,7 +147,7 @@ import androidx.compose.ui.res.stringResource
 import kotlinx.coroutines.launch
 import kotlin.math.absoluteValue
 import kotlin.math.roundToInt
-import com.nexapp.nexpass.ui.component.Icon as MIcon
+import com.nexapp.nexmusic.ui.component.Icon as MIcon
 
 import androidx.compose.ui.graphics.Outline
 import androidx.compose.ui.graphics.Path

@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.playback
+package com.nexapp.nexmusic.playback
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableLongStateOf

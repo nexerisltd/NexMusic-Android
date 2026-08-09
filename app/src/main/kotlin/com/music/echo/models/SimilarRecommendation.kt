@@ -1,9 +1,9 @@
 
 
-package com.nexapp.nexpass.models
+package com.nexapp.nexmusic.models
 
 import com.music.innertube.models.YTItem
-import com.nexapp.nexpass.db.entities.LocalItem
+import com.nexapp.nexmusic.db.entities.LocalItem
 
 data class SimilarRecommendation(
     val title: LocalItem,

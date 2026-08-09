@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.component
+package com.nexapp.nexmusic.ui.component
 
 import android.annotation.SuppressLint
 import androidx.compose.animation.animateContentSize
@@ -55,8 +55,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.ui.screens.OptionStats
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.ui.screens.OptionStats
 
 @Composable
 fun <E> ChipsRow(

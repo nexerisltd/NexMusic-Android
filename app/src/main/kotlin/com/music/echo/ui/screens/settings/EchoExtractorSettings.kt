@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.ui.screens.settings
+package com.nexapp.nexmusic.ui.screens.settings
 
 import android.widget.Toast
 import androidx.compose.animation.animateColorAsState
@@ -46,18 +46,18 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.CipherLastUpdatedKey
-import com.nexapp.nexpass.constants.CipherManualUpdate1Key
-import com.nexapp.nexpass.constants.CipherManualUpdate2Key
-import com.nexapp.nexpass.constants.CipherManualUpdate3Key
-import com.nexapp.nexpass.ui.component.IconButton
-import com.nexapp.nexpass.ui.component.Material3SettingsGroup
-import com.nexapp.nexpass.ui.component.Material3SettingsItem
-import com.nexapp.nexpass.ui.utils.backToMain
-import com.nexapp.nexpass.utils.cipher.PlayerConfigStore
-import com.nexapp.nexpass.utils.rememberPreference
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.CipherLastUpdatedKey
+import com.nexapp.nexmusic.constants.CipherManualUpdate1Key
+import com.nexapp.nexmusic.constants.CipherManualUpdate2Key
+import com.nexapp.nexmusic.constants.CipherManualUpdate3Key
+import com.nexapp.nexmusic.ui.component.IconButton
+import com.nexapp.nexmusic.ui.component.Material3SettingsGroup
+import com.nexapp.nexmusic.ui.component.Material3SettingsItem
+import com.nexapp.nexmusic.ui.utils.backToMain
+import com.nexapp.nexmusic.utils.cipher.PlayerConfigStore
+import com.nexapp.nexmusic.utils.rememberPreference
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

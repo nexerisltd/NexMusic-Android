@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.menu
+package com.nexapp.nexmusic.ui.menu
 
 import android.content.Intent
 import android.content.res.Configuration
@@ -26,20 +26,20 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.nexapp.nexpass.LocalDatabase
-import com.nexapp.nexpass.LocalListenTogetherManager
-import com.nexapp.nexpass.LocalPlayerConnection
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.ArtistSongSortType
-import com.nexapp.nexpass.db.entities.SpeedDialItem
-import com.nexapp.nexpass.db.entities.Artist
-import com.nexapp.nexpass.extensions.toMediaItem
-import com.nexapp.nexpass.playback.queues.ListQueue
-import com.nexapp.nexpass.ui.component.ArtistListItem
-import com.nexapp.nexpass.ui.component.Material3MenuGroup
-import com.nexapp.nexpass.ui.component.Material3MenuItemData
-import com.nexapp.nexpass.ui.component.NewAction
-import com.nexapp.nexpass.ui.component.NewActionGrid
+import com.nexapp.nexmusic.LocalDatabase
+import com.nexapp.nexmusic.LocalListenTogetherManager
+import com.nexapp.nexmusic.LocalPlayerConnection
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.ArtistSongSortType
+import com.nexapp.nexmusic.db.entities.SpeedDialItem
+import com.nexapp.nexmusic.db.entities.Artist
+import com.nexapp.nexmusic.extensions.toMediaItem
+import com.nexapp.nexmusic.playback.queues.ListQueue
+import com.nexapp.nexmusic.ui.component.ArtistListItem
+import com.nexapp.nexmusic.ui.component.Material3MenuGroup
+import com.nexapp.nexmusic.ui.component.Material3MenuItemData
+import com.nexapp.nexmusic.ui.component.NewAction
+import com.nexapp.nexmusic.ui.component.NewActionGrid
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first

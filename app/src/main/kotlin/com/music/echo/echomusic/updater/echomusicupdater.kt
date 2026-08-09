@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.echomusic.updater
+package com.nexapp.nexmusic.echomusic.updater
 
 
 import android.content.Context
@@ -59,13 +59,13 @@ import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkInfo
 import androidx.work.WorkManager
 import androidx.work.workDataOf
-import com.nexapp.nexpass.BuildConfig
-import com.nexapp.nexpass.R
+import com.nexapp.nexmusic.BuildConfig
+import com.nexapp.nexmusic.R
 import coil3.compose.AsyncImage
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import com.nexapp.nexpass.echomusic.updater.downloadmanager.UpdateDownloadWorker
-import com.nexapp.nexpass.echomusic.updater.downloadmanager.DownloadNotificationManager
+import com.nexapp.nexmusic.echomusic.updater.downloadmanager.UpdateDownloadWorker
+import com.nexapp.nexmusic.echomusic.updater.downloadmanager.DownloadNotificationManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -77,17 +77,17 @@ import java.net.URL
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.regex.Pattern
-import com.nexapp.nexpass.ui.component.ChangelogItem
-import com.nexapp.nexpass.ui.component.leadingItemShape
-import com.nexapp.nexpass.ui.component.middleItemShape
-import com.nexapp.nexpass.ui.component.endItemShape
-import com.nexapp.nexpass.ui.component.detachedItemShape
-import com.nexapp.nexpass.ui.component.parseMarkdown
-import com.nexapp.nexpass.ui.component.endItemShape
-import com.nexapp.nexpass.ui.component.detachedItemShape
-import com.nexapp.nexpass.ui.component.AnimatedActionButton
-import com.nexapp.nexpass.ui.component.ExpressiveIconButton
-import com.nexapp.nexpass.ui.component.ErrorSnackbar
+import com.nexapp.nexmusic.ui.component.ChangelogItem
+import com.nexapp.nexmusic.ui.component.leadingItemShape
+import com.nexapp.nexmusic.ui.component.middleItemShape
+import com.nexapp.nexmusic.ui.component.endItemShape
+import com.nexapp.nexmusic.ui.component.detachedItemShape
+import com.nexapp.nexmusic.ui.component.parseMarkdown
+import com.nexapp.nexmusic.ui.component.endItemShape
+import com.nexapp.nexmusic.ui.component.detachedItemShape
+import com.nexapp.nexmusic.ui.component.AnimatedActionButton
+import com.nexapp.nexmusic.ui.component.ExpressiveIconButton
+import com.nexapp.nexmusic.ui.component.ErrorSnackbar
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString

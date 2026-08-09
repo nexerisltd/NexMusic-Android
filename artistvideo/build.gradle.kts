@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.nexapp.nexpass.artistvideo"
+    namespace = "com.nexapp.nexmusic.artistvideo"
     compileSdk = 36
 
     defaultConfig {

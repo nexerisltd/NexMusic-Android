@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.recognition
+package com.nexapp.nexmusic.recognition
 
 import android.Manifest
 import android.annotation.SuppressLint

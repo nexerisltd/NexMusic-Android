@@ -1,9 +1,9 @@
 
 
-package com.nexapp.nexpass.di
+package com.nexapp.nexmusic.di
 
 import android.content.Context
-import com.nexapp.nexpass.utils.NetworkConnectivityObserver
+import com.nexapp.nexmusic.utils.NetworkConnectivityObserver
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

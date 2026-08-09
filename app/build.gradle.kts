@@ -24,13 +24,13 @@ if (hasGoogleServicesConfig) {
 }
 
 android {
-    namespace = "com.nexapp.nexpass"
+    namespace = "com.nexapp.nexmusic"
     compileSdk = 36
     ndkVersion = "27.0.12077973"
 
 
     defaultConfig {
-        applicationId = "com.nexapp.nexpass"
+        applicationId = "com.nexapp.nexmusic"
         minSdk = 26
         targetSdk = 36
         versionCode = 529

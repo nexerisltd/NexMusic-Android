@@ -322,9 +322,9 @@
             android:label="@string/widget_music_player">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="com.nexapp.nexpass.widget.PLAY_PAUSE" />
-                <action android:name="com.nexapp.nexpass.widget.LIKE" />
-                <action android:name="com.nexapp.nexpass.widget.UPDATE_WIDGET" />
+                <action android:name="com.nexapp.nexmusic.widget.PLAY_PAUSE" />
+                <action android:name="com.nexapp.nexmusic.widget.LIKE" />
+                <action android:name="com.nexapp.nexmusic.widget.UPDATE_WIDGET" />
             </intent-filter>
 
             <meta-data
@@ -339,9 +339,9 @@
             android:label="@string/widget_turntable">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="com.nexapp.nexpass.widget.TURNTABLE_PLAY_PAUSE" />
-                <action android:name="com.nexapp.nexpass.widget.TURNTABLE_LIKE" />
-                <action android:name="com.nexapp.nexpass.widget.UPDATE_TURNTABLE_WIDGET" />
+                <action android:name="com.nexapp.nexmusic.widget.TURNTABLE_PLAY_PAUSE" />
+                <action android:name="com.nexapp.nexmusic.widget.TURNTABLE_LIKE" />
+                <action android:name="com.nexapp.nexmusic.widget.UPDATE_TURNTABLE_WIDGET" />
             </intent-filter>
 
             <meta-data
@@ -352,7 +352,7 @@
         <!-- Google Cast Options Provider -->
         <meta-data
             android:name="com.google.android.gms.cast.framework.OPTIONS_PROVIDER_CLASS_NAME"
-            android:value="com.nexapp.nexpass.cast.CastOptionsProvider" />
+            android:value="com.nexapp.nexmusic.cast.CastOptionsProvider" />
         <!-- Music Widget -->
         <receiver
             android:name=".widget.MusicWidgetReceiver"
@@ -360,9 +360,9 @@
             android:label="@string/widget_music_player">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="com.nexapp.nexpass.widget.PLAY_PAUSE" />
-                <action android:name="com.nexapp.nexpass.widget.LIKE" />
-                <action android:name="com.nexapp.nexpass.widget.UPDATE_WIDGET" />
+                <action android:name="com.nexapp.nexmusic.widget.PLAY_PAUSE" />
+                <action android:name="com.nexapp.nexmusic.widget.LIKE" />
+                <action android:name="com.nexapp.nexmusic.widget.UPDATE_WIDGET" />
             </intent-filter>
             <meta-data
                 android:name="android.appwidget.provider"
@@ -389,9 +389,9 @@
             android:label="@string/widget_turntable">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="com.nexapp.nexpass.widget.TURNTABLE_PLAY_PAUSE" />
-                <action android:name="com.nexapp.nexpass.widget.TURNTABLE_LIKE" />
-                <action android:name="com.nexapp.nexpass.widget.UPDATE_TURNTABLE_WIDGET" />
+                <action android:name="com.nexapp.nexmusic.widget.TURNTABLE_PLAY_PAUSE" />
+                <action android:name="com.nexapp.nexmusic.widget.TURNTABLE_LIKE" />
+                <action android:name="com.nexapp.nexmusic.widget.UPDATE_TURNTABLE_WIDGET" />
             </intent-filter>
             <meta-data
                 android:name="android.appwidget.provider"
@@ -426,9 +426,9 @@
             android:label="@string/widget_recognizer_name">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="com.nexapp.nexpass.widget.recognizer.TAP_MIC" />
-                <action android:name="com.nexapp.nexpass.widget.recognizer.UPDATE" />
-                <action android:name="com.nexapp.nexpass.widget.recognizer.RESET" />
+                <action android:name="com.nexapp.nexmusic.widget.recognizer.TAP_MIC" />
+                <action android:name="com.nexapp.nexmusic.widget.recognizer.UPDATE" />
+                <action android:name="com.nexapp.nexmusic.widget.recognizer.RESET" />
             </intent-filter>
 
             <meta-data

@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.utils
+package com.nexapp.nexmusic.utils
 
 import android.content.Context
 import androidx.datastore.preferences.core.edit
@@ -11,19 +11,19 @@ import com.music.innertube.models.PlaylistItem
 import com.music.innertube.models.SongItem
 import com.music.innertube.utils.completed
 import com.music.innertube.utils.parseCookieString
-import com.nexapp.nexpass.constants.InnerTubeCookieKey
-import com.nexapp.nexpass.constants.LastFMUseSendLikes
-import com.nexapp.nexpass.constants.LastFullSyncKey
-import com.nexapp.nexpass.constants.SYNC_COOLDOWN
-import com.nexapp.nexpass.db.MusicDatabase
-import com.nexapp.nexpass.db.entities.ArtistEntity
-import com.nexapp.nexpass.db.entities.PlaylistEntity
-import com.nexapp.nexpass.db.entities.PlaylistSongMap
-import com.nexapp.nexpass.db.entities.SongEntity
-import com.nexapp.nexpass.extensions.collectLatest
-import com.nexapp.nexpass.extensions.isInternetConnected
-import com.nexapp.nexpass.extensions.isSyncEnabled
-import com.nexapp.nexpass.models.toMediaMetadata
+import com.nexapp.nexmusic.constants.InnerTubeCookieKey
+import com.nexapp.nexmusic.constants.LastFMUseSendLikes
+import com.nexapp.nexmusic.constants.LastFullSyncKey
+import com.nexapp.nexmusic.constants.SYNC_COOLDOWN
+import com.nexapp.nexmusic.db.MusicDatabase
+import com.nexapp.nexmusic.db.entities.ArtistEntity
+import com.nexapp.nexmusic.db.entities.PlaylistEntity
+import com.nexapp.nexmusic.db.entities.PlaylistSongMap
+import com.nexapp.nexmusic.db.entities.SongEntity
+import com.nexapp.nexmusic.extensions.collectLatest
+import com.nexapp.nexmusic.extensions.isInternetConnected
+import com.nexapp.nexmusic.extensions.isSyncEnabled
+import com.nexapp.nexmusic.models.toMediaMetadata
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineExceptionHandler

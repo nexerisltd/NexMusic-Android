@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.extensions
+package com.nexapp.nexmusic.extensions
 
 import java.io.File
 import java.io.InputStream

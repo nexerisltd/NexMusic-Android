@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.player
+package com.nexapp.nexmusic.ui.player
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.gestures.Orientation

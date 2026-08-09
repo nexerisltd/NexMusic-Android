@@ -7,7 +7,7 @@
  * scale for cheaper effect rendering. KMP expect/actual declarations were
  * merged into this single Android source set. Package renamed accordingly.
  */
-package com.nexapp.nexpass.ui.component.backdrop
+package com.nexapp.nexmusic.ui.component.backdrop
 
 import android.os.Build
 import androidx.annotation.ChecksSdkIntAtLeast

@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.betterlyrics
+package com.nexapp.nexmusic.betterlyrics
 
 import org.w3c.dom.Element
 import org.w3c.dom.Node

@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.screens.settings
+package com.nexapp.nexmusic.ui.screens.settings
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -36,14 +36,14 @@ import androidx.navigation.NavController
 import coil3.compose.AsyncImage
 import com.music.innertube.YouTube
 import com.music.innertube.utils.parseCookieString
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
-import com.nexapp.nexpass.constants.*
-import com.nexapp.nexpass.ui.component.*
-import com.nexapp.nexpass.ui.utils.backToMain
-import com.nexapp.nexpass.utils.rememberPreference
-import com.nexapp.nexpass.viewmodels.AccountSettingsViewModel
-import com.nexapp.nexpass.viewmodels.HomeViewModel
-import com.nexapp.nexpass.R
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.constants.*
+import com.nexapp.nexmusic.ui.component.*
+import com.nexapp.nexmusic.ui.utils.backToMain
+import com.nexapp.nexmusic.utils.rememberPreference
+import com.nexapp.nexmusic.viewmodels.AccountSettingsViewModel
+import com.nexapp.nexmusic.viewmodels.HomeViewModel
+import com.nexapp.nexmusic.R
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun AccountSettingsScreen(

@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.echomusic.updater.downloadmanager
+package com.nexapp.nexmusic.echomusic.updater.downloadmanager
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -10,7 +10,7 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.core.graphics.toColorInt
-import com.nexapp.nexpass.R
+import com.nexapp.nexmusic.R
 
 object DownloadNotificationManager {
     private lateinit var notificationManager: NotificationManager

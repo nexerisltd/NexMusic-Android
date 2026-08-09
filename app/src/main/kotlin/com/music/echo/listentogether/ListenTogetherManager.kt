@@ -1,24 +1,24 @@
 
 
-package com.nexapp.nexpass.listentogether
+package com.nexapp.nexmusic.listentogether
 
 import android.content.Context
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
 import com.music.innertube.YouTube
 import com.music.innertube.models.WatchEndpoint
-import com.nexapp.nexpass.constants.ListenTogetherSmartResyncKey
-import com.nexapp.nexpass.constants.ListenTogetherSyncVolumeKey
-import com.nexapp.nexpass.extensions.currentMetadata
-import com.nexapp.nexpass.extensions.metadata
-import com.nexapp.nexpass.extensions.toMediaItem
-import com.nexapp.nexpass.models.MediaMetadata
-import com.nexapp.nexpass.models.MediaMetadata.Album
-import com.nexapp.nexpass.models.MediaMetadata.Artist
-import com.nexapp.nexpass.models.toMediaMetadata
-import com.nexapp.nexpass.playback.PlayerConnection
-import com.nexapp.nexpass.playback.queues.YouTubeQueue
-import com.nexapp.nexpass.utils.dataStore
+import com.nexapp.nexmusic.constants.ListenTogetherSmartResyncKey
+import com.nexapp.nexmusic.constants.ListenTogetherSyncVolumeKey
+import com.nexapp.nexmusic.extensions.currentMetadata
+import com.nexapp.nexmusic.extensions.metadata
+import com.nexapp.nexmusic.extensions.toMediaItem
+import com.nexapp.nexmusic.models.MediaMetadata
+import com.nexapp.nexmusic.models.MediaMetadata.Album
+import com.nexapp.nexmusic.models.MediaMetadata.Artist
+import com.nexapp.nexmusic.models.toMediaMetadata
+import com.nexapp.nexmusic.playback.PlayerConnection
+import com.nexapp.nexmusic.playback.queues.YouTubeQueue
+import com.nexapp.nexmusic.utils.dataStore
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

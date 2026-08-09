@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.menu
+package com.nexapp.nexmusic.ui.menu
 
 import android.content.Context
 import android.content.res.Configuration
@@ -72,28 +72,28 @@ import androidx.media3.exoplayer.offline.DownloadRequest
 import androidx.media3.exoplayer.offline.DownloadService
 import androidx.navigation.NavController
 import com.music.innertube.YouTube
-import com.nexapp.nexpass.LocalDatabase
-import com.nexapp.nexpass.LocalDownloadUtil
-import com.nexapp.nexpass.LocalListenTogetherManager
-import com.nexapp.nexpass.LocalPlayerConnection
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.EnableExportAsMp3Key
-import com.nexapp.nexpass.constants.ExportDirectoryUriKey
-import com.nexapp.nexpass.constants.ExportedSongIdsKey
-import com.nexapp.nexpass.constants.ExportingSongIdsKey
-import com.nexapp.nexpass.constants.ListItemHeight
-import com.nexapp.nexpass.listentogether.ConnectionState
-import com.nexapp.nexpass.listentogether.ListenTogetherEvent
-import com.nexapp.nexpass.models.MediaMetadata
-import com.nexapp.nexpass.playback.ExoDownloadService
-import com.nexapp.nexpass.ui.component.BottomSheetState
-import com.nexapp.nexpass.ui.component.ListDialog
-import com.nexapp.nexpass.ui.component.Material3MenuGroup
-import com.nexapp.nexpass.ui.component.Material3MenuItemData
-import com.nexapp.nexpass.ui.component.NewAction
-import com.nexapp.nexpass.ui.component.NewActionGrid
-import com.nexapp.nexpass.ui.component.VolumeSlider
-import com.nexapp.nexpass.utils.rememberPreference
+import com.nexapp.nexmusic.LocalDatabase
+import com.nexapp.nexmusic.LocalDownloadUtil
+import com.nexapp.nexmusic.LocalListenTogetherManager
+import com.nexapp.nexmusic.LocalPlayerConnection
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.EnableExportAsMp3Key
+import com.nexapp.nexmusic.constants.ExportDirectoryUriKey
+import com.nexapp.nexmusic.constants.ExportedSongIdsKey
+import com.nexapp.nexmusic.constants.ExportingSongIdsKey
+import com.nexapp.nexmusic.constants.ListItemHeight
+import com.nexapp.nexmusic.listentogether.ConnectionState
+import com.nexapp.nexmusic.listentogether.ListenTogetherEvent
+import com.nexapp.nexmusic.models.MediaMetadata
+import com.nexapp.nexmusic.playback.ExoDownloadService
+import com.nexapp.nexmusic.ui.component.BottomSheetState
+import com.nexapp.nexmusic.ui.component.ListDialog
+import com.nexapp.nexmusic.ui.component.Material3MenuGroup
+import com.nexapp.nexmusic.ui.component.Material3MenuItemData
+import com.nexapp.nexmusic.ui.component.NewAction
+import com.nexapp.nexmusic.ui.component.NewActionGrid
+import com.nexapp.nexmusic.ui.component.VolumeSlider
+import com.nexapp.nexmusic.utils.rememberPreference
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlin.math.log2
@@ -180,7 +180,7 @@ fun PlayerMenu(
     }
 
     val listenTogetherManager = LocalListenTogetherManager.current
-    val ringtoneViewModel = com.nexapp.nexpass.LocalRingtoneViewModel.current
+    val ringtoneViewModel = com.nexapp.nexmusic.LocalRingtoneViewModel.current
     val isListenTogetherGuest by listenTogetherManager?.guestPlaybackRestricted?.collectAsState(initial = false) ?: remember { mutableStateOf(false) }
     val pendingSuggestions by listenTogetherManager?.pendingSuggestions?.collectAsState(initial = emptyList()) ?: remember { mutableStateOf(emptyList()) }
 
@@ -448,7 +448,7 @@ fun PlayerMenu(
                     add(
                         Material3MenuItemData(
                             customComposable = {
-                                com.nexapp.nexpass.ui.component.CastButton(asMenuItem = true)
+                                com.nexapp.nexmusic.ui.component.CastButton(asMenuItem = true)
                             }
                         )
                     )
@@ -600,7 +600,7 @@ fun PlayerMenu(
                                         onDismiss()
                                     } else {
                                         onDismiss()
-                                        com.nexapp.nexpass.playback.AudioExportService.start(
+                                        com.nexapp.nexmusic.playback.AudioExportService.start(
                                             context = context,
                                             songId = mediaMetadata.id,
                                             songTitle = mediaMetadata.title,
@@ -786,7 +786,7 @@ fun TempoPitchDialog(onDismiss: () -> Unit) {
         playerConnection.player.playbackParameters =
             PlaybackParameters(tempo, 2f.pow(transposeValue.toFloat() / 12))
     }
-    val listenTogetherManager = com.nexapp.nexpass.LocalListenTogetherManager.current
+    val listenTogetherManager = com.nexapp.nexmusic.LocalListenTogetherManager.current
     val isInRoom = listenTogetherManager?.isInRoom ?: false
 
     AlertDialog(
@@ -905,7 +905,7 @@ fun ListenTogetherDialog(
     if (!visible) return
     
     val context = LocalContext.current
-    val listenTogetherManager = com.nexapp.nexpass.LocalListenTogetherManager.current
+    val listenTogetherManager = com.nexapp.nexmusic.LocalListenTogetherManager.current
     
     
     if (listenTogetherManager == null) {
@@ -959,7 +959,7 @@ fun ListenTogetherDialog(
     val pendingSuggestions by listenTogetherManager.pendingSuggestions.collectAsState()
     
     
-    var savedUsername by rememberPreference(com.nexapp.nexpass.constants.ListenTogetherUsernameKey, "")
+    var savedUsername by rememberPreference(com.nexapp.nexmusic.constants.ListenTogetherUsernameKey, "")
     var roomCodeInput by rememberSaveable { mutableStateOf("") }
     var usernameInput by rememberSaveable { mutableStateOf(savedUsername) }
 

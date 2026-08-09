@@ -1,8 +1,8 @@
-package com.nexapp.nexpass.utils
+package com.nexapp.nexmusic.utils
 
-import com.nexapp.nexpass.models.MediaMetadata
+import com.nexapp.nexmusic.models.MediaMetadata
 import com.music.echo.utils.lastfm.LastFM
-import com.nexapp.nexpass.utils.isLocalMediaId
+import com.nexapp.nexmusic.utils.isLocalMediaId
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay

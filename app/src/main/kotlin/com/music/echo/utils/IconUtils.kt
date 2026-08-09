@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.utils
+package com.nexapp.nexmusic.utils
 
 import android.content.ComponentName
 import android.content.Context
@@ -9,9 +9,9 @@ import android.content.pm.PackageManager
 object IconUtils {
     fun setIcon(context: Context, isDynamic: Boolean, isLegacy: Boolean) {
         val pm = context.packageManager
-        val dynamic = ComponentName(context, "com.nexapp.nexpass.MainActivityAlias")
-        val static = ComponentName(context, "com.nexapp.nexpass.MainActivityStatic")
-        val legacy = ComponentName(context, "com.nexapp.nexpass.MainActivityLegacy")
+        val dynamic = ComponentName(context, "com.nexapp.nexmusic.MainActivityAlias")
+        val static = ComponentName(context, "com.nexapp.nexmusic.MainActivityStatic")
+        val legacy = ComponentName(context, "com.nexapp.nexmusic.MainActivityLegacy")
 
         pm.setComponentEnabledSetting(
             dynamic,

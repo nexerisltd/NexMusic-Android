@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.screens
+package com.nexapp.nexmusic.ui.screens
 
 import android.content.res.Configuration.ORIENTATION_LANDSCAPE
 import androidx.compose.foundation.background
@@ -33,14 +33,14 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.ui.component.IconButton
-import com.nexapp.nexpass.ui.component.NavigationTitle
-import com.nexapp.nexpass.ui.component.shimmer.ListItemPlaceHolder
-import com.nexapp.nexpass.ui.component.shimmer.ShimmerHost
-import com.nexapp.nexpass.ui.utils.backToMain
-import com.nexapp.nexpass.viewmodels.MoodAndGenresViewModel
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.ui.component.IconButton
+import com.nexapp.nexmusic.ui.component.NavigationTitle
+import com.nexapp.nexmusic.ui.component.shimmer.ListItemPlaceHolder
+import com.nexapp.nexmusic.ui.component.shimmer.ShimmerHost
+import com.nexapp.nexmusic.ui.utils.backToMain
+import com.nexapp.nexmusic.viewmodels.MoodAndGenresViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

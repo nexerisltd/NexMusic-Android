@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.artistvideo
+package com.nexapp.nexmusic.artistvideo
 
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body

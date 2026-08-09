@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.player
+package com.nexapp.nexmusic.ui.player
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.LinearEasing
@@ -79,33 +79,33 @@ import coil3.SingletonImageLoader
 import coil3.compose.AsyncImage
 import coil3.request.CachePolicy
 import coil3.request.ImageRequest
-import com.nexapp.nexpass.LocalListenTogetherManager
-import com.nexapp.nexpass.LocalPlayerConnection
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.CropAlbumArtKey
-import com.nexapp.nexpass.constants.HidePlayerThumbnailKey
-import com.nexapp.nexpass.constants.PlayerBackgroundStyle
-import com.nexapp.nexpass.constants.PlayerBackgroundStyleKey
-import com.nexapp.nexpass.constants.PlayerHorizontalPadding
-import com.nexapp.nexpass.constants.RotatingThumbnailKey
-import com.nexapp.nexpass.constants.SeekExtraSeconds
-import com.nexapp.nexpass.constants.SwipeThumbnailKey
-import com.nexapp.nexpass.constants.ThumbnailCornerRadiusKey
-import com.nexapp.nexpass.constants.ThumbnailCornerRadius
-import com.nexapp.nexpass.listentogether.RoomRole
-import com.nexapp.nexpass.ui.component.CastButton
-import com.nexapp.nexpass.utils.rememberEnumPreference
-import com.nexapp.nexpass.constants.CanvasThumbnailAnimationKey
-import com.nexapp.nexpass.canvas.TidalCanvasProvider
-import com.nexapp.nexpass.canvas.CanvasArtwork
-import com.nexapp.nexpass.extensions.metadata
-import com.nexapp.nexpass.ui.utils.resize
-import com.nexapp.nexpass.utils.rememberPreference
+import com.nexapp.nexmusic.LocalListenTogetherManager
+import com.nexapp.nexmusic.LocalPlayerConnection
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.CropAlbumArtKey
+import com.nexapp.nexmusic.constants.HidePlayerThumbnailKey
+import com.nexapp.nexmusic.constants.PlayerBackgroundStyle
+import com.nexapp.nexmusic.constants.PlayerBackgroundStyleKey
+import com.nexapp.nexmusic.constants.PlayerHorizontalPadding
+import com.nexapp.nexmusic.constants.RotatingThumbnailKey
+import com.nexapp.nexmusic.constants.SeekExtraSeconds
+import com.nexapp.nexmusic.constants.SwipeThumbnailKey
+import com.nexapp.nexmusic.constants.ThumbnailCornerRadiusKey
+import com.nexapp.nexmusic.constants.ThumbnailCornerRadius
+import com.nexapp.nexmusic.listentogether.RoomRole
+import com.nexapp.nexmusic.ui.component.CastButton
+import com.nexapp.nexmusic.utils.rememberEnumPreference
+import com.nexapp.nexmusic.constants.CanvasThumbnailAnimationKey
+import com.nexapp.nexmusic.canvas.TidalCanvasProvider
+import com.nexapp.nexmusic.canvas.CanvasArtwork
+import com.nexapp.nexmusic.extensions.metadata
+import com.nexapp.nexmusic.ui.utils.resize
+import com.nexapp.nexmusic.utils.rememberPreference
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.delay
-import com.nexapp.nexpass.applecanvas.AppleMusicCanvasProvider
-import com.nexapp.nexpass.echomusiccanvas.echomusicCanvasProvider
+import com.nexapp.nexmusic.applecanvas.AppleMusicCanvasProvider
+import com.nexapp.nexmusic.echomusiccanvas.echomusicCanvasProvider
 import java.util.Locale
 
 
@@ -573,7 +573,7 @@ private fun ThumbnailItem(
     textBackgroundColor: Color,
     layoutDirection: LayoutDirection,
     onSeek: (String, Boolean) -> Unit,
-    playerConnection: com.nexapp.nexpass.playback.PlayerConnection,
+    playerConnection: com.nexapp.nexmusic.playback.PlayerConnection,
     context: android.content.Context,
     lazyGridState: androidx.compose.foundation.lazy.grid.LazyGridState,
     isLandscape: Boolean = false,

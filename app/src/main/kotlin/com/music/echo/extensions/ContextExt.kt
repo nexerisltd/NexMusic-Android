@@ -1,15 +1,15 @@
 
 
-package com.nexapp.nexpass.extensions
+package com.nexapp.nexmusic.extensions
 
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import com.music.innertube.utils.parseCookieString
-import com.nexapp.nexpass.constants.InnerTubeCookieKey
-import com.nexapp.nexpass.constants.YtmSyncKey
-import com.nexapp.nexpass.utils.dataStore
-import com.nexapp.nexpass.utils.get
+import com.nexapp.nexmusic.constants.InnerTubeCookieKey
+import com.nexapp.nexmusic.constants.YtmSyncKey
+import com.nexapp.nexmusic.utils.dataStore
+import com.nexapp.nexmusic.utils.get
 import kotlinx.coroutines.runBlocking
 
 fun Context.isSyncEnabled(): Boolean {

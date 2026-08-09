@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.component
+package com.nexapp.nexmusic.ui.component
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
@@ -35,7 +35,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 
 
-import com.nexapp.nexpass.ui.utils.scrollToOnHighlight
+import com.nexapp.nexmusic.ui.utils.scrollToOnHighlight
 import androidx.compose.foundation.ScrollState
 
 @Composable

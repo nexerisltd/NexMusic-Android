@@ -1,8 +1,8 @@
 
 
-package com.nexapp.nexpass.constants
+package com.nexapp.nexmusic.constants
 
-import com.nexapp.nexpass.ui.screens.OptionStats
+import com.nexapp.nexmusic.ui.screens.OptionStats
 import java.time.LocalDateTime
 import java.time.ZoneOffset
 

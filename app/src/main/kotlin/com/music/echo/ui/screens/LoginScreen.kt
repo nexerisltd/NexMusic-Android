@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.screens
+package com.nexapp.nexmusic.ui.screens
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -28,18 +28,18 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.navigation.NavController
 import com.music.innertube.YouTube
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.AccountChannelHandleKey
-import com.nexapp.nexpass.constants.AccountEmailKey
-import com.nexapp.nexpass.constants.AccountNameKey
-import com.nexapp.nexpass.constants.DataSyncIdKey
-import com.nexapp.nexpass.constants.InnerTubeCookieKey
-import com.nexapp.nexpass.constants.VisitorDataKey
-import com.nexapp.nexpass.ui.component.IconButton
-import com.nexapp.nexpass.ui.utils.backToMain
-import com.nexapp.nexpass.utils.rememberPreference
-import com.nexapp.nexpass.utils.reportException
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.AccountChannelHandleKey
+import com.nexapp.nexmusic.constants.AccountEmailKey
+import com.nexapp.nexmusic.constants.AccountNameKey
+import com.nexapp.nexmusic.constants.DataSyncIdKey
+import com.nexapp.nexmusic.constants.InnerTubeCookieKey
+import com.nexapp.nexmusic.constants.VisitorDataKey
+import com.nexapp.nexmusic.ui.component.IconButton
+import com.nexapp.nexmusic.ui.utils.backToMain
+import com.nexapp.nexmusic.utils.rememberPreference
+import com.nexapp.nexmusic.utils.reportException
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.recognition
+package com.nexapp.nexmusic.recognition
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -13,8 +13,8 @@ import android.os.IBinder
 import timber.log.Timber
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import com.nexapp.nexpass.MainActivity
-import com.nexapp.nexpass.R
+import com.nexapp.nexmusic.MainActivity
+import com.nexapp.nexmusic.R
 import com.music.shazamkit.models.RecognitionResult
 import com.music.shazamkit.models.RecognitionStatus
 import kotlinx.coroutines.CoroutineScope

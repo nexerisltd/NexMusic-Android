@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.screens.search
+package com.nexapp.nexmusic.ui.screens.search
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
@@ -42,28 +42,28 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
-import com.nexapp.nexpass.LocalPlayerConnection
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.CONTENT_TYPE_LIST
-import com.nexapp.nexpass.constants.ListItemHeight
-import com.nexapp.nexpass.db.entities.Album
-import com.nexapp.nexpass.db.entities.Artist
-import com.nexapp.nexpass.db.entities.Playlist
-import com.nexapp.nexpass.db.entities.Song
-import com.nexapp.nexpass.extensions.toMediaItem
-import com.nexapp.nexpass.playback.queues.ListQueue
-import com.nexapp.nexpass.ui.component.AlbumListItem
-import com.nexapp.nexpass.ui.component.ArtistListItem
-import com.nexapp.nexpass.ui.component.ChipsRow
-import com.nexapp.nexpass.ui.component.EmptyPlaceholder
-import com.nexapp.nexpass.ui.component.LocalMenuState
-import com.nexapp.nexpass.ui.component.PlaylistListItem
-import com.nexapp.nexpass.ui.component.SongListItem
-import com.nexapp.nexpass.ui.menu.SongMenu
-import com.nexapp.nexpass.utils.listItemShape
-import com.nexapp.nexpass.viewmodels.LocalFilter
-import com.nexapp.nexpass.viewmodels.LocalSearchViewModel
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.LocalPlayerConnection
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.CONTENT_TYPE_LIST
+import com.nexapp.nexmusic.constants.ListItemHeight
+import com.nexapp.nexmusic.db.entities.Album
+import com.nexapp.nexmusic.db.entities.Artist
+import com.nexapp.nexmusic.db.entities.Playlist
+import com.nexapp.nexmusic.db.entities.Song
+import com.nexapp.nexmusic.extensions.toMediaItem
+import com.nexapp.nexmusic.playback.queues.ListQueue
+import com.nexapp.nexmusic.ui.component.AlbumListItem
+import com.nexapp.nexmusic.ui.component.ArtistListItem
+import com.nexapp.nexmusic.ui.component.ChipsRow
+import com.nexapp.nexmusic.ui.component.EmptyPlaceholder
+import com.nexapp.nexmusic.ui.component.LocalMenuState
+import com.nexapp.nexmusic.ui.component.PlaylistListItem
+import com.nexapp.nexmusic.ui.component.SongListItem
+import com.nexapp.nexmusic.ui.menu.SongMenu
+import com.nexapp.nexmusic.utils.listItemShape
+import com.nexapp.nexmusic.viewmodels.LocalFilter
+import com.nexapp.nexmusic.viewmodels.LocalSearchViewModel
 import kotlinx.coroutines.flow.drop
 
 @OptIn(ExperimentalFoundationApi::class)

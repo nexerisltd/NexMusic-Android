@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.screens.search.suggestions
+package com.nexapp.nexmusic.ui.screens.search.suggestions
 
 import android.util.Log
 import okhttp3.OkHttpClient

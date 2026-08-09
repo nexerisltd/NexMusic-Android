@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.utils.cipher
+package com.nexapp.nexmusic.utils.cipher
 
 /**
  * Pure (no Android deps) policy for recovering from WebView renderer deaths.

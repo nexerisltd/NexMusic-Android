@@ -7,7 +7,7 @@
  * scale for cheaper effect rendering. KMP expect/actual declarations were
  * merged into this single Android source set. Package renamed accordingly.
  */
-package com.nexapp.nexpass.ui.component.backdrop.highlight
+package com.nexapp.nexmusic.ui.component.backdrop.highlight
 
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Outline
@@ -28,12 +28,12 @@ import androidx.compose.ui.platform.InspectorInfo
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.util.fastCoerceAtMost
-import com.nexapp.nexpass.ui.component.backdrop.RuntimeShaderCacheImpl
-import com.nexapp.nexpass.ui.component.backdrop.internal.ShapeProvider
-import com.nexapp.nexpass.ui.component.backdrop.internal.blur
-import com.nexapp.nexpass.ui.component.backdrop.internal.clipOutline
-import com.nexapp.nexpass.ui.component.backdrop.internal.setRuntimeShader
-import com.nexapp.nexpass.ui.component.backdrop.isRuntimeShaderSupported
+import com.nexapp.nexmusic.ui.component.backdrop.RuntimeShaderCacheImpl
+import com.nexapp.nexmusic.ui.component.backdrop.internal.ShapeProvider
+import com.nexapp.nexmusic.ui.component.backdrop.internal.blur
+import com.nexapp.nexmusic.ui.component.backdrop.internal.clipOutline
+import com.nexapp.nexmusic.ui.component.backdrop.internal.setRuntimeShader
+import com.nexapp.nexmusic.ui.component.backdrop.isRuntimeShaderSupported
 import kotlin.math.ceil
 
 internal class HighlightElement(

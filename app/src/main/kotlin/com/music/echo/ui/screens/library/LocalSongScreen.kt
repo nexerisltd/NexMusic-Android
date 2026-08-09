@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.screens.library
+package com.nexapp.nexmusic.ui.screens.library
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -91,27 +91,27 @@ import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
-import com.nexapp.nexpass.LocalPlayerConnection
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.CONTENT_TYPE_HEADER
-import com.nexapp.nexpass.constants.CONTENT_TYPE_SONG
-import com.nexapp.nexpass.constants.LocalSongsExcludedFoldersKey
-import com.nexapp.nexpass.constants.LocalSongsMinDurationSecondsKey
-import com.nexapp.nexpass.constants.LocalSongsSortDescendingKey
-import com.nexapp.nexpass.constants.LocalSongsSortTypeKey
-import com.nexapp.nexpass.extensions.toMediaItem
-import com.nexapp.nexpass.extensions.togglePlayPause
-import com.nexapp.nexpass.localmedia.LocalSongScanConfig
-import com.nexapp.nexpass.localmedia.SupportedLocalAudio
-import com.nexapp.nexpass.playback.queues.ListQueue
-import com.nexapp.nexpass.ui.component.LocalMenuState
-import com.nexapp.nexpass.ui.component.SongListItem
-import com.nexapp.nexpass.ui.component.SortHeader
-import com.nexapp.nexpass.ui.menu.SongMenu
-import com.nexapp.nexpass.utils.rememberPreference
-import com.nexapp.nexpass.viewmodels.LocalSongsScanState
-import com.nexapp.nexpass.viewmodels.LocalSongsViewModel
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.LocalPlayerConnection
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.CONTENT_TYPE_HEADER
+import com.nexapp.nexmusic.constants.CONTENT_TYPE_SONG
+import com.nexapp.nexmusic.constants.LocalSongsExcludedFoldersKey
+import com.nexapp.nexmusic.constants.LocalSongsMinDurationSecondsKey
+import com.nexapp.nexmusic.constants.LocalSongsSortDescendingKey
+import com.nexapp.nexmusic.constants.LocalSongsSortTypeKey
+import com.nexapp.nexmusic.extensions.toMediaItem
+import com.nexapp.nexmusic.extensions.togglePlayPause
+import com.nexapp.nexmusic.localmedia.LocalSongScanConfig
+import com.nexapp.nexmusic.localmedia.SupportedLocalAudio
+import com.nexapp.nexmusic.playback.queues.ListQueue
+import com.nexapp.nexmusic.ui.component.LocalMenuState
+import com.nexapp.nexmusic.ui.component.SongListItem
+import com.nexapp.nexmusic.ui.component.SortHeader
+import com.nexapp.nexmusic.ui.menu.SongMenu
+import com.nexapp.nexmusic.utils.rememberPreference
+import com.nexapp.nexmusic.viewmodels.LocalSongsScanState
+import com.nexapp.nexmusic.viewmodels.LocalSongsViewModel
 import java.text.Collator
 import java.time.LocalDateTime
 import java.util.Locale

@@ -3,7 +3,7 @@
  * Licensed under GPL-3.0 | See git history for contributors
  */
 
-package com.nexapp.nexpass.widget
+package com.nexapp.nexmusic.widget
 
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
@@ -11,7 +11,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import com.nexapp.nexpass.playback.MusicService
+import com.nexapp.nexmusic.playback.MusicService
 
 class MusicWidgetReceiver : AppWidgetProvider() {
 
@@ -80,10 +80,10 @@ class MusicWidgetReceiver : AppWidgetProvider() {
     }
 
     companion object {
-        const val ACTION_PLAY_PAUSE = "com.nexapp.nexpass.widget.PLAY_PAUSE"
-        const val ACTION_LIKE = "com.nexapp.nexpass.widget.LIKE"
-        const val ACTION_NEXT = "com.nexapp.nexpass.widget.NEXT"
-        const val ACTION_PREVIOUS = "com.nexapp.nexpass.widget.PREVIOUS"
-        const val ACTION_UPDATE_WIDGET = "com.nexapp.nexpass.widget.UPDATE_WIDGET"
+        const val ACTION_PLAY_PAUSE = "com.nexapp.nexmusic.widget.PLAY_PAUSE"
+        const val ACTION_LIKE = "com.nexapp.nexmusic.widget.LIKE"
+        const val ACTION_NEXT = "com.nexapp.nexmusic.widget.NEXT"
+        const val ACTION_PREVIOUS = "com.nexapp.nexmusic.widget.PREVIOUS"
+        const val ACTION_UPDATE_WIDGET = "com.nexapp.nexmusic.widget.UPDATE_WIDGET"
     }
 }

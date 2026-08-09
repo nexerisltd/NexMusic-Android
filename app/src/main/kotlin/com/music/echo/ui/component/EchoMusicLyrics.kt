@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.component
+package com.nexapp.nexmusic.ui.component
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -41,10 +41,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.nexapp.nexpass.constants.AppleMusicLyricsBlurKey
-import com.nexapp.nexpass.lyrics.LyricsEntry
-import com.nexapp.nexpass.ui.screens.settings.LyricsPosition
-import com.nexapp.nexpass.utils.rememberPreference
+import com.nexapp.nexmusic.constants.AppleMusicLyricsBlurKey
+import com.nexapp.nexmusic.lyrics.LyricsEntry
+import com.nexapp.nexmusic.ui.screens.settings.LyricsPosition
+import com.nexapp.nexmusic.utils.rememberPreference
 
 
 @OptIn(ExperimentalLayoutApi::class)
@@ -101,7 +101,7 @@ fun echomusicLyricsLine(
 
     
     val wordData = remember(entry.text, entry.words, activeDuration) {
-        val isHindiText = com.nexapp.nexpass.lyrics.LyricsUtils.isHindi(entry.text)
+        val isHindiText = com.nexapp.nexmusic.lyrics.LyricsUtils.isHindi(entry.text)
         if (!isHindiText && entry.words != null && entry.words.isNotEmpty()) {
             
             entry.words.mapIndexed { index, word ->

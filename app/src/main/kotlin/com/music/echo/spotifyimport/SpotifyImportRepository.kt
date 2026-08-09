@@ -5,7 +5,7 @@
  * Do not remove or alter this notice. - Per GPL-3.0 Section 4 & Section 5
  */
 
-package com.nexapp.nexpass.spotifyimport
+package com.nexapp.nexmusic.spotifyimport
 
 import android.content.Context
 import androidx.datastore.preferences.core.edit
@@ -21,29 +21,29 @@ import kotlinx.coroutines.sync.Semaphore
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.sync.withPermit
 import kotlinx.coroutines.withContext
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.SpotifyAccessTokenExpiresAtKey
-import com.nexapp.nexpass.constants.SpotifyAccessTokenKey
-import com.nexapp.nexpass.constants.SpotifyAccountAvatarUrlKey
-import com.nexapp.nexpass.constants.SpotifyAccountNameKey
-import com.nexapp.nexpass.constants.SpotifySpDcKey
-import com.nexapp.nexpass.constants.SpotifySpKeyKey
-import com.nexapp.nexpass.db.MusicDatabase
-import com.nexapp.nexpass.db.entities.PlaylistEntity
-import com.nexapp.nexpass.db.entities.PlaylistSongMap
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.SpotifyAccessTokenExpiresAtKey
+import com.nexapp.nexmusic.constants.SpotifyAccessTokenKey
+import com.nexapp.nexmusic.constants.SpotifyAccountAvatarUrlKey
+import com.nexapp.nexmusic.constants.SpotifyAccountNameKey
+import com.nexapp.nexmusic.constants.SpotifySpDcKey
+import com.nexapp.nexmusic.constants.SpotifySpKeyKey
+import com.nexapp.nexmusic.db.MusicDatabase
+import com.nexapp.nexmusic.db.entities.PlaylistEntity
+import com.nexapp.nexmusic.db.entities.PlaylistSongMap
 import com.music.innertube.YouTube
 import com.music.innertube.models.SongItem
-import com.nexapp.nexpass.models.MediaMetadata
-import com.nexapp.nexpass.models.toMediaMetadata
-import com.nexapp.nexpass.spotify.Spotify
-import com.nexapp.nexpass.spotify.SpotifyAuth
-import com.nexapp.nexpass.spotify.SpotifyMapper
-import com.nexapp.nexpass.spotify.models.SpotifyPlaylist
-import com.nexapp.nexpass.spotify.models.SpotifyPlaylistTracksRef
-import com.nexapp.nexpass.spotify.models.SpotifyTrack
-import com.nexapp.nexpass.utils.clearWebAuthSession
-import com.nexapp.nexpass.utils.dataStore
-import com.nexapp.nexpass.utils.reportException
+import com.nexapp.nexmusic.models.MediaMetadata
+import com.nexapp.nexmusic.models.toMediaMetadata
+import com.nexapp.nexmusic.spotify.Spotify
+import com.nexapp.nexmusic.spotify.SpotifyAuth
+import com.nexapp.nexmusic.spotify.SpotifyMapper
+import com.nexapp.nexmusic.spotify.models.SpotifyPlaylist
+import com.nexapp.nexmusic.spotify.models.SpotifyPlaylistTracksRef
+import com.nexapp.nexmusic.spotify.models.SpotifyTrack
+import com.nexapp.nexmusic.utils.clearWebAuthSession
+import com.nexapp.nexmusic.utils.dataStore
+import com.nexapp.nexmusic.utils.reportException
 import java.time.LocalDateTime
 import java.util.concurrent.atomic.AtomicInteger
 import javax.inject.Inject

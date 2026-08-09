@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.component
+package com.nexapp.nexmusic.ui.component
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
@@ -25,12 +25,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import com.music.innertube.YouTube
-import com.nexapp.nexpass.LocalDatabase
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.InnerTubeCookieKey
-import com.nexapp.nexpass.db.entities.PlaylistEntity
-import com.nexapp.nexpass.extensions.isSyncEnabled
-import com.nexapp.nexpass.utils.rememberPreference
+import com.nexapp.nexmusic.LocalDatabase
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.InnerTubeCookieKey
+import com.nexapp.nexmusic.db.entities.PlaylistEntity
+import com.nexapp.nexmusic.extensions.isSyncEnabled
+import com.nexapp.nexmusic.utils.rememberPreference
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

@@ -1,12 +1,12 @@
 
 
-package com.nexapp.nexpass.lyrics
+package com.nexapp.nexmusic.lyrics
 
 import android.content.Context
 import com.music.youlyplus.YouLyPlus
-import com.nexapp.nexpass.constants.EnableYouLyPlusKey
-import com.nexapp.nexpass.utils.dataStore
-import com.nexapp.nexpass.utils.get
+import com.nexapp.nexmusic.constants.EnableYouLyPlusKey
+import com.nexapp.nexmusic.utils.dataStore
+import com.nexapp.nexmusic.utils.get
 
 object YouLyPlusLyricsProvider : LyricsProvider {
     override val name = "YouLyPlus"

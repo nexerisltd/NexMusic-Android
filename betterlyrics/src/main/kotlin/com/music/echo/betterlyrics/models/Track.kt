@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.betterlyrics.models
+package com.nexapp.nexmusic.betterlyrics.models
 
 import kotlinx.serialization.Serializable
 

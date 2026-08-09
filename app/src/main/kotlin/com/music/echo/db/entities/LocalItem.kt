@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.db.entities
+package com.nexapp.nexmusic.db.entities
 
 sealed class LocalItem {
     abstract val id: String

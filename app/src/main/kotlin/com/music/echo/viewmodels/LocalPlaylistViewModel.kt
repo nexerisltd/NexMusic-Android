@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.viewmodels
+package com.nexapp.nexmusic.viewmodels
 
 import android.content.Context
 import androidx.lifecycle.SavedStateHandle
@@ -9,17 +9,17 @@ import androidx.lifecycle.viewModelScope
 import com.music.innertube.YouTube
 import com.music.innertube.models.SongItem
 import com.music.innertube.models.WatchEndpoint
-import com.nexapp.nexpass.constants.HideVideoSongsKey
-import com.nexapp.nexpass.constants.PlaylistSongSortDescendingKey
-import com.nexapp.nexpass.constants.PlaylistSongSortType
-import com.nexapp.nexpass.constants.PlaylistSongSortTypeKey
-import com.nexapp.nexpass.db.MusicDatabase
-import com.nexapp.nexpass.db.entities.PlaylistSong
-import com.nexapp.nexpass.extensions.reversed
-import com.nexapp.nexpass.extensions.toEnum
-import com.nexapp.nexpass.models.toMediaMetadata
-import com.nexapp.nexpass.utils.SyncUtils
-import com.nexapp.nexpass.utils.dataStore
+import com.nexapp.nexmusic.constants.HideVideoSongsKey
+import com.nexapp.nexmusic.constants.PlaylistSongSortDescendingKey
+import com.nexapp.nexmusic.constants.PlaylistSongSortType
+import com.nexapp.nexmusic.constants.PlaylistSongSortTypeKey
+import com.nexapp.nexmusic.db.MusicDatabase
+import com.nexapp.nexmusic.db.entities.PlaylistSong
+import com.nexapp.nexmusic.extensions.reversed
+import com.nexapp.nexmusic.extensions.toEnum
+import com.nexapp.nexmusic.models.toMediaMetadata
+import com.nexapp.nexmusic.utils.SyncUtils
+import com.nexapp.nexmusic.utils.dataStore
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers

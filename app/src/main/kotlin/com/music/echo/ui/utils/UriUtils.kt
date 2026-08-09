@@ -1,11 +1,11 @@
 
 
-package com.nexapp.nexpass.ui.utils
+package com.nexapp.nexmusic.ui.utils
 
 import android.content.Context
 import android.widget.Toast
 import androidx.compose.ui.platform.UriHandler
-import com.nexapp.nexpass.R
+import com.nexapp.nexmusic.R
 
 
 fun UriHandler.safeOpenUri(context: Context, uri: String) {

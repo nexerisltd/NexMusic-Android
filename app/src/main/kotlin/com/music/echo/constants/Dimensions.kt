@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.constants
+package com.nexapp.nexmusic.constants
 
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring

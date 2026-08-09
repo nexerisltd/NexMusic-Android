@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.utils
+package com.nexapp.nexmusic.utils
 
 import android.net.ConnectivityManager
 import android.util.Log
@@ -9,7 +9,7 @@ import com.music.innertube.NewPipeExtractor
 import com.music.innertube.YouTube
 import com.music.innertube.models.YouTubeClient
 import com.music.innertube.models.YouTubeClient.Companion.ANDROID_CREATOR
-import com.nexapp.nexpass.utils.BotDetectionMitigator
+import com.nexapp.nexmusic.utils.BotDetectionMitigator
 import com.music.innertube.models.YouTubeClient.Companion.ANDROID_VR_1_43_32
 import com.music.innertube.models.YouTubeClient.Companion.ANDROID_VR_1_61_48
 import com.music.innertube.models.YouTubeClient.Companion.ANDROID_VR_NO_AUTH
@@ -22,16 +22,16 @@ import com.music.innertube.models.YouTubeClient.Companion.WEB
 import com.music.innertube.models.YouTubeClient.Companion.WEB_CREATOR
 import com.music.innertube.models.YouTubeClient.Companion.WEB_REMIX
 import com.music.innertube.models.response.PlayerResponse
-import com.nexapp.nexpass.constants.AudioQuality
-import com.nexapp.nexpass.utils.cipher.CipherDeobfuscator
-import com.nexapp.nexpass.utils.YTPlayerUtils.MAIN_CLIENT
-import com.nexapp.nexpass.utils.YTPlayerUtils.STREAM_FALLBACK_CLIENTS
-import com.nexapp.nexpass.utils.YTPlayerUtils.validateStatus
-import com.nexapp.nexpass.utils.potoken.PoTokenGenerator
-import com.nexapp.nexpass.utils.potoken.PoTokenResult
-import com.nexapp.nexpass.utils.sabr.EjsNTransformSolver
-import com.nexapp.nexpass.utils.PlaybackLogLevel
-import com.nexapp.nexpass.utils.PlaybackLogManager
+import com.nexapp.nexmusic.constants.AudioQuality
+import com.nexapp.nexmusic.utils.cipher.CipherDeobfuscator
+import com.nexapp.nexmusic.utils.YTPlayerUtils.MAIN_CLIENT
+import com.nexapp.nexmusic.utils.YTPlayerUtils.STREAM_FALLBACK_CLIENTS
+import com.nexapp.nexmusic.utils.YTPlayerUtils.validateStatus
+import com.nexapp.nexmusic.utils.potoken.PoTokenGenerator
+import com.nexapp.nexmusic.utils.potoken.PoTokenResult
+import com.nexapp.nexmusic.utils.sabr.EjsNTransformSolver
+import com.nexapp.nexmusic.utils.PlaybackLogLevel
+import com.nexapp.nexmusic.utils.PlaybackLogManager
 import com.music.innertube.models.IpVersion
 import okhttp3.Dns
 import okhttp3.OkHttpClient

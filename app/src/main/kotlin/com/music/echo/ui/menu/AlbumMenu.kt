@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.menu
+package com.nexapp.nexmusic.ui.menu
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -63,27 +63,27 @@ import androidx.media3.exoplayer.offline.DownloadService
 import androidx.navigation.NavController
 import coil3.compose.AsyncImage
 import com.music.innertube.YouTube
-import com.nexapp.nexpass.LocalDatabase
-import com.nexapp.nexpass.LocalDownloadUtil
-import com.nexapp.nexpass.LocalListenTogetherManager
-import com.nexapp.nexpass.LocalPlayerConnection
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.ListItemHeight
-import com.nexapp.nexpass.constants.ListThumbnailSize
-import com.nexapp.nexpass.db.entities.Album
-import com.nexapp.nexpass.db.entities.SpeedDialItem
-import com.nexapp.nexpass.db.entities.Song
-import com.nexapp.nexpass.extensions.toMediaItem
-import com.nexapp.nexpass.playback.ExoDownloadService
-import com.nexapp.nexpass.playback.queues.ListQueue
-import com.nexapp.nexpass.ui.component.AlbumListItem
-import com.nexapp.nexpass.ui.component.ListDialog
-import com.nexapp.nexpass.ui.component.ListItem
-import com.nexapp.nexpass.ui.component.Material3MenuGroup
-import com.nexapp.nexpass.ui.component.Material3MenuItemData
-import com.nexapp.nexpass.ui.component.NewAction
-import com.nexapp.nexpass.ui.component.NewActionGrid
-import com.nexapp.nexpass.ui.component.SongListItem
+import com.nexapp.nexmusic.LocalDatabase
+import com.nexapp.nexmusic.LocalDownloadUtil
+import com.nexapp.nexmusic.LocalListenTogetherManager
+import com.nexapp.nexmusic.LocalPlayerConnection
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.ListItemHeight
+import com.nexapp.nexmusic.constants.ListThumbnailSize
+import com.nexapp.nexmusic.db.entities.Album
+import com.nexapp.nexmusic.db.entities.SpeedDialItem
+import com.nexapp.nexmusic.db.entities.Song
+import com.nexapp.nexmusic.extensions.toMediaItem
+import com.nexapp.nexmusic.playback.ExoDownloadService
+import com.nexapp.nexmusic.playback.queues.ListQueue
+import com.nexapp.nexmusic.ui.component.AlbumListItem
+import com.nexapp.nexmusic.ui.component.ListDialog
+import com.nexapp.nexmusic.ui.component.ListItem
+import com.nexapp.nexmusic.ui.component.Material3MenuGroup
+import com.nexapp.nexmusic.ui.component.Material3MenuItemData
+import com.nexapp.nexmusic.ui.component.NewAction
+import com.nexapp.nexmusic.ui.component.NewActionGrid
+import com.nexapp.nexmusic.ui.component.SongListItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

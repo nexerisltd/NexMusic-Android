@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.localmedia
+package com.nexapp.nexmusic.localmedia
 
 import android.content.ContentUris
 import android.content.Context
@@ -10,16 +10,16 @@ import android.provider.MediaStore
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.db.MusicDatabase
-import com.nexapp.nexpass.db.entities.AlbumArtistMap
-import com.nexapp.nexpass.db.entities.AlbumEntity
-import com.nexapp.nexpass.db.entities.ArtistEntity
-import com.nexapp.nexpass.db.entities.FormatEntity
-import com.nexapp.nexpass.db.entities.Song
-import com.nexapp.nexpass.db.entities.SongAlbumMap
-import com.nexapp.nexpass.db.entities.SongArtistMap
-import com.nexapp.nexpass.db.entities.SongEntity
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.db.MusicDatabase
+import com.nexapp.nexmusic.db.entities.AlbumArtistMap
+import com.nexapp.nexmusic.db.entities.AlbumEntity
+import com.nexapp.nexmusic.db.entities.ArtistEntity
+import com.nexapp.nexmusic.db.entities.FormatEntity
+import com.nexapp.nexmusic.db.entities.Song
+import com.nexapp.nexmusic.db.entities.SongAlbumMap
+import com.nexapp.nexmusic.db.entities.SongArtistMap
+import com.nexapp.nexmusic.db.entities.SongEntity
 import java.nio.charset.StandardCharsets
 import java.time.Instant
 import java.time.LocalDateTime

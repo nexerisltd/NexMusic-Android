@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.ui.screens.settings
+package com.nexapp.nexmusic.ui.screens.settings
 
 import android.annotation.SuppressLint
 import android.webkit.JavascriptInterface

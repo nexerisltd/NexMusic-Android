@@ -5,7 +5,7 @@
  * Do not remove or alter this notice. - Per GPL-3.0 Section 4 & Section 5
  */
 
-package com.nexapp.nexpass.spotifyimport
+package com.nexapp.nexmusic.spotifyimport
 
 import androidx.compose.runtime.Immutable
 

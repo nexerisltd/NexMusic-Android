@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.constants
+package com.nexapp.nexmusic.constants
 
 enum class LibraryFilter {
     SONGS,

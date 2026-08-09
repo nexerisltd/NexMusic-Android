@@ -1,8 +1,8 @@
-package com.nexapp.nexpass.echomusic.updater.downloadmanager
+package com.nexapp.nexmusic.echomusic.updater.downloadmanager
 
 import android.content.Context
 import android.os.Environment
-import com.nexapp.nexpass.R
+import com.nexapp.nexmusic.R
 import kotlinx.coroutines.*
 import java.io.File
 import java.io.FileOutputStream

@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.screens.settings
+package com.nexapp.nexmusic.ui.screens.settings
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -32,54 +32,54 @@ import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.nexapp.nexpass.BuildConfig
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.AudioNormalizationKey
-import com.nexapp.nexpass.constants.AudioOffload
-import com.nexapp.nexpass.constants.AudioQuality
-import com.nexapp.nexpass.constants.AudioQualityKey
-import com.nexapp.nexpass.constants.AutoDownloadOnLikeKey
-import com.nexapp.nexpass.constants.AutomixCrossfadeKey
-import com.nexapp.nexpass.constants.AutomixDebugOverlayKey
-import com.nexapp.nexpass.constants.CrossfadeDurationKey
-import com.nexapp.nexpass.constants.CrossfadeEnabledKey
-import com.nexapp.nexpass.constants.CrossfadeGaplessKey
-import com.nexapp.nexpass.constants.AutoLoadMoreKey
-import com.nexapp.nexpass.constants.AutoSkipNextOnErrorKey
-import com.nexapp.nexpass.constants.DisableLoadMoreWhenRepeatAllKey
-import com.nexapp.nexpass.constants.EnableGoogleCastKey
-import com.nexapp.nexpass.constants.HistoryDuration
-import com.nexapp.nexpass.constants.KeepScreenOn
-import com.nexapp.nexpass.constants.PauseOnMute
-import com.nexapp.nexpass.constants.PersistentQueueKey
-import com.nexapp.nexpass.constants.PersistentShuffleAcrossQueuesKey
-import com.nexapp.nexpass.constants.PreventDuplicateTracksInQueueKey
-import com.nexapp.nexpass.constants.RememberShuffleAndRepeatKey
-import com.nexapp.nexpass.constants.ResumeOnBluetoothConnectKey
-import com.nexapp.nexpass.constants.SeekExtraSeconds
-import com.nexapp.nexpass.constants.ShufflePlaylistFirstKey
-import com.nexapp.nexpass.constants.SimilarContent
+import com.nexapp.nexmusic.BuildConfig
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.AudioNormalizationKey
+import com.nexapp.nexmusic.constants.AudioOffload
+import com.nexapp.nexmusic.constants.AudioQuality
+import com.nexapp.nexmusic.constants.AudioQualityKey
+import com.nexapp.nexmusic.constants.AutoDownloadOnLikeKey
+import com.nexapp.nexmusic.constants.AutomixCrossfadeKey
+import com.nexapp.nexmusic.constants.AutomixDebugOverlayKey
+import com.nexapp.nexmusic.constants.CrossfadeDurationKey
+import com.nexapp.nexmusic.constants.CrossfadeEnabledKey
+import com.nexapp.nexmusic.constants.CrossfadeGaplessKey
+import com.nexapp.nexmusic.constants.AutoLoadMoreKey
+import com.nexapp.nexmusic.constants.AutoSkipNextOnErrorKey
+import com.nexapp.nexmusic.constants.DisableLoadMoreWhenRepeatAllKey
+import com.nexapp.nexmusic.constants.EnableGoogleCastKey
+import com.nexapp.nexmusic.constants.HistoryDuration
+import com.nexapp.nexmusic.constants.KeepScreenOn
+import com.nexapp.nexmusic.constants.PauseOnMute
+import com.nexapp.nexmusic.constants.PersistentQueueKey
+import com.nexapp.nexmusic.constants.PersistentShuffleAcrossQueuesKey
+import com.nexapp.nexmusic.constants.PreventDuplicateTracksInQueueKey
+import com.nexapp.nexmusic.constants.RememberShuffleAndRepeatKey
+import com.nexapp.nexmusic.constants.ResumeOnBluetoothConnectKey
+import com.nexapp.nexmusic.constants.SeekExtraSeconds
+import com.nexapp.nexmusic.constants.ShufflePlaylistFirstKey
+import com.nexapp.nexmusic.constants.SimilarContent
 
-import com.nexapp.nexpass.constants.SkipSilenceInstantKey
-import com.nexapp.nexpass.constants.SkipSilenceKey
-import com.nexapp.nexpass.constants.StopMusicOnTaskClearKey
-import com.nexapp.nexpass.constants.EnableExportAsMp3Key
+import com.nexapp.nexmusic.constants.SkipSilenceInstantKey
+import com.nexapp.nexmusic.constants.SkipSilenceKey
+import com.nexapp.nexmusic.constants.StopMusicOnTaskClearKey
+import com.nexapp.nexmusic.constants.EnableExportAsMp3Key
 
-import com.nexapp.nexpass.constants.PreloadNextSongEnabledKey
-import com.nexapp.nexpass.constants.PreloadNextSongLimitKey
-import com.nexapp.nexpass.constants.PreloadLyricsEnabledKey
+import com.nexapp.nexmusic.constants.PreloadNextSongEnabledKey
+import com.nexapp.nexmusic.constants.PreloadNextSongLimitKey
+import com.nexapp.nexmusic.constants.PreloadLyricsEnabledKey
 
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import com.nexapp.nexpass.ui.component.DefaultDialog
-import com.nexapp.nexpass.ui.component.EnumDialog
-import com.nexapp.nexpass.ui.component.IconButton
-import com.nexapp.nexpass.ui.component.Material3SettingsGroup
-import com.nexapp.nexpass.ui.component.Material3SettingsItem
-import com.nexapp.nexpass.ui.utils.backToMain
-import com.nexapp.nexpass.utils.rememberEnumPreference
-import com.nexapp.nexpass.utils.rememberPreference
+import com.nexapp.nexmusic.ui.component.DefaultDialog
+import com.nexapp.nexmusic.ui.component.EnumDialog
+import com.nexapp.nexmusic.ui.component.IconButton
+import com.nexapp.nexmusic.ui.component.Material3SettingsGroup
+import com.nexapp.nexmusic.ui.component.Material3SettingsItem
+import com.nexapp.nexmusic.ui.utils.backToMain
+import com.nexapp.nexmusic.utils.rememberEnumPreference
+import com.nexapp.nexmusic.utils.rememberPreference
 import kotlin.math.roundToInt
 import android.content.Intent
 import android.net.Uri
@@ -156,7 +156,7 @@ highlightKey: String? = null) {
     )
 
     val (dataSaverEnabled, onDataSaverEnabledChange) = rememberPreference(
-        key = com.nexapp.nexpass.constants.DataSaverEnabledKey,
+        key = com.nexapp.nexmusic.constants.DataSaverEnabledKey,
         defaultValue = false
     )
 
@@ -238,8 +238,8 @@ highlightKey: String? = null) {
     var showDownloadQualityDialog by remember { mutableStateOf(false) }
 
     val (downloadQuality, onDownloadQualityChange) = rememberEnumPreference(
-        com.nexapp.nexpass.constants.DownloadQualityKey,
-        defaultValue = com.nexapp.nexpass.constants.DownloadQuality.YOUTUBE
+        com.nexapp.nexmusic.constants.DownloadQualityKey,
+        defaultValue = com.nexapp.nexmusic.constants.DownloadQuality.YOUTUBE
     )
 
     if (showAudioQualityDialog) {
@@ -273,10 +273,10 @@ highlightKey: String? = null) {
             },
             title = stringResource(R.string.download_quality_title),
             current = downloadQuality,
-            values = listOf(com.nexapp.nexpass.constants.DownloadQuality.YOUTUBE),
+            values = listOf(com.nexapp.nexmusic.constants.DownloadQuality.YOUTUBE),
             valueText = {
                 when (it) {
-                    com.nexapp.nexpass.constants.DownloadQuality.YOUTUBE -> "YouTube Music (AAC/Default)"
+                    com.nexapp.nexmusic.constants.DownloadQuality.YOUTUBE -> "YouTube Music (AAC/Default)"
                     else -> ""
                 }
             }
@@ -383,7 +383,7 @@ highlightKey: String? = null) {
                     description = {
                         Text(
                             when (downloadQuality) {
-                                com.nexapp.nexpass.constants.DownloadQuality.YOUTUBE -> "YouTube Music (AAC/Default)"
+                                com.nexapp.nexmusic.constants.DownloadQuality.YOUTUBE -> "YouTube Music (AAC/Default)"
                                 else -> "YouTube Music (AAC/Default)"
                             }
                         )

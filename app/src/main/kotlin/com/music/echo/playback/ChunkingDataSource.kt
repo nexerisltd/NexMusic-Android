@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.playback
+package com.nexapp.nexmusic.playback
 
 import android.net.Uri
 import androidx.media3.common.C

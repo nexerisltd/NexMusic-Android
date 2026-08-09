@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.ai
+package com.nexapp.nexmusic.ai
 
 import android.content.Context
 import androidx.work.CoroutineWorker

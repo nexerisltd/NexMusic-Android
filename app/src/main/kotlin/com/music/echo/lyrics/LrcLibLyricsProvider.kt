@@ -1,12 +1,12 @@
 
 
-package com.nexapp.nexpass.lyrics
+package com.nexapp.nexmusic.lyrics
 
 import android.content.Context
 import com.music.lrclib.LrcLib
-import com.nexapp.nexpass.constants.EnableLrcLibKey
-import com.nexapp.nexpass.utils.dataStore
-import com.nexapp.nexpass.utils.get
+import com.nexapp.nexmusic.constants.EnableLrcLibKey
+import com.nexapp.nexmusic.utils.dataStore
+import com.nexapp.nexmusic.utils.get
 
 object LrcLibLyricsProvider : LyricsProvider {
     override val name = "LrcLib"

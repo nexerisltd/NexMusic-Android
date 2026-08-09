@@ -6,7 +6,7 @@ import android.content.Context
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import com.nexapp.nexpass.db.entities.Song
+import com.nexapp.nexmusic.db.entities.Song
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request

@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.screens
+package com.nexapp.nexmusic.ui.screens
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -8,11 +8,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import com.nexapp.nexpass.applecanvas.AppleMusicCanvasProvider
-import com.nexapp.nexpass.echomusiccanvas.echomusicCanvasProvider
-import com.nexapp.nexpass.canvas.CanvasArtwork
-import com.nexapp.nexpass.canvas.TidalCanvasProvider
-import com.nexapp.nexpass.ui.player.CanvasArtworkPlaybackCache
+import com.nexapp.nexmusic.applecanvas.AppleMusicCanvasProvider
+import com.nexapp.nexmusic.echomusiccanvas.echomusicCanvasProvider
+import com.nexapp.nexmusic.canvas.CanvasArtwork
+import com.nexapp.nexmusic.canvas.TidalCanvasProvider
+import com.nexapp.nexmusic.ui.player.CanvasArtworkPlaybackCache
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.util.Locale

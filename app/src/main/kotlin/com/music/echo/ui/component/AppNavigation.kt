@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.component
+package com.nexapp.nexmusic.ui.component
 
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.PressInteraction
@@ -25,9 +25,9 @@ import androidx.compose.ui.platform.LocalViewConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
-import com.nexapp.nexpass.ui.screens.Screens
-import com.nexapp.nexpass.ui.component.LocalGlassEffectConfig
-import com.nexapp.nexpass.ui.component.liquidGlass
+import com.nexapp.nexmusic.ui.screens.Screens
+import com.nexapp.nexmusic.ui.component.LocalGlassEffectConfig
+import com.nexapp.nexmusic.ui.component.liquidGlass
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 

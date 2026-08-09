@@ -3,7 +3,7 @@
  * Licensed under GPL-3.0 | See git history for contributors
  */
 
-package com.nexapp.nexpass.widget
+package com.nexapp.nexmusic.widget
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
@@ -25,11 +25,11 @@ import coil3.request.ImageRequest
 import coil3.request.allowHardware
 import coil3.request.crossfade
 import coil3.toBitmap
-import com.nexapp.nexpass.MainActivity
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.db.MusicDatabase
-import com.nexapp.nexpass.db.entities.Playlist
-import com.nexapp.nexpass.di.ApplicationScope
+import com.nexapp.nexmusic.MainActivity
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.db.MusicDatabase
+import com.nexapp.nexmusic.db.entities.Playlist
+import com.nexapp.nexmusic.di.ApplicationScope
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
@@ -618,7 +618,7 @@ class PlaylistWidgetManager @Inject constructor(
 
     private fun getOpenTargetIntent(item: QuickPick): PendingIntent {
         val intent = Intent(context, MainActivity::class.java).apply {
-            action = "com.nexapp.nexpass.action.OPEN_WIDGET_TARGET"
+            action = "com.nexapp.nexmusic.action.OPEN_WIDGET_TARGET"
             putExtra("extra_widget_target_type", item.targetType)
             putExtra("extra_widget_target_id", item.targetId)
         }

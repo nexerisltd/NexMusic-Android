@@ -1,11 +1,11 @@
 
 
-package com.nexapp.nexpass.ui.screens
+package com.nexapp.nexmusic.ui.screens
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.platform.LocalContext
-import com.nexapp.nexpass.utils.NetworkConnectivityObserver
+import com.nexapp.nexmusic.utils.NetworkConnectivityObserver
 
 @Composable
 fun NetworkReload(

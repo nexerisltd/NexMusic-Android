@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.theme
+package com.nexapp.nexmusic.ui.theme
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb

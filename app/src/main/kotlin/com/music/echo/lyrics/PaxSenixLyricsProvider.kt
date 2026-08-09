@@ -1,12 +1,12 @@
 
 
-package com.nexapp.nexpass.lyrics
+package com.nexapp.nexmusic.lyrics
 
 import android.content.Context
 import com.music.paxsenix.Paxsenix
-import com.nexapp.nexpass.constants.EnablePaxsenixKey
-import com.nexapp.nexpass.utils.dataStore
-import com.nexapp.nexpass.utils.get
+import com.nexapp.nexmusic.constants.EnablePaxsenixKey
+import com.nexapp.nexmusic.utils.dataStore
+import com.nexapp.nexmusic.utils.get
 import timber.log.Timber
 
 object PaxSenixLyricsProvider : LyricsProvider {

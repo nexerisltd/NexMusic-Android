@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.ui.component
+package com.nexapp.nexmusic.ui.component
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -20,7 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
-import com.nexapp.nexpass.constants.ThumbnailCornerRadius
+import com.nexapp.nexmusic.constants.ThumbnailCornerRadius
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable

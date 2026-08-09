@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.screens
+package com.nexapp.nexmusic.ui.screens
 
 import android.content.Context
 import android.widget.Toast
@@ -40,7 +40,7 @@ import androidx.compose.foundation.relocation.bringIntoViewRequester
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import com.nexapp.nexpass.ui.component.DefaultDialog
+import com.nexapp.nexmusic.ui.component.DefaultDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -83,24 +83,24 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.nexapp.nexpass.LocalListenTogetherManager
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.AppBarHeight
-import com.nexapp.nexpass.constants.ListenTogetherInTopBarKey
-import com.nexapp.nexpass.constants.ListenTogetherUsernameKey
-import com.nexapp.nexpass.listentogether.ConnectionState
-import com.nexapp.nexpass.listentogether.JoinRequestPayload
-import com.nexapp.nexpass.listentogether.ListenTogetherEvent
-import com.nexapp.nexpass.listentogether.SuggestionReceivedPayload
-import com.nexapp.nexpass.listentogether.UserInfo
-import com.nexapp.nexpass.ui.component.ListDialog
-import com.nexapp.nexpass.ui.component.Material3SettingsGroup
-import com.nexapp.nexpass.ui.component.Material3SettingsItem
-import com.nexapp.nexpass.ui.component.IconButton
-import com.nexapp.nexpass.ui.component.IconButton
-import com.nexapp.nexpass.ui.utils.backToMain
-import com.nexapp.nexpass.utils.rememberPreference
+import com.nexapp.nexmusic.LocalListenTogetherManager
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.AppBarHeight
+import com.nexapp.nexmusic.constants.ListenTogetherInTopBarKey
+import com.nexapp.nexmusic.constants.ListenTogetherUsernameKey
+import com.nexapp.nexmusic.listentogether.ConnectionState
+import com.nexapp.nexmusic.listentogether.JoinRequestPayload
+import com.nexapp.nexmusic.listentogether.ListenTogetherEvent
+import com.nexapp.nexmusic.listentogether.SuggestionReceivedPayload
+import com.nexapp.nexmusic.listentogether.UserInfo
+import com.nexapp.nexmusic.ui.component.ListDialog
+import com.nexapp.nexmusic.ui.component.Material3SettingsGroup
+import com.nexapp.nexmusic.ui.component.Material3SettingsItem
+import com.nexapp.nexmusic.ui.component.IconButton
+import com.nexapp.nexmusic.ui.component.IconButton
+import com.nexapp.nexmusic.ui.utils.backToMain
+import com.nexapp.nexmusic.utils.rememberPreference
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)

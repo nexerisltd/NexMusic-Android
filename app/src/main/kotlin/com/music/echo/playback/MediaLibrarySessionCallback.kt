@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.playback
+package com.nexapp.nexmusic.playback
 
 import android.content.ContentResolver
 import android.content.Context
@@ -31,20 +31,20 @@ import com.music.innertube.models.PlaylistItem
 import com.music.innertube.models.SongItem
 import com.music.innertube.models.filterExplicit
 import com.music.innertube.models.filterVideoSongs
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.HideExplicitKey
-import com.nexapp.nexpass.constants.HideVideoSongsKey
-import com.nexapp.nexpass.constants.MediaSessionConstants
-import com.nexapp.nexpass.constants.SongSortType
-import com.nexapp.nexpass.db.MusicDatabase
-import com.nexapp.nexpass.db.entities.PlaylistEntity
-import com.nexapp.nexpass.db.entities.Song
-import com.nexapp.nexpass.extensions.toMediaItem
-import com.nexapp.nexpass.extensions.toggleRepeatMode
-import com.nexapp.nexpass.models.toMediaMetadata
-import com.nexapp.nexpass.utils.dataStore
-import com.nexapp.nexpass.utils.get
-import com.nexapp.nexpass.utils.reportException
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.HideExplicitKey
+import com.nexapp.nexmusic.constants.HideVideoSongsKey
+import com.nexapp.nexmusic.constants.MediaSessionConstants
+import com.nexapp.nexmusic.constants.SongSortType
+import com.nexapp.nexmusic.db.MusicDatabase
+import com.nexapp.nexmusic.db.entities.PlaylistEntity
+import com.nexapp.nexmusic.db.entities.Song
+import com.nexapp.nexmusic.extensions.toMediaItem
+import com.nexapp.nexmusic.extensions.toggleRepeatMode
+import com.nexapp.nexmusic.models.toMediaMetadata
+import com.nexapp.nexmusic.utils.dataStore
+import com.nexapp.nexmusic.utils.get
+import com.nexapp.nexmusic.utils.reportException
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -252,7 +252,7 @@ constructor(
                                     val songs = YouTube.playlist(playlistId).getOrNull()?.songs
                                         ?.take(100)
                                         ?.filterExplicit(context.dataStore.get(HideExplicitKey, false))
-                                        ?.filterVideoSongs(context.dataStore.get(HideVideoSongsKey, false) || context.dataStore.get(com.nexapp.nexpass.constants.DataSaverEnabledKey, false))
+                                        ?.filterVideoSongs(context.dataStore.get(HideVideoSongsKey, false) || context.dataStore.get(com.nexapp.nexmusic.constants.DataSaverEnabledKey, false))
                                         ?: emptyList()
 
                                     listOf(shuffleMediaItem(parentId)) + songs.map { it.toMediaItem(parentId) }
@@ -344,7 +344,7 @@ constructor(
                         ?.items
                         ?.filterIsInstance<SongItem>()
                         ?.filterExplicit(context.dataStore.get(HideExplicitKey, false))
-                        ?.filterVideoSongs(context.dataStore.get(HideVideoSongsKey, false) || context.dataStore.get(com.nexapp.nexpass.constants.DataSaverEnabledKey, false))
+                        ?.filterVideoSongs(context.dataStore.get(HideVideoSongsKey, false) || context.dataStore.get(com.nexapp.nexmusic.constants.DataSaverEnabledKey, false))
                         ?.filter { onlineSong ->
                             !allLocalSongs.any { localSong ->
                                 localSong.id == onlineSong.id ||
@@ -539,7 +539,7 @@ constructor(
                             ?.items
                             ?.filterIsInstance<SongItem>()
                             ?.filterExplicit(context.dataStore.get(HideExplicitKey, false))
-                            ?.filterVideoSongs(context.dataStore.get(HideVideoSongsKey, false) || context.dataStore.get(com.nexapp.nexpass.constants.DataSaverEnabledKey, false))
+                            ?.filterVideoSongs(context.dataStore.get(HideVideoSongsKey, false) || context.dataStore.get(com.nexapp.nexmusic.constants.DataSaverEnabledKey, false))
                             ?.filter { onlineSong ->
                                 !allLocalSongs.any { localSong ->
                                     localSong.id == onlineSong.id ||
@@ -798,7 +798,7 @@ constructor(
         singleItemStyle = MediaConstants.EXTRAS_VALUE_CONTENT_STYLE_CATEGORY_LIST_ITEM,
     )
 
-    private fun com.nexapp.nexpass.db.entities.Playlist.toBrowsableMediaItem() = browsableMediaItem(
+    private fun com.nexapp.nexmusic.db.entities.Playlist.toBrowsableMediaItem() = browsableMediaItem(
         "${MusicService.PLAYLIST}/$id",
         playlist.name,
         context.resources.getQuantityString(

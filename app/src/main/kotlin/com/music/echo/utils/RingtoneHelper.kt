@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.utils
+package com.nexapp.nexmusic.utils
 
 import android.content.ContentValues
 import android.content.Context
@@ -11,7 +11,7 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.provider.Settings
 import androidx.core.content.getSystemService
-import com.nexapp.nexpass.constants.AudioQuality
+import com.nexapp.nexmusic.constants.AudioQuality
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext

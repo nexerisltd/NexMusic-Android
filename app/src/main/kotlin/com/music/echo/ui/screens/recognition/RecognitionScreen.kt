@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.ui.screens.recognition
+package com.nexapp.nexmusic.ui.screens.recognition
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -77,27 +77,27 @@ import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import coil3.compose.AsyncImage
-import com.nexapp.nexpass.LocalDatabase
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.db.entities.RecognitionHistory
-import com.nexapp.nexpass.ui.component.IconButton
-import com.nexapp.nexpass.ui.utils.backToMain
+import com.nexapp.nexmusic.LocalDatabase
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.db.entities.RecognitionHistory
+import com.nexapp.nexmusic.ui.component.IconButton
+import com.nexapp.nexmusic.ui.utils.backToMain
 import com.music.shazamkit.models.RecognitionResult
 import com.music.shazamkit.models.RecognitionStatus
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.time.LocalDateTime
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.systemBars
-import com.nexapp.nexpass.LocalPlayerConnection
+import com.nexapp.nexmusic.LocalPlayerConnection
 import com.music.innertube.YouTube
 import com.music.innertube.models.SongItem
-import com.nexapp.nexpass.models.toMediaMetadata
-import com.nexapp.nexpass.playback.queues.YouTubeQueue
+import com.nexapp.nexmusic.models.toMediaMetadata
+import com.nexapp.nexmusic.playback.queues.YouTubeQueue
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -109,16 +109,16 @@ fun RecognitionScreen(
     val coroutineScope = rememberCoroutineScope()
     
     LaunchedEffect(Unit) {
-        com.nexapp.nexpass.recognition.MusicRecognitionService.reset()
+        com.nexapp.nexmusic.recognition.MusicRecognitionService.reset()
     }
     
     DisposableEffect(Unit) {
         onDispose {
-            com.nexapp.nexpass.recognition.MusicRecognitionService.reset()
+            com.nexapp.nexmusic.recognition.MusicRecognitionService.reset()
         }
     }
     
-    val recognitionStatus by com.nexapp.nexpass.recognition.MusicRecognitionService.recognitionStatus.collectAsState()
+    val recognitionStatus by com.nexapp.nexmusic.recognition.MusicRecognitionService.recognitionStatus.collectAsState()
     
     var hasPermission by remember {
         mutableStateOf(
@@ -133,7 +133,7 @@ fun RecognitionScreen(
         hasPermission = isGranted
         if (isGranted) {
             coroutineScope.launch {
-                com.nexapp.nexpass.recognition.MusicRecognitionService.recognize(context)
+                com.nexapp.nexmusic.recognition.MusicRecognitionService.recognize(context)
             }
         }
     }
@@ -141,7 +141,7 @@ fun RecognitionScreen(
     fun startRecognition() {
         if (hasPermission) {
             coroutineScope.launch {
-                com.nexapp.nexpass.recognition.MusicRecognitionService.recognize(context)
+                com.nexapp.nexmusic.recognition.MusicRecognitionService.recognize(context)
             }
         } else {
             permissionLauncher.launch(Manifest.permission.RECORD_AUDIO)
@@ -149,7 +149,7 @@ fun RecognitionScreen(
     }
     
     fun resetToReady() {
-        com.nexapp.nexpass.recognition.MusicRecognitionService.reset()
+        com.nexapp.nexmusic.recognition.MusicRecognitionService.reset()
     }
 
     fun saveToHistory(result: RecognitionResult) {
@@ -269,7 +269,7 @@ fun RecognitionScreen(
                                 }
                                 is RecognitionStatus.Listening -> {
                                     ListeningState(
-                                        onCancel = { com.nexapp.nexpass.recognition.MusicRecognitionService.reset() }
+                                        onCancel = { com.nexapp.nexmusic.recognition.MusicRecognitionService.reset() }
                                     )
                                 }
                                 is RecognitionStatus.Processing -> {

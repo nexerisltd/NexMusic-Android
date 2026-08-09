@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.component
+package com.nexapp.nexmusic.ui.component
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.Box
@@ -33,9 +33,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.utils.PlaybackLogEntry
-import com.nexapp.nexpass.utils.PlaybackLogLevel
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.utils.PlaybackLogEntry
+import com.nexapp.nexmusic.utils.PlaybackLogLevel
 
 @Composable
 fun PlaybackLogsDialog(

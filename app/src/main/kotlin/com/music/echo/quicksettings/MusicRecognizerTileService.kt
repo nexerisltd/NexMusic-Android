@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.quicksettings
+package com.nexapp.nexmusic.quicksettings
 
 import android.app.PendingIntent
 import android.content.Intent
@@ -6,8 +6,8 @@ import android.graphics.drawable.Icon
 import android.os.Build
 import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.recognition.RecognitionLaunchActivity
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.recognition.RecognitionLaunchActivity
 
 class MusicRecognizerTileService : TileService() {
     override fun onStartListening() {

@@ -1,26 +1,26 @@
 
 
-package com.nexapp.nexpass.viewmodels
+package com.nexapp.nexmusic.viewmodels
 
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
-import com.nexapp.nexpass.MainActivity
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.db.InternalDatabase
-import com.nexapp.nexpass.db.MusicDatabase
-import com.nexapp.nexpass.db.entities.ArtistEntity
-import com.nexapp.nexpass.db.entities.Song
-import com.nexapp.nexpass.db.entities.SongEntity
-import com.nexapp.nexpass.extensions.div
-import com.nexapp.nexpass.extensions.tryOrNull
-import com.nexapp.nexpass.extensions.zipInputStream
-import com.nexapp.nexpass.extensions.zipOutputStream
-import com.nexapp.nexpass.playback.MusicService
-import com.nexapp.nexpass.playback.MusicService.Companion.PERSISTENT_QUEUE_FILE
-import com.nexapp.nexpass.utils.reportException
+import com.nexapp.nexmusic.MainActivity
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.db.InternalDatabase
+import com.nexapp.nexmusic.db.MusicDatabase
+import com.nexapp.nexmusic.db.entities.ArtistEntity
+import com.nexapp.nexmusic.db.entities.Song
+import com.nexapp.nexmusic.db.entities.SongEntity
+import com.nexapp.nexmusic.extensions.div
+import com.nexapp.nexmusic.extensions.tryOrNull
+import com.nexapp.nexmusic.extensions.zipInputStream
+import com.nexapp.nexmusic.extensions.zipOutputStream
+import com.nexapp.nexmusic.playback.MusicService
+import com.nexapp.nexmusic.playback.MusicService.Companion.PERSISTENT_QUEUE_FILE
+import com.nexapp.nexmusic.utils.reportException
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking

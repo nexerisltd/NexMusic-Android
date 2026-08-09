@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.utils
+package com.nexapp.nexmusic.ui.utils
 
 import android.content.ClipData
 import android.content.ClipboardManager
@@ -48,14 +48,14 @@ import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.music.innertube.YouTube
 import com.music.innertube.models.MediaInfo
-import com.nexapp.nexpass.LocalDatabase
-import com.nexapp.nexpass.LocalPlayerConnection
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.db.entities.FormatEntity
-import com.nexapp.nexpass.db.entities.Song
-import com.nexapp.nexpass.ui.component.LocalBottomSheetPageState
-import com.nexapp.nexpass.ui.component.shimmer.ShimmerHost
-import com.nexapp.nexpass.ui.component.shimmer.TextPlaceholder
+import com.nexapp.nexmusic.LocalDatabase
+import com.nexapp.nexmusic.LocalPlayerConnection
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.db.entities.FormatEntity
+import com.nexapp.nexmusic.db.entities.Song
+import com.nexapp.nexmusic.ui.component.LocalBottomSheetPageState
+import com.nexapp.nexmusic.ui.component.shimmer.ShimmerHost
+import com.nexapp.nexmusic.ui.component.shimmer.TextPlaceholder
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable

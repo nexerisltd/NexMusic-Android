@@ -1,12 +1,12 @@
 
 
-package com.nexapp.nexpass.lyrics
+package com.nexapp.nexmusic.lyrics
 
 import android.content.Context
-import com.nexapp.nexpass.betterlyrics.BetterLyrics
-import com.nexapp.nexpass.constants.EnableBetterLyricsKey
-import com.nexapp.nexpass.utils.dataStore
-import com.nexapp.nexpass.utils.get
+import com.nexapp.nexmusic.betterlyrics.BetterLyrics
+import com.nexapp.nexmusic.constants.EnableBetterLyricsKey
+import com.nexapp.nexmusic.utils.dataStore
+import com.nexapp.nexmusic.utils.get
 
 object BetterLyricsProvider : LyricsProvider {
     override val name = "BetterLyrics"

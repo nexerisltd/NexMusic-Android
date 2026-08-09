@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.models
+package com.nexapp.nexmusic.models
 
 import com.music.innertube.models.YTItem
 

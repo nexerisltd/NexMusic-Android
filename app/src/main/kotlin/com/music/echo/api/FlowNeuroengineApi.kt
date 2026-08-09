@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.api
+package com.nexapp.nexmusic.api
 
 import retrofit2.http.Body
 import retrofit2.http.POST

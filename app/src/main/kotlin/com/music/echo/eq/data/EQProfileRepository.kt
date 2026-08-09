@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.eq.data
+package com.nexapp.nexmusic.eq.data
 
 import android.content.Context
 import android.content.SharedPreferences

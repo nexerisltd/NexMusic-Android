@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.ui.screens.equalizer.axion
+package com.nexapp.nexmusic.ui.screens.equalizer.axion
 
 import androidx.compose.animation.*
 import androidx.compose.foundation.background
@@ -29,11 +29,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.eq.data.SavedEQProfile
-import com.nexapp.nexpass.ui.component.Material3SettingsGroup
-import com.nexapp.nexpass.ui.component.Material3SettingsItem
-import com.nexapp.nexpass.ui.utils.backToMain
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.eq.data.SavedEQProfile
+import com.nexapp.nexmusic.ui.component.Material3SettingsGroup
+import com.nexapp.nexmusic.ui.component.Material3SettingsItem
+import com.nexapp.nexmusic.ui.utils.backToMain
 import kotlin.math.abs
 import racra.compose.smooth_corner_rect_library.AbsoluteSmoothCornerShape
 
@@ -52,7 +52,7 @@ fun AxionEqScreen(
             TopAppBar(
                 title = { Text(stringResource(R.string.echo_equalizer)) },
                 navigationIcon = {
-                    com.nexapp.nexpass.ui.component.IconButton(
+                    com.nexapp.nexmusic.ui.component.IconButton(
                         onClick = onBackClick,
                         onLongClick = {}
                     ) {

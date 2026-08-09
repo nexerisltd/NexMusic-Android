@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.screens
+package com.nexapp.nexmusic.ui.screens
 
 import androidx.compose.animation.*
 import androidx.compose.foundation.background
@@ -30,11 +30,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.nexapp.nexpass.LocalListenTogetherManager
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.listentogether.ChatMessagePayload
-import com.nexapp.nexpass.listentogether.RepliedMessage
+import com.nexapp.nexmusic.LocalListenTogetherManager
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.listentogether.ChatMessagePayload
+import com.nexapp.nexmusic.listentogether.RepliedMessage
 import androidx.compose.ui.text.*
 import androidx.compose.ui.text.style.TextDecoration
 import android.net.Uri

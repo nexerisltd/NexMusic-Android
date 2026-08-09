@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.recognition
+package com.nexapp.nexmusic.recognition
 
 
 object VibraSignature {

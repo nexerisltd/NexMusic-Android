@@ -1,14 +1,14 @@
 
 
-package com.nexapp.nexpass.viewmodels
+package com.nexapp.nexmusic.viewmodels
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.music.innertube.YouTube
 import com.music.innertube.models.AlbumItem
-import com.nexapp.nexpass.db.MusicDatabase
-import com.nexapp.nexpass.utils.reportException
+import com.nexapp.nexmusic.db.MusicDatabase
+import com.nexapp.nexmusic.utils.reportException
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -16,8 +16,8 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.Dispatchers
-import com.nexapp.nexpass.utils.Wikipedia
-import com.nexapp.nexpass.utils.AppleMusicAboutAlbum
+import com.nexapp.nexmusic.utils.Wikipedia
+import com.nexapp.nexmusic.utils.AppleMusicAboutAlbum
 import javax.inject.Inject
 
 @HiltViewModel

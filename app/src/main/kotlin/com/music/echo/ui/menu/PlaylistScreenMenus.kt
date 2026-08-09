@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.menu
+package com.nexapp.nexmusic.ui.menu
 
 import android.content.Context
 import android.content.Intent
@@ -14,12 +14,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.media3.exoplayer.offline.Download
-import com.nexapp.nexpass.LocalListenTogetherManager
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.db.entities.Playlist
-import com.nexapp.nexpass.db.entities.PlaylistSong
-import com.nexapp.nexpass.ui.component.Material3MenuGroup
-import com.nexapp.nexpass.ui.component.Material3MenuItemData
+import com.nexapp.nexmusic.LocalListenTogetherManager
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.db.entities.Playlist
+import com.nexapp.nexmusic.db.entities.PlaylistSong
+import com.nexapp.nexmusic.ui.component.Material3MenuGroup
+import com.nexapp.nexmusic.ui.component.Material3MenuItemData
 
 
 @Composable

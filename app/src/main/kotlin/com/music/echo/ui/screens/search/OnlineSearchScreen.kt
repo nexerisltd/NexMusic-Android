@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.screens.search
+package com.nexapp.nexmusic.ui.screens.search
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
@@ -55,26 +55,26 @@ import com.music.innertube.models.AlbumItem
 import com.music.innertube.models.ArtistItem
 import com.music.innertube.models.PlaylistItem
 import com.music.innertube.models.SongItem
-import com.nexapp.nexpass.LocalDatabase
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
-import com.nexapp.nexpass.LocalPlayerConnection
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.SuggestionItemHeight
-import com.nexapp.nexpass.models.toMediaMetadata
-import com.nexapp.nexpass.playback.queues.YouTubeQueue
-import com.nexapp.nexpass.ui.component.LocalMenuState
-import com.nexapp.nexpass.ui.component.YouTubeListItem
-import com.nexapp.nexpass.utils.listItemShape
-import com.nexapp.nexpass.utils.getGroupedShape
+import com.nexapp.nexmusic.LocalDatabase
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.LocalPlayerConnection
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.SuggestionItemHeight
+import com.nexapp.nexmusic.models.toMediaMetadata
+import com.nexapp.nexmusic.playback.queues.YouTubeQueue
+import com.nexapp.nexmusic.ui.component.LocalMenuState
+import com.nexapp.nexmusic.ui.component.YouTubeListItem
+import com.nexapp.nexmusic.utils.listItemShape
+import com.nexapp.nexmusic.utils.getGroupedShape
 import androidx.compose.material3.Surface
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Shape
 import com.music.innertube.utils.YouTubeUrlParser
-import com.nexapp.nexpass.ui.menu.YouTubeAlbumMenu
-import com.nexapp.nexpass.ui.menu.YouTubeArtistMenu
-import com.nexapp.nexpass.ui.menu.YouTubePlaylistMenu
-import com.nexapp.nexpass.ui.menu.YouTubeSongMenu
-import com.nexapp.nexpass.viewmodels.OnlineSearchSuggestionViewModel
+import com.nexapp.nexmusic.ui.menu.YouTubeAlbumMenu
+import com.nexapp.nexmusic.ui.menu.YouTubeArtistMenu
+import com.nexapp.nexmusic.ui.menu.YouTubePlaylistMenu
+import com.nexapp.nexmusic.ui.menu.YouTubeSongMenu
+import com.nexapp.nexmusic.viewmodels.OnlineSearchSuggestionViewModel
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.debounce

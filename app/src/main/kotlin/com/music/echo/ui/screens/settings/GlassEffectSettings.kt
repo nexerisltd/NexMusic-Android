@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.ui.screens.settings
+package com.nexapp.nexmusic.ui.screens.settings
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -37,30 +37,30 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.LiquidGlassChromaticAberrationKey
-import com.nexapp.nexpass.constants.LiquidGlassDepthEffectKey
-import com.nexapp.nexpass.constants.LiquidGlassBlurRadiusKey
-import com.nexapp.nexpass.constants.LiquidGlassGlobalEnabledKey
-import com.nexapp.nexpass.constants.LiquidGlassLensAmountKey
-import com.nexapp.nexpass.constants.LiquidGlassLensHeightKey
-import com.nexapp.nexpass.constants.LiquidGlassMiniPlayerEnabledKey
-import com.nexapp.nexpass.constants.LiquidGlassNavBarEnabledKey
-import com.nexapp.nexpass.constants.LiquidGlassPlayerEnabledKey
-import com.nexapp.nexpass.constants.LiquidGlassSurfaceOpacityKey
-import com.nexapp.nexpass.constants.LiquidGlassSurfaceTintColorKey
-import com.nexapp.nexpass.constants.LiquidGlassTextColorKey
-import com.nexapp.nexpass.constants.LiquidGlassVibrancyKey
-import com.nexapp.nexpass.constants.UseFloatingNavBarKey
-import com.nexapp.nexpass.ui.component.ColorPickerDialog
-import com.nexapp.nexpass.ui.component.DefaultDialog
-import com.nexapp.nexpass.ui.component.IconButton as AppIconButton
-import com.nexapp.nexpass.ui.component.Material3SettingsGroup
-import com.nexapp.nexpass.ui.component.Material3SettingsItem
-import com.nexapp.nexpass.ui.utils.backToMain
-import com.nexapp.nexpass.utils.rememberPreference
-import com.nexapp.nexpass.constants.*
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.LiquidGlassChromaticAberrationKey
+import com.nexapp.nexmusic.constants.LiquidGlassDepthEffectKey
+import com.nexapp.nexmusic.constants.LiquidGlassBlurRadiusKey
+import com.nexapp.nexmusic.constants.LiquidGlassGlobalEnabledKey
+import com.nexapp.nexmusic.constants.LiquidGlassLensAmountKey
+import com.nexapp.nexmusic.constants.LiquidGlassLensHeightKey
+import com.nexapp.nexmusic.constants.LiquidGlassMiniPlayerEnabledKey
+import com.nexapp.nexmusic.constants.LiquidGlassNavBarEnabledKey
+import com.nexapp.nexmusic.constants.LiquidGlassPlayerEnabledKey
+import com.nexapp.nexmusic.constants.LiquidGlassSurfaceOpacityKey
+import com.nexapp.nexmusic.constants.LiquidGlassSurfaceTintColorKey
+import com.nexapp.nexmusic.constants.LiquidGlassTextColorKey
+import com.nexapp.nexmusic.constants.LiquidGlassVibrancyKey
+import com.nexapp.nexmusic.constants.UseFloatingNavBarKey
+import com.nexapp.nexmusic.ui.component.ColorPickerDialog
+import com.nexapp.nexmusic.ui.component.DefaultDialog
+import com.nexapp.nexmusic.ui.component.IconButton as AppIconButton
+import com.nexapp.nexmusic.ui.component.Material3SettingsGroup
+import com.nexapp.nexmusic.ui.component.Material3SettingsItem
+import com.nexapp.nexmusic.ui.utils.backToMain
+import com.nexapp.nexmusic.utils.rememberPreference
+import com.nexapp.nexmusic.constants.*
 import kotlin.math.roundToInt
 
 @OptIn(ExperimentalMaterial3Api::class)

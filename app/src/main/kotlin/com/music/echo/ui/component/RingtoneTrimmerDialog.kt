@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.ui.component
+package com.nexapp.nexmusic.ui.component
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
@@ -15,8 +15,8 @@ import androidx.compose.ui.unit.dp
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
 import androidx.media3.exoplayer.ExoPlayer
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.utils.makeTimeString
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.utils.makeTimeString
 import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalMaterial3Api::class)

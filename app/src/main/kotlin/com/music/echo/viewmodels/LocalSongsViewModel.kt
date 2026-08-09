@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.viewmodels
+package com.nexapp.nexmusic.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,11 +11,11 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import com.nexapp.nexpass.localmedia.LocalSongScanConfig
-import com.nexapp.nexpass.db.MusicDatabase
-import com.nexapp.nexpass.localmedia.LocalSongScanSummary
-import com.nexapp.nexpass.localmedia.LocalSongScanner
-import com.nexapp.nexpass.utils.reportException
+import com.nexapp.nexmusic.localmedia.LocalSongScanConfig
+import com.nexapp.nexmusic.db.MusicDatabase
+import com.nexapp.nexmusic.localmedia.LocalSongScanSummary
+import com.nexapp.nexmusic.localmedia.LocalSongScanner
+import com.nexapp.nexmusic.utils.reportException
 import javax.inject.Inject
 
 @HiltViewModel

@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.extensions
+package com.nexapp.nexmusic.extensions
 
 fun <T> tryOrNull(block: () -> T): T? =
     try {

@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.screens
+package com.nexapp.nexmusic.ui.screens
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.combinedClickable
@@ -26,24 +26,24 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.GridItemSize
-import com.nexapp.nexpass.constants.GridItemsSizeKey
-import com.nexapp.nexpass.constants.GridThumbnailHeight
-import com.nexapp.nexpass.ui.component.ChipsRow
-import com.nexapp.nexpass.ui.component.IconButton
-import com.nexapp.nexpass.ui.component.LocalMenuState
-import com.nexapp.nexpass.ui.component.YouTubeGridItem
-import com.nexapp.nexpass.ui.component.shimmer.GridItemPlaceHolder
-import com.nexapp.nexpass.ui.component.shimmer.ShimmerHost
-import com.nexapp.nexpass.ui.menu.YouTubeAlbumMenu
-import com.nexapp.nexpass.ui.menu.YouTubeArtistMenu
-import com.nexapp.nexpass.ui.menu.YouTubePlaylistMenu
-import com.nexapp.nexpass.ui.utils.backToMain
-import com.nexapp.nexpass.utils.rememberEnumPreference
-import com.nexapp.nexpass.viewmodels.AccountContentType
-import com.nexapp.nexpass.viewmodels.AccountViewModel
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.GridItemSize
+import com.nexapp.nexmusic.constants.GridItemsSizeKey
+import com.nexapp.nexmusic.constants.GridThumbnailHeight
+import com.nexapp.nexmusic.ui.component.ChipsRow
+import com.nexapp.nexmusic.ui.component.IconButton
+import com.nexapp.nexmusic.ui.component.LocalMenuState
+import com.nexapp.nexmusic.ui.component.YouTubeGridItem
+import com.nexapp.nexmusic.ui.component.shimmer.GridItemPlaceHolder
+import com.nexapp.nexmusic.ui.component.shimmer.ShimmerHost
+import com.nexapp.nexmusic.ui.menu.YouTubeAlbumMenu
+import com.nexapp.nexmusic.ui.menu.YouTubeArtistMenu
+import com.nexapp.nexmusic.ui.menu.YouTubePlaylistMenu
+import com.nexapp.nexmusic.ui.utils.backToMain
+import com.nexapp.nexmusic.utils.rememberEnumPreference
+import com.nexapp.nexmusic.viewmodels.AccountContentType
+import com.nexapp.nexmusic.viewmodels.AccountViewModel
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable

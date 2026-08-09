@@ -2,7 +2,7 @@
 
 @file:OptIn(ExperimentalMaterial3ExpressiveApi::class)
 
-package com.nexapp.nexpass.ui.component
+package com.nexapp.nexmusic.ui.component
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.Crossfade
@@ -73,8 +73,8 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.ui.screens.Screens
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.ui.screens.Screens
 
 @Composable
 fun FloatingNavigationToolbar(

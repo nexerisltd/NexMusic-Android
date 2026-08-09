@@ -1,12 +1,12 @@
 
 
-package com.nexapp.nexpass.lyrics
+package com.nexapp.nexmusic.lyrics
 
 import android.content.Context
 import com.music.kugou.KuGou
-import com.nexapp.nexpass.constants.EnableKugouKey
-import com.nexapp.nexpass.utils.dataStore
-import com.nexapp.nexpass.utils.get
+import com.nexapp.nexmusic.constants.EnableKugouKey
+import com.nexapp.nexmusic.utils.dataStore
+import com.nexapp.nexmusic.utils.get
 
 object KuGouLyricsProvider : LyricsProvider {
     override val name = "Kugou"

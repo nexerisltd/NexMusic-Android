@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.ui.player
+package com.nexapp.nexmusic.ui.player
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween

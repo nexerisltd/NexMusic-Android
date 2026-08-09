@@ -1,13 +1,13 @@
 
 
-package com.nexapp.nexpass.utils
+package com.nexapp.nexmusic.utils
 
 import androidx.datastore.preferences.core.edit
 import com.music.innertube.YouTube
-import com.nexapp.nexpass.constants.VisitorDataKey
-import com.nexapp.nexpass.utils.cipher.CipherDeobfuscator
-import com.nexapp.nexpass.utils.PlaybackLogManager
-import com.nexapp.nexpass.utils.PlaybackLogLevel
+import com.nexapp.nexmusic.constants.VisitorDataKey
+import com.nexapp.nexmusic.utils.cipher.CipherDeobfuscator
+import com.nexapp.nexmusic.utils.PlaybackLogManager
+import com.nexapp.nexmusic.utils.PlaybackLogLevel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import timber.log.Timber

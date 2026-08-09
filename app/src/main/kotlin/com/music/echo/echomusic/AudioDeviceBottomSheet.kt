@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 
-package com.nexapp.nexpass.echomusic
+package com.nexapp.nexmusic.echomusic
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -41,7 +41,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.runtime.key
-import com.nexapp.nexpass.echomusic.shapes.RoundedStarShape
+import com.nexapp.nexmusic.echomusic.shapes.RoundedStarShape
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -130,11 +130,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.LocalPlayerConnection
-import com.nexapp.nexpass.constants.AudioQuality
-import com.nexapp.nexpass.constants.AudioQualityKey
-import com.nexapp.nexpass.utils.rememberEnumPreference
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.LocalPlayerConnection
+import com.nexapp.nexmusic.constants.AudioQuality
+import com.nexapp.nexmusic.constants.AudioQualityKey
+import com.nexapp.nexmusic.utils.rememberEnumPreference
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
@@ -911,8 +911,8 @@ fun AudioQualitySelector(context: Context) {
 fun DownloadQualitySelector() {
     val context = LocalContext.current
     val (downloadQuality, onDownloadQualityChange) = rememberEnumPreference(
-        key = com.nexapp.nexpass.constants.DownloadQualityKey,
-        defaultValue = com.nexapp.nexpass.constants.DownloadQuality.YOUTUBE
+        key = com.nexapp.nexmusic.constants.DownloadQualityKey,
+        defaultValue = com.nexapp.nexmusic.constants.DownloadQuality.YOUTUBE
     )
 
     Column(
@@ -931,7 +931,7 @@ fun DownloadQualitySelector() {
             "Opus"
         )
         val selectedIndex = when (downloadQuality) {
-            com.nexapp.nexpass.constants.DownloadQuality.YOUTUBE -> 0
+            com.nexapp.nexmusic.constants.DownloadQuality.YOUTUBE -> 0
             else -> 0
         }
 
@@ -948,8 +948,8 @@ fun DownloadQualitySelector() {
                     checked = selectedIndex == index,
                     onCheckedChange = {
                         val newQuality = when (index) {
-                            0 -> com.nexapp.nexpass.constants.DownloadQuality.YOUTUBE
-                            else -> com.nexapp.nexpass.constants.DownloadQuality.YOUTUBE
+                            0 -> com.nexapp.nexmusic.constants.DownloadQuality.YOUTUBE
+                            else -> com.nexapp.nexmusic.constants.DownloadQuality.YOUTUBE
                         }
                         onDownloadQualityChange(newQuality)
                     },

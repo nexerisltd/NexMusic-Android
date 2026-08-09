@@ -7,7 +7,7 @@
  * scale for cheaper effect rendering. KMP expect/actual declarations were
  * merged into this single Android source set. Package renamed accordingly.
  */
-package com.nexapp.nexpass.ui.component.backdrop.backdrops
+package com.nexapp.nexmusic.ui.component.backdrop.backdrops
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
@@ -25,8 +25,8 @@ import androidx.compose.ui.graphics.rememberGraphicsLayer
 import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.layout.positionInWindow
 import androidx.compose.ui.unit.Density
-import com.nexapp.nexpass.ui.component.backdrop.Backdrop
-import com.nexapp.nexpass.ui.component.backdrop.internal.InverseLayerScope
+import com.nexapp.nexmusic.ui.component.backdrop.Backdrop
+import com.nexapp.nexmusic.ui.component.backdrop.internal.InverseLayerScope
 
 private val DefaultOnDraw: ContentDrawScope.() -> Unit = { drawContent() }
 

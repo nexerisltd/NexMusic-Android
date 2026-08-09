@@ -1,6 +1,6 @@
-package com.nexapp.nexpass.betterlyrics
+package com.nexapp.nexmusic.betterlyrics
 
-import com.nexapp.nexpass.betterlyrics.models.TTMLResponse
+import com.nexapp.nexmusic.betterlyrics.models.TTMLResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.engine.cio.CIO

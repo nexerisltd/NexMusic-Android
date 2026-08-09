@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.utils.potoken
+package com.nexapp.nexmusic.utils.potoken
 
 class PoTokenException(message: String) : Exception(message)
 

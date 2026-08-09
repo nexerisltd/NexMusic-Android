@@ -1,20 +1,20 @@
 
 
-package com.nexapp.nexpass.viewmodels
+package com.nexapp.nexmusic.viewmodels
 
 import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.nexapp.nexpass.App
-import com.nexapp.nexpass.constants.AccountChannelHandleKey
-import com.nexapp.nexpass.constants.AccountEmailKey
-import com.nexapp.nexpass.constants.AccountNameKey
-import com.nexapp.nexpass.constants.DataSyncIdKey
-import com.nexapp.nexpass.constants.InnerTubeCookieKey
-import com.nexapp.nexpass.constants.VisitorDataKey
-import com.nexapp.nexpass.utils.SyncUtils
-import com.nexapp.nexpass.utils.dataStore
+import com.nexapp.nexmusic.App
+import com.nexapp.nexmusic.constants.AccountChannelHandleKey
+import com.nexapp.nexmusic.constants.AccountEmailKey
+import com.nexapp.nexmusic.constants.AccountNameKey
+import com.nexapp.nexmusic.constants.DataSyncIdKey
+import com.nexapp.nexmusic.constants.InnerTubeCookieKey
+import com.nexapp.nexmusic.constants.VisitorDataKey
+import com.nexapp.nexmusic.utils.SyncUtils
+import com.nexapp.nexmusic.utils.dataStore
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

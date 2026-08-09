@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.playback
+package com.nexapp.nexmusic.playback
 
 import android.content.Context
 import kotlinx.coroutines.CoroutineScope
@@ -48,7 +48,7 @@ class CastConnectionHandler(
     fun isCastAvailable(): Boolean = false
     fun disconnect() {}
     fun loadCurrentMedia() {}
-    fun loadMedia(metadata: com.nexapp.nexpass.models.MediaMetadata) {}
+    fun loadMedia(metadata: com.nexapp.nexmusic.models.MediaMetadata) {}
     fun play() {}
     fun pause() {}
     fun seekTo(position: Long) {}

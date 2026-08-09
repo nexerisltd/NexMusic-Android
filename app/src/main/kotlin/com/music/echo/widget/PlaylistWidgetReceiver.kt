@@ -3,14 +3,14 @@
  * Licensed under GPL-3.0 | See git history for contributors
  */
 
-package com.nexapp.nexpass.widget
+package com.nexapp.nexmusic.widget
 
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
-import com.nexapp.nexpass.MainActivity
-import com.nexapp.nexpass.playback.MusicService
+import com.nexapp.nexmusic.MainActivity
+import com.nexapp.nexmusic.playback.MusicService
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -113,7 +113,7 @@ class PlaylistWidgetReceiver : AppWidgetProvider() {
 
     private fun openTargetInApp(context: Context, source: Intent) {
         val activityIntent = Intent(context, MainActivity::class.java).apply {
-            action = "com.nexapp.nexpass.action.OPEN_WIDGET_TARGET"
+            action = "com.nexapp.nexmusic.action.OPEN_WIDGET_TARGET"
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_SINGLE_TOP
             putExtra(
                 "extra_widget_target_type",
@@ -129,8 +129,8 @@ class PlaylistWidgetReceiver : AppWidgetProvider() {
 
     companion object {
         private const val TAG = "PlaylistWidgetReceiver"
-        const val ACTION_PLAY_TARGET = "com.nexapp.nexpass.widget.playlists.PLAY_TARGET"
-        const val ACTION_UPDATE_WIDGET = "com.nexapp.nexpass.widget.playlists.UPDATE_WIDGET"
+        const val ACTION_PLAY_TARGET = "com.nexapp.nexmusic.widget.playlists.PLAY_TARGET"
+        const val ACTION_UPDATE_WIDGET = "com.nexapp.nexmusic.widget.playlists.UPDATE_WIDGET"
 
         const val EXTRA_TARGET_TYPE = "playlist_widget_target_type"
         const val EXTRA_TARGET_ID = "playlist_widget_target_id"

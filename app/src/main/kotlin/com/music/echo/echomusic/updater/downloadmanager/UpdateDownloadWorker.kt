@@ -1,11 +1,11 @@
-package com.nexapp.nexpass.echomusic.updater.downloadmanager
+package com.nexapp.nexmusic.echomusic.updater.downloadmanager
 
 import android.content.Context
 import android.os.Environment
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import androidx.work.workDataOf
-import com.nexapp.nexpass.R
+import com.nexapp.nexmusic.R
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File

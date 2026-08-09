@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.screens
+package com.nexapp.nexmusic.ui.screens
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.BorderStroke
@@ -91,7 +91,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.foundation.layout.offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import com.nexapp.nexpass.constants.AppBarHeight
+import com.nexapp.nexmusic.constants.AppBarHeight
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.util.fastForEachIndexed
@@ -100,35 +100,35 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.media3.exoplayer.offline.Download
 import androidx.navigation.NavController
 import coil3.compose.AsyncImage
-import com.nexapp.nexpass.LocalDatabase
-import com.nexapp.nexpass.LocalDownloadUtil
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
-import com.nexapp.nexpass.LocalPlayerConnection
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.HideExplicitKey
-import com.nexapp.nexpass.constants.HideVideoSongsKey
-import com.nexapp.nexpass.constants.AlbumCanvasEnabledKey
-import com.nexapp.nexpass.db.entities.Album
-import com.nexapp.nexpass.playback.ExoDownloadService
-import com.nexapp.nexpass.playback.queues.LocalAlbumRadio
-import com.nexapp.nexpass.ui.component.AlbumGradient
-import com.nexapp.nexpass.ui.component.ExpandableText
-import com.nexapp.nexpass.ui.component.IconButton
-import com.nexapp.nexpass.ui.component.LinkSegment
-import com.nexapp.nexpass.ui.component.LocalMenuState
-import com.nexapp.nexpass.ui.component.NavigationTitle
-import com.nexapp.nexpass.ui.component.SongListItem
-import com.nexapp.nexpass.ui.component.YouTubeGridItem
-import com.nexapp.nexpass.ui.menu.AlbumMenu
-import com.nexapp.nexpass.ui.menu.SelectionSongMenu
-import com.nexapp.nexpass.ui.menu.SongMenu
-import com.nexapp.nexpass.ui.menu.YouTubeAlbumMenu
-import com.nexapp.nexpass.ui.utils.backToMain
-import com.nexapp.nexpass.ui.utils.fadingEdge
-import com.nexapp.nexpass.ui.player.CanvasArtworkPlayer
-import com.nexapp.nexpass.utils.listItemShape
-import com.nexapp.nexpass.utils.rememberPreference
-import com.nexapp.nexpass.viewmodels.AlbumViewModel
+import com.nexapp.nexmusic.LocalDatabase
+import com.nexapp.nexmusic.LocalDownloadUtil
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.LocalPlayerConnection
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.HideExplicitKey
+import com.nexapp.nexmusic.constants.HideVideoSongsKey
+import com.nexapp.nexmusic.constants.AlbumCanvasEnabledKey
+import com.nexapp.nexmusic.db.entities.Album
+import com.nexapp.nexmusic.playback.ExoDownloadService
+import com.nexapp.nexmusic.playback.queues.LocalAlbumRadio
+import com.nexapp.nexmusic.ui.component.AlbumGradient
+import com.nexapp.nexmusic.ui.component.ExpandableText
+import com.nexapp.nexmusic.ui.component.IconButton
+import com.nexapp.nexmusic.ui.component.LinkSegment
+import com.nexapp.nexmusic.ui.component.LocalMenuState
+import com.nexapp.nexmusic.ui.component.NavigationTitle
+import com.nexapp.nexmusic.ui.component.SongListItem
+import com.nexapp.nexmusic.ui.component.YouTubeGridItem
+import com.nexapp.nexmusic.ui.menu.AlbumMenu
+import com.nexapp.nexmusic.ui.menu.SelectionSongMenu
+import com.nexapp.nexmusic.ui.menu.SongMenu
+import com.nexapp.nexmusic.ui.menu.YouTubeAlbumMenu
+import com.nexapp.nexmusic.ui.utils.backToMain
+import com.nexapp.nexmusic.ui.utils.fadingEdge
+import com.nexapp.nexmusic.ui.player.CanvasArtworkPlayer
+import com.nexapp.nexmusic.utils.listItemShape
+import com.nexapp.nexmusic.utils.rememberPreference
+import com.nexapp.nexmusic.viewmodels.AlbumViewModel
 
 @OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 @Composable
@@ -156,7 +156,7 @@ fun AlbumScreen(
     val description by viewModel.description.collectAsState()
     val descriptionRuns by viewModel.descriptionRuns.collectAsState()
     val hideExplicit by rememberPreference(key = HideExplicitKey, defaultValue = false)
-    val dataSaverEnabled by rememberPreference(key = com.nexapp.nexpass.constants.DataSaverEnabledKey, defaultValue = false)
+    val dataSaverEnabled by rememberPreference(key = com.nexapp.nexmusic.constants.DataSaverEnabledKey, defaultValue = false)
     val hideVideoSongsPref by rememberPreference(key = HideVideoSongsKey, defaultValue = false)
     val hideVideoSongs = if (dataSaverEnabled) true else hideVideoSongsPref
     val albumCanvasEnabledPref by rememberPreference(key = AlbumCanvasEnabledKey, defaultValue = false)

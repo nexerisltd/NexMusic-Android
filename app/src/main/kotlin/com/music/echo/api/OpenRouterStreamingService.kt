@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.api
+package com.nexapp.nexmusic.api
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow

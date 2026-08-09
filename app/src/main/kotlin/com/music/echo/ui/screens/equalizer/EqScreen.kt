@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.ui.screens.equalizer
+package com.nexapp.nexmusic.ui.screens.equalizer
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -49,9 +49,9 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.nexapp.nexpass.LocalPlayerConnection
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.eq.data.SavedEQProfile
+import com.nexapp.nexmusic.LocalPlayerConnection
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.eq.data.SavedEQProfile
 import timber.log.Timber
 
 

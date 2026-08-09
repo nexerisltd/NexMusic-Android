@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.menu
+package com.nexapp.nexmusic.ui.menu
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -56,37 +56,37 @@ import androidx.navigation.NavController
 import coil3.compose.AsyncImage
 import com.music.innertube.YouTube
 import com.music.innertube.models.SongItem
-import com.nexapp.nexpass.LocalDatabase
-import com.nexapp.nexpass.LocalDownloadUtil
-import com.nexapp.nexpass.LocalListenTogetherManager
-import com.nexapp.nexpass.LocalPlayerConnection
-import com.nexapp.nexpass.LocalSyncUtils
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.EnableExportAsMp3Key
-import com.nexapp.nexpass.constants.ExportDirectoryUriKey
-import com.nexapp.nexpass.constants.ExportedSongIdsKey
-import com.nexapp.nexpass.constants.ExportingSongIdsKey
-import com.nexapp.nexpass.constants.ListItemHeight
-import com.nexapp.nexpass.constants.ListThumbnailSize
-import com.nexapp.nexpass.constants.ThumbnailCornerRadius
-import com.nexapp.nexpass.db.entities.SpeedDialItem
-import com.nexapp.nexpass.db.entities.SongEntity
-import com.nexapp.nexpass.extensions.toMediaItem
-import com.nexapp.nexpass.models.MediaMetadata
-import com.nexapp.nexpass.models.toMediaMetadata
-import com.nexapp.nexpass.playback.ExoDownloadService
-import com.nexapp.nexpass.playback.queues.YouTubeQueue
-import com.nexapp.nexpass.ui.component.ListDialog
-import com.nexapp.nexpass.ui.component.LocalBottomSheetPageState
-import com.nexapp.nexpass.ui.component.Material3MenuGroup
-import com.nexapp.nexpass.ui.component.Material3MenuItemData
-import com.nexapp.nexpass.ui.component.NewAction
-import com.nexapp.nexpass.ui.component.NewActionGrid
-import com.nexapp.nexpass.ui.utils.ShowMediaInfo
-import com.nexapp.nexpass.ui.utils.resize
-import com.nexapp.nexpass.utils.joinByBullet
-import com.nexapp.nexpass.utils.makeTimeString
-import com.nexapp.nexpass.utils.rememberPreference
+import com.nexapp.nexmusic.LocalDatabase
+import com.nexapp.nexmusic.LocalDownloadUtil
+import com.nexapp.nexmusic.LocalListenTogetherManager
+import com.nexapp.nexmusic.LocalPlayerConnection
+import com.nexapp.nexmusic.LocalSyncUtils
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.EnableExportAsMp3Key
+import com.nexapp.nexmusic.constants.ExportDirectoryUriKey
+import com.nexapp.nexmusic.constants.ExportedSongIdsKey
+import com.nexapp.nexmusic.constants.ExportingSongIdsKey
+import com.nexapp.nexmusic.constants.ListItemHeight
+import com.nexapp.nexmusic.constants.ListThumbnailSize
+import com.nexapp.nexmusic.constants.ThumbnailCornerRadius
+import com.nexapp.nexmusic.db.entities.SpeedDialItem
+import com.nexapp.nexmusic.db.entities.SongEntity
+import com.nexapp.nexmusic.extensions.toMediaItem
+import com.nexapp.nexmusic.models.MediaMetadata
+import com.nexapp.nexmusic.models.toMediaMetadata
+import com.nexapp.nexmusic.playback.ExoDownloadService
+import com.nexapp.nexmusic.playback.queues.YouTubeQueue
+import com.nexapp.nexmusic.ui.component.ListDialog
+import com.nexapp.nexmusic.ui.component.LocalBottomSheetPageState
+import com.nexapp.nexmusic.ui.component.Material3MenuGroup
+import com.nexapp.nexmusic.ui.component.Material3MenuItemData
+import com.nexapp.nexmusic.ui.component.NewAction
+import com.nexapp.nexmusic.ui.component.NewActionGrid
+import com.nexapp.nexmusic.ui.utils.ShowMediaInfo
+import com.nexapp.nexmusic.ui.utils.resize
+import com.nexapp.nexmusic.utils.joinByBullet
+import com.nexapp.nexmusic.utils.makeTimeString
+import com.nexapp.nexmusic.utils.rememberPreference
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -108,7 +108,7 @@ fun YouTubeSongMenu(
     val coroutineScope = rememberCoroutineScope()
     val syncUtils = LocalSyncUtils.current
     val listenTogetherManager = LocalListenTogetherManager.current
-    val ringtoneViewModel = com.nexapp.nexpass.LocalRingtoneViewModel.current
+    val ringtoneViewModel = com.nexapp.nexmusic.LocalRingtoneViewModel.current
     val isPinned by database.speedDialDao.isPinned(song.id).collectAsState(initial = false)
     val artists = remember {
         song.artists.mapNotNull {
@@ -343,7 +343,7 @@ fun YouTubeSongMenu(
                             },
                             onClick = {
                                 val durationMs = if (song.duration != null && song.duration!! > 0) song.duration!! * 1000L else 180000L
-                                val trackInfo = com.nexapp.nexpass.listentogether.TrackInfo(
+                                val trackInfo = com.nexapp.nexmusic.listentogether.TrackInfo(
                                     id = song.id,
                                     title = song.title,
                                     artist = artists.joinToString(", ") { it.name },
@@ -607,7 +607,7 @@ fun YouTubeSongMenu(
                                         onDismiss()
                                     } else {
                                         onDismiss()
-                                        com.nexapp.nexpass.playback.AudioExportService.start(
+                                        com.nexapp.nexmusic.playback.AudioExportService.start(
                                             context = context,
                                             songId = song.id,
                                             songTitle = song.title,

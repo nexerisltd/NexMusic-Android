@@ -6,20 +6,20 @@
 #   http://developer.android.com/guide/developing/tools/proguard.html
 
 # WEB_REMIX Streaming - WebView JavaScript interfaces
--keepclassmembers class com.nexapp.nexpass.utils.sabr.EjsNTransformSolver$SolverWebView {
+-keepclassmembers class com.nexapp.nexmusic.utils.sabr.EjsNTransformSolver$SolverWebView {
     @android.webkit.JavascriptInterface public *;
 }
--keepclassmembers class com.nexapp.nexpass.utils.cipher.CipherWebView {
+-keepclassmembers class com.nexapp.nexmusic.utils.cipher.CipherWebView {
     @android.webkit.JavascriptInterface public *;
 }
--keepclassmembers class com.nexapp.nexpass.utils.potoken.PoTokenWebView {
+-keepclassmembers class com.nexapp.nexmusic.utils.potoken.PoTokenWebView {
     @android.webkit.JavascriptInterface public *;
 }
 
 # Keep streaming utility classes
--keep class com.nexapp.nexpass.utils.cipher.** { *; }
--keep class com.nexapp.nexpass.utils.sabr.** { *; }
--keep class com.nexapp.nexpass.utils.potoken.** { *; }
+-keep class com.nexapp.nexmusic.utils.cipher.** { *; }
+-keep class com.nexapp.nexmusic.utils.sabr.** { *; }
+-keep class com.nexapp.nexmusic.utils.potoken.** { *; }
 
 # Keep coroutine continuation for WebView callbacks
 -keepclassmembers class * {
@@ -117,11 +117,11 @@
 
 ## Queue Persistence Rules
 # Keep queue-related classes to prevent serialization issues in release builds
--keep class com.nexapp.nexpass.models.PersistQueue { *; }
--keep class com.nexapp.nexpass.models.PersistPlayerState { *; }
--keep class com.nexapp.nexpass.models.QueueData { *; }
--keep class com.nexapp.nexpass.models.QueueType { *; }
--keep class com.nexapp.nexpass.playback.queues.** { *; }
+-keep class com.nexapp.nexmusic.models.PersistQueue { *; }
+-keep class com.nexapp.nexmusic.models.PersistPlayerState { *; }
+-keep class com.nexapp.nexmusic.models.QueueData { *; }
+-keep class com.nexapp.nexmusic.models.QueueType { *; }
+-keep class com.nexapp.nexmusic.playback.queues.** { *; }
 
 # Keep serialization methods for queue persistence
 -keepclassmembers class * implements java.io.Serializable {
@@ -135,7 +135,7 @@
 -keep interface com.yalantis.ucrop** { *; }
 
 ## Google Cast Rules
--keep class com.nexapp.nexpass.cast.** { *; }
+-keep class com.nexapp.nexmusic.cast.** { *; }
 -keep class com.google.android.gms.cast.** { *; }
 -keep class androidx.mediarouter.** { *; }
 
@@ -143,8 +143,8 @@
 -dontwarn com.google.re2j.**
 
 # Vibra fingerprint library
--keep class com.nexapp.nexpass.recognition.VibraSignature { *; }
--keepclassmembers class com.nexapp.nexpass.recognition.VibraSignature {
+-keep class com.nexapp.nexmusic.recognition.VibraSignature { *; }
+-keepclassmembers class com.nexapp.nexmusic.recognition.VibraSignature {
     native <methods>;
 }
 
@@ -174,13 +174,13 @@
 }
 
 ## Listen Together Serialization
--keep class com.nexapp.nexpass.listentogether.** { *; }
--keepclassmembers class com.nexapp.nexpass.listentogether.** {
+-keep class com.nexapp.nexmusic.listentogether.** { *; }
+-keepclassmembers class com.nexapp.nexmusic.listentogether.** {
     *;
 }
--keepclassmembers class com.nexapp.nexpass.listentogether.** {
+-keepclassmembers class com.nexapp.nexmusic.listentogether.** {
     *** Companion;
 }
--keepclasseswithmembers class com.nexapp.nexpass.listentogether.** {
+-keepclasseswithmembers class com.nexapp.nexmusic.listentogether.** {
     kotlinx.serialization.KSerializer serializer(...);
 }

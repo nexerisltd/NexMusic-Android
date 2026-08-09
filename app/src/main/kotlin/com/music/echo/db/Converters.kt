@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.db
+package com.nexapp.nexmusic.db
 
 import androidx.room.TypeConverter
 import java.time.Instant

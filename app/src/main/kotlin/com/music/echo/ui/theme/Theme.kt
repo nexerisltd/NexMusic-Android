@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.theme
+package com.nexapp.nexmusic.ui.theme
 
 import android.graphics.Bitmap
 import android.os.Build

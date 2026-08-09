@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.screens.playlist
+package com.nexapp.nexmusic.ui.screens.playlist
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -85,38 +85,38 @@ import androidx.media3.exoplayer.offline.DownloadRequest
 import androidx.media3.exoplayer.offline.DownloadService
 import androidx.navigation.NavController
 import coil3.compose.AsyncImage
-import com.nexapp.nexpass.LocalDownloadUtil
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
-import com.nexapp.nexpass.LocalPlayerConnection
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.HideExplicitKey
-import com.nexapp.nexpass.constants.SongSortDescendingKey
-import com.nexapp.nexpass.constants.SongSortType
-import com.nexapp.nexpass.constants.SongSortTypeKey
-import com.nexapp.nexpass.constants.YtmSyncKey
-import com.nexapp.nexpass.db.entities.Song
-import com.nexapp.nexpass.extensions.toMediaItem
-import com.nexapp.nexpass.models.MediaMetadata
-import com.nexapp.nexpass.playback.ExoDownloadService
-import com.nexapp.nexpass.playback.PlayerConnection
-import com.nexapp.nexpass.playback.queues.ListQueue
-import com.nexapp.nexpass.ui.component.DefaultDialog
-import com.nexapp.nexpass.ui.component.DraggableScrollbar
-import com.nexapp.nexpass.ui.component.EmptyPlaceholder
-import com.nexapp.nexpass.ui.component.ExpandableText
-import com.nexapp.nexpass.ui.component.IconButton
-import com.nexapp.nexpass.ui.component.LocalMenuState
-import com.nexapp.nexpass.ui.component.SongListItem
-import com.nexapp.nexpass.ui.component.SortHeader
-import com.nexapp.nexpass.ui.menu.AutoPlaylistMenu
-import com.nexapp.nexpass.ui.menu.SelectionSongMenu
-import com.nexapp.nexpass.ui.menu.SongMenu
-import com.nexapp.nexpass.ui.utils.backToMain
-import com.nexapp.nexpass.utils.listItemShape
-import com.nexapp.nexpass.utils.makeTimeString
-import com.nexapp.nexpass.utils.rememberEnumPreference
-import com.nexapp.nexpass.utils.rememberPreference
-import com.nexapp.nexpass.viewmodels.AutoPlaylistViewModel
+import com.nexapp.nexmusic.LocalDownloadUtil
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.LocalPlayerConnection
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.HideExplicitKey
+import com.nexapp.nexmusic.constants.SongSortDescendingKey
+import com.nexapp.nexmusic.constants.SongSortType
+import com.nexapp.nexmusic.constants.SongSortTypeKey
+import com.nexapp.nexmusic.constants.YtmSyncKey
+import com.nexapp.nexmusic.db.entities.Song
+import com.nexapp.nexmusic.extensions.toMediaItem
+import com.nexapp.nexmusic.models.MediaMetadata
+import com.nexapp.nexmusic.playback.ExoDownloadService
+import com.nexapp.nexmusic.playback.PlayerConnection
+import com.nexapp.nexmusic.playback.queues.ListQueue
+import com.nexapp.nexmusic.ui.component.DefaultDialog
+import com.nexapp.nexmusic.ui.component.DraggableScrollbar
+import com.nexapp.nexmusic.ui.component.EmptyPlaceholder
+import com.nexapp.nexmusic.ui.component.ExpandableText
+import com.nexapp.nexmusic.ui.component.IconButton
+import com.nexapp.nexmusic.ui.component.LocalMenuState
+import com.nexapp.nexmusic.ui.component.SongListItem
+import com.nexapp.nexmusic.ui.component.SortHeader
+import com.nexapp.nexmusic.ui.menu.AutoPlaylistMenu
+import com.nexapp.nexmusic.ui.menu.SelectionSongMenu
+import com.nexapp.nexmusic.ui.menu.SongMenu
+import com.nexapp.nexmusic.ui.utils.backToMain
+import com.nexapp.nexmusic.utils.listItemShape
+import com.nexapp.nexmusic.utils.makeTimeString
+import com.nexapp.nexmusic.utils.rememberEnumPreference
+import com.nexapp.nexmusic.utils.rememberPreference
+import com.nexapp.nexmusic.viewmodels.AutoPlaylistViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.withContext
@@ -602,7 +602,7 @@ private fun AutoPlaylistHeader(
     likeLength: Int,
     downloadState: Int,
     onShowRemoveDownloadDialog: () -> Unit,
-    menuState: com.nexapp.nexpass.ui.component.MenuState,
+    menuState: com.nexapp.nexmusic.ui.component.MenuState,
     playerConnection: PlayerConnection?,
     modifier: Modifier = Modifier
 ) {
@@ -616,7 +616,7 @@ private fun AutoPlaylistHeader(
 
     Box(modifier = modifier.fillMaxWidth()) {
         if (songs.isNotEmpty()) {
-            com.nexapp.nexpass.ui.component.OnlineBlur(
+            com.nexapp.nexmusic.ui.component.OnlineBlur(
                 thumbnailUrl = songs.getOrNull(0)?.thumbnailUrl ?: "",
                 modifier = Modifier
                     .matchParentSize()

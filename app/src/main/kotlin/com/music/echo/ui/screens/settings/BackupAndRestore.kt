@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.screens.settings
+package com.nexapp.nexmusic.ui.screens.settings
 
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -35,21 +35,21 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.db.entities.Song
-import com.nexapp.nexpass.ui.component.IconButton
-import com.nexapp.nexpass.ui.component.Material3SettingsGroup
-import com.nexapp.nexpass.ui.component.Material3SettingsItem
-import com.nexapp.nexpass.ui.menu.AddToPlaylistDialogOnline
-import com.nexapp.nexpass.ui.menu.CsvColumnMappingDialog
-import com.nexapp.nexpass.ui.menu.CsvImportProgressDialog
-import com.nexapp.nexpass.ui.menu.LoadingScreen
-import com.nexapp.nexpass.ui.utils.backToMain
-import com.nexapp.nexpass.viewmodels.BackupRestoreViewModel
-import com.nexapp.nexpass.viewmodels.ConvertedSongLog
-import com.nexapp.nexpass.viewmodels.CsvImportState
-import com.nexapp.nexpass.utils.rememberPreference
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.db.entities.Song
+import com.nexapp.nexmusic.ui.component.IconButton
+import com.nexapp.nexmusic.ui.component.Material3SettingsGroup
+import com.nexapp.nexmusic.ui.component.Material3SettingsItem
+import com.nexapp.nexmusic.ui.menu.AddToPlaylistDialogOnline
+import com.nexapp.nexmusic.ui.menu.CsvColumnMappingDialog
+import com.nexapp.nexmusic.ui.menu.CsvImportProgressDialog
+import com.nexapp.nexmusic.ui.menu.LoadingScreen
+import com.nexapp.nexmusic.ui.utils.backToMain
+import com.nexapp.nexmusic.viewmodels.BackupRestoreViewModel
+import com.nexapp.nexmusic.viewmodels.ConvertedSongLog
+import com.nexapp.nexmusic.viewmodels.CsvImportState
+import com.nexapp.nexmusic.utils.rememberPreference
 import android.app.backup.BackupManager
 import android.content.Intent
 import android.provider.Settings

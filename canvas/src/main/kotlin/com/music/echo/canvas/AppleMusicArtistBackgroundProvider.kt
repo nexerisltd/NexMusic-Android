@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.canvas
+package com.nexapp.nexmusic.canvas
 
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
@@ -91,7 +91,7 @@ object AppleMusicArtistBackgroundProvider {
     ): String? {
         return runCatching {
             val url = "$AMP_BASE_URL/v1/catalog/$storefront/search"
-            val token = com.nexapp.nexpass.canvas.AppleMusicTokenProvider.getToken()
+            val token = com.nexapp.nexmusic.canvas.AppleMusicTokenProvider.getToken()
             val response = client.get(url) {
                 header("Authorization", "Bearer $token")
                 header("Origin", "https://music.apple.com")
@@ -137,7 +137,7 @@ object AppleMusicArtistBackgroundProvider {
     ): String? {
         return runCatching {
             val url = "$AMP_BASE_URL/v1/catalog/$storefront/artists/$artistId"
-            val token = com.nexapp.nexpass.canvas.AppleMusicTokenProvider.getToken()
+            val token = com.nexapp.nexmusic.canvas.AppleMusicTokenProvider.getToken()
             val response = client.get(url) {
                 header("Authorization", "Bearer $token")
                 header("Origin", "https://music.apple.com")

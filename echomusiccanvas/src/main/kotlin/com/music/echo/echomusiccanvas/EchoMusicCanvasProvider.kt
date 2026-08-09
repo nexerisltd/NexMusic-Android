@@ -1,6 +1,6 @@
-package com.nexapp.nexpass.echomusiccanvas
+package com.nexapp.nexmusic.echomusiccanvas
 
-import com.nexapp.nexpass.canvas.CanvasArtwork
+import com.nexapp.nexmusic.canvas.CanvasArtwork
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.engine.okhttp.OkHttp

@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.echomusic.commitscreen
+package com.nexapp.nexmusic.echomusic.commitscreen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -26,7 +26,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import com.nexapp.nexpass.R
+import com.nexapp.nexmusic.R
 
 @Composable
  fun CommitItem(

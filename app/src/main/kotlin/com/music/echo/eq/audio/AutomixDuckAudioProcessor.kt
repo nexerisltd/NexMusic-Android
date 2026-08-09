@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.eq.audio
+package com.nexapp.nexmusic.eq.audio
 
 import androidx.media3.common.C
 import androidx.media3.common.audio.AudioProcessor

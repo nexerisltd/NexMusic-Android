@@ -1,10 +1,10 @@
 
 
-package com.nexapp.nexpass.extensions
+package com.nexapp.nexmusic.extensions
 
-import com.nexapp.nexpass.db.entities.Album
-import com.nexapp.nexpass.db.entities.Playlist
-import com.nexapp.nexpass.db.entities.Song
+import com.nexapp.nexmusic.db.entities.Album
+import com.nexapp.nexmusic.db.entities.Playlist
+import com.nexapp.nexmusic.db.entities.Song
 
 fun <T> List<T>.reversed(reversed: Boolean) = if (reversed) asReversed() else this
 

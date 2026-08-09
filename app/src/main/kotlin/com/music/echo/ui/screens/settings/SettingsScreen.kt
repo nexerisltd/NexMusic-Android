@@ -1,8 +1,8 @@
 
 
-package com.nexapp.nexpass.ui.screens.settings
+package com.nexapp.nexmusic.ui.screens.settings
 
-import com.nexapp.nexpass.R
+import com.nexapp.nexmusic.R
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.os.Build
@@ -46,14 +46,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
 import androidx.navigation.NavController
-import com.nexapp.nexpass.BuildConfig
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
-import com.nexapp.nexpass.ui.component.IconButton
-import com.nexapp.nexpass.ui.component.Material3SettingsGroup
-import com.nexapp.nexpass.ui.component.Material3SettingsItem
-import com.nexapp.nexpass.ui.screens.Screens
-import com.nexapp.nexpass.ui.utils.backToMain
-import com.nexapp.nexpass.echomusic.updater.getUpdateAvailableState
+import com.nexapp.nexmusic.BuildConfig
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.ui.component.IconButton
+import com.nexapp.nexmusic.ui.component.Material3SettingsGroup
+import com.nexapp.nexmusic.ui.component.Material3SettingsItem
+import com.nexapp.nexmusic.ui.screens.Screens
+import com.nexapp.nexmusic.ui.utils.backToMain
+import com.nexapp.nexmusic.echomusic.updater.getUpdateAvailableState
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -65,7 +65,7 @@ highlightKey: String? = null) {
     val uriHandler = LocalUriHandler.current
     val context = LocalContext.current
     val isAndroid12OrLater = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
-    val isUpdateAvailable = getUpdateAvailableState(context) && com.nexapp.nexpass.echomusic.updater.getAutoUpdateCheckSetting(context)
+    val isUpdateAvailable = getUpdateAvailableState(context) && com.nexapp.nexmusic.echomusic.updater.getAutoUpdateCheckSetting(context)
 
     var searchQuery by rememberSaveable { mutableStateOf("") }
     val searchLower = searchQuery.lowercase()

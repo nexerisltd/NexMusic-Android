@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.ui.screens.settings
+package com.nexapp.nexmusic.ui.screens.settings
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.tween
@@ -19,8 +19,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
 import androidx.compose.material3.TopAppBar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay

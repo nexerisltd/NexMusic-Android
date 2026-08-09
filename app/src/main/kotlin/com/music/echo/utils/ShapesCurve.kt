@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.utils
+package com.nexapp.nexmusic.utils
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ListItemColors

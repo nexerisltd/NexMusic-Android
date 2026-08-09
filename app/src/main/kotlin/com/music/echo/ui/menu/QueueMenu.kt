@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.menu
+package com.nexapp.nexmusic.ui.menu
 
 import android.content.Intent
 import android.content.res.Configuration
@@ -55,30 +55,30 @@ import androidx.media3.exoplayer.offline.DownloadService
 import androidx.navigation.NavController
 import coil3.compose.AsyncImage
 import com.music.innertube.YouTube
-import com.nexapp.nexpass.LocalDatabase
-import com.nexapp.nexpass.LocalDownloadUtil
-import com.nexapp.nexpass.LocalPlayerConnection
-import com.nexapp.nexpass.LocalSyncUtils
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.ListItemHeight
-import com.nexapp.nexpass.constants.ListThumbnailSize
-import com.nexapp.nexpass.extensions.toMediaItem
-import com.nexapp.nexpass.models.MediaMetadata
-import com.nexapp.nexpass.models.toMediaMetadata
-import com.nexapp.nexpass.playback.ExoDownloadService
-import com.nexapp.nexpass.playback.queues.YouTubeQueue
-import com.nexapp.nexpass.ui.component.BottomSheetState
-import com.nexapp.nexpass.ui.component.ListDialog
-import com.nexapp.nexpass.ui.component.Material3MenuGroup
-import com.nexapp.nexpass.ui.component.Material3MenuItemData
-import com.nexapp.nexpass.ui.component.MediaMetadataListItem
-import com.nexapp.nexpass.ui.component.NewAction
-import com.nexapp.nexpass.ui.component.NewActionGrid
-import com.nexapp.nexpass.utils.listItemShape
+import com.nexapp.nexmusic.LocalDatabase
+import com.nexapp.nexmusic.LocalDownloadUtil
+import com.nexapp.nexmusic.LocalPlayerConnection
+import com.nexapp.nexmusic.LocalSyncUtils
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.ListItemHeight
+import com.nexapp.nexmusic.constants.ListThumbnailSize
+import com.nexapp.nexmusic.extensions.toMediaItem
+import com.nexapp.nexmusic.models.MediaMetadata
+import com.nexapp.nexmusic.models.toMediaMetadata
+import com.nexapp.nexmusic.playback.ExoDownloadService
+import com.nexapp.nexmusic.playback.queues.YouTubeQueue
+import com.nexapp.nexmusic.ui.component.BottomSheetState
+import com.nexapp.nexmusic.ui.component.ListDialog
+import com.nexapp.nexmusic.ui.component.Material3MenuGroup
+import com.nexapp.nexmusic.ui.component.Material3MenuItemData
+import com.nexapp.nexmusic.ui.component.MediaMetadataListItem
+import com.nexapp.nexmusic.ui.component.NewAction
+import com.nexapp.nexmusic.ui.component.NewActionGrid
+import com.nexapp.nexmusic.utils.listItemShape
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
-import com.nexapp.nexpass.models.QueueItemSource
+import com.nexapp.nexmusic.models.QueueItemSource
 
 @Composable
 fun QueueMenu(
@@ -522,9 +522,9 @@ fun QueueMenu(
                             },
                             onClick = {
                                 refetchIconDegree -= 360
-                                androidx.media3.exoplayer.offline.DownloadService.sendRemoveDownload(context, com.nexapp.nexpass.playback.ExoDownloadService::class.java, mediaMetadata.id, false)
-                                val intent = android.content.Intent(context, com.nexapp.nexpass.playback.MusicService::class.java).apply {
-                                    action = "com.nexapp.nexpass.ACTION_CLEAR_SONG_CACHE"
+                                androidx.media3.exoplayer.offline.DownloadService.sendRemoveDownload(context, com.nexapp.nexmusic.playback.ExoDownloadService::class.java, mediaMetadata.id, false)
+                                val intent = android.content.Intent(context, com.nexapp.nexmusic.playback.MusicService::class.java).apply {
+                                    action = "com.nexapp.nexmusic.ACTION_CLEAR_SONG_CACHE"
                                     putExtra("songId", mediaMetadata.id)
                                 }
                                 context.startService(intent)

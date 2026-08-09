@@ -1,23 +1,23 @@
 
 
-package com.nexapp.nexpass.viewmodels
+package com.nexapp.nexmusic.viewmodels
 
 import android.content.Context
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.nexapp.nexpass.constants.ExportedSongIdsKey
-import com.nexapp.nexpass.constants.HideExplicitKey
-import com.nexapp.nexpass.constants.HideVideoSongsKey
-import com.nexapp.nexpass.constants.SongSortDescendingKey
-import com.nexapp.nexpass.constants.SongSortType
-import com.nexapp.nexpass.constants.SongSortTypeKey
-import com.nexapp.nexpass.db.MusicDatabase
-import com.nexapp.nexpass.extensions.filterExplicit
-import com.nexapp.nexpass.extensions.filterVideoSongs
-import com.nexapp.nexpass.extensions.toEnum
-import com.nexapp.nexpass.utils.SyncUtils
-import com.nexapp.nexpass.utils.dataStore
+import com.nexapp.nexmusic.constants.ExportedSongIdsKey
+import com.nexapp.nexmusic.constants.HideExplicitKey
+import com.nexapp.nexmusic.constants.HideVideoSongsKey
+import com.nexapp.nexmusic.constants.SongSortDescendingKey
+import com.nexapp.nexmusic.constants.SongSortType
+import com.nexapp.nexmusic.constants.SongSortTypeKey
+import com.nexapp.nexmusic.db.MusicDatabase
+import com.nexapp.nexmusic.extensions.filterExplicit
+import com.nexapp.nexmusic.extensions.filterVideoSongs
+import com.nexapp.nexmusic.extensions.toEnum
+import com.nexapp.nexmusic.utils.SyncUtils
+import com.nexapp.nexmusic.utils.dataStore
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers

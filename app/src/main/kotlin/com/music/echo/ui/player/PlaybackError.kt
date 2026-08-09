@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.player
+package com.nexapp.nexmusic.ui.player
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -27,7 +27,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.media3.common.PlaybackException
-import com.nexapp.nexpass.R
+import com.nexapp.nexmusic.R
 
 @Composable
 fun PlaybackError(

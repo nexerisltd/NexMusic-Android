@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.playback.audio
+package com.nexapp.nexmusic.playback.audio
 
 import androidx.media3.common.C
 import androidx.media3.common.audio.AudioProcessor

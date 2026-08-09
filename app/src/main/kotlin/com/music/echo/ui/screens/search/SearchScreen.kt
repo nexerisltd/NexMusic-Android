@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.screens.search
+package com.nexapp.nexmusic.ui.screens.search
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -74,22 +74,22 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.navigation.NavController
 import com.music.innertube.models.WatchEndpoint
 import com.music.innertube.utils.YouTubeUrlParser
-import com.nexapp.nexpass.LocalDatabase
-import com.nexapp.nexpass.LocalIsPlayerExpanded
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
-import com.nexapp.nexpass.LocalPlayerConnection
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.PauseSearchHistoryKey
-import com.nexapp.nexpass.constants.SearchSource
-import com.nexapp.nexpass.constants.SearchSourceKey
-import com.nexapp.nexpass.db.entities.SearchHistory
-import com.nexapp.nexpass.playback.queues.YouTubeQueue
-import com.nexapp.nexpass.ui.component.NavigationTitle
-import com.nexapp.nexpass.utils.rememberEnumPreference
-import com.nexapp.nexpass.utils.rememberPreference
-import com.nexapp.nexpass.viewmodels.MoodAndGenresViewModel
-import com.nexapp.nexpass.viewmodels.ExploreViewModel
-import com.nexapp.nexpass.ui.screens.search.suggestions.SuggestionsTabContent
+import com.nexapp.nexmusic.LocalDatabase
+import com.nexapp.nexmusic.LocalIsPlayerExpanded
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.LocalPlayerConnection
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.PauseSearchHistoryKey
+import com.nexapp.nexmusic.constants.SearchSource
+import com.nexapp.nexmusic.constants.SearchSourceKey
+import com.nexapp.nexmusic.db.entities.SearchHistory
+import com.nexapp.nexmusic.playback.queues.YouTubeQueue
+import com.nexapp.nexmusic.ui.component.NavigationTitle
+import com.nexapp.nexmusic.utils.rememberEnumPreference
+import com.nexapp.nexmusic.utils.rememberPreference
+import com.nexapp.nexmusic.viewmodels.MoodAndGenresViewModel
+import com.nexapp.nexmusic.viewmodels.ExploreViewModel
+import com.nexapp.nexmusic.ui.screens.search.suggestions.SuggestionsTabContent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.net.URLEncoder
@@ -107,12 +107,12 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
-import com.nexapp.nexpass.ui.component.LocalMenuState
-import com.nexapp.nexpass.ui.component.YouTubeGridItem
-import com.nexapp.nexpass.ui.menu.YouTubeAlbumMenu
-import com.nexapp.nexpass.constants.GridThumbnailHeight
-import com.nexapp.nexpass.constants.GridItemsSizeKey
-import com.nexapp.nexpass.constants.GridItemSize
+import com.nexapp.nexmusic.ui.component.LocalMenuState
+import com.nexapp.nexmusic.ui.component.YouTubeGridItem
+import com.nexapp.nexmusic.ui.menu.YouTubeAlbumMenu
+import com.nexapp.nexmusic.constants.GridThumbnailHeight
+import com.nexapp.nexmusic.constants.GridItemsSizeKey
+import com.nexapp.nexmusic.constants.GridItemSize
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

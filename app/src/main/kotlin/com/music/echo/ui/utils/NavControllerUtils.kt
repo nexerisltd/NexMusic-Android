@@ -1,9 +1,9 @@
 
 
-package com.nexapp.nexpass.ui.utils
+package com.nexapp.nexmusic.ui.utils
 
 import androidx.navigation.NavController
-import com.nexapp.nexpass.ui.screens.Screens
+import com.nexapp.nexmusic.ui.screens.Screens
 
 fun NavController.backToMain() {
     val mainRoutes = Screens.MainScreens.map { it.route }

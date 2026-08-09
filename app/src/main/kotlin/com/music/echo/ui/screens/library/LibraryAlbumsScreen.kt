@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.screens.library
+package com.nexapp.nexmusic.ui.screens.library
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
@@ -49,32 +49,32 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
-import com.nexapp.nexpass.LocalPlayerConnection
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.AlbumFilter
-import com.nexapp.nexpass.constants.AlbumFilterKey
-import com.nexapp.nexpass.constants.AlbumSortDescendingKey
-import com.nexapp.nexpass.constants.AlbumSortType
-import com.nexapp.nexpass.constants.AlbumSortTypeKey
-import com.nexapp.nexpass.constants.AlbumViewTypeKey
-import com.nexapp.nexpass.constants.CONTENT_TYPE_ALBUM
-import com.nexapp.nexpass.constants.CONTENT_TYPE_HEADER
-import com.nexapp.nexpass.constants.GridItemSize
-import com.nexapp.nexpass.constants.GridItemsSizeKey
-import com.nexapp.nexpass.constants.GridThumbnailHeight
-import com.nexapp.nexpass.constants.HideExplicitKey
-import com.nexapp.nexpass.constants.LibraryViewType
-import com.nexapp.nexpass.constants.YtmSyncKey
-import com.nexapp.nexpass.ui.component.ChipsRow
-import com.nexapp.nexpass.ui.component.EmptyPlaceholder
-import com.nexapp.nexpass.ui.component.LibraryAlbumGridItem
-import com.nexapp.nexpass.ui.component.LibraryAlbumListItem
-import com.nexapp.nexpass.ui.component.LocalMenuState
-import com.nexapp.nexpass.ui.component.SortHeader
-import com.nexapp.nexpass.utils.rememberEnumPreference
-import com.nexapp.nexpass.utils.rememberPreference
-import com.nexapp.nexpass.viewmodels.LibraryAlbumsViewModel
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.LocalPlayerConnection
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.AlbumFilter
+import com.nexapp.nexmusic.constants.AlbumFilterKey
+import com.nexapp.nexmusic.constants.AlbumSortDescendingKey
+import com.nexapp.nexmusic.constants.AlbumSortType
+import com.nexapp.nexmusic.constants.AlbumSortTypeKey
+import com.nexapp.nexmusic.constants.AlbumViewTypeKey
+import com.nexapp.nexmusic.constants.CONTENT_TYPE_ALBUM
+import com.nexapp.nexmusic.constants.CONTENT_TYPE_HEADER
+import com.nexapp.nexmusic.constants.GridItemSize
+import com.nexapp.nexmusic.constants.GridItemsSizeKey
+import com.nexapp.nexmusic.constants.GridThumbnailHeight
+import com.nexapp.nexmusic.constants.HideExplicitKey
+import com.nexapp.nexmusic.constants.LibraryViewType
+import com.nexapp.nexmusic.constants.YtmSyncKey
+import com.nexapp.nexmusic.ui.component.ChipsRow
+import com.nexapp.nexmusic.ui.component.EmptyPlaceholder
+import com.nexapp.nexmusic.ui.component.LibraryAlbumGridItem
+import com.nexapp.nexmusic.ui.component.LibraryAlbumListItem
+import com.nexapp.nexmusic.ui.component.LocalMenuState
+import com.nexapp.nexmusic.ui.component.SortHeader
+import com.nexapp.nexmusic.utils.rememberEnumPreference
+import com.nexapp.nexmusic.utils.rememberPreference
+import com.nexapp.nexmusic.viewmodels.LibraryAlbumsViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

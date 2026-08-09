@@ -3,7 +3,7 @@
  * Licensed under GPL-3.0 | See git history for contributors
  */
 
-package com.nexapp.nexpass.ui.screens
+package com.nexapp.nexmusic.ui.screens
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.Spring
@@ -39,7 +39,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.nexapp.nexpass.R
+import com.nexapp.nexmusic.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

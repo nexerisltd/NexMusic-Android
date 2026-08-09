@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.ui.screens
+package com.nexapp.nexmusic.ui.screens
 
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloatAsState
@@ -33,8 +33,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import com.nexapp.nexpass.BuildConfig
-import com.nexapp.nexpass.R
+import com.nexapp.nexmusic.BuildConfig
+import com.nexapp.nexmusic.R
 
 @Composable
 fun WelcomeDialog(

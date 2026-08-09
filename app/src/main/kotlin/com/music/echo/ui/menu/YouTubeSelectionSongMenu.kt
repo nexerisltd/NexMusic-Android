@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.menu
+package com.nexapp.nexmusic.ui.menu
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
@@ -35,18 +35,18 @@ import androidx.media3.exoplayer.offline.DownloadRequest
 import androidx.media3.exoplayer.offline.DownloadService
 import com.music.innertube.YouTube
 import com.music.innertube.models.SongItem
-import com.nexapp.nexpass.LocalDatabase
-import com.nexapp.nexpass.LocalDownloadUtil
-import com.nexapp.nexpass.LocalPlayerConnection
-import com.nexapp.nexpass.LocalSyncUtils
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.extensions.toMediaItem
-import com.nexapp.nexpass.models.toMediaMetadata
-import com.nexapp.nexpass.playback.ExoDownloadService
-import com.nexapp.nexpass.playback.queues.ListQueue
-import com.nexapp.nexpass.ui.component.DefaultDialog
-import com.nexapp.nexpass.ui.component.Material3MenuGroup
-import com.nexapp.nexpass.ui.component.Material3MenuItemData
+import com.nexapp.nexmusic.LocalDatabase
+import com.nexapp.nexmusic.LocalDownloadUtil
+import com.nexapp.nexmusic.LocalPlayerConnection
+import com.nexapp.nexmusic.LocalSyncUtils
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.extensions.toMediaItem
+import com.nexapp.nexmusic.models.toMediaMetadata
+import com.nexapp.nexmusic.playback.ExoDownloadService
+import com.nexapp.nexmusic.playback.queues.ListQueue
+import com.nexapp.nexmusic.ui.component.DefaultDialog
+import com.nexapp.nexmusic.ui.component.Material3MenuGroup
+import com.nexapp.nexmusic.ui.component.Material3MenuItemData
 import kotlinx.coroutines.launch
 import java.time.LocalDateTime
 
@@ -67,7 +67,7 @@ fun YouTubeSelectionSongMenu(
         mutableStateOf(false)
     }
 
-    val listenTogetherManager = com.nexapp.nexpass.LocalListenTogetherManager.current
+    val listenTogetherManager = com.nexapp.nexmusic.LocalListenTogetherManager.current
     val isGuest = listenTogetherManager?.isGuestPlaybackRestricted == true
 
     var downloadState by remember {
@@ -124,8 +124,8 @@ fun YouTubeSelectionSongMenu(
             songSelection.map { song ->
                 
                 val metadata = song.toMediaMetadata()
-                com.nexapp.nexpass.db.entities.Song(
-                    song = com.nexapp.nexpass.db.entities.SongEntity(
+                com.nexapp.nexmusic.db.entities.Song(
+                    song = com.nexapp.nexmusic.db.entities.SongEntity(
                         id = metadata.id,
                         title = metadata.title,
                         duration = metadata.duration,
@@ -140,13 +140,13 @@ fun YouTubeSelectionSongMenu(
                         libraryRemoveToken = metadata.libraryRemoveToken
                     ),
                     artists = metadata.artists.map { artist ->
-                        com.nexapp.nexpass.db.entities.ArtistEntity(
+                        com.nexapp.nexmusic.db.entities.ArtistEntity(
                             id = artist.id ?: "",
                             name = artist.name
                         )
                     },
                     album = metadata.album?.let { album ->
-                        com.nexapp.nexpass.db.entities.AlbumEntity(
+                        com.nexapp.nexmusic.db.entities.AlbumEntity(
                             id = album.id,
                             title = album.title,
                             thumbnailUrl = metadata.thumbnailUrl, 
@@ -402,7 +402,7 @@ fun YouTubeSelectionSongMenu(
                                         
                                         insert(metadata)
                                         
-                                        val songEntity = com.nexapp.nexpass.db.entities.SongEntity(
+                                        val songEntity = com.nexapp.nexmusic.db.entities.SongEntity(
                                             id = metadata.id,
                                             title = metadata.title,
                                             duration = metadata.duration,

@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.component.shimmer
+package com.nexapp.nexmusic.ui.component.shimmer
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

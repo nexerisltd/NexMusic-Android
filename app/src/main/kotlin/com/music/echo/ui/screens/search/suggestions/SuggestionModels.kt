@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.screens.search.suggestions
+package com.nexapp.nexmusic.ui.screens.search.suggestions
 
 data class SuggestionTrack(
     val rank: Int,

@@ -1,8 +1,8 @@
 
 
-package com.nexapp.nexpass.lyrics
+package com.nexapp.nexmusic.lyrics
 
-import com.nexapp.nexpass.constants.PreferredLyricsProvider
+import com.nexapp.nexmusic.constants.PreferredLyricsProvider
 
 
 object LyricsProviderRegistry {

@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.menu
+package com.nexapp.nexmusic.ui.menu
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
@@ -36,9 +36,9 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.viewmodels.ConvertedSongLog
-import com.nexapp.nexpass.viewmodels.CsvImportState
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.viewmodels.ConvertedSongLog
+import com.nexapp.nexmusic.viewmodels.CsvImportState
 
 @Composable
 fun CsvColumnMappingDialog(

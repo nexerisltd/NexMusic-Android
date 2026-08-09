@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.utils.cipher
+package com.nexapp.nexmusic.utils.cipher
 
 import org.json.JSONException
 import org.json.JSONObject

@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.ui.screens.equalizer.axion
+package com.nexapp.nexmusic.ui.screens.equalizer.axion
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.awaitEachGesture
@@ -27,7 +27,7 @@ import androidx.compose.ui.text.drawText
 import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.nexapp.nexpass.R
+import com.nexapp.nexmusic.R
 import kotlin.math.PI
 import kotlin.math.atan2
 import kotlin.math.cos

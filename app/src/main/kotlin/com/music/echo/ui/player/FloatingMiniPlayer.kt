@@ -3,7 +3,7 @@
  * Licensed under GPL-3.0 | See git history for contributors
  */
 
-package com.nexapp.nexpass.ui.player
+package com.nexapp.nexmusic.ui.player
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.Spring
@@ -50,13 +50,13 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.AsyncImage
-import com.nexapp.nexpass.LocalListenTogetherManager
-import com.nexapp.nexpass.LocalPlayerConnection
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.SwipeSensitivityKey
-import com.nexapp.nexpass.constants.SwipeThumbnailKey
-import com.nexapp.nexpass.extensions.togglePlayPause
-import com.nexapp.nexpass.utils.rememberPreference
+import com.nexapp.nexmusic.LocalListenTogetherManager
+import com.nexapp.nexmusic.LocalPlayerConnection
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.SwipeSensitivityKey
+import com.nexapp.nexmusic.constants.SwipeThumbnailKey
+import com.nexapp.nexmusic.extensions.togglePlayPause
+import com.nexapp.nexmusic.utils.rememberPreference
 import kotlin.math.abs
 import kotlin.math.exp
 import kotlin.math.roundToInt

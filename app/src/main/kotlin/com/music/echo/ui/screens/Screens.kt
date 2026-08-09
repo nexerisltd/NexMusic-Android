@@ -1,11 +1,11 @@
 
 
-package com.nexapp.nexpass.ui.screens
+package com.nexapp.nexmusic.ui.screens
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.runtime.Immutable
-import com.nexapp.nexpass.R
+import com.nexapp.nexmusic.R
 
 @Immutable
 sealed class Screens(

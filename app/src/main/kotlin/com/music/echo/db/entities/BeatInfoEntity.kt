@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.db.entities
+package com.nexapp.nexmusic.db.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

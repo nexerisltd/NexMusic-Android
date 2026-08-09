@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.utils.cipher
+package com.nexapp.nexmusic.utils.cipher
 
 import timber.log.Timber
 import java.security.MessageDigest

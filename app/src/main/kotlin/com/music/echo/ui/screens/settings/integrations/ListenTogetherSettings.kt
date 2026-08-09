@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.screens.settings.integrations
+package com.nexapp.nexmusic.ui.screens.settings.integrations
 
 import android.widget.Toast
 import androidx.compose.foundation.background
@@ -62,26 +62,26 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.ListenTogetherAutoApprovalKey
-import com.nexapp.nexpass.constants.ListenTogetherServerUrlKey
-import com.nexapp.nexpass.constants.ListenTogetherSmartResyncKey
-import com.nexapp.nexpass.constants.ListenTogetherSyncVolumeKey
-import com.nexapp.nexpass.constants.ListenTogetherUsernameKey
-import com.nexapp.nexpass.listentogether.ListenTogetherEvent
-import com.nexapp.nexpass.listentogether.ListenTogetherServer
-import com.nexapp.nexpass.listentogether.ListenTogetherServers
-import com.nexapp.nexpass.listentogether.LogEntry
-import com.nexapp.nexpass.listentogether.LogLevel
-import com.nexapp.nexpass.listentogether.RoomRole
-import com.nexapp.nexpass.ui.component.DefaultDialog
-import com.nexapp.nexpass.ui.component.IconButton
-import com.nexapp.nexpass.ui.component.IntegrationCard
-import com.nexapp.nexpass.ui.component.IntegrationCardItem
-import com.nexapp.nexpass.ui.utils.backToMain
-import com.nexapp.nexpass.utils.rememberPreference
-import com.nexapp.nexpass.viewmodels.ListenTogetherViewModel
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.ListenTogetherAutoApprovalKey
+import com.nexapp.nexmusic.constants.ListenTogetherServerUrlKey
+import com.nexapp.nexmusic.constants.ListenTogetherSmartResyncKey
+import com.nexapp.nexmusic.constants.ListenTogetherSyncVolumeKey
+import com.nexapp.nexmusic.constants.ListenTogetherUsernameKey
+import com.nexapp.nexmusic.listentogether.ListenTogetherEvent
+import com.nexapp.nexmusic.listentogether.ListenTogetherServer
+import com.nexapp.nexmusic.listentogether.ListenTogetherServers
+import com.nexapp.nexmusic.listentogether.LogEntry
+import com.nexapp.nexmusic.listentogether.LogLevel
+import com.nexapp.nexmusic.listentogether.RoomRole
+import com.nexapp.nexmusic.ui.component.DefaultDialog
+import com.nexapp.nexmusic.ui.component.IconButton
+import com.nexapp.nexmusic.ui.component.IntegrationCard
+import com.nexapp.nexmusic.ui.component.IntegrationCardItem
+import com.nexapp.nexmusic.ui.utils.backToMain
+import com.nexapp.nexmusic.utils.rememberPreference
+import com.nexapp.nexmusic.viewmodels.ListenTogetherViewModel
 import kotlinx.coroutines.flow.collectLatest
 
 @OptIn(ExperimentalMaterial3Api::class)

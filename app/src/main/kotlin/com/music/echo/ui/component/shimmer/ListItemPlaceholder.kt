@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.component.shimmer
+package com.nexapp.nexmusic.ui.component.shimmer
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -17,9 +17,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.dp
-import com.nexapp.nexpass.constants.ListItemHeight
-import com.nexapp.nexpass.constants.ListThumbnailSize
-import com.nexapp.nexpass.constants.ThumbnailCornerRadius
+import com.nexapp.nexmusic.constants.ListItemHeight
+import com.nexapp.nexmusic.constants.ListThumbnailSize
+import com.nexapp.nexmusic.constants.ThumbnailCornerRadius
 
 @Composable
 fun ListItemPlaceHolder(

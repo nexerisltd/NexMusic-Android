@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.canvas
+package com.nexapp.nexmusic.canvas
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

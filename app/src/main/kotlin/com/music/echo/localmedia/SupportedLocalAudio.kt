@@ -1,7 +1,7 @@
 
 
 
-package com.nexapp.nexpass.localmedia
+package com.nexapp.nexmusic.localmedia
 
 import java.util.Locale
 

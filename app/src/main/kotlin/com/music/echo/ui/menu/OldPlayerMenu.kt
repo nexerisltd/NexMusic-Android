@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.ui.menu
+package com.nexapp.nexmusic.ui.menu
 
 import android.content.Intent
 import android.widget.Toast
@@ -54,30 +54,30 @@ import androidx.media3.exoplayer.offline.DownloadService
 import androidx.navigation.NavController
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.music.innertube.YouTube
-import com.nexapp.nexpass.LocalDatabase
-import com.nexapp.nexpass.LocalDownloadUtil
-import com.nexapp.nexpass.LocalListenTogetherManager
-import com.nexapp.nexpass.LocalPlayerConnection
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.EnableExportAsMp3Key
-import com.nexapp.nexpass.constants.ExportDirectoryUriKey
-import com.nexapp.nexpass.constants.ExportedSongIdsKey
-import com.nexapp.nexpass.constants.ExportingSongIdsKey
-import com.nexapp.nexpass.constants.ListItemHeight
-import com.nexapp.nexpass.extensions.toggleRepeatMode
-import com.nexapp.nexpass.listentogether.RoomRole
-import com.nexapp.nexpass.models.MediaMetadata
-import com.nexapp.nexpass.models.toMediaMetadata
-import com.nexapp.nexpass.playback.ExoDownloadService
-import com.nexapp.nexpass.ui.component.BottomSheetState
-import com.nexapp.nexpass.ui.component.ListDialog
-import com.nexapp.nexpass.ui.component.Material3MenuGroup
-import com.nexapp.nexpass.ui.component.Material3MenuItemData
-import com.nexapp.nexpass.ui.component.NewAction
-import com.nexapp.nexpass.ui.component.NewActionGrid
-import com.nexapp.nexpass.ui.component.VolumeSlider
-import com.nexapp.nexpass.utils.rememberPreference
-import com.nexapp.nexpass.viewmodels.CachePlaylistViewModel
+import com.nexapp.nexmusic.LocalDatabase
+import com.nexapp.nexmusic.LocalDownloadUtil
+import com.nexapp.nexmusic.LocalListenTogetherManager
+import com.nexapp.nexmusic.LocalPlayerConnection
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.EnableExportAsMp3Key
+import com.nexapp.nexmusic.constants.ExportDirectoryUriKey
+import com.nexapp.nexmusic.constants.ExportedSongIdsKey
+import com.nexapp.nexmusic.constants.ExportingSongIdsKey
+import com.nexapp.nexmusic.constants.ListItemHeight
+import com.nexapp.nexmusic.extensions.toggleRepeatMode
+import com.nexapp.nexmusic.listentogether.RoomRole
+import com.nexapp.nexmusic.models.MediaMetadata
+import com.nexapp.nexmusic.models.toMediaMetadata
+import com.nexapp.nexmusic.playback.ExoDownloadService
+import com.nexapp.nexmusic.ui.component.BottomSheetState
+import com.nexapp.nexmusic.ui.component.ListDialog
+import com.nexapp.nexmusic.ui.component.Material3MenuGroup
+import com.nexapp.nexmusic.ui.component.Material3MenuItemData
+import com.nexapp.nexmusic.ui.component.NewAction
+import com.nexapp.nexmusic.ui.component.NewActionGrid
+import com.nexapp.nexmusic.ui.component.VolumeSlider
+import com.nexapp.nexmusic.utils.rememberPreference
+import com.nexapp.nexmusic.viewmodels.CachePlaylistViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -122,7 +122,7 @@ fun OldPlayerMenu(
         mediaMetadata.artists.filter { it.id != null }
     }
 
-    val ringtoneViewModel = com.nexapp.nexpass.LocalRingtoneViewModel.current
+    val ringtoneViewModel = com.nexapp.nexmusic.LocalRingtoneViewModel.current
 
     val (enableExportAsMp3) = rememberPreference(key = EnableExportAsMp3Key, defaultValue = false)
     val (exportDirectoryUri) = rememberPreference(key = ExportDirectoryUriKey, defaultValue = "")
@@ -307,7 +307,7 @@ fun OldPlayerMenu(
                     add(
                         Material3MenuItemData(
                             customComposable = {
-                                com.nexapp.nexpass.ui.component.CastButton(asMenuItem = true)
+                                com.nexapp.nexmusic.ui.component.CastButton(asMenuItem = true)
                             }
                         )
                     )
@@ -452,7 +452,7 @@ fun OldPlayerMenu(
                                             onDismiss()
                                         } else {
                                             onDismiss()
-                                            com.nexapp.nexpass.playback.AudioExportService.start(
+                                            com.nexapp.nexmusic.playback.AudioExportService.start(
                                                 context = context,
                                                 songId = mediaMetadata.id,
                                                 songTitle = mediaMetadata.title,
@@ -528,9 +528,9 @@ fun OldPlayerMenu(
                             onClick = {
                                 refetchIconDegree -= 360
                                 cacheViewModel.removeSongFromCache(mediaMetadata.id)
-                                androidx.media3.exoplayer.offline.DownloadService.sendRemoveDownload(context, com.nexapp.nexpass.playback.ExoDownloadService::class.java, mediaMetadata.id, false)
-                                val intent = android.content.Intent(context, com.nexapp.nexpass.playback.MusicService::class.java).apply {
-                                    action = "com.nexapp.nexpass.ACTION_CLEAR_SONG_CACHE"
+                                androidx.media3.exoplayer.offline.DownloadService.sendRemoveDownload(context, com.nexapp.nexmusic.playback.ExoDownloadService::class.java, mediaMetadata.id, false)
+                                val intent = android.content.Intent(context, com.nexapp.nexmusic.playback.MusicService::class.java).apply {
+                                    action = "com.nexapp.nexmusic.ACTION_CLEAR_SONG_CACHE"
                                     putExtra("songId", mediaMetadata.id)
                                 }
                                 context.startService(intent)

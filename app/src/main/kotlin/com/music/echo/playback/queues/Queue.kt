@@ -1,10 +1,10 @@
 
 
-package com.nexapp.nexpass.playback.queues
+package com.nexapp.nexmusic.playback.queues
 
 import androidx.media3.common.MediaItem
-import com.nexapp.nexpass.extensions.metadata
-import com.nexapp.nexpass.models.MediaMetadata
+import com.nexapp.nexmusic.extensions.metadata
+import com.nexapp.nexmusic.models.MediaMetadata
 
 interface Queue {
     val preloadItem: MediaMetadata?

@@ -1,16 +1,16 @@
 
 
-package com.nexapp.nexpass.extensions
+package com.nexapp.nexmusic.extensions
 
-import com.nexapp.nexpass.models.MediaMetadata
-import com.nexapp.nexpass.models.PersistQueue
-import com.nexapp.nexpass.models.QueueData
-import com.nexapp.nexpass.models.QueueType
-import com.nexapp.nexpass.playback.queues.ListQueue
-import com.nexapp.nexpass.playback.queues.LocalAlbumRadio
-import com.nexapp.nexpass.playback.queues.Queue
-import com.nexapp.nexpass.playback.queues.YouTubeAlbumRadio
-import com.nexapp.nexpass.playback.queues.YouTubeQueue
+import com.nexapp.nexmusic.models.MediaMetadata
+import com.nexapp.nexmusic.models.PersistQueue
+import com.nexapp.nexmusic.models.QueueData
+import com.nexapp.nexmusic.models.QueueType
+import com.nexapp.nexmusic.playback.queues.ListQueue
+import com.nexapp.nexmusic.playback.queues.LocalAlbumRadio
+import com.nexapp.nexmusic.playback.queues.Queue
+import com.nexapp.nexmusic.playback.queues.YouTubeAlbumRadio
+import com.nexapp.nexmusic.playback.queues.YouTubeQueue
 
 fun Queue.toPersistQueue(
     title: String?,

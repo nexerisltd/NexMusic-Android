@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.canvas
+package com.nexapp.nexmusic.canvas
 
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals

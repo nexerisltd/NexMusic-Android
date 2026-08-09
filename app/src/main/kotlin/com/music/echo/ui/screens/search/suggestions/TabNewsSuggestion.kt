@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.screens.search.suggestions
+package com.nexapp.nexmusic.ui.screens.search.suggestions
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.FastOutSlowInEasing
@@ -36,10 +36,10 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil3.compose.AsyncImage
 import coil3.compose.SubcomposeAsyncImage
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.SuggestionRegionKey
-import com.nexapp.nexpass.constants.SuggestionRegionSlugToName
-import com.nexapp.nexpass.utils.rememberPreference
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.SuggestionRegionKey
+import com.nexapp.nexmusic.constants.SuggestionRegionSlugToName
+import com.nexapp.nexmusic.utils.rememberPreference
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.material3.pulltorefresh.PullToRefreshDefaults
 import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
@@ -71,7 +71,7 @@ fun SuggestionsTabContent(
     val isLoading by viewModel.isLoading.collectAsState()
     val isManualLoading by viewModel.isManualLoading.collectAsState()
     val uriHandler = androidx.compose.ui.platform.LocalUriHandler.current
-    val playerConnection = com.nexapp.nexpass.LocalPlayerConnection.current
+    val playerConnection = com.nexapp.nexmusic.LocalPlayerConnection.current
     val context = LocalContext.current
     val (regionCode, _) = rememberPreference(
         key = SuggestionRegionKey,

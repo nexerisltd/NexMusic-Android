@@ -3,7 +3,7 @@
  * Licensed under GPL-3.0 | See git history for contributors
  */
 
-package com.nexapp.nexpass.ui.component
+package com.nexapp.nexmusic.ui.component
 
 import android.os.Build
 import androidx.compose.foundation.shape.CornerBasedShape
@@ -18,17 +18,17 @@ import androidx.compose.ui.graphics.isSpecified
 import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
-import com.nexapp.nexpass.ui.component.backdrop.Backdrop
-import com.nexapp.nexpass.ui.component.backdrop.drawBackdrop
-import com.nexapp.nexpass.ui.component.backdrop.effects.blur
-import com.nexapp.nexpass.ui.component.backdrop.effects.colorControls
-import com.nexapp.nexpass.ui.component.backdrop.effects.lens
-import com.nexapp.nexpass.ui.component.backdrop.highlight.Highlight
-import com.nexapp.nexpass.ui.component.backdrop.shadow.Shadow
+import com.nexapp.nexmusic.ui.component.backdrop.Backdrop
+import com.nexapp.nexmusic.ui.component.backdrop.drawBackdrop
+import com.nexapp.nexmusic.ui.component.backdrop.effects.blur
+import com.nexapp.nexmusic.ui.component.backdrop.effects.colorControls
+import com.nexapp.nexmusic.ui.component.backdrop.effects.lens
+import com.nexapp.nexmusic.ui.component.backdrop.highlight.Highlight
+import com.nexapp.nexmusic.ui.component.backdrop.shadow.Shadow
 
 /**
  * User-configurable parameters of the liquid glass effect, sourced from DataStore
- * preferences in [com.nexapp.nexpass.MainActivity] and distributed through
+ * preferences in [com.nexapp.nexmusic.MainActivity] and distributed through
  * [LocalGlassEffectConfig].
  */
 @Stable

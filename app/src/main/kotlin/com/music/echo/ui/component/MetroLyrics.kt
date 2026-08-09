@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.ui.component
+package com.nexapp.nexmusic.ui.component
 
 import android.graphics.BlurMaskFilter
 import androidx.compose.animation.core.animateFloatAsState
@@ -47,12 +47,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.nexapp.nexpass.LocalPlayerConnection
-import com.nexapp.nexpass.constants.AppleMusicLyricsBlurKey
-import com.nexapp.nexpass.constants.LyricsRomanizeAsMainKey
-import com.nexapp.nexpass.lyrics.LyricsEntry
-import com.nexapp.nexpass.ui.screens.settings.LyricsPosition
-import com.nexapp.nexpass.utils.rememberPreference
+import com.nexapp.nexmusic.LocalPlayerConnection
+import com.nexapp.nexmusic.constants.AppleMusicLyricsBlurKey
+import com.nexapp.nexmusic.constants.LyricsRomanizeAsMainKey
+import com.nexapp.nexmusic.lyrics.LyricsEntry
+import com.nexapp.nexmusic.ui.screens.settings.LyricsPosition
+import com.nexapp.nexmusic.utils.rememberPreference
 import kotlinx.coroutines.isActive
 import kotlin.math.PI
 import kotlin.math.cos

@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.screens
+package com.nexapp.nexmusic.ui.screens
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
@@ -58,25 +58,25 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.music.innertube.models.SongItem
 import com.music.innertube.models.WatchEndpoint
-import com.nexapp.nexpass.LocalPlayerAwareWindowInsets
-import com.nexapp.nexpass.LocalPlayerConnection
-import com.nexapp.nexpass.R
-import com.nexapp.nexpass.constants.ListItemHeight
-import com.nexapp.nexpass.models.toMediaMetadata
-import com.nexapp.nexpass.playback.queues.YouTubeQueue
-import com.nexapp.nexpass.ui.component.LocalMenuState
-import com.nexapp.nexpass.ui.component.NavigationTitle
-import com.nexapp.nexpass.ui.component.YouTubeGridItem
-import com.nexapp.nexpass.ui.component.YouTubeListItem
-import com.nexapp.nexpass.ui.component.shimmer.GridItemPlaceHolder
-import com.nexapp.nexpass.ui.component.shimmer.ShimmerHost
-import com.nexapp.nexpass.ui.component.shimmer.TextPlaceholder
-import com.nexapp.nexpass.ui.menu.YouTubeAlbumMenu
-import com.nexapp.nexpass.ui.menu.YouTubeSongMenu
-import com.nexapp.nexpass.ui.utils.SnapLayoutInfoProvider
-import com.nexapp.nexpass.utils.listItemShape
-import com.nexapp.nexpass.viewmodels.ChartsViewModel
-import com.nexapp.nexpass.viewmodels.ExploreViewModel
+import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
+import com.nexapp.nexmusic.LocalPlayerConnection
+import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.constants.ListItemHeight
+import com.nexapp.nexmusic.models.toMediaMetadata
+import com.nexapp.nexmusic.playback.queues.YouTubeQueue
+import com.nexapp.nexmusic.ui.component.LocalMenuState
+import com.nexapp.nexmusic.ui.component.NavigationTitle
+import com.nexapp.nexmusic.ui.component.YouTubeGridItem
+import com.nexapp.nexmusic.ui.component.YouTubeListItem
+import com.nexapp.nexmusic.ui.component.shimmer.GridItemPlaceHolder
+import com.nexapp.nexmusic.ui.component.shimmer.ShimmerHost
+import com.nexapp.nexmusic.ui.component.shimmer.TextPlaceholder
+import com.nexapp.nexmusic.ui.menu.YouTubeAlbumMenu
+import com.nexapp.nexmusic.ui.menu.YouTubeSongMenu
+import com.nexapp.nexmusic.ui.utils.SnapLayoutInfoProvider
+import com.nexapp.nexmusic.utils.listItemShape
+import com.nexapp.nexmusic.viewmodels.ChartsViewModel
+import com.nexapp.nexmusic.viewmodels.ExploreViewModel
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable

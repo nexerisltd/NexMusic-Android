@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.utils
+package com.nexapp.nexmusic.utils
 
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.Stable

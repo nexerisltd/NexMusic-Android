@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.recognition
+package com.nexapp.nexmusic.recognition
 
 import android.util.Base64
 import java.io.ByteArrayOutputStream

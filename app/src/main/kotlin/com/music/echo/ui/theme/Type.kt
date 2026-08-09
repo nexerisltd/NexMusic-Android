@@ -1,6 +1,6 @@
 
 
-package com.nexapp.nexpass.ui.theme
+package com.nexapp.nexmusic.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

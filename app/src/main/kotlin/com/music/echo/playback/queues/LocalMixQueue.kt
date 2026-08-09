@@ -1,13 +1,13 @@
 
 
-package com.nexapp.nexpass.playback.queues
+package com.nexapp.nexmusic.playback.queues
 
 import androidx.media3.common.MediaItem
-import com.nexapp.nexpass.db.MusicDatabase
-import com.nexapp.nexpass.extensions.toMediaItem
+import com.nexapp.nexmusic.db.MusicDatabase
+import com.nexapp.nexmusic.extensions.toMediaItem
 import com.music.innertube.YouTube
 import com.music.innertube.models.WatchEndpoint
-import com.nexapp.nexpass.models.MediaMetadata
+import com.nexapp.nexmusic.models.MediaMetadata
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.flow.first

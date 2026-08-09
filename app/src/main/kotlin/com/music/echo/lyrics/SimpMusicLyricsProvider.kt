@@ -1,11 +1,11 @@
 
 
-package com.nexapp.nexpass.lyrics
+package com.nexapp.nexmusic.lyrics
 
 import android.content.Context
-import com.nexapp.nexpass.constants.EnableSimpMusicKey
-import com.nexapp.nexpass.utils.dataStore
-import com.nexapp.nexpass.utils.get
+import com.nexapp.nexmusic.constants.EnableSimpMusicKey
+import com.nexapp.nexmusic.utils.dataStore
+import com.nexapp.nexmusic.utils.get
 import com.music.simpmusic.SimpMusicLyrics
 
 object SimpMusicLyricsProvider : LyricsProvider {

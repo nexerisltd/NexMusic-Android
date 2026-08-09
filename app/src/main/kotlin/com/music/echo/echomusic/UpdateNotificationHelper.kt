@@ -1,4 +1,4 @@
-package com.nexapp.nexpass.echomusic
+package com.nexapp.nexmusic.echomusic
 
 import android.Manifest
 import android.app.NotificationChannel
@@ -12,7 +12,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
-import com.nexapp.nexpass.R
+import com.nexapp.nexmusic.R
 
 object UpdateNotificationHelper {
     private const val CHANNEL_ID = "updates"
