@@ -8,25 +8,14 @@ import androidx.media3.common.PlaybackException
 import com.music.innertube.NewPipeExtractor
 import com.music.innertube.YouTube
 import com.music.innertube.models.YouTubeClient
-import com.music.innertube.models.YouTubeClient.Companion.ANDROID_CREATOR
 import com.nexapp.nexmusic.utils.BotDetectionMitigator
-import com.music.innertube.models.YouTubeClient.Companion.ANDROID_VR_1_43_32
-import com.music.innertube.models.YouTubeClient.Companion.ANDROID_VR_1_61_48
-import com.music.innertube.models.YouTubeClient.Companion.ANDROID_VR_NO_AUTH
-import com.music.innertube.models.YouTubeClient.Companion.IOS
-import com.music.innertube.models.YouTubeClient.Companion.IPADOS
-import com.music.innertube.models.YouTubeClient.Companion.MOBILE
-import com.music.innertube.models.YouTubeClient.Companion.TVHTML5
-import com.music.innertube.models.YouTubeClient.Companion.TVHTML5_SIMPLY_EMBEDDED_PLAYER
-import com.music.innertube.models.YouTubeClient.Companion.WEB
 import com.music.innertube.models.YouTubeClient.Companion.WEB_CREATOR
 import com.music.innertube.models.YouTubeClient.Companion.WEB_REMIX
 import com.music.innertube.models.response.PlayerResponse
 import com.nexapp.nexmusic.constants.AudioQuality
 import com.nexapp.nexmusic.utils.cipher.CipherDeobfuscator
-import com.nexapp.nexmusic.utils.YTPlayerUtils.MAIN_CLIENT
-import com.nexapp.nexmusic.utils.YTPlayerUtils.STREAM_FALLBACK_CLIENTS
 import com.nexapp.nexmusic.utils.YTPlayerUtils.validateStatus
+import com.nexapp.nexmusic.utils.RemoteStreamingConfig
 import com.nexapp.nexmusic.utils.potoken.PoTokenGenerator
 import com.nexapp.nexmusic.utils.potoken.PoTokenResult
 import com.nexapp.nexmusic.utils.sabr.EjsNTransformSolver
@@ -80,25 +69,24 @@ object YTPlayerUtils {
 
     private val poTokenGenerator = PoTokenGenerator()
 
-    
-    private val MAIN_CLIENT: YouTubeClient = ANDROID_VR_1_43_32
+    // NOTE (2026-08): ANDROID_VR_1_43_32 has `loginSupported = false` (see YouTubeClient.kt),
+    // meaning YouTube.toContext() NEVER attaches the user's cookie/dataSyncId for this client -
+    // it always requests as an anonymous/guest session even when the user is logged in.
+    // YouTube tightened guest-session restrictions in 2026, so this guest-only client now
+    // returns LOGIN_REQUIRED for most videos. When the user IS logged in, we must use an
+    // authenticated client as mainClient instead, or their login is silently ignored.
+    // See TROUBLESHOOTING_YT_STREAMING.md for the full diagnosis.
+    private fun mainClientFor(isLoggedIn: Boolean): YouTubeClient =
+        if (isLoggedIn) RemoteStreamingConfig.mainClientLoggedIn else RemoteStreamingConfig.mainClientGuest
 
     
     private val METADATA_CLIENT: YouTubeClient = WEB_REMIX
 
-    private val STREAM_FALLBACK_CLIENTS: Array<YouTubeClient> = arrayOf(
-        ANDROID_VR_1_61_48,
-        WEB_REMIX,
-        TVHTML5_SIMPLY_EMBEDDED_PLAYER,  
-        TVHTML5,
-        ANDROID_CREATOR,
-        IPADOS,
-        ANDROID_VR_NO_AUTH,
-        MOBILE,
-        IOS,
-        WEB,
-        WEB_CREATOR
-    )
+    // Actual ordering lives in RemoteStreamingConfig (fallbackLoggedIn / fallbackGuest)
+    // so it can be hotfixed - see the NOTE above and TROUBLESHOOTING_YT_STREAMING.md.
+    private fun streamFallbackClientsFor(isLoggedIn: Boolean): Array<YouTubeClient> =
+        RemoteStreamingConfig.fallbackClientsFor(isLoggedIn)
+
     data class PlaybackData(
         val audioConfig: PlayerResponse.PlayerConfig.AudioConfig?,
         val videoDetails: PlayerResponse.VideoDetails?,
@@ -150,6 +138,11 @@ object YTPlayerUtils {
         val isLoggedIn = YouTube.cookie != null
         Timber.tag(logTag).d("Session authentication status: ${if (isLoggedIn) "Logged in" else "Not logged in"}")
 
+        val mainClient = mainClientFor(isLoggedIn)
+        val fallbackClients = streamFallbackClientsFor(isLoggedIn)
+        Timber.tag(logTag).d("mainClient resolved to ${mainClient.clientName} v${mainClient.clientVersion} (loginSupported=${mainClient.loginSupported}) for isLoggedIn=$isLoggedIn")
+        PlaybackLogManager.log(PlaybackLogLevel.DEBUG, "Client strategy", "main=${mainClient.clientName} loginSupported=${mainClient.loginSupported}")
+
         
         val signatureTimestamp = getSignatureTimestampOrNull(videoId)
         Timber.tag(logTag).d("Signature timestamp: ${signatureTimestamp.timestamp}")
@@ -157,8 +150,8 @@ object YTPlayerUtils {
         
         var poToken: PoTokenResult? = null
         val sessionId = if (isLoggedIn) YouTube.dataSyncId else YouTube.visitorData
-        if (MAIN_CLIENT.useWebPoTokens && sessionId != null) {
-            Timber.tag(logTag).d("Generating PoToken for MAIN_CLIENT with sessionId")
+        if (mainClient.useWebPoTokens && sessionId != null) {
+            Timber.tag(logTag).d("Generating PoToken for mainClient with sessionId")
             try {
                 poToken = poTokenGenerator.getWebClientPoToken(videoId, sessionId)
                 if (poToken != null) {
@@ -170,9 +163,9 @@ object YTPlayerUtils {
         }
 
         
-        Timber.tag(logTag).d("Attempting to get player response using MAIN_CLIENT: ${MAIN_CLIENT.clientName}")
-        PlaybackLogManager.log(PlaybackLogLevel.DEBUG, "Trying ${MAIN_CLIENT.clientName} (Main)")
-        var mainPlayerResponse = YouTube.player(videoId, playlistId, MAIN_CLIENT, signatureTimestamp.timestamp, poToken?.playerRequestPoToken).getOrThrow()
+        Timber.tag(logTag).d("Attempting to get player response using mainClient: ${mainClient.clientName}")
+        PlaybackLogManager.log(PlaybackLogLevel.DEBUG, "Trying ${mainClient.clientName} (Main)")
+        var mainPlayerResponse = YouTube.player(videoId, playlistId, mainClient, signatureTimestamp.timestamp, poToken?.playerRequestPoToken).getOrThrow()
 
         
         
@@ -277,7 +270,12 @@ object YTPlayerUtils {
             else -> -1
         }
 
-        for (clientIndex in (startIndex until STREAM_FALLBACK_CLIENTS.size)) {
+        // Diagnostic trail: which client was tried and why it failed, so a break like the
+        // 2026-08 ANDROID_VR/LOGIN_REQUIRED incident can be root-caused from a single logcat
+        // grep instead of manual repro. See TROUBLESHOOTING_YT_STREAMING.md.
+        val attemptTrail = StringBuilder()
+
+        for (clientIndex in (startIndex until fallbackClients.size)) {
             
             format = null
             streamUrl = null
@@ -287,14 +285,14 @@ object YTPlayerUtils {
             val client: YouTubeClient
             if (clientIndex == -1) {
                 
-                client = MAIN_CLIENT
+                client = mainClient
                 streamPlayerResponse = retryMainPlayerResponse ?: mainPlayerResponse
-                Timber.tag(logTag).d("Trying stream from MAIN_CLIENT: ${client.clientName}")
+                Timber.tag(logTag).d("Trying stream from mainClient: ${client.clientName}")
             } else {
                 
-                client = STREAM_FALLBACK_CLIENTS[clientIndex]
-                Timber.tag(logTag).d("Trying fallback client ${clientIndex + 1}/${STREAM_FALLBACK_CLIENTS.size}: ${client.clientName}")
-                PlaybackLogManager.log(PlaybackLogLevel.DEBUG, "Trying fallback [${clientIndex + 1}/${STREAM_FALLBACK_CLIENTS.size}]", client.clientName)
+                client = fallbackClients[clientIndex]
+                Timber.tag(logTag).d("Trying fallback client ${clientIndex + 1}/${fallbackClients.size}: ${client.clientName}")
+                PlaybackLogManager.log(PlaybackLogLevel.DEBUG, "Trying fallback [${clientIndex + 1}/${fallbackClients.size}]", client.clientName)
 
                 if (client.loginRequired && !isLoggedIn && YouTube.cookie == null) {
                     
@@ -326,8 +324,9 @@ object YTPlayerUtils {
 
             
             if (streamPlayerResponse?.playabilityStatus?.status == "OK") {
-                Timber.tag(logTag).d("Player response status OK for client: ${if (clientIndex == -1) MAIN_CLIENT.clientName else STREAM_FALLBACK_CLIENTS[clientIndex].clientName}")
-                PlaybackLogManager.log(PlaybackLogLevel.INFO, "Player response OK", if (clientIndex == -1) MAIN_CLIENT.clientName else STREAM_FALLBACK_CLIENTS[clientIndex].clientName)
+                attemptTrail.append("${client.clientName}:OK ")
+                Timber.tag(logTag).d("Player response status OK for client: ${if (clientIndex == -1) mainClient.clientName else fallbackClients[clientIndex].clientName}")
+                PlaybackLogManager.log(PlaybackLogLevel.INFO, "Player response OK", if (clientIndex == -1) mainClient.clientName else fallbackClients[clientIndex].clientName)
 
                 
                 val hasDirectUrls = streamPlayerResponse.streamingData?.adaptiveFormats
@@ -348,7 +347,7 @@ object YTPlayerUtils {
                     )
 
                 if (format == null) {
-                    Timber.tag(logTag).d("No suitable format found for client: ${if (clientIndex == -1) MAIN_CLIENT.clientName else STREAM_FALLBACK_CLIENTS[clientIndex].clientName}")
+                    Timber.tag(logTag).d("No suitable format found for client: ${if (clientIndex == -1) mainClient.clientName else fallbackClients[clientIndex].clientName}")
                     continue
                 }
 
@@ -362,9 +361,9 @@ object YTPlayerUtils {
 
                 
                 val currentClient = if (clientIndex == -1) {
-                    usedAgeRestrictedClient ?: MAIN_CLIENT
+                    usedAgeRestrictedClient ?: mainClient
                 } else {
-                    STREAM_FALLBACK_CLIENTS[clientIndex]
+                    fallbackClients[clientIndex]
                 }
 
                 
@@ -407,12 +406,12 @@ object YTPlayerUtils {
                 
                 val isPrivatelyOwned = streamPlayerResponse.videoDetails?.musicVideoType == "MUSIC_VIDEO_TYPE_PRIVATELY_OWNED_TRACK"
 
-                if (clientIndex == STREAM_FALLBACK_CLIENTS.size - 1 || isPrivatelyOwned) {
+                if (clientIndex == fallbackClients.size - 1 || isPrivatelyOwned) {
                     
                     if (isPrivatelyOwned) {
                         Timber.tag(logTag).d("Skipping validation for privately owned track: ${currentClient.clientName}")
                     } else {
-                        Timber.tag(logTag).d("Using last fallback client without validation: ${STREAM_FALLBACK_CLIENTS[clientIndex].clientName}")
+                        Timber.tag(logTag).d("Using last fallback client without validation: ${fallbackClients[clientIndex].clientName}")
                     }
                     Log.i(TAG, "Playback: client=${currentClient.clientName}, videoId=$videoId, private=$isPrivatelyOwned")
                     break
@@ -454,6 +453,7 @@ object YTPlayerUtils {
             } else {
                 val status = streamPlayerResponse?.playabilityStatus?.status ?: "Unknown"
                 val reason = streamPlayerResponse?.playabilityStatus?.reason ?: "No reason"
+                attemptTrail.append("${client.clientName}:$status ")
                 Timber.tag(logTag).d("Player response status not OK: $status, reason: $reason")
                 PlaybackLogManager.log(PlaybackLogLevel.WARNING, "Client failed: ${client.clientName}", "$status: $reason")
                 
@@ -463,8 +463,9 @@ object YTPlayerUtils {
         }
 
         if (streamPlayerResponse == null) {
-            Timber.tag(logTag).e("Bad stream player response - all clients failed")
-            throw Exception("Bad stream player response")
+            Timber.tag(logTag).e("Bad stream player response - all clients failed. Trail: $attemptTrail")
+            PlaybackLogManager.log(PlaybackLogLevel.ERROR, "All clients failed", attemptTrail.toString())
+            throw Exception("Bad stream player response. Trail: $attemptTrail")
         }
 
         if (streamPlayerResponse.playabilityStatus.status != "OK") {
@@ -492,7 +493,7 @@ object YTPlayerUtils {
             throw Exception("Could not find stream url")
         }
 
-        Timber.tag(logTag).d("Successfully obtained playback data with format: ${format.mimeType}, bitrate: ${format.bitrate}")
+        Timber.tag(logTag).d("Successfully obtained playback data with format: ${format.mimeType}, bitrate: ${format.bitrate}. Trail: $attemptTrail")
         PlaybackData(
             audioConfig,
             videoDetails,
@@ -510,7 +511,7 @@ object YTPlayerUtils {
         videoId: String,
         playlistId: String? = null,
     ): Result<PlayerResponse> {
-        Timber.tag(logTag).d("Fetching metadata-only player response for videoId: $videoId using MAIN_CLIENT: ${MAIN_CLIENT.clientName}")
+        Timber.tag(logTag).d("Fetching metadata-only player response for videoId: $videoId using WEB_REMIX")
         return YouTube.player(videoId, playlistId, client = WEB_REMIX) 
             .onSuccess { Timber.tag(logTag).d("Successfully fetched metadata") }
             .onFailure { Timber.tag(logTag).e(it, "Failed to fetch metadata") }
