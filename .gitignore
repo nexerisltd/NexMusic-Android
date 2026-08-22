@@ -250,3 +250,7 @@ node_modules/
 graphify-out/
 graph.html
 !app/libs/discord_partner_sdk.aar
+
+# Local build/release helper scripts (contain machine-specific paths, not for CI)
+build-release.bat
+*.local.bat
