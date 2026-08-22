@@ -20,12 +20,17 @@ class PoTokenGenerator {
     private var webPoTokenStreamingPot: String? = null
     private var webPoTokenGenerator: PoTokenWebView? = null
 
+    // Optional fallback: set by callers that have an android.content.Context (e.g.
+    // YTPlayerUtils) so we can consult RemotePoTokenProvider when the on-device WebView path
+    // is unavailable/broken. Left null means "remote fallback disabled" - safe default.
+    var remoteFallbackContext: android.content.Context? = null
+
     fun getWebClientPoToken(videoId: String, sessionId: String): PoTokenResult? {
         Timber.tag(TAG).d("getWebClientPoToken called: videoId=$videoId, sessionId=$sessionId")
         Timber.tag(TAG).d("WebView state: supported=$webViewSupported, badImpl=$webViewBadImpl")
         if (!webViewSupported || webViewBadImpl) {
             Timber.tag(TAG).d("WebView not available: supported=$webViewSupported, badImpl=$webViewBadImpl")
-            return null
+            return tryRemoteFallback(videoId, sessionId)
         }
 
         return try {
@@ -37,12 +42,24 @@ class PoTokenGenerator {
                 is BadWebViewException -> {
                     Timber.tag(TAG).e(e, "Could not obtain poToken because WebView is broken")
                     webViewBadImpl = true
-                    null
+                    tryRemoteFallback(videoId, sessionId)
                 }
                 else -> throw e 
             }
         }
     }
+
+    private fun tryRemoteFallback(videoId: String, sessionId: String): PoTokenResult? {
+        val context = remoteFallbackContext ?: return null
+        if (!com.nexapp.nexmusic.utils.potoken.RemotePoTokenProvider.isConfigured(context)) return null
+        Timber.tag(TAG).d("On-device PoToken unavailable, trying configured remote PoToken server")
+        return runCatching {
+            runBlocking {
+                com.nexapp.nexmusic.utils.potoken.RemotePoTokenProvider.fetchPoToken(context, videoId, sessionId)
+            }
+        }.onFailure { Timber.tag(TAG).w(it, "Remote PoToken fallback also failed") }.getOrNull()
+    }
+
 
     
     private suspend fun getWebClientPoToken(videoId: String, sessionId: String, forceRecreate: Boolean): PoTokenResult {

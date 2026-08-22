@@ -34,10 +34,21 @@ import java.net.SocketAddress
 import java.net.URI
 import java.io.IOException
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 
 object YTPlayerUtils {
     private const val logTag = "YTPlayerUtils"
     private const val TAG = "YTPlayerUtils"
+
+    init {
+        // NOTE (2026-08 diagnosis): wire the innertube-level auth diagnostic hook (see
+        // InnerTube.kt's ytClient()) into PlaybackLogManager so field logs show whether the
+        // signed-in cookie actually had a usable SAPISID, without innertube depending on app.
+        YouTube.authDiagnosticSink = { message ->
+            PlaybackLogManager.log(PlaybackLogLevel.WARNING, "Auth diagnostic", message)
+        }
+    }
 
     private val httpClient: OkHttpClient = OkHttpClient.Builder()
         .dns(object : Dns {
@@ -65,6 +76,20 @@ object YTPlayerUtils {
         }
         .connectTimeout(15, java.util.concurrent.TimeUnit.SECONDS)
         .readTimeout(15, java.util.concurrent.TimeUnit.SECONDS)
+        .build()
+
+    // NOTE (2026-08 diagnosis): the main httpClient uses 15s connect/read timeouts, which is
+    // correct for the actual streaming/player() requests. But field logs showed the
+    // validateStatus() HEAD-ping alone taking ~20s on otherwise-successful attempts (no
+    // failure logged, just a slow completion) - almost certainly a slow/distant CDN edge or
+    // a retried TCP/TLS handshake. For a lightweight HEAD check, waiting that long is pure
+    // wasted latency: if this edge is that slow to even answer a HEAD, it's a bad pick for
+    // playback too, so we'd rather fail fast and let the fallback loop try the next client
+    // than have the user stare at a spinner for 20s. Separate, short-timeout client for
+    // validation only - does not affect the real streaming client above.
+    private val validationHttpClient: OkHttpClient = httpClient.newBuilder()
+        .connectTimeout(5, java.util.concurrent.TimeUnit.SECONDS)
+        .readTimeout(5, java.util.concurrent.TimeUnit.SECONDS)
         .build()
 
     private val poTokenGenerator = PoTokenGenerator()
@@ -120,6 +145,17 @@ object YTPlayerUtils {
         return firstAttempt
     }
 
+    // NOTE (2026-08 diagnosis): ExoPlayer prefetches the next queue item's DataSource while
+    // the current item is still playing (gapless/look-ahead buffering). With no coordination
+    // here, that meant two videos each independently fired their full ~11-client fallback
+    // cascade (~20 requests) at almost the exact same millisecond -- a burst pattern that
+    // YouTube's anti-abuse layer flags, causing a transient 403 across EVERY client (even
+    // ones with a valid PO token and correct UA) for ~20-25s before it self-heals. Serializing
+    // resolution here spreads those requests out over time instead of firing them all at once,
+    // which should avoid tripping that burst detector. This does NOT touch per-request retry
+    // logic or client selection -- only when two separate resolutions are allowed to run.
+    private val resolutionMutex = Mutex()
+
     private suspend fun resolvePlaybackData(
         videoId: String,
         playlistId: String? = null,
@@ -128,7 +164,9 @@ object YTPlayerUtils {
         context: android.content.Context? = null,
         knownArtist: String? = null,
         knownTitle: String? = null
-    ): Result<PlaybackData> = runCatching {
+    ): Result<PlaybackData> = resolutionMutex.withLock {
+        try {
+            val result = run {
         Timber.tag(logTag).d("Fetching player response for videoId: $videoId, playlistId: $playlistId")
         PlaybackLogManager.log(PlaybackLogLevel.INFO, "Resolving playback data", "Video: $videoId")
         
@@ -305,8 +343,20 @@ object YTPlayerUtils {
                     Timber.tag(logTag).d("Lazily generating PoToken for fallback web client: ${client.clientName}")
                     try {
                         poToken = poTokenGenerator.getWebClientPoToken(videoId, sessionId)
+                        if (poToken == null) {
+                            PlaybackLogManager.log(
+                                PlaybackLogLevel.WARNING,
+                                "PoToken generation returned null",
+                                "client=${client.clientName}"
+                            )
+                        }
                     } catch (e: Exception) {
                         Timber.tag(logTag).e(e, "Lazy PoToken generation failed")
+                        PlaybackLogManager.log(
+                            PlaybackLogLevel.WARNING,
+                            "PoToken generation threw",
+                            "client=${client.clientName} ${e::class.simpleName}: ${e.message}"
+                        )
                     }
                 }
 
@@ -347,7 +397,9 @@ object YTPlayerUtils {
                     )
 
                 if (format == null) {
-                    Timber.tag(logTag).d("No suitable format found for client: ${if (clientIndex == -1) mainClient.clientName else fallbackClients[clientIndex].clientName}")
+                    val name = if (clientIndex == -1) mainClient.clientName else fallbackClients[clientIndex].clientName
+                    Timber.tag(logTag).d("No suitable format found for client: $name")
+                    PlaybackLogManager.log(PlaybackLogLevel.WARNING, "No audio format found", "client=$name")
                     continue
                 }
 
@@ -355,7 +407,9 @@ object YTPlayerUtils {
 
                 streamUrl = findUrlOrNull(format, videoId, responseToUse, skipNewPipe = wasOriginallyAgeRestricted)
                 if (streamUrl == null) {
+                    val name = if (clientIndex == -1) mainClient.clientName else fallbackClients[clientIndex].clientName
                     Timber.tag(logTag).d("Stream URL not found for format")
+                    PlaybackLogManager.log(PlaybackLogLevel.WARNING, "No stream URL resolved", "client=$name mimeType=${format?.mimeType}")
                     continue
                 }
 
@@ -394,6 +448,7 @@ object YTPlayerUtils {
                 streamExpiresInSeconds = streamPlayerResponse.streamingData?.expiresInSeconds
                 if (streamExpiresInSeconds == null) {
                     Timber.tag(logTag).d("Stream expiration time not found")
+                    PlaybackLogManager.log(PlaybackLogLevel.WARNING, "Missing expiresInSeconds", "client=${currentClient.clientName}")
                     continue
                 }
 
@@ -417,7 +472,7 @@ object YTPlayerUtils {
                     break
                 }
 
-                if (validateStatus(streamUrl!!)) {
+                if (validateStatus(streamUrl!!, currentClient)) {
                     
                     Timber.tag(logTag).d("Stream validated successfully with client: ${currentClient.clientName}")
                     PlaybackLogManager.log(PlaybackLogLevel.INFO, "Stream validated", currentClient.clientName)
@@ -436,7 +491,7 @@ object YTPlayerUtils {
                             val nTransformed = CipherDeobfuscator.transformNParamInUrl(streamUrl!!)
                             if (nTransformed != streamUrl) {
                                 Timber.tag(logTag).d("CipherDeobfuscator n-transform applied, re-validating...")
-                                if (validateStatus(nTransformed)) {
+                                if (validateStatus(nTransformed, currentClient)) {
                                     Timber.tag(logTag).d("N-transformed URL VALIDATED OK!")
                                     streamUrl = nTransformed
                                     nTransformWorked = true
@@ -470,9 +525,15 @@ object YTPlayerUtils {
 
         if (streamPlayerResponse.playabilityStatus.status != "OK") {
             val errorReason = streamPlayerResponse.playabilityStatus.reason
-            Timber.tag(logTag).e("Playability status not OK: $errorReason")
+            // NOTE (2026-08 diagnosis): this exception used to report only the LAST client
+            // tried (e.g. ANDROID_VR's "Sign in to confirm you're not a bot"), which is
+            // almost never the real cause when earlier clients returned OK but failed
+            // validation/format/url resolution first. Surface the full trail so the field
+            // logs (PlaybackLogManager) show what actually happened, not just the tail end.
+            Timber.tag(logTag).e("Playability status not OK: $errorReason. Trail: $attemptTrail")
+            PlaybackLogManager.log(PlaybackLogLevel.ERROR, "Final client not OK", "$errorReason | Trail: $attemptTrail")
             throw PlaybackException(
-                errorReason,
+                "$errorReason (trail: $attemptTrail)",
                 null,
                 PlaybackException.ERROR_CODE_REMOTE_ERROR
             )
@@ -502,9 +563,20 @@ object YTPlayerUtils {
             streamUrl,
             streamExpiresInSeconds,
         )
-    }.onFailure { e ->
-        Timber.tag(logTag).e(e, "Playback resolution failed")
-        PlaybackLogManager.log(PlaybackLogLevel.ERROR, "Playback failed", "${e::class.simpleName}: ${e.message}")
+            }
+            Result.success(result)
+        } catch (e: kotlinx.coroutines.CancellationException) {
+            // NOTE (2026-08 diagnosis): must NOT be treated as a per-track playback failure -
+            // see the matching note on YouTube.player() in innertube's YouTube.kt. Rethrowing
+            // lets the caller's coroutineScope handle it as a real cancellation (e.g. user
+            // skipped tracks) instead of the fallback loop burning through all remaining
+            // clients in a few ms each and reporting a confusing "all clients failed".
+            throw e
+        } catch (e: Exception) {
+            Timber.tag(logTag).e(e, "Playback resolution failed")
+            PlaybackLogManager.log(PlaybackLogLevel.ERROR, "Playback failed", "${e::class.simpleName}: ${e.message}")
+            Result.failure(e)
+        }
     }
     
     suspend fun playerResponseForMetadata(
@@ -541,25 +613,63 @@ object YTPlayerUtils {
         return format
     }
     
-    private fun validateStatus(url: String): Boolean {
+    private fun validateStatus(url: String, client: YouTubeClient? = null): Boolean {
         Timber.tag(logTag).d("Validating stream URL status")
+        val startedAt = System.currentTimeMillis()
         try {
             val requestBuilder = okhttp3.Request.Builder()
                 .head()
                 .url(url)
-                .header("User-Agent", YouTubeClient.USER_AGENT_WEB)
+                // NOTE (2026-08 diagnosis): previously this always sent the hardcoded WEB
+                // (Firefox desktop) UA regardless of which client actually produced the
+                // stream URL. If the CDN ties the URL to the requesting client's UA/context
+                // as part of SABR/PO-token enforcement, that mismatch silently 403s a
+                // perfectly good URL from non-WEB clients (IOS, MOBILE, TVHTML5, etc), and
+                // this function just returns false with no visibility into why. Use the
+                // actual client's UA so we're testing what will really be used for playback.
+                .header("User-Agent", client?.userAgent ?: YouTubeClient.USER_AGENT_WEB)
 
             
             YouTube.cookie?.let { cookie ->
                 requestBuilder.addHeader("Cookie", cookie)
             }
 
-            val response = httpClient.newCall(requestBuilder.build()).execute()
+            val response = validationHttpClient.newCall(requestBuilder.build()).execute()
             val isSuccessful = response.isSuccessful
-            Timber.tag(logTag).d("Stream URL validation result: ${if (isSuccessful) "Success" else "Failed"} (${response.code})")
+            val elapsedMs = System.currentTimeMillis() - startedAt
+            Timber.tag(logTag).d("Stream URL validation result: ${if (isSuccessful) "Success" else "Failed"} (${response.code}) in ${elapsedMs}ms")
+            if (elapsedMs > 3000) {
+                // Anything this slow for a bare HEAD request is worth knowing about even on
+                // success - it's the difference between an instant play and a 20s spinner.
+                PlaybackLogManager.log(
+                    PlaybackLogLevel.WARNING,
+                    "Slow validation (${elapsedMs}ms)",
+                    "client=${client?.clientName ?: "unknown"} code=${response.code}"
+                )
+            }
+            if (!isSuccessful) {
+                // This is the line we were missing: WHY validation failed, per client,
+                // captured in the in-app log (PlaybackLogManager), not just Timber (which
+                // is stripped in release builds and never showed up in the field logs).
+                PlaybackLogManager.log(
+                    PlaybackLogLevel.WARNING,
+                    "Validation failed: ${client?.clientName ?: "unknown"}",
+                    "HTTP ${response.code} ${response.message} (UA=${client?.userAgent?.take(40) ?: "WEB-default"}, ${elapsedMs}ms)"
+                )
+            }
             return isSuccessful
+        } catch (e: kotlinx.coroutines.CancellationException) {
+            // Cancellation (e.g. user skipped tracks) must propagate, not be swallowed as a
+            // per-client "failure" - see the loop-level catch below for why this matters.
+            throw e
         } catch (e: Exception) {
+            val elapsedMs = System.currentTimeMillis() - startedAt
             Timber.tag(logTag).e(e, "Stream URL validation failed with exception")
+            PlaybackLogManager.log(
+                PlaybackLogLevel.WARNING,
+                "Validation exception: ${client?.clientName ?: "unknown"}",
+                "${e::class.simpleName}: ${e.message} (${elapsedMs}ms)"
+            )
             reportException(e)
         }
         return false

@@ -55,6 +55,15 @@ data class YouTubeClient(
             userAgent = USER_AGENT_WEB,
         )
 
+        // Mobile web client - useful fallback: not gated the same way as WEB/WEB_REMIX,
+        // does not require PoToken as often as WEB_REMIX, and works logged-out.
+        val MWEB = YouTubeClient(
+            clientName = "MWEB",
+            clientVersion = "2.20260213.01.00",
+            clientId = "2",
+            userAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 17_5_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1",
+        )
+
         val WEB_REMIX = YouTubeClient(
             clientName = "WEB_REMIX",
             clientVersion = "1.20260213.01.00",

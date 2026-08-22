@@ -10,6 +10,7 @@ import com.music.innertube.models.YouTubeClient.Companion.ANDROID_VR_NO_AUTH
 import com.music.innertube.models.YouTubeClient.Companion.IOS
 import com.music.innertube.models.YouTubeClient.Companion.IPADOS
 import com.music.innertube.models.YouTubeClient.Companion.MOBILE
+import com.music.innertube.models.YouTubeClient.Companion.MWEB
 import com.music.innertube.models.YouTubeClient.Companion.TVHTML5
 import com.music.innertube.models.YouTubeClient.Companion.TVHTML5_SIMPLY_EMBEDDED_PLAYER
 import com.music.innertube.models.YouTubeClient.Companion.WEB
@@ -40,15 +41,23 @@ object RemoteStreamingConfig {
     private const val TAG = "RemoteStreamingConfig"
 
     private val catalog: Map<String, YouTubeClient> = listOf(
-        WEB_REMIX, WEB, WEB_CREATOR, TVHTML5, TVHTML5_SIMPLY_EMBEDDED_PLAYER,
+        WEB_REMIX, WEB, WEB_CREATOR, TVHTML5, TVHTML5_SIMPLY_EMBEDDED_PLAYER, MWEB,
         ANDROID_CREATOR, IPADOS, MOBILE, IOS,
         ANDROID_VR_1_43_32, ANDROID_VR_1_61_48, ANDROID_VR_NO_AUTH,
     ).associateBy { it.clientName + "_" + it.clientVersion }
 
-    // ---- Defaults (2026-08 hotfix) ----
+    // ---- Defaults (2026-08 hotfix v2, based on real device logcat evidence) ----
+    // NOTE ON THIS CHANGE: after the LOGIN_REQUIRED fix, live logcat testing showed
+    // TVHTML5/MWEB/IOS now return UNPLAYABLE for nearly every video - only WEB_CREATOR
+    // resolves successfully (see TROUBLESHOOTING_YT_STREAMING.md). Previously WEB_CREATOR
+    // was placed 4th in the fallback chain, so every track spent 20-40s failing through
+    // 3 dead clients before reaching the one that works - and some requests gave up /
+    // looped before ever reaching it. WEB_CREATOR is now MAIN_CLIENT so it's tried first.
+    //
     // Logged-in users: MAIN_CLIENT must support login (loginSupported = true) or the
     // user's cookie/dataSyncId is silently dropped and every request is anonymous.
-    @Volatile var mainClientLoggedIn: YouTubeClient = WEB_REMIX
+    // WEB_CREATOR has loginSupported = true, so this preserves that invariant too.
+    @Volatile var mainClientLoggedIn: YouTubeClient = WEB_CREATOR
         private set
 
     // Guests: the VR trick client is still fine to try first for guests since it was
@@ -56,14 +65,16 @@ object RemoteStreamingConfig {
     @Volatile var mainClientGuest: YouTubeClient = ANDROID_VR_1_43_32
         private set
 
+    // WEB_CREATOR is already tried as MAIN_CLIENT above, so the fallback chain starts
+    // from the next-most-likely-to-work client rather than duplicating that attempt.
     @Volatile private var fallbackLoggedIn: Array<YouTubeClient> = arrayOf(
-        WEB_REMIX, TVHTML5, TVHTML5_SIMPLY_EMBEDDED_PLAYER, ANDROID_CREATOR,
-        IPADOS, MOBILE, WEB_CREATOR, WEB, IOS, ANDROID_VR_1_61_48, ANDROID_VR_NO_AUTH,
+        TVHTML5, MWEB, IOS, WEB_REMIX, TVHTML5_SIMPLY_EMBEDDED_PLAYER,
+        ANDROID_CREATOR, IPADOS, MOBILE, WEB, ANDROID_VR_1_61_48, ANDROID_VR_NO_AUTH,
     )
 
     @Volatile private var fallbackGuest: Array<YouTubeClient> = arrayOf(
-        ANDROID_VR_1_61_48, WEB_REMIX, TVHTML5_SIMPLY_EMBEDDED_PLAYER, TVHTML5,
-        ANDROID_CREATOR, IPADOS, ANDROID_VR_NO_AUTH, MOBILE, IOS, WEB, WEB_CREATOR,
+        ANDROID_VR_1_61_48, WEB_CREATOR, TVHTML5, MWEB, IOS, WEB_REMIX,
+        TVHTML5_SIMPLY_EMBEDDED_PLAYER, ANDROID_CREATOR, IPADOS, ANDROID_VR_NO_AUTH, MOBILE, WEB,
     )
 
     fun fallbackClientsFor(isLoggedIn: Boolean): Array<YouTubeClient> =

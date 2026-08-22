@@ -102,6 +102,15 @@ object YouTube {
         set(value) {
             innerTube.cookie = value
         }
+    // NOTE (2026-08 diagnosis): expose InnerTube's authDiagnosticSink through the YouTube
+    // object's delegation pattern (same as cookie/locale/etc above) - it was added to the
+    // InnerTube class itself but this delegating property was missing, so YTPlayerUtils.kt's
+    // `YouTube.authDiagnosticSink = ...` had nothing to resolve to.
+    var authDiagnosticSink: ((String) -> Unit)?
+        get() = innerTube.authDiagnosticSink
+        set(value) {
+            innerTube.authDiagnosticSink = value
+        }
     var proxy: Proxy?
         get() = innerTube.proxy
         set(value) {
@@ -1195,9 +1204,24 @@ object YouTube {
         innerTube.deletePlaylist(WEB_REMIX, playlistId)
     }
 
-    suspend fun player(videoId: String, playlistId: String? = null, client: YouTubeClient, signatureTimestamp: Int? = null, poToken: String? = null): Result<PlayerResponse> = runCatching {
-        innerTube.player(client, videoId, playlistId, signatureTimestamp, poToken).body<PlayerResponse>()
-    }
+    // NOTE (2026-08 diagnosis): kotlin's runCatching also catches CancellationException,
+    // which breaks structured concurrency - when a caller's job is cancelled (e.g. the user
+    // skips tracks), this used to silently swallow that and return Result.failure instead of
+    // propagating the cancellation. Downstream, YTPlayerUtils' fallback loop had no way to
+    // tell "this was cancelled, stop" apart from "this client genuinely failed, try the next
+    // one" - so a single skip could burn through all 11 fallback clients in a few ms each
+    // (each one immediately cancelled too) before finally reporting a confusing
+    // "all clients failed" error, when nothing had actually failed. Rethrowing
+    // CancellationException here lets it propagate normally so the fallback loop (and its
+    // caller's coroutineScope) can stop immediately instead of doing pointless extra work.
+    suspend fun player(videoId: String, playlistId: String? = null, client: YouTubeClient, signatureTimestamp: Int? = null, poToken: String? = null): Result<PlayerResponse> =
+        try {
+            Result.success(innerTube.player(client, videoId, playlistId, signatureTimestamp, poToken).body<PlayerResponse>())
+        } catch (e: kotlinx.coroutines.CancellationException) {
+            throw e
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
 
     suspend fun registerPlayback(playlistId: String? = null, playbackTracking: String) = runCatching {
         val cpn = (1..16).map {

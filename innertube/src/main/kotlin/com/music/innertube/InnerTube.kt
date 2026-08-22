@@ -164,6 +164,14 @@ class InnerTube {
         }
     }
 
+    // NOTE (2026-08 diagnosis): innertube is a separate module from app and can't call
+    // PlaybackLogManager directly. This lets the app wire up a log sink so we can see, per
+    // request, whether a valid SAPISID was actually present to build the auth hash - this is
+    // the difference between "signed in" (cookie exists) and "actually authenticated"
+    // (SAPISID hash sent). Content-ID-claimed tracks that 403 even on loginSupported clients
+    // are the leading suspect for needing this hash and not getting it.
+    var authDiagnosticSink: ((String) -> Unit)? = null
+
     private fun HttpRequestBuilder.ytClient(client: YouTubeClient, setLogin: Boolean = false) {
         contentType(ContentType.Application.Json)
         headers {
@@ -174,6 +182,11 @@ class InnerTube {
             append("Referer", YouTubeClient.REFERER_YOUTUBE_MUSIC)
             visitorData?.let { append("X-Goog-Visitor-Id", it) }
             if (setLogin && client.loginSupported) {
+                if (cookie == null) {
+                    authDiagnosticSink?.invoke("client=${client.clientName} NO cookie set at all (not signed in / cookie not persisted)")
+                } else if ("SAPISID" !in cookieMap) {
+                    authDiagnosticSink?.invoke("client=${client.clientName} cookie present but NO SAPISID -> Authorization header skipped, sent as anonymous-equivalent")
+                }
                 cookie?.let { cookie ->
                     append("cookie", cookie)
                     if ("SAPISID" !in cookieMap) return@let
