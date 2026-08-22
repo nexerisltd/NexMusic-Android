@@ -25,6 +25,7 @@
       </td>
     </tr>
   </table>
+  <p><b>Already have NexMusic installed?</b> The app checks for updates automatically — you'll get a notification and can update directly from within the app. You can also always grab the latest APK straight from <a href="https://github.com/nexerisltd/NexMusic-Android/releases/latest">GitHub Releases</a>.</p>
 </div>
 
 ---
