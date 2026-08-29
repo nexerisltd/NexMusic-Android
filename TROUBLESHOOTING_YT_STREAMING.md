@@ -62,6 +62,28 @@ only uses the guest VR client for actual guests. The fallback ordering was likew
 into a logged-in list (authenticated clients first) and a guest list (unchanged). See
 `RemoteStreamingConfig.kt`.
 
+> **Superseded by hotfix v2 (2026-08, later):** live logcat evidence showed `WEB_CREATOR`
+> resolving successfully far more consistently than `WEB_REMIX` as MAIN_CLIENT, so
+> `mainClientLoggedIn` was moved to `WEB_CREATOR`. See the dated comment block directly
+> above `mainClientLoggedIn` in `RemoteStreamingConfig.kt` for the current source of truth —
+> this section is kept for incident history, not as the current behavior.
+
+## 2026-08-29 incident: WEB_CREATOR misses falling through 3 dead clients before recovering
+
+**Symptom**: when `WEB_CREATOR` (MAIN_CLIENT) fails validation (HTTP 403), some tracks take
+2-4s extra to start, and a smaller number stall for up to ~60s or never start.
+
+**Root cause**: `fallbackLoggedIn` still listed `TVHTML5, MWEB, IOS` *before* `WEB_REMIX`,
+even though this file's own hotfix-v2 note already documented that TVHTML5/MWEB/IOS return
+UNPLAYABLE/403 for nearly every video post-2026-08, while WEB_REMIX resolves. Every
+WEB_CREATOR miss burned three guaranteed-dead round trips (each a full player-response
+fetch, and for PoToken-requiring clients, potentially a WebView spin-up) before ever
+reaching WEB_REMIX, which explains both the few-second stalls and the rare full-minute
+hangs when a track also failed on WEB_REMIX and had to burn through the rest of the list.
+
+**Fix applied**: reordered `fallbackLoggedIn`/`fallbackGuest` to try `WEB_REMIX`
+immediately after the main client, ahead of `TVHTML5`/`MWEB`/`IOS`.
+
 ## How to diagnose a similar break fast
 
 1. Reproduce with logcat filtered to the relevant tags (Windows: `findstr`, macOS/Linux: `grep`):

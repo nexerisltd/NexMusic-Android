@@ -67,13 +67,21 @@ object RemoteStreamingConfig {
 
     // WEB_CREATOR is already tried as MAIN_CLIENT above, so the fallback chain starts
     // from the next-most-likely-to-work client rather than duplicating that attempt.
+    //
+    // 2026-08 update: live logcat evidence (device reports) shows TVHTML5/MWEB now fail
+    // with UNPLAYABLE and IOS fails with HTTP 403 for nearly every video - consistent with
+    // this file's own "hotfix v2" note above - yet they were still ordered *before*
+    // WEB_REMIX, which the same evidence shows resolves successfully. That meant every
+    // WEB_CREATOR miss burned 3 guaranteed-dead round trips (each potentially including a
+    // PoToken WebView spin-up) before ever reaching a client that works, which is the
+    // multi-second-to-a-minute stall users were seeing. WEB_REMIX now goes first.
     @Volatile private var fallbackLoggedIn: Array<YouTubeClient> = arrayOf(
-        TVHTML5, MWEB, IOS, WEB_REMIX, TVHTML5_SIMPLY_EMBEDDED_PLAYER,
+        WEB_REMIX, TVHTML5, MWEB, IOS, TVHTML5_SIMPLY_EMBEDDED_PLAYER,
         ANDROID_CREATOR, IPADOS, MOBILE, WEB, ANDROID_VR_1_61_48, ANDROID_VR_NO_AUTH,
     )
 
     @Volatile private var fallbackGuest: Array<YouTubeClient> = arrayOf(
-        ANDROID_VR_1_61_48, WEB_CREATOR, TVHTML5, MWEB, IOS, WEB_REMIX,
+        ANDROID_VR_1_61_48, WEB_CREATOR, WEB_REMIX, TVHTML5, MWEB, IOS,
         TVHTML5_SIMPLY_EMBEDDED_PLAYER, ANDROID_CREATOR, IPADOS, ANDROID_VR_NO_AUTH, MOBILE, WEB,
     )
 
