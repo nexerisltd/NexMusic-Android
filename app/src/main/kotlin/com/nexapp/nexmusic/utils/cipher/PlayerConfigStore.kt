@@ -27,15 +27,15 @@ object PlayerConfigStore {
     private const val ASSET_NAME = "player_configs.json"
 
     private val REMOTE_URL by lazy {
-        val encoded = "aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0VjaG9NdXNpY0FwcC9FY2hvLU11c2ljL21haW4vYXBwL3NyYy9tYWluL2Fzc2V0cy9wbGF5ZXJfY29uZmlncy5qc29u"
+        val encoded = "aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL01ldHJvbGlzdEdyb3VwL2ZhcmFkYXkvbWFzdGVyL3JlZ2lzdHJ5L3BsYXllcl9jb25maWdzLmpzb24="
         String(Base64.decode(encoded, Base64.DEFAULT), StandardCharsets.UTF_8)
     }
 
     private const val REFRESH_TTL_MS = 6 * 60 * 60 * 1000L
     private const val FORCE_REFRESH_COOLDOWN_MS = 5 * 60 * 1000L
 
-    private const val CACHE_FILE = "configs_remote.json"
-    private const val META_FILE = "configs_remote.meta"
+    private const val CACHE_FILE = "configs_faraday.json"
+    private const val META_FILE = "configs_faraday.meta"
 
     @Volatile
     private var appContext: Context? = null
