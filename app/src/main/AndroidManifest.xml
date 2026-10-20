@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
@@ -24,6 +26,7 @@
 
     <!-- Microphone feature for music recognition (not required) -->
     <uses-feature android:name="android.hardware.microphone" android:required="false" />
+    <uses-feature android:name="android.hardware.location.gps" android:required="false" />
 
 <!--    install permission-->
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
@@ -31,6 +34,7 @@
     <!-- Android TV -->
     <uses-feature android:name="android.software.leanback" android:required="false" />
     <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+    <uses-feature android:name="android.hardware.type.automotive" android:required="false" />
 
     <queries>
         <intent>
@@ -60,7 +64,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
         android:largeHeap="true"
-        android:theme="@style/Theme.NexMusic"
+        android:theme="@style/Theme.nexmusic"
         tools:targetApi="tiramisu">
         <uses-library
             android:name="org.apache.http.legacy"
@@ -69,7 +73,7 @@
         <activity
             android:name=".ui.screens.CrashActivity"
             android:exported="false"
-            android:theme="@style/Theme.NexMusic"
+            android:theme="@style/Theme.nexmusic"
             android:excludeFromRecents="true"
             android:process=":crash" />
 
@@ -77,7 +81,7 @@
             android:name=".MainActivity"
             android:exported="true"
             android:launchMode="singleTask"
-            android:theme="@style/Theme.NexMusic"
+            android:theme="@style/Theme.nexmusic"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -106,7 +110,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data android:scheme="https" />
-                <data android:host="echomusic-listen-together.onrender.com" />
+                <data android:host="metroserverx.meowery.eu" />
                 <data android:pathPrefix="/listen" />
             </intent-filter>
 
@@ -117,11 +121,11 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="echomusic" />
+                <data android:scheme="nexmusic" />
                 <data android:host="listen" />
             </intent-filter>
 
-            <!-- Echo Music Share Links -->
+            <!-- NexMusic Share Links -->
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
 
@@ -130,7 +134,7 @@
 
                 <data android:scheme="http" />
                 <data android:scheme="https" />
-                <data android:host="share.echomusic.fun" />
+                <data android:host="nexmusicog.vercel.app" />
                 <data android:pathPrefix="/" />
             </intent-filter>
 
@@ -246,6 +250,155 @@
             </intent-filter>
         </activity-alias>
 
+        <activity-alias
+            android:name=".MainActivityCat"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/cat_icon"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/cat_icon_round"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".MainActivityCrazyBlue"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/crazy_blue_icon"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/crazy_blue_icon_round"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".MainActivityPookie"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/pookie_icon"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/pookie_icon_round"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".MainActivitySky"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/sky_icon"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/sky_icon_round"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".MainActivityNexCat"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/nex_cat_icon"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/nex_cat_icon_round"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+        
+
+        
+        
+
+        
+
+        
+
+        <activity-alias
+            android:name=".MainActivityBillieEilish"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/billie_eilish_icon"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/billie_eilish_icon_round"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".MainActivitySabrina"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_sabrina"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_sabrina_round"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".MainActivitySabrina2"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_sabrina2"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_sabrina2_round"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+
+        <activity-alias
+            android:name=".MainActivityCraft"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_craft"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_craft_round"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".MainActivitySadie"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_sadie"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_sadie_round"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.FileProvider"
@@ -255,7 +408,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>
-
         <provider
             android:name="com.dpi.DensityScaler"
             android:authorities="${applicationId}.com.dpi.DensityScaler"
@@ -295,9 +447,19 @@
             android:foregroundServiceType="dataSync" />
 
         <service
+            android:name="androidx.media3.exoplayer.scheduler.PlatformScheduler$PlatformSchedulerService"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:exported="true" />
+
+        <service
             android:name="androidx.work.impl.foreground.SystemForegroundService"
             android:foregroundServiceType="dataSync"
             tools:node="merge" />
+
+        <!-- Receiver for Listen Together notification actions (Approve/Reject) -->
+        <receiver
+            android:name=".listentogether.ListenTogetherActionReceiver"
+            android:exported="false" />
 
         <receiver
             android:name="androidx.media3.session.MediaButtonReceiver"
@@ -310,6 +472,7 @@
         <meta-data
             android:name="com.google.android.gms.car.application"
             android:resource="@xml/automotive_app_desc" />
+        <!-- Music Widget -->
         <!-- Music Widget -->
         <receiver
             android:name=".widget.MusicWidgetReceiver"
@@ -348,22 +511,11 @@
         <meta-data
             android:name="com.google.android.gms.cast.framework.OPTIONS_PROVIDER_CLASS_NAME"
             android:value="com.nexapp.nexmusic.cast.CastOptionsProvider" />
-        <!-- Music Widget -->
-        <receiver
-            android:name=".widget.MusicWidgetReceiver"
-            android:exported="true"
-            android:label="@string/widget_music_player">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="com.nexapp.nexmusic.widget.PLAY_PAUSE" />
-                <action android:name="com.nexapp.nexmusic.widget.LIKE" />
-                <action android:name="com.nexapp.nexmusic.widget.UPDATE_WIDGET" />
-            </intent-filter>
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/music_widget_info" />
-        </receiver>
-
+        <!-- Google Cast Reconnection Service (required by setEnableReconnectionService(true)) -->
+        <service
+            android:name="com.google.android.gms.cast.framework.ReconnectionService"
+            android:exported="false"
+            android:process=":reconnection_service" />
         <!-- Playlist Widget -->
         <receiver
             android:name=".widget.PlaylistWidgetReceiver"
@@ -377,24 +529,144 @@
                 android:resource="@xml/playlist_widget_info" />
         </receiver>
 
-        <!-- Turntable Widget -->
+        <!-- Nex Modern Widget (4x2) -->
         <receiver
-            android:name=".widget.TurntableWidgetReceiver"
+            android:name=".widget.NexModernWidgetReceiver"
             android:exported="true"
-            android:label="@string/widget_turntable">
+            android:label="@string/widget_modern_name">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="com.nexapp.nexmusic.widget.TURNTABLE_PLAY_PAUSE" />
-                <action android:name="com.nexapp.nexmusic.widget.TURNTABLE_LIKE" />
-                <action android:name="com.nexapp.nexmusic.widget.UPDATE_TURNTABLE_WIDGET" />
+                <action android:name="com.nexapp.nexmusic.widget.PLAY_PAUSE" />
+                <action android:name="com.nexapp.nexmusic.widget.LIKE" />
+                <action android:name="com.nexapp.nexmusic.widget.NEXT" />
+                <action android:name="com.nexapp.nexmusic.widget.PREVIOUS" />
+                <action android:name="com.nexapp.nexmusic.widget.UPDATE_WIDGET" />
             </intent-filter>
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/turntable_widget_info" />
+                android:resource="@xml/nex_modern_widget_info" />
         </receiver>
 
+        <!-- Nex Compact Glow Widget (2x2) -->
+        <receiver
+            android:name=".widget.NexSquareWidgetReceiver"
+            android:exported="true"
+            android:label="@string/widget_square_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.nexapp.nexmusic.widget.PLAY_PAUSE" />
+                <action android:name="com.nexapp.nexmusic.widget.LIKE" />
+                <action android:name="com.nexapp.nexmusic.widget.NEXT" />
+                <action android:name="com.nexapp.nexmusic.widget.PREVIOUS" />
+                <action android:name="com.nexapp.nexmusic.widget.UPDATE_WIDGET" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/nex_square_widget_info" />
+        </receiver>
+
+        <!-- Nex Showcase Card Widget (4x4) -->
+        <receiver
+            android:name=".widget.NexShowcaseWidgetReceiver"
+            android:exported="true"
+            android:label="@string/widget_showcase_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.nexapp.nexmusic.widget.PLAY_PAUSE" />
+                <action android:name="com.nexapp.nexmusic.widget.LIKE" />
+                <action android:name="com.nexapp.nexmusic.widget.NEXT" />
+                <action android:name="com.nexapp.nexmusic.widget.PREVIOUS" />
+                <action android:name="com.nexapp.nexmusic.widget.UPDATE_WIDGET" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/nex_showcase_widget_info" />
+        </receiver>
+
+        <!-- Nex Slim Pill Strip Widget (4x1) -->
+        <receiver
+            android:name=".widget.NexSlimWidgetReceiver"
+            android:exported="true"
+            android:label="@string/widget_slim_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.nexapp.nexmusic.widget.PLAY_PAUSE" />
+                <action android:name="com.nexapp.nexmusic.widget.LIKE" />
+                <action android:name="com.nexapp.nexmusic.widget.NEXT" />
+                <action android:name="com.nexapp.nexmusic.widget.PREVIOUS" />
+                <action android:name="com.nexapp.nexmusic.widget.UPDATE_WIDGET" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/nex_slim_widget_info" />
+        </receiver>
+
+        <!-- Nex Vinyl Square Turntable Widget (2x2/3x3) -->
+        <receiver
+            android:name=".widget.NexVinylWidgetReceiver"
+            android:exported="true"
+            android:label="@string/widget_vinyl_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.nexapp.nexmusic.widget.PLAY_PAUSE" />
+                <action android:name="com.nexapp.nexmusic.widget.LIKE" />
+                <action android:name="com.nexapp.nexmusic.widget.NEXT" />
+                <action android:name="com.nexapp.nexmusic.widget.PREVIOUS" />
+                <action android:name="com.nexapp.nexmusic.widget.UPDATE_WIDGET" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/nex_vinyl_widget_info" />
+        </receiver>
+
+        <!-- Nex Vintage Cream Turntable Widget (4x2) -->
+        <receiver
+            android:name=".widget.NexVintageWidgetReceiver"
+            android:exported="true"
+            android:label="@string/widget_vintage_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.nexapp.nexmusic.widget.PLAY_PAUSE" />
+                <action android:name="com.nexapp.nexmusic.widget.LIKE" />
+                <action android:name="com.nexapp.nexmusic.widget.NEXT" />
+                <action android:name="com.nexapp.nexmusic.widget.PREVIOUS" />
+                <action android:name="com.nexapp.nexmusic.widget.UPDATE_WIDGET" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/nex_vintage_widget_info" />
+        </receiver>
+
+        <!-- Nex Adaptive Player Widget (2-in-1 Compact / Expanded Queue) -->
+        <receiver
+            android:name=".widget.NexAdaptiveWidgetReceiver"
+            android:exported="true"
+            android:label="@string/widget_adaptive_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.nexapp.nexmusic.widget.PLAY_PAUSE" />
+                <action android:name="com.nexapp.nexmusic.widget.NEXT" />
+                <action android:name="com.nexapp.nexmusic.widget.PREVIOUS" />
+                <action android:name="com.nexapp.nexmusic.widget.SHUFFLE" />
+                <action android:name="com.nexapp.nexmusic.widget.REPEAT" />
+                <action android:name="com.nexapp.nexmusic.widget.SKIP_TO_QUEUE_ITEM" />
+                <action android:name="com.nexapp.nexmusic.widget.SKIP_TO_QUEUE_ITEM" />
+                <action android:name="com.nexapp.nexmusic.widget.UPDATE_WIDGET" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/nex_adaptive_widget_info" />
+        </receiver>
+
+        <service
+            android:name=".widget.AdaptiveQueueWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS"
+            android:exported="false" />
+
+
+
         <activity
-            android:name="com.music.echo.discord.DiscordOAuthCallbackActivity"
+            android:name="com.nexapp.nexmusic.discord.DiscordOAuthCallbackActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:noHistory="true">
@@ -445,7 +717,7 @@
         <service
             android:name=".quicksettings.MusicRecognizerTileService"
             android:label="@string/qs_tile_music_recognizer"
-            android:icon="@drawable/ic_qs_echo_logo"
+            android:icon="@drawable/ic_qs_nex_logo"
             android:exported="true"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>

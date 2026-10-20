@@ -100,12 +100,6 @@ We may disclose your information if required by law or to protect our rights and
 - **Privacy Policy**: [Google Privacy Policy](https://policies.google.com/privacy)
 - **Data Collection**: Google collects anonymized usage analytics
 
-### 4. Upstream Open-Source Infrastructure
-NexMusic is built on top of the open-source Echo Music project. A small number of features currently route through that upstream project's infrastructure rather than servers operated by us directly:
-- **Canvas artwork** (short looping video backgrounds for tracks)
-
-No account credentials or personal messages are sent through these — only the minimal technical data each feature needs to function (e.g. a track ID for canvas artwork, or session data for Listen Together). We plan to migrate these to our own infrastructure over time; this section will be updated when that happens.
-
 ## Children's Privacy
 
 Our App is not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13.

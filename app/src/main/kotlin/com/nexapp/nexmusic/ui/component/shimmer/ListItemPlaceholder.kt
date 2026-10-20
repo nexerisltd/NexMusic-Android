@@ -1,5 +1,3 @@
-
-
 package com.nexapp.nexmusic.ui.component.shimmer
 
 import androidx.compose.foundation.background
@@ -23,34 +21,26 @@ import com.nexapp.nexmusic.constants.ThumbnailCornerRadius
 
 @Composable
 fun ListItemPlaceHolder(
-    modifier: Modifier = Modifier,
-    thumbnailShape: Shape = RoundedCornerShape(ThumbnailCornerRadius),
+  modifier: Modifier = Modifier,
+  thumbnailShape: Shape = RoundedCornerShape(ThumbnailCornerRadius),
 ) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier =
-        modifier
-            .padding(vertical = 2.dp)
-            .height(ListItemHeight)
-            .padding(horizontal = 16.dp),
-    ) {
-        Spacer(
-            modifier =
-            Modifier
-                .padding(6.dp)
-                .size(ListThumbnailSize)
-                .clip(thumbnailShape)
-                .background(MaterialTheme.colorScheme.surfaceVariant),
-        )
+  Row(
+    verticalAlignment = Alignment.CenterVertically,
+    modifier = modifier.padding(vertical = 2.dp).height(ListItemHeight).padding(horizontal = 16.dp),
+  ) {
+    Spacer(
+      modifier =
+        Modifier.padding(6.dp)
+          .size(ListThumbnailSize)
+          .clip(thumbnailShape)
+          .background(MaterialTheme.colorScheme.surfaceVariant),
+    )
 
-        Column(
-            modifier =
-            Modifier
-                .weight(1f)
-                .padding(horizontal = 6.dp),
-        ) {
-            TextPlaceholder()
-            TextPlaceholder()
-        }
+    Column(
+      modifier = Modifier.weight(1f).padding(horizontal = 6.dp),
+    ) {
+      TextPlaceholder()
+      TextPlaceholder()
     }
+  }
 }

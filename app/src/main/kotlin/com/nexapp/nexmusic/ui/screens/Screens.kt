@@ -1,5 +1,3 @@
-
-
 package com.nexapp.nexmusic.ui.screens
 
 import androidx.annotation.DrawableRes
@@ -9,33 +7,52 @@ import com.nexapp.nexmusic.R
 
 @Immutable
 sealed class Screens(
-    @StringRes val titleId: Int,
-    @DrawableRes val iconIdInactive: Int,
-    @DrawableRes val iconIdActive: Int,
-    val route: String,
+  @StringRes val titleId: Int,
+  @DrawableRes val iconIdInactive: Int,
+  @DrawableRes val iconIdActive: Int,
+  val route: String,
 ) {
-    object Home : Screens(
-        titleId = R.string.home,
-        iconIdInactive = R.drawable.home_outlined,
-        iconIdActive = R.drawable.home_filled,
-        route = "home"
+  object Home :
+    Screens(
+      titleId = R.string.home,
+      iconIdInactive = R.drawable.home_outlined,
+      iconIdActive = R.drawable.home_filled,
+      route = "home"
     )
 
-    object Search : Screens(
-        titleId = R.string.search,
-        iconIdInactive = R.drawable.search,
-        iconIdActive = R.drawable.search,
-        route = "search_input"
+  object Search :
+    Screens(
+      titleId = R.string.search,
+      iconIdInactive = R.drawable.search,
+      iconIdActive = R.drawable.search,
+      route = "search_input"
     )
 
-    object Library : Screens(
-        titleId = R.string.filter_library,
-        iconIdInactive = R.drawable.library_music_outlined,
-        iconIdActive = R.drawable.library_music_filled,
-        route = "library"
+  object ListenTogether :
+    Screens(
+      titleId = R.string.together,
+      iconIdInactive = R.drawable.group_outlined,
+      iconIdActive = R.drawable.group_filled,
+      route = "listen_together"
     )
 
-    companion object {
-        val MainScreens = listOf(Home, Search, Library)
-    }
+  object Library :
+    Screens(
+      titleId = R.string.filter_library,
+      iconIdInactive = R.drawable.library_music_outlined,
+      iconIdActive = R.drawable.library_music_filled,
+      route = "library"
+    )
+
+  object Generate :
+    Screens(
+      titleId = R.string.playlists,
+      iconIdInactive = R.drawable.playlist_play,
+      iconIdActive = R.drawable.playlist_play,
+      route = "generate"
+    )
+
+  companion object {
+    val MainScreens = listOf(Home, Search, ListenTogether, Library)
+  }
 }

@@ -29,6 +29,11 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
+      - name: Install NDK and CMake
+        run: |
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses > /dev/null || true
+          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --install "ndk;28.2.13676358" "cmake;3.22.1" || true
+
       - name: Cache Gradle
         uses: actions/cache@v5
         with:
@@ -67,7 +72,10 @@ jobs:
           LASTFM_SECRET: ${{ secrets.LASTFM_SECRET }}
           GH_CLIENT_ID: ${{ secrets.GH_CLIENT_ID }}
           GH_CLIENT_SECRET: ${{ secrets.GH_CLIENT_SECRET }}
-        run: ./gradlew assembleUniversalGmsRelease
+          DISCORD_APPLICATION_ID: ${{ secrets.DISCORD_APPLICATION_ID }}
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleUniversalGmsRelease
 
       - name: Rename and Organize APKs
         run: |

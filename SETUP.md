@@ -15,7 +15,7 @@ This document provides instructions for setting up the NexMusic project for deve
 
 ```bash
 git clone https://github.com/nexerisltd/NexMusic-Android.git
-cd Echo-Music
+cd NexMusic
 ```
 
 ### 2. Configure Local Properties
@@ -74,21 +74,17 @@ KEY_PASSWORD=your_key_password
 
 Open the project in Android Studio or build from the command line.
 
-**For FOSS variants (without Google Cast):**
+NexMusic has two build variants: **FOSS** (without Google Play Services / Cast) and **GMS** (with Cast support).
+
 ```bash
-# Debug build
+# FOSS Debug build
 ./gradlew assembleUniversalFossDebug
 
-# Release build (requires signing configuration)
-./gradlew assembleUniversalFossRelease
-```
-
-**For GMS variants (with Google Cast):**
-```bash
-# Debug build
+# GMS Debug build
 ./gradlew assembleUniversalGmsDebug
 
-# Release build (requires signing configuration)
+# Release builds (requires signing configuration)
+./gradlew assembleUniversalFossRelease
 ./gradlew assembleUniversalGmsRelease
 ```
 
@@ -140,10 +136,10 @@ Make sure you've created `local.properties` with the correct SDK path.
 
 ### Firebase-related Build Errors
 
-If you're not using Firebase, you can build the standard debug variant without `app/google-services.json`:
+If you're not using Firebase, you can still build the standard debug variant without `app/google-services.json` — Firebase features will simply be disabled:
 
 ```bash
-./gradlew assembleUniversalFossDebug
+./gradlew assembleUniversalGmsDebug
 ```
 
 ### Gradle Sync Issues
