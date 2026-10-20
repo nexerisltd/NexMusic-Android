@@ -1,5 +1,3 @@
-
-
 package com.nexapp.nexmusic.ui.menu
 
 import androidx.compose.foundation.clickable
@@ -22,51 +20,50 @@ import com.nexapp.nexmusic.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CustomThumbnailMenu(
-    onEdit: () -> Unit,
-    onRemove: () -> Unit,
-    onDismiss: () -> Unit,
+  onEdit: () -> Unit,
+  onRemove: () -> Unit,
+  onDismiss: () -> Unit,
 ) {
-    LazyColumn(
-        contentPadding = PaddingValues(
-            start = 8.dp,
-            top = 8.dp,
-            end = 8.dp,
-            bottom = 8.dp + WindowInsets.systemBars.asPaddingValues().calculateBottomPadding(),
-        ),
-    ) {
-        item {
-            ListItem(
-                headlineContent = { 
-                    Text(text = stringResource(R.string.choose_from_library)) 
-                },
-                leadingContent = {
-                    Icon(
-                        painter = painterResource(R.drawable.insert_photo),
-                        contentDescription = null,
-                    )
-                },
-                modifier = Modifier.clickable {
-                    onEdit()
-                    onDismiss()
-                }
-            )
-        }
-        item {
-            ListItem(
-                headlineContent = { 
-                    Text(text = stringResource(R.string.remove_custom_image)) 
-                },
-                leadingContent = {
-                    Icon(
-                        painter = painterResource(R.drawable.delete),
-                        contentDescription = null,
-                    )
-                },
-                modifier = Modifier.clickable {
-                    onRemove()
-                    onDismiss()
-                }
-            )
-        }
+  LazyColumn(
+    contentPadding =
+      PaddingValues(
+        start = 8.dp,
+        top = 8.dp,
+        end = 8.dp,
+        bottom = 8.dp + WindowInsets.systemBars.asPaddingValues().calculateBottomPadding(),
+      ),
+  ) {
+    item {
+      ListItem(
+        headlineContent = { Text(text = stringResource(R.string.choose_from_library)) },
+        leadingContent = {
+          Icon(
+            painter = painterResource(R.drawable.insert_photo),
+            contentDescription = null,
+          )
+        },
+        modifier =
+          Modifier.clickable {
+            onEdit()
+            onDismiss()
+          }
+      )
     }
+    item {
+      ListItem(
+        headlineContent = { Text(text = stringResource(R.string.remove_custom_image)) },
+        leadingContent = {
+          Icon(
+            painter = painterResource(R.drawable.delete),
+            contentDescription = null,
+          )
+        },
+        modifier =
+          Modifier.clickable {
+            onRemove()
+            onDismiss()
+          }
+      )
+    }
+  }
 }

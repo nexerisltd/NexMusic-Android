@@ -1,5 +1,3 @@
-
-
 package com.nexapp.nexmusic.viewmodels
 
 import androidx.lifecycle.SavedStateHandle
@@ -7,117 +5,116 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.music.innertube.YouTube
 import com.music.innertube.models.AlbumItem
-import com.nexapp.nexmusic.db.MusicDatabase
-import com.nexapp.nexmusic.utils.reportException
 import dagger.hilt.android.lifecycle.HiltViewModel
+import com.nexapp.nexmusic.db.MusicDatabase
+import com.nexapp.nexmusic.utils.AppleMusicAboutAlbum
+import com.nexapp.nexmusic.utils.Wikipedia
+import com.nexapp.nexmusic.utils.reportException
+import javax.inject.Inject
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.Dispatchers
-import com.nexapp.nexmusic.utils.Wikipedia
-import com.nexapp.nexmusic.utils.AppleMusicAboutAlbum
-import javax.inject.Inject
 
 @HiltViewModel
 class AlbumViewModel
 @Inject
 constructor(
-    database: MusicDatabase,
-    savedStateHandle: SavedStateHandle,
+  database: MusicDatabase,
+  savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
-    val albumId = savedStateHandle.get<String>("albumId")!!
-    val playlistId = MutableStateFlow("")
-    val albumWithSongs =
-        database
-            .albumWithSongs(albumId)
-            .stateIn(viewModelScope, SharingStarted.Eagerly, null)
-    var otherVersions = MutableStateFlow<List<AlbumItem>>(emptyList())
-    var releasesForYou = MutableStateFlow<List<AlbumItem>>(emptyList())
-    var description = MutableStateFlow<String?>(null)
-    var descriptionRuns = MutableStateFlow<List<com.music.innertube.models.Run>?>(null)
+  val albumId = savedStateHandle.get<String>("albumId")!!
+  val playlistId = MutableStateFlow("")
+  val albumWithSongs =
+    database.albumWithSongs(albumId).stateIn(viewModelScope, SharingStarted.Eagerly, null)
+  var otherVersions = MutableStateFlow<List<AlbumItem>>(emptyList())
+  var releasesForYou = MutableStateFlow<List<AlbumItem>>(emptyList())
+  var description = MutableStateFlow<String?>(null)
+  var descriptionRuns = MutableStateFlow<List<com.music.innertube.models.Run>?>(null)
 
-    init {
-        viewModelScope.launch {
-            val album = database.album(albumId).first()
-            if (album?.description != null) {
-                description.value = album.description
+  init {
+    viewModelScope.launch {
+      val album = database.album(albumId).first()
+      if (album?.description != null) {
+        description.value = album.description
+      }
+      if (albumId.startsWith("LOCAL_ALBUM_") || album?.album?.isLocal == true) {
+        return@launch
+      }
+      YouTube.album(albumId)
+        .onSuccess {
+          playlistId.value = it.album.playlistId
+          otherVersions.value = it.otherVersions
+          releasesForYou.value = it.releasesForYou
+          if (it.description != null) {
+            description.value = it.description
+          }
+          descriptionRuns.value = it.descriptionRuns
+          database.transaction {
+            if (album == null) {
+              insert(it)
+            } else {
+              update(album.album, it, album.artists)
             }
-            YouTube
-                .album(albumId)
-                .onSuccess {
-                    playlistId.value = it.album.playlistId
-                    otherVersions.value = it.otherVersions
-                    releasesForYou.value = it.releasesForYou
-                    if (it.description != null) {
-                        description.value = it.description
-                    }
-                    descriptionRuns.value = it.descriptionRuns
-                    database.transaction {
-                        if (album == null) {
-                            insert(it)
-                        } else {
-                            update(album.album, it, album.artists)
-                        }
-                    }
+          }
 
-                    val albumArtists = it.album.artists
-                    if (albumArtists?.size == 1) {
-                        albumArtists.firstOrNull()?.id?.let { artistId ->
-                            viewModelScope.launch(Dispatchers.IO) {
-                                val artistEntity = database.getArtistById(artistId)
-                                if (artistEntity?.thumbnailUrl == null) {
-                                    YouTube.artist(artistId).onSuccess { artistPage ->
-                                        database.query {
-                                            getArtistById(artistId)?.let { currentArtist ->
-                                                update(currentArtist, artistPage)
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
+          val albumArtists = it.album.artists
+          if (albumArtists?.size == 1) {
+            albumArtists.firstOrNull()?.id?.let { artistId ->
+              viewModelScope.launch(Dispatchers.IO) {
+                val artistEntity = database.getArtistById(artistId)
+                if (artistEntity?.thumbnailUrl == null) {
+                  YouTube.artist(artistId).onSuccess { artistPage ->
+                    database.query {
+                      getArtistById(artistId)?.let { currentArtist ->
+                        update(currentArtist, artistPage)
+                      }
                     }
-                    
-                    if (description.value == null && descriptionRuns.value == null) {
-                        viewModelScope.launch(Dispatchers.IO) {
-                            val artistName = album?.artists?.firstOrNull()?.name 
-                                ?: database.albumWithSongs(albumId).first()?.artists?.firstOrNull()?.name
-                            val wikiDescription = Wikipedia.fetchAlbumInfo(it.album.title, artistName)
-                            if (wikiDescription != null) {
-                                description.value = wikiDescription
-                                val currentAlbum = database.album(albumId).first()
-                                if (currentAlbum != null) {
-                                    database.query {
-                                        update(currentAlbum.album.copy(description = wikiDescription))
-                                    }
-                                }
-                            } else {
-                                val appleDescription = AppleMusicAboutAlbum.fetchAlbumDescription(it.album.title, artistName)
-                                if (appleDescription != null) {
-                                    description.value = appleDescription
-                                    val currentAlbum = database.album(albumId).first()
-                                    if (currentAlbum != null) {
-                                        database.query {
-                                            update(currentAlbum.album.copy(description = appleDescription))
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }.onFailure {
-                    reportException(it)
-                    if (it.message?.contains("NOT_FOUND") == true) {
-                        val albumToDelete = album?.album
-                        if (albumToDelete != null) {
-                            database.query {
-                                delete(albumToDelete)
-                            }
-                        }
-                    }
+                  }
                 }
+              }
+            }
+          }
+
+          if (description.value == null && descriptionRuns.value == null) {
+            viewModelScope.launch(Dispatchers.IO) {
+              val artistName =
+                album?.artists?.firstOrNull()?.name
+                  ?: database.albumWithSongs(albumId).first()?.artists?.firstOrNull()?.name
+              val wikiDescription = Wikipedia.fetchAlbumInfo(it.album.title, artistName)
+              if (wikiDescription != null) {
+                description.value = wikiDescription
+                val currentAlbum = database.album(albumId).first()
+                if (currentAlbum != null) {
+                  database.query { update(currentAlbum.album.copy(description = wikiDescription)) }
+                }
+              } else {
+                val appleDescription =
+                  AppleMusicAboutAlbum.fetchAlbumDescription(it.album.title, artistName)
+                if (appleDescription != null) {
+                  description.value = appleDescription
+                  val currentAlbum = database.album(albumId).first()
+                  if (currentAlbum != null) {
+                    database.query {
+                      update(currentAlbum.album.copy(description = appleDescription))
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        .onFailure {
+          reportException(it)
+          if (it.message?.contains("NOT_FOUND") == true) {
+            val albumToDelete = album?.album
+            if (albumToDelete != null) {
+              database.query { delete(albumToDelete) }
+            }
+          }
         }
     }
+  }
 }

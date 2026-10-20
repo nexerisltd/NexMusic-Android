@@ -1,5 +1,3 @@
-
-
 package com.nexapp.nexmusic.ui.component
 
 import androidx.compose.foundation.background
@@ -18,34 +16,28 @@ import com.nexapp.nexmusic.ui.utils.fadingEdge
 
 @Composable
 fun OnlineBlur(
-    thumbnailUrl: String?,
-    modifier: Modifier = Modifier,
+  thumbnailUrl: String?,
+  modifier: Modifier = Modifier,
 ) {
-    Box(modifier = modifier) {
-        if (thumbnailUrl != null) {
-            AsyncImage(
-                model = thumbnailUrl,
-                contentDescription = null,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .fillMaxSize()
-                    .blur(50.dp)
-                    .fadingEdge(bottom = 200.dp)
-            )
-        }
-        
-        
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(
-                    Brush.verticalGradient(
-                        colors = listOf(
-                            Color.Transparent,
-                            MaterialTheme.colorScheme.surface.copy(alpha = 0.6f)
-                        )
-                    )
-                )
-        )
+  Box(modifier = modifier) {
+    if (thumbnailUrl != null) {
+      AsyncImage(
+        model = thumbnailUrl,
+        contentDescription = null,
+        contentScale = ContentScale.Crop,
+        modifier = Modifier.fillMaxSize().blur(50.dp).fadingEdge(bottom = 200.dp)
+      )
     }
+
+    Box(
+      modifier =
+        Modifier.fillMaxSize()
+          .background(
+            Brush.verticalGradient(
+              colors =
+                listOf(Color.Transparent, MaterialTheme.colorScheme.surface.copy(alpha = 0.6f))
+            )
+          )
+    )
+  }
 }

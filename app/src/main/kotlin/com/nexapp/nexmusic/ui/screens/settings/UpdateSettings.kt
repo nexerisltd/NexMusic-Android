@@ -1,20 +1,22 @@
 package com.nexapp.nexmusic.ui.screens.settings
 
+import android.content.Intent
+import android.net.Uri
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-
-import androidx.compose.foundation.layout.WindowInsetsSides
-import androidx.compose.foundation.layout.only
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Switch
-import androidx.compose.material3.SwitchDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarScrollBehavior
@@ -28,256 +30,214 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import android.content.Intent
-import android.net.Uri
 import androidx.navigation.NavController
+import com.nexapp.nexmusic.BuildConfig
 import com.nexapp.nexmusic.LocalPlayerAwareWindowInsets
 import com.nexapp.nexmusic.R
+import com.nexapp.nexmusic.nexmusic.component.UpdateInfoDialog
+import com.nexapp.nexmusic.nexmusic.updater.autoClearOldApks
+import com.nexapp.nexmusic.nexmusic.updater.getAutoUpdateCheckSetting
+import com.nexapp.nexmusic.nexmusic.updater.getBetaUpdatesSetting
+import com.nexapp.nexmusic.nexmusic.updater.getDownloadedApkCount
+import com.nexapp.nexmusic.nexmusic.updater.getUpdateAvailableState
+import com.nexapp.nexmusic.nexmusic.updater.getUpdateNotificationsSetting
 import com.nexapp.nexmusic.ui.component.IconButton
 import com.nexapp.nexmusic.ui.component.Material3SettingsGroup
 import com.nexapp.nexmusic.ui.component.Material3SettingsItem
-import com.nexapp.nexmusic.echomusic.component.UpdateInfoDialog
 import com.nexapp.nexmusic.ui.utils.backToMain
-import com.nexapp.nexmusic.echomusic.updater.getAutoUpdateCheckSetting
-import com.nexapp.nexmusic.echomusic.updater.saveAutoUpdateCheckSetting
-import com.nexapp.nexmusic.echomusic.updater.getUpdateAvailableState
-import com.nexapp.nexmusic.echomusic.updater.saveUpdateAvailableState
-import com.nexapp.nexmusic.echomusic.updater.getUpdateNotificationsSetting
-import com.nexapp.nexmusic.echomusic.updater.saveUpdateNotificationsSetting
-import android.widget.Toast
-import androidx.compose.ui.res.pluralStringResource
-import com.nexapp.nexmusic.echomusic.updater.getDownloadedApkCount
-import com.nexapp.nexmusic.echomusic.updater.clearDownloadedApks
-import com.nexapp.nexmusic.echomusic.updater.getBetaUpdatesSetting
-import com.nexapp.nexmusic.echomusic.updater.saveBetaUpdatesSetting
-import com.nexapp.nexmusic.echomusic.updater.autoClearOldApks
-import androidx.compose.material3.MaterialTheme
-import com.nexapp.nexmusic.BuildConfig
+import com.nexapp.nexmusic.ui.utils.parseMarkdownToSections
+import com.nexapp.nexmusic.ui.utils.parseSimpleMarkdown
+import org.json.JSONObject
 
-
-
-
-
-
-
-
+/**
+ * Settings screen for managing app updates, checking for new releases, and displaying the latest
+ * release notes ("What's New").
+ *
+ * @param navController Navigation controller for screen transitions.
+ * @param scrollBehavior Top app bar scroll behavior.
+ * @param highlightKey Optional key to highlight a specific settings item.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun UpdateSettings(
-    navController: NavController,
-    scrollBehavior: TopAppBarScrollBehavior, highlightKey: String? = null) {
-    val scrollState = androidx.compose.foundation.rememberScrollState()
+  navController: NavController,
+  scrollBehavior: TopAppBarScrollBehavior,
+  highlightKey: String? = null
+) {
+  val scrollState = androidx.compose.foundation.rememberScrollState()
 
-    val context = LocalContext.current
-    var autoUpdateEnabled by remember { mutableStateOf(getAutoUpdateCheckSetting(context)) }
-    var updateNotificationsEnabled by remember { mutableStateOf(getUpdateNotificationsSetting(context)) }
-    var betaUpdatesEnabled by remember { mutableStateOf(getBetaUpdatesSetting(context)) }
-    val isUpdateAvailable = getUpdateAvailableState(context) && autoUpdateEnabled
-    var apkCount by remember { mutableStateOf(getDownloadedApkCount(context)) }
-    var showInfoDialog by remember { mutableStateOf(false) }
+  val context = LocalContext.current
+  var autoUpdateEnabled by remember { mutableStateOf(getAutoUpdateCheckSetting(context)) }
+  var updateNotificationsEnabled by remember {
+    mutableStateOf(getUpdateNotificationsSetting(context))
+  }
+  var betaUpdatesEnabled by remember { mutableStateOf(getBetaUpdatesSetting(context)) }
+  val isUpdateAvailable = getUpdateAvailableState(context) && autoUpdateEnabled
+  var apkCount by remember { mutableStateOf(getDownloadedApkCount(context)) }
+  var showInfoDialog by remember { mutableStateOf(false) }
+  var releaseNotes by remember { mutableStateOf<String?>(null) }
 
-    LaunchedEffect(Unit) {
-        autoClearOldApks(context)
-        apkCount = getDownloadedApkCount(context)
+  LaunchedEffect(Unit) {
+    autoClearOldApks(context)
+    apkCount = getDownloadedApkCount(context)
+
+    kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
+      try {
+        val url =
+          java.net.URL("https://api.github.com/repos/nexerisltd/NexMusic-Android/releases/latest")
+        val json = url.openStream().bufferedReader().use { it.readText() }
+        val targetRelease = JSONObject(json)
+        releaseNotes = targetRelease.getString("body")
+      } catch (e: Exception) {
+        e.printStackTrace()
+      }
     }
+  }
 
-    if (showInfoDialog) {
-        UpdateInfoDialog(onDismiss = { showInfoDialog = false })
-    }
+  if (showInfoDialog) {
+    UpdateInfoDialog(onDismiss = { showInfoDialog = false })
+  }
 
-    Column(
-        Modifier
-            .windowInsetsPadding(LocalPlayerAwareWindowInsets.current.only(WindowInsetsSides.Horizontal))
-            .verticalScroll(scrollState)
-            .padding(horizontal = 16.dp),
-    ) {
-        Spacer(Modifier.windowInsetsPadding(LocalPlayerAwareWindowInsets.current.only(WindowInsetsSides.Top)))
-        Material3SettingsGroup(scrollState = scrollState, 
-            title = stringResource(R.string.app_updates_title),
-            items = listOf(
-                Material3SettingsItem(
-    isHighlighted = (highlightKey == stringResource(R.string.system_update)),
-                    icon = painterResource(R.drawable.update),
-                    title = { Text(stringResource(R.string.system_update)) },
-                    description = {
-                        if (isUpdateAvailable) {
-                            Text(
-                                text = stringResource(R.string.update_available),
-                                color = MaterialTheme.colorScheme.error
-                            )
-                        } else {
-                            Text(stringResource(R.string.app_update_uptodate))
-                        }
-                    },
-                    onClick = {
-                        val isFoss = !BuildConfig.CAST_AVAILABLE
-                        if (isFoss) {
-                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/nexerisltd/NexMusic-Android"))
-                            context.startActivity(intent)
-                        } else {
-                            navController.navigate("update")
-                        }
-                    }
-                ),
-                Material3SettingsItem(
-    isHighlighted = (highlightKey == stringResource(R.string.version, BuildConfig.VERSION_NAME)),
-                    icon = painterResource(R.drawable.info),
-                    title = {
-                        Text(stringResource(R.string.version, BuildConfig.VERSION_NAME))
-                    },
-                    description = {
-                        val arch = BuildConfig.ARCHITECTURE
-                        val variant = if (BuildConfig.CAST_AVAILABLE) "GMS" else "FOSS"
-                        Text("$arch - $variant")
-                    }
-                ),
-                
-                Material3SettingsItem(
-    isHighlighted = (highlightKey == stringResource(R.string.auto_update_check)),
-                    icon = painterResource(R.drawable.update),
-                    title = { Text(stringResource(R.string.auto_update_check)) },
-                    description = { Text(stringResource(R.string.auto_update_check_subtitle)) },
-                    trailingContent = {
-                        Switch(
-                            checked = autoUpdateEnabled,
-                            onCheckedChange = { enabled ->
-                                autoUpdateEnabled = enabled
-                                saveAutoUpdateCheckSetting(context, enabled)
-                                if (!enabled) {
-                                    saveUpdateAvailableState(context, false)
-                                }
-                            },
-                            thumbContent = {
-                                Icon(
-                                    painter = painterResource(
-                                        id = if (autoUpdateEnabled) R.drawable.check else R.drawable.close
-                                    ),
-                                    contentDescription = null,
-                                    modifier = Modifier.size(SwitchDefaults.IconSize)
-                                )
-                            }
-                        )
-                    },
-                    onClick = {
-                        autoUpdateEnabled = !autoUpdateEnabled
-                        saveAutoUpdateCheckSetting(context, autoUpdateEnabled)
-                        if (!autoUpdateEnabled) {
-                            saveUpdateAvailableState(context, false)
-                        }
-                    }
-                ),
-
-                Material3SettingsItem(
-    isHighlighted = (highlightKey == stringResource(R.string.update_notifications)),
-                    icon = painterResource(R.drawable.notification),
-                    title = { Text(stringResource(R.string.update_notifications)) },
-                    description = { Text(stringResource(R.string.update_notifications_subtitle)) },
-                    trailingContent = {
-                        Switch(
-                            checked = updateNotificationsEnabled,
-                            onCheckedChange = { enabled ->
-                                updateNotificationsEnabled = enabled
-                                saveUpdateNotificationsSetting(context, enabled)
-                            },
-                            thumbContent = {
-                                Icon(
-                                    painter = painterResource(
-                                        id = if (updateNotificationsEnabled) R.drawable.check else R.drawable.close
-                                    ),
-                                    contentDescription = null,
-                                    modifier = Modifier.size(SwitchDefaults.IconSize)
-                                )
-                            }
-                        )
-                    },
-                    onClick = {
-                        updateNotificationsEnabled = !updateNotificationsEnabled
-                        saveUpdateNotificationsSetting(context, updateNotificationsEnabled)
-                    }
-                ),
-                Material3SettingsItem(
-    isHighlighted = (highlightKey == stringResource(R.string.clear_downloaded_updates)),
-                    icon = painterResource(R.drawable.delete),
-                    title = { Text(stringResource(R.string.clear_downloaded_updates)) },
-                    description = {
-                        if (apkCount == 0) {
-                            Text(
-                                text = stringResource(R.string.clear_downloaded_updates_desc),
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
-                            )
-                        } else {
-                            Text(
-                                text = pluralStringResource(R.plurals.n_apk_found, apkCount, apkCount),
-                                color = MaterialTheme.colorScheme.error
-                            )
-                        }
-                    },
-                    trailingContent = {
-                        IconButton(
-                            onClick = { showInfoDialog = true },
-                            onLongClick = {}
-                        ) {
-                            Icon(
-                                painterResource(R.drawable.info),
-                                contentDescription = null,
-                                modifier = Modifier.size(20.dp)
-                            )
-                        }
-                    },
-                    onClick = {
-                        if (apkCount > 0) {
-                            if (clearDownloadedApks(context)) {
-                                apkCount = 0
-                                Toast.makeText(context, "Deleted successfully", Toast.LENGTH_SHORT).show()
-                            } else {
-                                Toast.makeText(context, "Failed to delete some files", Toast.LENGTH_SHORT).show()
-                                apkCount = getDownloadedApkCount(context)
-                            }
-                        }
-                    }
-                )
-
-
-
-
-
-
-
-            )
-        )
-        
-        Spacer(modifier = Modifier.height(16.dp))
-        Material3SettingsGroup(scrollState = scrollState, 
-            title = stringResource(R.string.commits),
-            items = listOf(
-                Material3SettingsItem(
-    isHighlighted = (highlightKey == stringResource(R.string.commits)),
-                    icon = painterResource(R.drawable.commit),
-                    title = { Text(stringResource(R.string.commits)) },
-                    description = { Text(stringResource(R.string.view_commit_history)) },
-                    onClick = { navController.navigate("settings/commits") }
-                )
-            )
-        )
-
-        Spacer(modifier = Modifier.height(16.dp))
-    
-        Spacer(Modifier.windowInsetsPadding(LocalPlayerAwareWindowInsets.current.only(WindowInsetsSides.Bottom)))
-    }
-
-    TopAppBar(
-        title = { Text(stringResource(R.string.update_settings_title)) },
-        navigationIcon = {
-            IconButton(
-                onClick = navController::navigateUp,
-                onLongClick = navController::backToMain
-            ) {
-                Icon(
-                    painterResource(R.drawable.arrow_back),
-                    contentDescription = null
-                )
-            }
-        }
+  Column(
+    Modifier.windowInsetsPadding(
+        LocalPlayerAwareWindowInsets.current.only(WindowInsetsSides.Horizontal)
+      )
+      .verticalScroll(scrollState)
+      .padding(horizontal = 16.dp),
+  ) {
+    Spacer(
+      Modifier.windowInsetsPadding(LocalPlayerAwareWindowInsets.current.only(WindowInsetsSides.Top))
     )
+
+    Spacer(modifier = Modifier.height(16.dp))
+
+    Material3SettingsGroup(
+      scrollState = scrollState,
+      title = stringResource(R.string.app_updates_title),
+      items =
+        listOf(
+          Material3SettingsItem(
+            isHighlighted = (highlightKey == stringResource(R.string.system_update)),
+            icon = painterResource(R.drawable.update),
+            title = { Text(stringResource(R.string.system_update)) },
+            description = {
+              if (isUpdateAvailable) {
+                Text(
+                  text = "New update is available",
+                  color = androidx.compose.ui.graphics.Color.Red
+                )
+              } else {
+                Text(stringResource(R.string.version, BuildConfig.VERSION_NAME))
+              }
+            },
+            onClick = {
+              val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://nexmusicog.vercel.app"))
+              context.startActivity(intent)
+            }
+          )
+        )
+    )
+
+    Text(
+      text =
+        "To download updates, you will be redirected to our official site containing ads. This helps fund the app's development. Thank you for your support!",
+      style = MaterialTheme.typography.bodySmall,
+      color = MaterialTheme.colorScheme.onSurfaceVariant,
+      modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 16.dp)
+    )
+
+    releaseNotes?.let { notes ->
+      com.nexapp.nexmusic.ui.component.PreferenceGroupTitle(title = "What's New")
+      androidx.compose.material3.Card(
+        modifier = Modifier.fillMaxWidth(),
+        shape = androidx.compose.foundation.shape.RoundedCornerShape(24.dp),
+        colors =
+          androidx.compose.material3.CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh
+          ),
+        elevation = androidx.compose.material3.CardDefaults.cardElevation(defaultElevation = 0.dp)
+      ) {
+        Column(modifier = Modifier.fillMaxWidth().padding(20.dp)) {
+          val (effectiveDescription, effectiveSections) =
+            remember(notes) { parseMarkdownToSections(notes) }
+
+          if (!effectiveDescription.isNullOrBlank()) {
+            Text(
+              text = parseSimpleMarkdown(effectiveDescription, MaterialTheme.colorScheme.primary),
+              style = MaterialTheme.typography.bodyMedium,
+              color = MaterialTheme.colorScheme.onSurfaceVariant,
+              modifier = Modifier.padding(bottom = 8.dp)
+            )
+          }
+
+          if (effectiveSections.isNotEmpty()) {
+            effectiveSections.forEachIndexed { sectionIndex, section ->
+              if (section.title.isNotBlank()) {
+                Text(
+                  text = parseSimpleMarkdown(section.title, MaterialTheme.colorScheme.primary),
+                  style = MaterialTheme.typography.titleSmall,
+                  fontWeight = FontWeight.Bold,
+                  color = MaterialTheme.colorScheme.primary,
+                  modifier =
+                    Modifier.padding(
+                      top =
+                        if (sectionIndex == 0 && effectiveDescription.isNullOrBlank()) 0.dp
+                        else 10.dp,
+                      bottom = 4.dp
+                    )
+                )
+              }
+              section.items.forEach { item ->
+                if (item.isNotBlank()) {
+                  Row(
+                    modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                  ) {
+                    Text(
+                      text = "•",
+                      style = MaterialTheme.typography.bodyMedium,
+                      color = MaterialTheme.colorScheme.primary,
+                      fontWeight = FontWeight.Bold,
+                    )
+                    Text(
+                      text = parseSimpleMarkdown(item.trim(), MaterialTheme.colorScheme.primary),
+                      style = MaterialTheme.typography.bodyMedium,
+                      color = MaterialTheme.colorScheme.onSurfaceVariant,
+                      modifier = Modifier.weight(1f)
+                    )
+                  }
+                }
+              }
+            }
+          } else if (effectiveDescription.isNullOrBlank()) {
+            Text(
+              text = parseSimpleMarkdown(notes, MaterialTheme.colorScheme.primary),
+              style = MaterialTheme.typography.bodyMedium,
+              color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+          }
+        }
+      }
+      Spacer(modifier = Modifier.height(16.dp))
+    }
+
+    Spacer(modifier = Modifier.height(16.dp))
+
+    Spacer(
+      Modifier.windowInsetsPadding(
+        LocalPlayerAwareWindowInsets.current.only(WindowInsetsSides.Bottom)
+      )
+    )
+  }
+
+  TopAppBar(
+    title = { Text(stringResource(R.string.update_settings_title)) },
+    navigationIcon = {
+      IconButton(onClick = navController::navigateUp, onLongClick = navController::backToMain) {
+        Icon(painterResource(R.drawable.arrow_back), contentDescription = null)
+      }
+    }
+  )
 }

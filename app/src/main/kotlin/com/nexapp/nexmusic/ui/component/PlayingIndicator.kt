@@ -1,5 +1,3 @@
-
-
 package com.nexapp.nexmusic.ui.component
 
 import androidx.compose.animation.AnimatedVisibility
@@ -28,88 +26,80 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.nexapp.nexmusic.R
 import com.nexapp.nexmusic.constants.ThumbnailCornerRadius
+import kotlin.random.Random
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlin.random.Random
 
 @Composable
 fun PlayingIndicator(
-    color: Color,
-    modifier: Modifier = Modifier,
-    bars: Int = 3,
-    barWidth: Dp = 4.dp,
-    cornerRadius: Dp = ThumbnailCornerRadius,
+  color: Color,
+  modifier: Modifier = Modifier,
+  bars: Int = 3,
+  barWidth: Dp = 4.dp,
+  cornerRadius: Dp = ThumbnailCornerRadius,
 ) {
-    val animatables =
-        remember {
-            List(bars) {
-                Animatable(0.1f)
-            }
-        }
+  val animatables = remember { List(bars) { Animatable(0.1f) } }
 
-    LaunchedEffect(Unit) {
-        delay(300)
-        animatables.forEach { animatable ->
-            launch {
-                while (true) {
-                    animatable.animateTo(Random.nextFloat() * 0.9f + 0.1f)
-                    delay(50)
-                }
-            }
+  LaunchedEffect(Unit) {
+    delay(300)
+    animatables.forEach { animatable ->
+      launch {
+        while (true) {
+          animatable.animateTo(Random.nextFloat() * 0.9f + 0.1f)
+          delay(50)
         }
+      }
     }
+  }
 
-    Row(
-        horizontalArrangement = Arrangement.spacedBy(6.dp),
-        verticalAlignment = Alignment.Bottom,
-        modifier = modifier,
-    ) {
-        animatables.forEach { animatable ->
-            Canvas(
-                modifier =
-                Modifier
-                    .fillMaxHeight()
-                    .width(barWidth),
-            ) {
-                drawRoundRect(
-                    color = color,
-                    topLeft = Offset(x = 0f, y = size.height * (1 - animatable.value)),
-                    size = size.copy(height = animatable.value * size.height),
-                    cornerRadius = CornerRadius(cornerRadius.toPx()),
-                )
-            }
-        }
+  Row(
+    horizontalArrangement = Arrangement.spacedBy(6.dp),
+    verticalAlignment = Alignment.Bottom,
+    modifier = modifier,
+  ) {
+    animatables.forEach { animatable ->
+      Canvas(
+        modifier = Modifier.fillMaxHeight().width(barWidth),
+      ) {
+        drawRoundRect(
+          color = color,
+          topLeft = Offset(x = 0f, y = size.height * (1 - animatable.value)),
+          size = size.copy(height = animatable.value * size.height),
+          cornerRadius = CornerRadius(cornerRadius.toPx()),
+        )
+      }
     }
+  }
 }
 
 @Composable
 fun PlayingIndicatorBox(
-    modifier: Modifier = Modifier,
-    isActive: Boolean,
-    playWhenReady: Boolean,
-    color: Color = Color.White,
+  modifier: Modifier = Modifier,
+  isActive: Boolean,
+  playWhenReady: Boolean,
+  color: Color = Color.White,
 ) {
-    AnimatedVisibility(
-        visible = isActive,
-        enter = fadeIn(tween(500)),
-        exit = fadeOut(tween(500)),
+  AnimatedVisibility(
+    visible = isActive,
+    enter = fadeIn(tween(500)),
+    exit = fadeOut(tween(500)),
+  ) {
+    Box(
+      contentAlignment = Alignment.Center,
+      modifier = modifier,
     ) {
-        Box(
-            contentAlignment = Alignment.Center,
-            modifier = modifier,
-        ) {
-            if (playWhenReady) {
-                PlayingIndicator(
-                    color = color,
-                    modifier = Modifier.height(24.dp),
-                )
-            } else {
-                Icon(
-                    painter = painterResource(R.drawable.play),
-                    contentDescription = null,
-                    tint = color,
-                )
-            }
-        }
+      if (playWhenReady) {
+        PlayingIndicator(
+          color = color,
+          modifier = Modifier.height(24.dp),
+        )
+      } else {
+        Icon(
+          painter = painterResource(R.drawable.play),
+          contentDescription = null,
+          tint = color,
+        )
+      }
     }
+  }
 }
