@@ -15,7 +15,7 @@
     <a href="https://discord.gg/P44QdHPtKg"><img src="https://img.shields.io/badge/Discord-Join-5865F2?style=flat-square&logo=discord&logoColor=white" alt="Discord"></a>
   </p>
   <p>
-    <a href="https://nexmusicog.vercel.app/download"><img src="assets/download.png" alt="Download" width="150"/></a>
+    <a href="https://github.com/nexerisltd/NexMusic-Android/releases/download/v5.4.3/NexMusic-5.4.3-Universal.apk"><img src="assets/download.png" alt="Download" width="150"/></a>
     <a href="https://nexmusicog.vercel.app/obtainium"><img src="assets/obtainium.png" alt="Get it on Obtainium" width="150"/></a>
   </p>
   <p><b>Already have NexMusic installed?</b> The app checks for updates automatically. You can also grab the latest APK from <a href="https://github.com/nexerisltd/NexMusic-Android/releases/latest">GitHub Releases</a>.</p>

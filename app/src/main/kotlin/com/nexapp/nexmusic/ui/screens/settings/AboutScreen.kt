@@ -48,6 +48,41 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.json.JSONArray
 
+private const val DEV_PROFILE_URL = "https://nexeristm.vercel.app/api/public/profiles/mrarxme"
+
+private data class DevProfile(
+  val avatarUrl: String?,
+  val fullName: String?,
+  val position: String?,
+)
+
+private fun fetchDevProfile(): DevProfile? =
+  try {
+    val conn =
+      (java.net.URL(DEV_PROFILE_URL).openConnection() as java.net.HttpURLConnection).apply {
+        connectTimeout = 15_000
+        readTimeout = 15_000
+        requestMethod = "GET"
+        setRequestProperty("Accept", "application/json")
+      }
+    try {
+      if (conn.responseCode !in 200..299) {
+        null
+      } else {
+        val body = conn.inputStream.bufferedReader().use { it.readText() }
+        val profile = org.json.JSONObject(body).getJSONObject("profile")
+        fun field(key: String): String? =
+          profile.optString(key, "").takeIf { it.isNotBlank() && it != "null" }
+        DevProfile(field("avatar_url"), field("full_name"), field("position"))
+      }
+    } finally {
+      conn.disconnect()
+    }
+  } catch (e: Exception) {
+    e.printStackTrace()
+    null
+  }
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AboutScreen(
@@ -60,6 +95,9 @@ fun AboutScreen(
 
   data class Contributor(val login: String, val avatarUrl: String, val htmlUrl: String)
   var contributors by remember { mutableStateOf<List<Contributor>>(emptyList()) }
+  var devProfile by remember { mutableStateOf<DevProfile?>(null) }
+
+  LaunchedEffect(Unit) { devProfile = withContext(Dispatchers.IO) { fetchDevProfile() } }
 
   LaunchedEffect(Unit) {
     withContext(Dispatchers.IO) {
@@ -138,7 +176,7 @@ fun AboutScreen(
         ),
       verticalArrangement = Arrangement.spacedBy(14.dp),
     ) {
-      item { AboutAppCard() }
+      item { AboutAppCard(devProfile) }
 
       if (contributors.isNotEmpty()) {
         item {
@@ -172,20 +210,20 @@ fun AboutScreen(
               Material3SettingsItem(
                 icon = painterResource(R.drawable.github),
                 title = { Text("GitHub") },
-                description = { Text("@arabiislam46ar") },
-                onClick = { uriHandler.openUri("https://github.com/arabiislam46ar") }
+                description = { Text("@mrarxme") },
+                onClick = { uriHandler.openUri("https://github.com/mrarxme") }
               ),
               Material3SettingsItem(
                 icon = painterResource(R.drawable.ic_instagram_new),
                 title = { Text("Instagram") },
-                description = { Text("@arabiislam46ar") },
-                onClick = { uriHandler.openUri("https://instagram.com/arabiislam46ar") }
+                description = { Text("@mr.arx.me") },
+                onClick = { uriHandler.openUri("https://instagram.com/mr.arx.me") }
               ),
               Material3SettingsItem(
                 icon = painterResource(R.drawable.ic_telegram_new),
                 title = { Text("Telegram") },
-                description = { Text("@arabiislam46r") },
-                onClick = { uriHandler.openUri("https://t.me/arabiislam46r") }
+                description = { Text("@mrarxme") },
+                onClick = { uriHandler.openUri("https://t.me/mrarxme") }
               )
             )
         )
@@ -243,7 +281,7 @@ fun AboutScreen(
 }
 
 @Composable
-private fun AboutAppCard() {
+private fun AboutAppCard(devProfile: DevProfile?) {
   Column(
     modifier = Modifier.fillMaxWidth().padding(vertical = 28.dp, horizontal = 20.dp),
     horizontalAlignment = Alignment.CenterHorizontally,
@@ -299,7 +337,8 @@ private fun AboutAppCard() {
         )
       } else {
         coil3.compose.AsyncImage(
-          model = "https://avatars.githubusercontent.com/u/147871321?v=4",
+          model =
+            devProfile?.avatarUrl ?: "https://avatars.githubusercontent.com/u/147871321?v=4",
           contentDescription = null,
           modifier =
             Modifier.fillMaxSize().graphicsLayer { rotationY = 180f }, // Un-flip the backside image
@@ -311,11 +350,20 @@ private fun AboutAppCard() {
     Spacer(Modifier.height(4.dp))
 
     Text(
-      text = if (rotation <= 90f) "NexMusic" else "Developed by Arabi Islam",
+      text =
+        if (rotation <= 90f) "NexMusic"
+        else "Developed by ${devProfile?.fullName ?: "Arabi Islam"}",
       style = MaterialTheme.typography.titleLarge,
       fontWeight = FontWeight.Bold,
       color = MaterialTheme.colorScheme.onSurface,
     )
+    if (rotation > 90f && !devProfile?.position.isNullOrBlank()) {
+      Text(
+        text = devProfile?.position.orEmpty(),
+        style = MaterialTheme.typography.bodyMedium,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+      )
+    }
     Row(
       horizontalArrangement = Arrangement.spacedBy(6.dp),
       verticalAlignment = Alignment.CenterVertically,

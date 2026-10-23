@@ -356,6 +356,7 @@ class MainActivity : ComponentActivity() {
       handleDeepLinkIntent(intent, navController)
       handleRecognitionIntent(intent, navController)
       handleAssistantSearchIntent(intent, navController)
+      handleOpenUpdateIntent(intent, navController)
     } else {
       pendingIntent = intent
     }
@@ -752,7 +753,12 @@ class MainActivity : ComponentActivity() {
           version = availableUpdateVersion,
           changelog = availableUpdateChangelog,
           description = availableUpdateDescription,
-          onDismiss = { showUpdateDialog = false }
+          onDismiss = { showUpdateDialog = false },
+          onUpdate = {
+            if (::navController.isInitialized) {
+              navController.navigate("update") { launchSingleTop = true }
+            }
+          }
         )
       } else {
         whatsNewInfo?.let { info ->
@@ -1100,6 +1106,7 @@ class MainActivity : ComponentActivity() {
           val activeIntent = pendingIntent ?: intent
           if (activeIntent != null) {
             handleWidgetAction(activeIntent)
+            handleOpenUpdateIntent(activeIntent, navController)
           }
           if (pendingIntent != null) {
             handleDeepLinkIntent(pendingIntent!!, navController)
@@ -1125,6 +1132,7 @@ class MainActivity : ComponentActivity() {
           val listener =
             Consumer<Intent> { newIntent ->
               handleWidgetAction(newIntent)
+              handleOpenUpdateIntent(newIntent, navController)
               if (newIntent.action == Intent.ACTION_VIEW || newIntent.action == Intent.ACTION_SEND) {
                 handleDeepLinkIntent(newIntent, navController)
               } else if (newIntent.action == ACTION_RECOGNITION) {
@@ -1970,6 +1978,15 @@ class MainActivity : ComponentActivity() {
       window.navigationBarColor =
         (if (isDark) Color.Transparent else Color.Black.copy(alpha = 0.2f)).toArgb()
     }
+  }
+
+  private fun handleOpenUpdateIntent(
+    intent: Intent,
+    navController: NavHostController,
+  ) {
+    if (!intent.getBooleanExtra(UpdateNotificationHelper.EXTRA_OPEN_UPDATE_SCREEN, false)) return
+    intent.removeExtra(UpdateNotificationHelper.EXTRA_OPEN_UPDATE_SCREEN)
+    navController.navigate("update") { launchSingleTop = true }
   }
 
   private fun handleRecognitionIntent(

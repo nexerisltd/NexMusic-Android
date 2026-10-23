@@ -94,28 +94,75 @@ jobs:
           name: NexMusic-Universal
           path: app/build/outputs/apk/release-artifacts/*.apk
 
-      - name: Parse Release Info
+      - name: Prepare Release Info
         if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
         run: |
-          # 1. Read first line and strip the "# " to get the Title
-          TITLE=$(head -n 1 RELEASE_INFO.md | sed 's/^# //')
-          echo "RELEASE_TITLE=$TITLE" >> $GITHUB_ENV
-          
-          # 2. Read from line 3 onwards to get the Description body
-          tail -n +3 RELEASE_INFO.md > release-body.md
+          VERSION_NAME=$(grep "versionName =" app/build.gradle.kts | head -n 1 | awk -F '"' '{print $2}')
+          ESCAPED_VERSION="${VERSION_NAME//./\\.}"
+          echo "VERSION_NAME=$VERSION_NAME" >> $GITHUB_ENV
+          echo "RELEASE_TAG=v$VERSION_NAME" >> $GITHUB_ENV
+          echo "RELEASE_TITLE=NexMusic v$VERSION_NAME" >> $GITHUB_ENV
 
-      - name: Create GitHub Release
-        if: startsWith(github.ref, 'refs/tags/v')
-        uses: softprops/action-gh-release@v2
-        with:
-          name: ${{ env.RELEASE_TITLE }}
-          body_path: release-body.md
-          files: app/build/outputs/apk/release-artifacts/*.apk
+          # Release notes: use RELEASE_INFO.md when it belongs to this version,
+          # otherwise fall back to the message of the commit that triggered the build.
+          if [ -f RELEASE_INFO.md ] && head -n 1 RELEASE_INFO.md | grep -qE "v${ESCAPED_VERSION}([^0-9]|$)"; then
+            tail -n +3 RELEASE_INFO.md > release-body.md
+          else
+            git log -1 --format=%B "$GITHUB_SHA" > release-body.md
+          fi
+          if [ ! -s release-body.md ]; then
+            echo "NexMusic v$VERSION_NAME" > release-body.md
+          fi
+
+      - name: Publish GitHub Release (APK + ZIP)
+        id: release
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          APK_DIR="app/build/outputs/apk/release-artifacts"
+          APK="$APK_DIR/NexMusic-${VERSION_NAME}-Universal.apk"
+          test -f "$APK" || { echo "APK not found: $APK"; exit 1; }
+
+          # Same content as the Actions artifact zip (NexMusic-Universal.zip)
+          mkdir -p release-assets
+          ZIP="$PWD/release-assets/NexMusic-Universal.zip"
+          rm -f "$ZIP"
+          (cd "$APK_DIR" && zip -q "$ZIP" ./*.apk)
+
+          if gh release view "$RELEASE_TAG" > /dev/null 2>&1; then
+            echo "Release $RELEASE_TAG exists - refreshing assets"
+            gh release upload "$RELEASE_TAG" "$APK" "$ZIP" --clobber
+            gh release edit "$RELEASE_TAG" --title "$RELEASE_TITLE" --latest
+            echo "is_new=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "Creating release $RELEASE_TAG"
+            gh release create "$RELEASE_TAG" "$APK" "$ZIP" \
+              --target "$GITHUB_SHA" \
+              --title "$RELEASE_TITLE" \
+              --notes-file release-body.md \
+              --latest
+            echo "is_new=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Bump README download link
+        if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
+        continue-on-error: true
+        run: |
+          NEW_URL="https://github.com/${{ github.repository }}/releases/download/${RELEASE_TAG}/NexMusic-${VERSION_NAME}-Universal.apk"
+          sed -i -E "s#https://github.com/${{ github.repository }}/releases/download/[^\"]+\.apk#${NEW_URL}#" README.md
+          if git diff --quiet README.md; then
+            echo "README already points to ${RELEASE_TAG}"
+            exit 0
+          fi
+          git config user.name "NexMusic Bot"
+          git config user.email "nexappog@gmail.com"
+          git add README.md
+          git commit -m "docs: bump download link to ${RELEASE_TAG} [skip ci]"
+          git push origin HEAD:main
 
       - name: Send Telegram Notification
-        if: startsWith(github.ref, 'refs/tags/v')
+        if: steps.release.outputs.is_new == 'true'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -151,7 +198,7 @@ jobs:
             -d @telegram-payload.json
 
       - name: Send Discord Release Notification
-        if: startsWith(github.ref, 'refs/tags/v')
+        if: steps.release.outputs.is_new == 'true'
         env:
           DISCORD_RELEASE_WEBHOOK: ${{ secrets.DISCORD_RELEASE_WEBHOOK || secrets.DISCORD_WEBHOOK }}
           RELEASE_TITLE: ${{ env.RELEASE_TITLE }}
@@ -184,7 +231,7 @@ jobs:
           fi
 
       - name: Send Discord Notification
-        if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && !startsWith(github.ref, 'refs/tags/')
+        if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && !startsWith(github.ref, 'refs/tags/') && steps.release.outputs.is_new != 'true'
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
           RELEASE_TITLE: ${{ env.RELEASE_TITLE }}

@@ -61,15 +61,15 @@ fun WelcomeDialog(onDismissRequest: () -> Unit) {
           WelcomeActionRow(
             icon = painterResource(R.drawable.github),
             title = "GitHub",
-            subtitle = "@arabiislam46ar",
-            onClick = { uriHandler.openUri("https://github.com/arabiislam46ar") }
+            subtitle = "@mrarxme",
+            onClick = { uriHandler.openUri("https://github.com/mrarxme") }
           )
           WelcomeDivider()
           WelcomeActionRow(
             icon = painterResource(R.drawable.ic_instagram_new),
             title = "Instagram",
-            subtitle = "@arabiislam46ar",
-            onClick = { uriHandler.openUri("https://instagram.com/arabiislam46ar") }
+            subtitle = "@mr.arx.me",
+            onClick = { uriHandler.openUri("https://instagram.com/mr.arx.me") }
           )
           WelcomeDivider()
           WelcomeActionRow(

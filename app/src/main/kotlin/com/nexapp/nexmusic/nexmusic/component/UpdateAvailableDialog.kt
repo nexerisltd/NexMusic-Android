@@ -27,6 +27,7 @@ import racra.compose.smooth_corner_rect_library.AbsoluteSmoothCornerShape
  * @param changelog Pre-parsed structured changelog sections, if available.
  * @param description Raw release description or fallback Markdown text.
  * @param onDismiss Invoked when the user dismisses the dialog.
+ * @param onUpdate Invoked when the user taps Update (opens the in-app update screen).
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -34,7 +35,8 @@ fun UpdateAvailableDialog(
   version: String,
   changelog: List<ChangelogSection>,
   description: String?,
-  onDismiss: () -> Unit
+  onDismiss: () -> Unit,
+  onUpdate: () -> Unit
 ) {
   val context = LocalContext.current
   val cardShape =
@@ -196,9 +198,7 @@ fun UpdateAvailableDialog(
           Button(
             onClick = {
               onDismiss()
-              val intent =
-                Intent(Intent.ACTION_VIEW, android.net.Uri.parse("https://nexmusicog.vercel.app"))
-              context.startActivity(intent)
+              onUpdate()
             },
             shape = actionShape,
           ) {

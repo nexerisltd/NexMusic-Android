@@ -132,21 +132,12 @@ fun UpdateSettings(
                 Text(stringResource(R.string.version, BuildConfig.VERSION_NAME))
               }
             },
-            onClick = {
-              val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://nexmusicog.vercel.app"))
-              context.startActivity(intent)
-            }
+            onClick = { navController.navigate("update") { launchSingleTop = true } }
           )
         )
     )
 
-    Text(
-      text =
-        "To download updates, you will be redirected to our official site containing ads. This helps fund the app's development. Thank you for your support!",
-      style = MaterialTheme.typography.bodySmall,
-      color = MaterialTheme.colorScheme.onSurfaceVariant,
-      modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 16.dp)
-    )
+    Spacer(modifier = Modifier.height(16.dp))
 
     releaseNotes?.let { notes ->
       com.nexapp.nexmusic.ui.component.PreferenceGroupTitle(title = "What's New")

@@ -11,12 +11,13 @@ import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
-import androidx.core.net.toUri
+import com.nexapp.nexmusic.MainActivity
 import com.nexapp.nexmusic.R
 
 object UpdateNotificationHelper {
   private const val CHANNEL_ID = "updates"
   private const val NOTIFICATION_ID = 1001
+  const val EXTRA_OPEN_UPDATE_SCREEN = "open_update_screen"
 
   fun showUpdateNotification(context: Context, versionName: String) {
     val nm = context.getSystemService(NotificationManager::class.java)
@@ -31,8 +32,11 @@ object UpdateNotificationHelper {
       nm.createNotificationChannel(channel)
     }
 
-    val apkUrl = "https://nexmusicog.vercel.app"
-    val intent = Intent(Intent.ACTION_VIEW, apkUrl.toUri())
+    val intent =
+      Intent(context, MainActivity::class.java).apply {
+        putExtra(EXTRA_OPEN_UPDATE_SCREEN, true)
+        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+      }
 
     val flags = PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
     val pending = PendingIntent.getActivity(context, NOTIFICATION_ID, intent, flags)
