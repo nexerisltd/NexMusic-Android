@@ -73,10 +73,10 @@ fun WelcomeDialog(onDismissRequest: () -> Unit) {
           )
           WelcomeDivider()
           WelcomeActionRow(
-            icon = painterResource(R.drawable.ic_x_new),
-            title = "Facebook",
-            subtitle = "@arabiislam46ar",
-            onClick = { uriHandler.openUri("https://facebook.com/arabiislam46ar") }
+            icon = painterResource(R.drawable.website),
+            title = "Portfolio",
+            subtitle = "mrarxme.vercel.app",
+            onClick = { uriHandler.openUri("https://mrarxme.vercel.app/") }
           )
         }
 

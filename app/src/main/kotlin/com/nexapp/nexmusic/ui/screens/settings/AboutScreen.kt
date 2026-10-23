@@ -176,7 +176,7 @@ fun AboutScreen(
         ),
       verticalArrangement = Arrangement.spacedBy(14.dp),
     ) {
-      item { AboutAppCard(devProfile) }
+      item { AboutAppCard() }
 
       if (contributors.isNotEmpty()) {
         item {
@@ -201,6 +201,8 @@ fun AboutScreen(
           }
         }
       }
+
+      item { DeveloperCard(devProfile) }
 
       item {
         Material3SettingsGroup(
@@ -281,7 +283,7 @@ fun AboutScreen(
 }
 
 @Composable
-private fun AboutAppCard(devProfile: DevProfile?) {
+private fun AboutAppCard() {
   Column(
     modifier = Modifier.fillMaxWidth().padding(vertical = 28.dp, horizontal = 20.dp),
     horizontalAlignment = Alignment.CenterHorizontally,
@@ -289,81 +291,21 @@ private fun AboutAppCard(devProfile: DevProfile?) {
   ) {
     val isDark = MaterialTheme.colorScheme.surface.luminance() < 0.5f
 
-    var isEasterEggActive by remember { mutableStateOf(false) }
-    val rotation by
-      animateFloatAsState(
-        targetValue = if (isEasterEggActive) 180f else 0f,
-        animationSpec =
-          spring(dampingRatio = Spring.DampingRatioMediumBouncy, stiffness = Spring.StiffnessLow),
-        label = "flip"
-      )
-
-    val interactionSource = remember { MutableInteractionSource() }
-    val isPressed by interactionSource.collectIsPressedAsState()
-    val scale by
-      animateFloatAsState(
-        targetValue = if (isPressed) 0.85f else 1f,
-        animationSpec =
-          spring(
-            dampingRatio = Spring.DampingRatioMediumBouncy,
-            stiffness = Spring.StiffnessMedium
-          ),
-        label = "scale"
-      )
-
-    Box(
-      modifier =
-        Modifier.size(100.dp)
-          .graphicsLayer {
-            rotationY = rotation
-            scaleX = scale
-            scaleY = scale
-            cameraDistance = 12f * density
-          }
-          .clip(CircleShape)
-          .clickable(
-            interactionSource = interactionSource,
-            indication = null,
-            onClick = { isEasterEggActive = !isEasterEggActive }
-          ),
-      contentAlignment = Alignment.Center
-    ) {
-      if (rotation <= 90f) {
-        Image(
-          painter = painterResource(R.drawable.ic_launcher_nobg),
-          contentDescription = null,
-          colorFilter = ColorFilter.tint(if (isDark) Color.White else Color(0xFFEA3829)),
-          modifier = Modifier.fillMaxSize()
-        )
-      } else {
-        coil3.compose.AsyncImage(
-          model =
-            devProfile?.avatarUrl ?: "https://avatars.githubusercontent.com/u/147871321?v=4",
-          contentDescription = null,
-          modifier =
-            Modifier.fillMaxSize().graphicsLayer { rotationY = 180f }, // Un-flip the backside image
-          contentScale = androidx.compose.ui.layout.ContentScale.Crop
-        )
-      }
-    }
+    Image(
+      painter = painterResource(R.drawable.ic_launcher_nobg),
+      contentDescription = null,
+      colorFilter = ColorFilter.tint(if (isDark) Color.White else Color(0xFFEA3829)),
+      modifier = Modifier.size(100.dp)
+    )
 
     Spacer(Modifier.height(4.dp))
 
     Text(
-      text =
-        if (rotation <= 90f) "NexMusic"
-        else "Developed by ${devProfile?.fullName ?: "Arabi Islam"}",
+      text = "NexMusic",
       style = MaterialTheme.typography.titleLarge,
       fontWeight = FontWeight.Bold,
       color = MaterialTheme.colorScheme.onSurface,
     )
-    if (rotation > 90f && !devProfile?.position.isNullOrBlank()) {
-      Text(
-        text = devProfile?.position.orEmpty(),
-        style = MaterialTheme.typography.bodyMedium,
-        color = MaterialTheme.colorScheme.onSurfaceVariant,
-      )
-    }
     Row(
       horizontalArrangement = Arrangement.spacedBy(6.dp),
       verticalAlignment = Alignment.CenterVertically,
@@ -406,6 +348,48 @@ private fun AboutAppCard(devProfile: DevProfile?) {
             modifier = Modifier.padding(horizontal = 8.dp, vertical = 3.dp),
           )
         }
+      }
+    }
+  }
+}
+
+private const val DEV_FALLBACK_AVATAR =
+  "https://kkrglsaoivkbadlxllbp.supabase.co/storage/v1/object/public/avatars/cc2db264-407f-4d22-be8a-dfd4146497f7/1791632625170.png"
+
+@Composable
+private fun DeveloperCard(devProfile: DevProfile?) {
+  Surface(
+    modifier = Modifier.fillMaxWidth(),
+    shape = RoundedCornerShape(24.dp),
+    color = MaterialTheme.colorScheme.surfaceContainerHigh,
+  ) {
+    Row(
+      modifier = Modifier.fillMaxWidth().padding(16.dp),
+      verticalAlignment = Alignment.CenterVertically,
+      horizontalArrangement = Arrangement.spacedBy(16.dp),
+    ) {
+      coil3.compose.AsyncImage(
+        model = devProfile?.avatarUrl ?: DEV_FALLBACK_AVATAR,
+        contentDescription = null,
+        modifier = Modifier.size(64.dp).clip(CircleShape),
+        contentScale = androidx.compose.ui.layout.ContentScale.Crop
+      )
+      Column(modifier = Modifier.weight(1f)) {
+        Text(
+          text = devProfile?.fullName ?: "MR. ARX",
+          style = MaterialTheme.typography.titleMedium,
+          fontWeight = FontWeight.Bold,
+          color = MaterialTheme.colorScheme.onSurface,
+          maxLines = 1,
+          overflow = TextOverflow.Ellipsis,
+        )
+        Text(
+          text = devProfile?.position ?: "Senior Developer",
+          style = MaterialTheme.typography.bodyMedium,
+          color = MaterialTheme.colorScheme.onSurfaceVariant,
+          maxLines = 2,
+          overflow = TextOverflow.Ellipsis,
+        )
       }
     }
   }
