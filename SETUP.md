@@ -158,3 +158,17 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 ## License
 
 This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
+
+## In-app update token (private release repos)
+
+The updater polls `nexerisltd/NexMusic-Android` releases directly. While the repo is **private**, the
+GitHub API needs auth:
+
+1. Create a fine-grained PAT (Contents: Read-only) limited to `NexMusic-Desktop` + `NexMusic-Android`.
+2. Put it in `local.properties` as `updateGithubToken=github_pat_...`, or set the
+   `UPDATE_GITHUB_TOKEN` repository secret so CI builds embed it.
+3. The same token is used by the desktop app (see the NexMusic-Desktop SETUP_CI.md).
+
+Public repos need no token. The CI release job also uploads `changelog.json` and publishes
+`.well-known/assetlinks.json` to the website repo - the latter needs the `WEBSITE_REPO_TOKEN` secret
+(a PAT with write access to `nexerisltd/NexMusic-Website`) so shared links open the app on Android.

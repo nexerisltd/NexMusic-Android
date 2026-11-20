@@ -63,6 +63,64 @@ jobs:
           mkdir -p app/keystore
           echo "$RELEASE_KEYSTORE_BASE64" | base64 --decode > app/keystore/release.keystore
 
+      - name: Generate assetlinks.json (App Links verification)
+        if: env.HAS_KEYSTORE == 'true'
+        env:
+          STORE_PASSWORD: ${{ secrets.RELEASE_STORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
+        run: |
+          FINGERPRINT=$(keytool -list -v -keystore app/keystore/release.keystore -storepass "$STORE_PASSWORD" -alias "$KEY_ALIAS" | grep "SHA256:" | head -n 1 | sed 's/.*SHA256: *//; s/[ :]//g' | tr 'A-Z' 'a-z')
+          if [ -z "$FINGERPRINT" ]; then echo "Could not read the certificate fingerprint"; exit 1; fi
+          echo "Cert SHA256: $FINGERPRINT"
+          mkdir -p assetlinks
+          export CERT_FP="$FINGERPRINT"
+          python3 <<'ASL'
+          import json, os
+          fp = os.environ['CERT_FP']
+          json.dump([{
+            'relation': ['delegate_permission/common.handle_all_urls'],
+            'target': {
+              'namespace': 'android_app',
+              'package_name': 'com.nexapp.nexmusic',
+              'sha256_cert_fingerprints': [fp]
+            }
+          }], open('assetlinks/assetlinks.json', 'w'), indent=2)
+          ASL
+          cat assetlinks/assetlinks.json
+
+      - name: Upload assetlinks.json Artifact
+        if: env.HAS_KEYSTORE == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: assetlinks
+          path: assetlinks/assetlinks.json
+
+      - name: Publish assetlinks.json to the website
+        if: env.HAS_KEYSTORE == 'true'
+        env:
+          WEBSITE_REPO_TOKEN: ${{ secrets.WEBSITE_REPO_TOKEN }}
+        run: |
+          # Makes https://nexmusicog.vercel.app/.well-known/assetlinks.json live,
+          # which is what lets Android verify the app links (shared links then
+          # open NexMusic directly instead of the browser).
+          if [ -z "$WEBSITE_REPO_TOKEN" ]; then
+            echo "WEBSITE_REPO_TOKEN not configured - assetlinks.json left as an artifact only."
+            exit 0
+          fi
+          git clone "https://x-access-token:${WEBSITE_REPO_TOKEN}@github.com/nexerisltd/NexMusic-Website.git" website
+          mkdir -p website/.well-known
+          cp assetlinks/assetlinks.json website/.well-known/assetlinks.json
+          cd website
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .well-known/assetlinks.json
+          if git diff --cached --quiet; then
+            echo "assetlinks.json unchanged"
+          else
+            git commit -m "Update Android App Links assetlinks.json (auto from NexMusic-Android CI)"
+            git push origin main
+          fi
+
       - name: Build and Sign Release APK (Push to main / Dispatch / Tag)
         env:
           STORE_PASSWORD: ${{ secrets.RELEASE_STORE_PASSWORD }}
@@ -73,6 +131,7 @@ jobs:
           GH_CLIENT_ID: ${{ secrets.GH_CLIENT_ID }}
           GH_CLIENT_SECRET: ${{ secrets.GH_CLIENT_SECRET }}
           DISCORD_APPLICATION_ID: ${{ secrets.DISCORD_APPLICATION_ID }}
+          UPDATE_GITHUB_TOKEN: ${{ secrets.UPDATE_GITHUB_TOKEN }}
         run: |
           chmod +x gradlew
           ./gradlew assembleUniversalGmsRelease
@@ -114,6 +173,40 @@ jobs:
             echo "NexMusic v$VERSION_NAME" > release-body.md
           fi
 
+      - name: Generate changelog.json (rich in-app release notes)
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+        run: |
+          # The in-app updater reads this asset first and falls back to the raw
+          # release body; generating it here means the rich changelog always exists.
+          python3 <<'CHNGLOG'
+          import json
+          import re
+
+          body = open('release-body.md', encoding='utf-8').read()
+          description, sections = [], []
+          cur = {'title': '', 'items': []}
+          for line in body.splitlines():
+              s = line.strip()
+              if not s:
+                  continue
+              h = re.match(r'^#{1,6}\s+(.*)', s)
+              if h:
+                  if cur['title'] or cur['items']:
+                      sections.append(cur)
+                  cur = {'title': h.group(1).strip(), 'items': []}
+                  continue
+              b = re.match(r'^[-*]\s+(.*)', s)
+              if b:
+                  cur['items'].append(b.group(1).strip())
+                  continue
+              description.append(s)
+          if cur['title'] or cur['items']:
+              sections.append(cur)
+          out = {'description': '\n'.join(description).strip() or None, 'image': '', 'changelog': sections}
+          json.dump(out, open('changelog.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=2)
+          print(open('changelog.json', encoding='utf-8').read())
+          CHNGLOG
+
       - name: Publish GitHub Release (APK + ZIP)
         id: release
         if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
@@ -132,12 +225,12 @@ jobs:
 
           if gh release view "$RELEASE_TAG" > /dev/null 2>&1; then
             echo "Release $RELEASE_TAG exists - refreshing assets"
-            gh release upload "$RELEASE_TAG" "$APK" "$ZIP" --clobber
+            gh release upload "$RELEASE_TAG" "$APK" "$ZIP" changelog.json --clobber
             gh release edit "$RELEASE_TAG" --title "$RELEASE_TITLE" --latest
             echo "is_new=false" >> "$GITHUB_OUTPUT"
           else
             echo "Creating release $RELEASE_TAG"
-            gh release create "$RELEASE_TAG" "$APK" "$ZIP" \
+            gh release create "$RELEASE_TAG" "$APK" "$ZIP" changelog.json \
               --target "$GITHUB_SHA" \
               --title "$RELEASE_TITLE" \
               --notes-file release-body.md \

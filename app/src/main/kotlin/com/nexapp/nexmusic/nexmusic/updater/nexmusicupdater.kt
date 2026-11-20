@@ -115,7 +115,10 @@ sealed class NexUpdateStatus {
     val releaseDate: String,
     val description: String?,
     val imageUrl: String?,
-    val apkUrl: String?
+    val apkUrl: String?,
+    // API asset URL (api.github.com/.../releases/assets/<id>) - the only
+    // download route that works while the release repository is private.
+    val assetApiUrl: String? = null
   ) : NexUpdateStatus()
 
   data class NoUpdate(val version: String) : NexUpdateStatus()
@@ -192,7 +195,7 @@ fun UpdateScreen(navController: NavHostController) {
       delay(1000L)
       checkForUpdate(
         context = context,
-        onSuccess = { tag, isAvailable, changelog, size, date, description, imageUrl, apkUrl ->
+        onSuccess = { tag, isAvailable, changelog, size, date, description, imageUrl, apkUrl, assetApiUrl ->
           saveLastCheckedTime(
             context,
             LocalDateTime.now().format(DateTimeFormatter.ofPattern("d MMMM yyyy, h:mm a"))
@@ -207,7 +210,8 @@ fun UpdateScreen(navController: NavHostController) {
                 releaseDate = date,
                 description = description,
                 imageUrl = imageUrl,
-                apkUrl = apkUrl
+                apkUrl = apkUrl,
+                assetApiUrl = assetApiUrl
               )
             } else {
               NexUpdateStatus.NoUpdate(tag)
@@ -351,6 +355,7 @@ fun UpdateScreen(navController: NavHostController) {
                           .setInputData(
                             workDataOf(
                               "apk_url" to urlToDownload,
+                              "asset_api_url" to (currentStatus.assetApiUrl ?: ""),
                               "version" to currentStatus.version,
                               "file_size" to currentStatus.size
                             )
@@ -668,21 +673,24 @@ suspend fun checkForUpdate(
       date: String,
       description: String?,
       imageUrl: String?,
-      apkUrl: String?
+      apkUrl: String?,
+      assetApiUrl: String?
     ) -> Unit,
   onError: () -> Unit,
 ) {
   withContext(Dispatchers.IO) {
     try {
-      val url = URL("https://api.github.com/repos/nexerisltd/NexMusic-Android/releases/latest")
-      val json = url.openStream().bufferedReader().use { it.readText() }
+      val json =
+        openGitHubStream("https://api.github.com/repos/nexerisltd/NexMusic-Android/releases/latest")
+          .bufferedReader()
+          .use { it.readText() }
       val targetRelease = JSONObject(json)
 
       val currentVersion = BuildConfig.VERSION_NAME
       val targetTagName = targetRelease.getString("tag_name")
-      val currentClean = currentVersion.removePrefix("b").removePrefix("v").trim()
-      val targetClean = targetTagName.removePrefix("b").removePrefix("v").trim()
-      val shouldShow = currentClean != targetClean
+      // Real semver-style comparison - the old `!=` check fired on beta tags
+      // and even on numerically older releases.
+      val shouldShow = isNewerVersion(targetTagName, currentVersion)
 
       if (shouldShow) {
         val tagWithPrefix = targetRelease.getString("tag_name")
@@ -692,11 +700,7 @@ suspend fun checkForUpdate(
         var description: String? = null
         var imageUrl: String? = null
         try {
-          val changelogUrl =
-            URL(
-              "https://github.com/nexerisltd/NexMusic-Android/releases/download/$tagWithPrefix/changelog.json"
-            )
-          val changelogJson = changelogUrl.openStream().bufferedReader().use { it.readText() }
+          val changelogJson = openChangelogStream(tagWithPrefix).bufferedReader().use { it.readText() }
           val changelogData = JSONObject(changelogJson)
 
           description = changelogData.optString("description").takeIf { it.isNotEmpty() }
@@ -734,6 +738,7 @@ suspend fun checkForUpdate(
 
         var apkSizeInMB = ""
         var apkDownloadUrl = ""
+        var apkAssetId = 0L
         for (j in 0 until assets.length()) {
           val asset = assets.getJSONObject(j)
           val assetName = asset.getString("name")
@@ -744,6 +749,7 @@ suspend fun checkForUpdate(
             val apkSizeInBytes = asset.getLong("size")
             apkSizeInMB = String.format("%.1f", apkSizeInBytes / (1024.0 * 1024.0))
             apkDownloadUrl = asset.getString("browser_download_url")
+            apkAssetId = asset.getLong("id")
             break
           }
         }
@@ -758,7 +764,10 @@ suspend fun checkForUpdate(
               formattedReleaseDate,
               description,
               imageUrl,
-              apkDownloadUrl
+              apkDownloadUrl,
+              if (apkAssetId != 0L)
+                "https://api.github.com/repos/nexerisltd/NexMusic-Android/releases/assets/$apkAssetId"
+              else null
             )
           }
           return@withContext
@@ -766,7 +775,7 @@ suspend fun checkForUpdate(
       }
 
       withContext(Dispatchers.Main) {
-        onSuccess(currentVersion, false, emptyList(), "", "", null, null, null)
+        onSuccess(currentVersion, false, emptyList(), "", "", null, null, null, null)
       }
     } catch (e: Exception) {
       Log.e("UpdateCheck", "Error checking for updates: ${e.message}", e)
@@ -804,6 +813,97 @@ private fun openTimedStream(url: String): java.io.InputStream =
     }
     .getInputStream()
 
+/** GitHub API headers: bearer token when configured (private release repos). */
+private fun githubHeaders(accept: String): Map<String, String> {
+  val headers = mutableMapOf("Accept" to accept, "User-Agent" to "NexMusic-Android")
+  if (BuildConfig.UPDATE_GITHUB_TOKEN.isNotBlank()) {
+    headers["Authorization"] = "Bearer " + BuildConfig.UPDATE_GITHUB_TOKEN
+  }
+  return headers
+}
+
+/**
+ * Opens a GitHub API stream with timeouts and optional token auth, so update
+ * checks keep working while the release repository is private (a plain
+ * openStream() gets a 404 there). Public repos are unaffected.
+ */
+private fun openGitHubStream(url: String, accept: String = "application/vnd.github+json"): java.io.InputStream =
+  (URL(url).openConnection() as java.net.HttpURLConnection).apply {
+    connectTimeout = 15_000
+    readTimeout = 15_000
+    for ((k, v) in githubHeaders(accept)) setRequestProperty(k, v)
+  }.getInputStream()
+
+/**
+ * Streams a release changelog.json. Tries the public download URL first; if
+ * that fails (private repo) and a token is configured, resolves the asset via
+ * the API and streams it with the octet-stream accept header.
+ */
+private fun openChangelogStream(tag: String): java.io.InputStream {
+  try {
+    return (URL(
+        "https://github.com/nexerisltd/NexMusic-Android/releases/download/$tag/changelog.json"
+      )
+      .openConnection() as java.net.HttpURLConnection)
+      .apply {
+        connectTimeout = 15_000
+        readTimeout = 15_000
+      }
+      .getInputStream()
+  } catch (e: Exception) {
+    if (BuildConfig.UPDATE_GITHUB_TOKEN.isBlank()) throw e
+    val release =
+      JSONObject(
+        openGitHubStream("https://api.github.com/repos/nexerisltd/NexMusic-Android/releases/tags/$tag")
+          .bufferedReader()
+          .use { it.readText() }
+      )
+    val assets = release.getJSONArray("assets")
+    for (i in 0 until assets.length()) {
+      val asset = assets.getJSONObject(i)
+      if (asset.getString("name") == "changelog.json") {
+        return (URL("https://api.github.com/repos/nexerisltd/NexMusic-Android/releases/assets/" + asset.getLong("id"))
+          .openConnection() as java.net.HttpURLConnection)
+          .apply {
+            connectTimeout = 15_000
+            readTimeout = 15_000
+            for ((k, v) in githubHeaders("application/octet-stream")) setRequestProperty(k, v)
+          }
+          .getInputStream()
+      }
+    }
+    throw e
+  }
+}
+
+/** Enqueues the APK download worker. [policy] KEEP leaves an in-flight download running. */
+fun enqueueUpdateDownload(
+  context: Context,
+  apkUrl: String,
+  assetApiUrl: String,
+  version: String,
+  fileSize: String = "",
+  policy: ExistingWorkPolicy = ExistingWorkPolicy.REPLACE,
+) {
+  val request =
+    OneTimeWorkRequestBuilder<UpdateDownloadWorker>()
+      .setInputData(
+        workDataOf(
+          "apk_url" to apkUrl,
+          "asset_api_url" to assetApiUrl,
+          "version" to version,
+          "file_size" to fileSize
+        )
+      )
+      .setConstraints(
+        Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
+      )
+      .setBackoffCriteria(BackoffPolicy.EXPONENTIAL, 10, java.util.concurrent.TimeUnit.SECONDS)
+      .addTag("update_download")
+      .build()
+  WorkManager.getInstance(context).enqueueUniqueWork("update_download", policy, request)
+}
+
 /**
  * Looks up the release whose tag matches [currentVersion] (not necessarily the latest — the user
  * may be a version or two behind "latest" right after installing an update) and returns its
@@ -814,7 +914,7 @@ suspend fun fetchChangelogForVersion(currentVersion: String): WhatsNewInfo? =
     try {
       val cleanCurrent = currentVersion.removePrefix("b").removePrefix("v").trim()
       val releasesJson =
-        openTimedStream("https://api.github.com/repos/nexerisltd/NexMusic-Android/releases")
+        openGitHubStream("https://api.github.com/repos/nexerisltd/NexMusic-Android/releases")
           .bufferedReader()
           .use { it.readText() }
       val releases = JSONArray(releasesJson)
@@ -834,12 +934,7 @@ suspend fun fetchChangelogForVersion(currentVersion: String): WhatsNewInfo? =
       val changelogList = mutableListOf<ChangelogSection>()
       var description: String? = null
       try {
-        val changelogJson =
-          openTimedStream(
-              "https://github.com/nexerisltd/NexMusic-Android/releases/download/$tag/changelog.json"
-            )
-            .bufferedReader()
-            .use { it.readText() }
+        val changelogJson = openChangelogStream(tag).bufferedReader().use { it.readText() }
         val changelogData = JSONObject(changelogJson)
         description = changelogData.optString("description").takeIf { it.isNotEmpty() }
         val changelogArray = changelogData.getJSONArray("changelog")

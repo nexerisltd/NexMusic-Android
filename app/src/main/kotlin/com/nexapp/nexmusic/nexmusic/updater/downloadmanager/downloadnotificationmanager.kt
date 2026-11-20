@@ -215,13 +215,14 @@ object DownloadNotificationManager {
         .setContentTitle(appContext.getString(R.string.update_ready))
         .setContentText(appContext.getString(R.string.tap_to_install_version, version))
         .setAutoCancel(true)
+        .setOngoing(true)
         .setContentIntent(pendingIntent)
         .setStyle(progressStyle)
         .setVisibility(Notification.VISIBILITY_PUBLIC)
         .setCategory(Notification.CATEGORY_STATUS)
         .setWhen(System.currentTimeMillis())
 
-    setRequestPromotedOngoingSafely(builder, false)
+    setRequestPromotedOngoingSafely(builder, true)
     setShortCriticalTextSafely(builder, appContext.getString(R.string.done))
 
     notificationManager.notify(NOTIFICATION_ID, builder.build())
@@ -314,6 +315,7 @@ object DownloadNotificationManager {
         .setContentText(appContext.getString(R.string.tap_to_install_version, version))
         .setProgress(0, 0, false)
         .setAutoCancel(true)
+        .setOngoing(true)
         .setContentIntent(pendingIntent)
         .setPriority(NotificationCompat.PRIORITY_HIGH)
         .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)

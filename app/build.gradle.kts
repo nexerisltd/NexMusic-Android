@@ -33,8 +33,8 @@ android {
     applicationId = "com.nexapp.nexmusic"
     minSdk = 26
     targetSdk = 36
-    versionCode = 564
-    versionName = "5.4.3"
+    versionCode = 565
+    versionName = "5.5.0"
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     vectorDrawables.useSupportLibrary = true
@@ -53,6 +53,13 @@ android {
       localProperties.getProperty("GH_CLIENT_SECRET") ?: System.getenv("GH_CLIENT_SECRET") ?: ""
     buildConfigField("String", "GH_CLIENT_ID", "\"$githubClientId\"")
     buildConfigField("String", "GH_CLIENT_SECRET", "\"$githubClientSecret\"")
+
+    // Read-only token for in-app update checks/downloads. Needed only while the
+    // release repo is private; a public repo works without it. Set via
+    // gradle.properties: updateGithubToken=github_pat_... (or env UPDATE_GITHUB_TOKEN).
+    val updateGithubToken =
+      localProperties.getProperty("updateGithubToken") ?: System.getenv("UPDATE_GITHUB_TOKEN") ?: ""
+    buildConfigField("String", "UPDATE_GITHUB_TOKEN", "\"$updateGithubToken\"")
 
     buildConfigField(
       "String",

@@ -172,6 +172,7 @@ import com.nexapp.nexmusic.db.MusicDatabase
 import com.nexapp.nexmusic.db.entities.SearchHistory
 import com.nexapp.nexmusic.nexmusic.UpdateNotificationHelper
 import com.nexapp.nexmusic.nexmusic.updater.checkForUpdate
+import com.nexapp.nexmusic.nexmusic.updater.enqueueUpdateDownload
 import com.nexapp.nexmusic.nexmusic.updater.getAutoUpdateCheckSetting
 import com.nexapp.nexmusic.nexmusic.updater.getUpdateNotificationsSetting
 import com.nexapp.nexmusic.nexmusic.updater.saveUpdateAvailableState
@@ -517,6 +518,7 @@ class MainActivity : ComponentActivity() {
     val enableHighRefreshRate by rememberPreference(EnableHighRefreshRateKey, defaultValue = true)
     val context = LocalContext.current
     var showUpdateDialog by remember { androidx.compose.runtime.mutableStateOf(false) }
+    var openUpdateScreenRequest by remember { androidx.compose.runtime.mutableStateOf(false) }
     var availableUpdateVersion by remember { androidx.compose.runtime.mutableStateOf("") }
     var availableUpdateChangelog by remember {
       androidx.compose.runtime.mutableStateOf<
@@ -567,7 +569,7 @@ class MainActivity : ComponentActivity() {
         delay(2000L)
         checkForUpdate(
           context = context,
-          onSuccess = { latestVersion, isAvailable, changelog, _, _, description, _, _ ->
+          onSuccess = { latestVersion, isAvailable, changelog, _, _, description, _, apkUrl, assetApiUrl ->
             val currentVersion = BuildConfig.VERSION_NAME
             Log.d(
               "UpdateCheck",
@@ -580,11 +582,29 @@ class MainActivity : ComponentActivity() {
               availableUpdateChangelog = changelog
               availableUpdateDescription = description
               showUpdateDialog = true
-            }
 
-            if (isAvailable && getUpdateNotificationsSetting(context)) {
-              Log.d("UpdateCheck", "Posting update notification for $latestVersion")
-              UpdateNotificationHelper.showUpdateNotification(context, latestVersion)
+              if (getUpdateNotificationsSetting(context)) {
+                Log.d("UpdateCheck", "Posting update notification for $latestVersion")
+                UpdateNotificationHelper.showUpdateNotification(context, latestVersion)
+              }
+              // WhatsApp-style: auto-download in the background so the APK is
+              // ready (tap-to-install) before the user even opens the screen.
+              val url =
+                assetApiUrl
+                  ?.takeIf { it.isNotBlank() && BuildConfig.UPDATE_GITHUB_TOKEN.isNotBlank() }
+                  ?: apkUrl
+              if (url != null) {
+                enqueueUpdateDownload(
+                  context,
+                  url,
+                  assetApiUrl ?: "",
+                  latestVersion,
+                  policy = androidx.work.ExistingWorkPolicy.KEEP
+                )
+              }
+            } else {
+              // Up to date - clear the fixed update notification.
+              UpdateNotificationHelper.cancelUpdateNotification(context)
             }
           },
           onError = { Log.e("UpdateCheck", "Startup check failed") }
@@ -755,9 +775,8 @@ class MainActivity : ComponentActivity() {
           description = availableUpdateDescription,
           onDismiss = { showUpdateDialog = false },
           onUpdate = {
-            if (::navController.isInitialized) {
-              navController.navigate("update") { launchSingleTop = true }
-            }
+            showUpdateDialog = false
+            openUpdateScreenRequest = true
           }
         )
       } else {
@@ -802,6 +821,12 @@ class MainActivity : ComponentActivity() {
         val bottomInsetDp = WindowInsets.systemBars.asPaddingValues().calculateBottomPadding()
 
         val navController = rememberNavController()
+        LaunchedEffect(openUpdateScreenRequest) {
+          if (openUpdateScreenRequest) {
+            openUpdateScreenRequest = false
+            navController.navigate("update") { launchSingleTop = true }
+          }
+        }
         val blockedArtists by
           dataStore.data
             .map { it[BlockedArtistsKey] ?: emptySet() }

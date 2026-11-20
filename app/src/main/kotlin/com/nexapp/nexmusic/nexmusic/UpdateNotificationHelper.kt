@@ -45,9 +45,14 @@ object UpdateNotificationHelper {
       NotificationCompat.Builder(context, CHANNEL_ID)
         .setSmallIcon(R.drawable.ic_launcher_nobg)
         .setContentTitle(context.getString(R.string.update_available_title))
-        .setContentText(versionName)
+        .setContentText("NexMusic $versionName - tap to update")
         .setContentIntent(pending)
-        .setAutoCancel(true)
+        // Fixed (ongoing) notification: cannot be swiped away - it only clears
+        // once the app is actually updated (cancelUpdateNotification).
+        .setOngoing(true)
+        .setOnlyAlertOnce(true)
+        .setAutoCancel(false)
+        .addAction(0, context.getString(R.string.update_available), pending)
         .build()
 
     if (
@@ -57,5 +62,10 @@ object UpdateNotificationHelper {
     ) {
       NotificationManagerCompat.from(context).notify(NOTIFICATION_ID, notif)
     }
+  }
+
+  /** Clears the fixed update notification once the app is up to date. */
+  fun cancelUpdateNotification(context: Context) {
+    NotificationManagerCompat.from(context).cancel(NOTIFICATION_ID)
   }
 }

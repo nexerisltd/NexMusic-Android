@@ -8,6 +8,7 @@ import androidx.work.CoroutineWorker
 import androidx.work.ForegroundInfo
 import androidx.work.WorkerParameters
 import androidx.work.workDataOf
+import com.nexapp.nexmusic.BuildConfig
 import com.nexapp.nexmusic.R
 import java.io.File
 import java.io.FileOutputStream
@@ -18,14 +19,57 @@ import java.util.zip.ZipInputStream
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
+/**
+ * Opens a download connection, following redirects by hand so the bearer token
+ * is never forwarded to the storage host behind the redirect (GitHub asset
+ * downloads redirect to a pre-signed URL that must be hit without auth).
+ */
+private fun openDownload(urlStr: String, accept: String): HttpURLConnection {
+  var target = urlStr
+  var hops = 0
+  while (true) {
+    val targetUrl = URL(target)
+    val conn = targetUrl.openConnection() as HttpURLConnection
+    conn.requestMethod = "GET"
+    conn.connectTimeout = 15000
+    conn.readTimeout = 30000
+    conn.instanceFollowRedirects = false
+    conn.setRequestProperty("Accept", accept)
+    conn.setRequestProperty("User-Agent", "NexMusic-Android")
+    if (targetUrl.host == "api.github.com" && BuildConfig.UPDATE_GITHUB_TOKEN.isNotBlank()) {
+      conn.setRequestProperty("Authorization", "Bearer ${BuildConfig.UPDATE_GITHUB_TOKEN}")
+    }
+    conn.connect()
+    if (conn.responseCode in intArrayOf(301, 302, 303, 307, 308)) {
+      val location = conn.getHeaderField("Location") ?: throw IOException("Redirect without Location header")
+      conn.disconnect()
+      target = URL(targetUrl, location).toString()
+      hops++
+      if (hops > 5) throw IOException("Too many redirects")
+      continue
+    }
+    return conn
+  }
+}
+
 class UpdateDownloadWorker(private val context: Context, workerParams: WorkerParameters) :
   CoroutineWorker(context, workerParams) {
 
   override suspend fun doWork(): Result =
     withContext(Dispatchers.IO) {
       val apkUrl = inputData.getString("apk_url") ?: return@withContext Result.failure()
+      val assetApiUrl = inputData.getString("asset_api_url") ?: ""
       val version = inputData.getString("version") ?: "unknown"
       val fileSize = inputData.getString("file_size") ?: ""
+
+      // Prefer the API asset route: the plain browser_download_url 404s while
+      // the release repository is private.
+      val effectiveUrl =
+        if (assetApiUrl.isNotBlank() && BuildConfig.UPDATE_GITHUB_TOKEN.isNotBlank()) {
+          assetApiUrl
+        } else {
+          apkUrl
+        }
 
       try {
         val startingNotification =
@@ -44,12 +88,8 @@ class UpdateDownloadWorker(private val context: Context, workerParams: WorkerPar
       } catch (e: Exception) {}
 
       try {
-        val url = URL(apkUrl)
-        val connection = url.openConnection() as HttpURLConnection
-        connection.requestMethod = "GET"
-        connection.connectTimeout = 15000
-        connection.readTimeout = 15000
-        connection.connect()
+        val isAssetApi = effectiveUrl.startsWith("https://api.github.com/")
+        val connection = openDownload(effectiveUrl, if (isAssetApi) "application/octet-stream" else "*/*")
 
         if (connection.responseCode != HttpURLConnection.HTTP_OK) {
           DownloadNotificationManager.showDownloadFailed(

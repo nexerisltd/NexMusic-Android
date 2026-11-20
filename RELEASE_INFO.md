@@ -1,14 +1,13 @@
-# NexMusic v5.2.90
+# NexMusic v5.5.0
 
-### Bug Fixes
-- **YouTube Playback Reliability**: Fixed a burst-request pattern where the app could fire two full client-fallback attempts at nearly the same instant (e.g. while preloading the next track), which could trip YouTube's rate limiting and cause playback failures. Playback requests are now properly serialized.
-- **Track Skipping**: Fixed a bug where quickly skipping tracks could cause the playback resolver to burn through every fallback client unnecessarily before reporting failure, sometimes surfacing a confusing "sign in to confirm you're not a bot" error that wasn't the real cause.
-- **Faster Failure Recovery**: Stream URL validation now fails fast on a slow/unresponsive CDN edge instead of hanging for up to 20 seconds, so a bad fallback attempt no longer stalls playback.
-- **Better Diagnostics**: Playback logs now capture the exact reason a stream URL validation failed (HTTP status, client, timing) instead of a generic failure, making future playback issues much faster to diagnose and fix.
+### In-app update — everything now happens inside the app
+- **No more website redirects**: the update dialog, the Settings → System update screen and the update notification all open the built-in download screen. The APK downloads in-app with a live progress bar and installs with a single tap.
+- **Background auto-download**: once an update is detected, the APK downloads automatically in the background — by the time you tap, it is ready to install (no manual download, no reinstall dance).
+- **Fixed update notification**: a non-dismissible "Update available" notification stays in the shade next to the player notification (with an Update action) until the app is actually updated. It clears itself once you are on the latest version.
+- **Correct update detection**: version comparison now properly understands semver and beta tags — older releases no longer trigger false "update available" prompts.
+- **Private release repos supported**: updates keep working whether the release repository is private or public (token handled automatically in CI builds).
+- Rich release notes (changelog.json) are now generated automatically for every release.
 
----
-
-
-We have completely removed lossless music streaming, downloads, and tracking features. Maintaining the lossless music database is expensive and quite difficult. Soon, the entire lossless database will be archived from GitHub as well. 
-
-We tried our best to maintain it, and while many of you have asked us to use a free cloud service instead, the process requires automation (where a user can upload a track and it gets added automatically). Doing this manually for every track simply isn't viable. Thank you for understanding.
+### Fixes for already-shipped behavior
+- Tapping "Update" on the startup update dialog now reliably opens the update screen (the previous navigation could silently do nothing).
+- "Update ready" notifications are fixed in the shade until installed, so they cannot be lost.

@@ -40,3 +40,8 @@ org.gradle.caching=false
 STORE_PASSWORD=your_keystore_password_here
 KEY_ALIAS=key_1
 KEY_PASSWORD=your_key_password_here
+
+# In-app updater: read-only GitHub token for private release repos.
+# Create a fine-grained PAT (Contents: Read on NexMusic-Desktop + NexMusic-Android)
+# at github.com/settings/personal-access-tokens and paste it here.
+updateGithubToken=github_pat_here
